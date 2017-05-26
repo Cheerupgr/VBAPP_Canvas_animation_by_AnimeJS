@@ -1,0 +1,16 @@
+{
+  "name": "animation_templates",
+  "version": "0.1",
+  "authors": [
+    "andchir <andchir@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "Commercial",
+  "homepage": "",
+  "dependencies": {
+
+  },
+  "keywords": [
+    "animation"
+  ]
+}
