@@ -1,0 +1,28 @@
+{
+    "options": [
+        [
+            {
+                "name": "text1",
+                "type": "text",
+                "value": "Frederic"
+            },
+            {
+                "name": "text1_color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text2",
+                "type": "text",
+                "value": "Colins"
+            },
+            {
+                "name": "text1_color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}
