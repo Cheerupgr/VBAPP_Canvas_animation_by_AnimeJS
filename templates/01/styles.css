@@ -102,7 +102,7 @@ main {
 #animation-1 > div:first-child {
     font-size: 4.8em;
     top: -.13em;
-    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) infinite alternate both animation-1-slash;
+    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both animation-1-slash;
 }
 #animation-1 > div:nth-child(2), #animation-1 > div:nth-child(3) {
     font-size: 2em;
@@ -110,7 +110,7 @@ main {
     width: 5em;
 }
 #animation-1 > div:nth-child(2) div, #animation-1 > div:nth-child(3) div {
-    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) infinite alternate both;
+    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both;
 }
 #animation-1 div:nth-child(2) {
     top: 0;
@@ -167,13 +167,13 @@ main {
     font-size: 2.8em;
 }
 #animation-2 > div:first-child div {
-    animation: 3s ease-out infinite alternate both animation-2-name;
+    animation: 3s ease-out 2 alternate both animation-2-name;
 }
 #animation-2 > div:last-child {
     font-size: 1.1em;
 }
 #animation-2 > div:last-child div {
-    animation: 3s ease-out infinite alternate both animation-2-title;
+    animation: 3s ease-out 2 alternate both animation-2-title;
 }
 
 /*********************
@@ -212,7 +212,7 @@ main {
     letter-spacing: 1px;
 }
 #animation-3 > div:first-child div {
-    animation: 3.2s ease-out infinite alternate both animation-3-left;
+    animation: 3.2s ease-out 2 alternate both animation-3-left;
 }
 #animation-3 > div:last-child {
     font-size: 2.5em;
@@ -220,7 +220,7 @@ main {
     letter-spacing: -1px;
 }
 #animation-3 > div:last-child div {
-    animation: 3.2s ease-out infinite alternate both animation-3-right;
+    animation: 3.2s ease-out 2 alternate both animation-3-right;
 }
 
 /*********************
@@ -253,7 +253,7 @@ main {
     vertical-align: middle;
 }
 #animation-4 > div div {
-    animation: 3s ease-out infinite alternate both;
+    animation: 3s ease-out 2 alternate both;
 }
 #animation-4 > div:first-child {
     font-size: 2.8em;
@@ -349,7 +349,7 @@ main {
 }
 #animation-5 div,
 #animation-5 .clip-path {
-    animation: 3.1s ease-out infinite alternate both;
+    animation: 3.1s ease-out 2 alternate both;
 }
 #animation-5 .bottom-right,
 #animation-5 .right {
