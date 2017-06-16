@@ -1,0 +1,184 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+}
+
+.banner{
+    width:100%;
+    height: auto;
+    background:url(bg.jpg) no-repeat;
+    background-size:cover;
+}
+
+main {
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.animation {
+    width: 20em;
+    height: 4em;
+    margin: 1em auto;
+    position: relative;
+    left:0px;
+    top: 40%;
+    float:left;
+}
+
+.arimo {
+    font-family: Arimo;
+}
+
+.red {
+    color: #cf4c4e;
+}
+
+.white {
+    color: white;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.mask {
+    overflow: hidden;
+    position: relative;
+}
+
+/*********************
+* Animation 1
+*********************/
+@keyframes animation-1-slash {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+    45% {
+        left: 100%;
+        opacity: 0;
+    }
+    65% {
+        left: 0;
+        opacity: 1;
+    }
+}   
+@keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 53.3%;
+    }
+    100%{
+        left:53.3%;
+    }
+}
+#animation-1 div {
+    position: absolute;
+}
+#animation-1 > div:first-child {
+     -webkit-clip-path: polygon(12% 25%, 100% 0, 93% 100%, 3% 90%);
+    clip-path: polygon(12% 25%, 100% 0, 93% 100%, 3% 90%);
+    background:#424043;
+    width:50px;
+    height:45px;
+    font-size: 4.8em;
+    top: 5px;
+    left:-5px;
+    animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both animation-1-slash ;
+    overflow: hidden;
+}
+#animation-1 > div:first-child div{
+     -webkit-clip-path: polygon(12% 25%, 100% 0, 93% 100%, 3% 90%);
+    clip-path: polygon(12% 25%, 100% 0, 93% 100%, 3% 90%);
+    background:#d0a10d;
+    width:45px;
+    height:40px;
+    top:5px;
+}
+#animation-1 > div:nth-child(2) {
+    font-size: 2em;
+    height: 1.2em;
+    width: 6em;
+}
+#animation-1 > div:nth-child(3){
+     width:13.15em;
+    font-size:1em;
+    height: 1.3em;
+}
+#animation-1 > div:nth-child(2) div {
+    animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both;
+}
+#animation-1 > div:nth-child(3) div{
+     animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both;
+}
+#animation-1 div:nth-child(2) {
+    top: 0;
+    left: .9em;
+}
+#animation-1 div:nth-child(2) div {
+    animation-name: animation-1-text-1;
+}
+#animation-1 div:nth-child(3) {
+    top: 2em;
+    left: 0em;
+}
+#animation-1 div:nth-child(3) div {
+    animation-name: animation-1-text-2;
+}
+.text-1 div{
+   background:#424043;
+   -webkit-clip-path: polygon(5% 16%, 100% 0, 93% 100%, 0% 100%);
+    clip-path: polygon(5% 16%, 100% 0, 93% 100%, 0% 100%);
+   padding:10px 30px;
+   width:225px;
+   height: 30px;
+}
+.text-1 div span{
+    font-size:24px;
+    top:6px;
+    position: relative;
+}
+.text-2 div{
+    background:#d0a10d;
+    padding:2px 0px 2px 10px;
+    width:5em;
+    height:20px;
+}
+.text-2 div span{
+    font-size:16px;
+    position: relative;
+    top:2px;
+}
