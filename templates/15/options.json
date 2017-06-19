@@ -4,16 +4,42 @@
     "options": [
         [
             {
+                "name": "text0",
+                "caption": "Text 0",
+                "type": "text",
+                "value": "Lower Thirds Animation"
+            },
+            {
+                "name": "text0_color",
+                "caption": "Text 0 color",
+                "type": "color",
+                "value": "#ffffff"
+            },
+            {
+                "name": "text0_bgcolor",
+                "caption": "Text 0 background color",
+                "type": "color",
+                "value": "#000000"
+            }
+        ],
+        [
+            {
                 "name": "text1",
                 "caption": "Text 1",
                 "type": "text",
-                "value": "Frederic"
+                "value": "Lower Thirds Animations"
             },
             {
                 "name": "text1_color",
                 "caption": "Text 1 color",
                 "type": "color",
                 "value": "#ffffff"
+            },
+            {
+                "name": "text1_bgcolor",
+                "caption": "Text 1 background color",
+                "type": "color",
+                "value": "#000000"
             }
         ],
         [
@@ -24,116 +50,24 @@
                 "value": "Colins"
             },
             {
-                "name": "text1_color",
+                "name": "text2_color",
                 "caption": "Text 2 color",
                 "type": "color",
                 "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text3",
-                "caption": "Text 3",
-                "type": "text",
-                "value": "John Doe"
             },
             {
-                "name": "text3_color",
-                "caption": "Text 2 color",
+                "name": "text2_bgcolor",
+                "caption": "Text 2 background color",
                 "type": "color",
                 "value": "#ffffff"
             }
         ],
         [
             {
-                "name": "text4",
-                "caption": "Text 4",
-                "type": "text",
-                "value": "Motion Designer"
-            },
-            {
-                "name": "text4_color",
-                "caption": "Text 4 color",
+                "name": "white_hover_bgcolor",
+                "caption": "White Hover Color",
                 "type": "color",
                 "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text5",
-                "caption": "Text 5",
-                "type": "text",
-                "value": "Sarah"
-            },
-            {
-                "name": "text5_color",
-                "caption": "Text 5 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text6",
-                "caption": "Text 6",
-                "type": "text",
-                "value": "Brown"
-            },
-            {
-                "name": "text6_color",
-                "caption": "Text 6 color",
-                "type": "color",
-                "value": "#cf4c4e"
-            }
-        ],
-        [
-            {
-                "name": "text7",
-                "caption": "Text 7",
-                "type": "text",
-                "value": "John Doe"
-            },
-            {
-                "name": "text7_color",
-                "caption": "Text 7 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text8",
-                "caption": "Text 8",
-                "type": "text",
-                "value": "Nathan Fillion"
-            },
-            {
-                "name": "text8_color",
-                "caption": "Text 8 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text9",
-                "caption": "Text 9",
-                "type": "text",
-                "value": "Director"
-            },
-            {
-                "name": "text9_color",
-                "caption": "Text 9 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "lines_color",
-                "caption": "Color of the lines",
-                "type": "color",
-                "value": "#cf4c4e"
             }
         ]
     ]
