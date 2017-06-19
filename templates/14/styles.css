@@ -7,104 +7,98 @@
     font-family: "Open Sans";
     src: url("fonts/Open_Sans/OpenSans-Light.ttf");
 }
-
 body {
     margin: 0;
 }
-
 .banner{
     width:100%;
     height: auto;
     background:url(bg.jpg) no-repeat;
     background-size:cover;
 }
-
-
-
-
-
 .arimo {
     font-family: Arimo;
 }
-
 .red {
     color: #cf4c4e;
 }
-
 .white {
     color: white;
 }
-
 .light {
     font-weight: 300;
 }
-
 .bold {
     font-weight: 700;
 }
-
 .mask {
     overflow: hidden;
     position: relative;
 }
-
 /*********************
 * Animation 1
 *********************/
-@keyframes animation-white {
-    0% {
-        left: -18em;
-    }
-    30% {
-        left: 18em;
-    }
-    100% {
-        left: 18em;
-    }
 
-}  
-@keyframes animation-orange {
-    0% {
-        left: -20em;
+@keyframes mainFrame{
+    0%{
+        clip-path: inset(0 50% 0 50%);
     }
-    50% {
-        left: 0;
-    }
-    100% {
-        left: 0;
-    }
-}  
-@keyframes animation-sub {
-    0% {
-        top: -2em;
-    }
-    50% {
-        top: -2em;
-    }
-    80%{
-        top: .8em;
-    }
-    100%{
-        top: .8em;
+    30%, 100%{
+        clip-path: inset(0 0 0 0);
     }
 }
-@keyframes animation-border {
-  0% {
-    clip: rect(0px, 4em, 2px, 0px);
-    opacity: 0;
-  }
-  1%{
-    opacity: .5;
-    clip: rect(0px, 4em, 2px, 0px);
-  }
-  50%{
-    clip: rect(0px, 20em, 2.5em, 18em);
-    opacity: .5;
-  }
-  100% {
-    clip: rect(0px, 20em, 2.5em, 18em);
-    opacity: .5;
-  }
+@keyframes animation-left_block {
+    0% {
+        left: 45%;
+        width:0px;
+    }
+    15%{
+        width:30px;
+    }
+    30%, 100% {
+        left: 0%;
+        width:0px;
+    }
+} 
+@keyframes animation-right_block {
+    0% {
+        right: 45%;
+        width:0px;
+    }
+    15%{
+        width:30px;
+    }
+    30%, 100% {
+        right: 0%;
+        width:0px;
+    }
+}  
+@keyframes line{
+    0%{
+        clip-path: inset(0 50% 0 50%);
+    }
+    30%{
+        clip-path: inset(0 50% 0 50%);
+    }
+    50%, 60%{
+        clip-path: inset(0 0 0 0);
+        bottom:-30px;
+    }
+    70%, 100%{
+        bottom:8px;
+        clip-path: inset(0 20% 0 20%);
+    }
+}
+@keyframes text-2{
+    0%{
+        opacity: 0;
+    }
+    70%{
+       opacity: 0;
+    }
+    80%, 100%{
+        opacity:1;
+    }
 }
 main {
     font-family: "Open Sans";
@@ -122,115 +116,65 @@ main {
     left:2em;
     bottom:10em;
 }
-
 .text-1{
     float:left;
-    width:100%;
+    width:auto;
     height:auto;
     color:#fff;
     overflow: hidden;
     text-transform: uppercase;
     font-weight: 800;
     position: relative;
-    /*position: absolute;
-    top:0px;bottom:0px;
-    left:0px;right:0px;*/
+    clear:both;
 }
-.text-1 div:first-child span:first-child, .text-1 div:first-child span:last-child{
-    width:10%;
-    height:100%;
-    overflow:hidden;
-    margin:0px auto;
-    background:#fff;
-    position: absolute;
-    top:0px;
-}
-.text-1 div:first-child span:first-child{
-    left:40%;
-}
-.text-1 div:first-child span:last-child{
-    right:40%;
-}
-@keyframes mainFrame{
-    0%{
-        clip-path: inset(0 50% 0 50%);
-    }
-    100%{
-        clip-path: inset(0 0 0 0);
-    }
-}
-.text-1 div:first-child span:nth-child(2){
+.text-1 div:first-child span{
     background:#960e29;
     width:auto;
-    padding:.5em 1em;
+    padding:.5em 10px;
     display: block;
     clip-path: inset(0 50% 0 50%);
-    animation: mainFrame linear 1s alternate both;
+    animation: mainFrame ease 1.5s 2 alternate both;
 }
-
-/*.text-1, .text-1::before{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.text-1 .white_boxes span{
+    width:0px;
+    position:absolute;
+    top:0px;
+    height:100%;
+    background:#fff; 
 }
-.text-1{
-    float:left;
-    width:100%;
-    height:2.5em;
-    color:#fff;
-    overflow: hidden;
-    text-transform: uppercase;
-    font-weight: 800;
+.text-1 .white_boxes span:first-child, .text-1 .white_boxes span:nth-child(2){
+    left:45%;
 }
-.text-1::before {
-  content: '';
-  z-index: 1;
-  margin: 0 ;
-  box-shadow: inset 0 0 0 2px;
-  animation: animation-border 2s linear 2 alternate;
-  opacity: 0;
+.text-1 .white_boxes span:nth-child(3), .text-1 .white_boxes span:nth-child(4){
+    right:45%;
 }
-
-.text-1 span:first-child{
-    width:100%;
+.text-1 .white_boxes span:first-child{
+    animation: animation-left_block 1.25s linear 2 alternate both;
+}
+.text-1 .white_boxes span:nth-child(2){
+    animation: animation-left_block 1.5s linear 2 alternate both;
+}
+.text-1 .white_boxes span:nth-child(3){
+    animation: animation-right_block 1.25s linear 2 alternate both;
+}
+.text-1 .white_boxes span:nth-child(4){
+    animation: animation-right_block 1.5s linear 2 alternate both;
+}
+.line{
     background:#fff;
-    height:2em;
-    margin:.5em 0px;
-    float:left;
-    left:-2em;
-    position: absolute;
-    animation: 2s ease alternate 2 both;
-    animation-name: animation-white;
-}
-.text-1 span:nth-child(2){
-    width:90%;
-    background:#960e29;
-    height: 2em;
-    float:left;
-    left:-2em;
-    padding:.5em .9em .5em .3em;
-    position: absolute;
-    animation: 2s ease alternate 2 both;
-    animation-name: animation-orange;
-    margin:.5em 5% 0px 0px;
+    width:100%;
+    height:1px;
+    position:absolute;
+    bottom:-30px;
+    animation: line 2s linear 2 alternate both;
 }
 .text-2{
+    font-size:14px;
     width:100%;
     float:left;
-    height: 2em;
-    position:absolute;
-    top:2.5em;
-    overflow: hidden;
+    text-align:center;
+    position: relative;
+    top:15px;
+    opacity: 0;
+    animation: text-2 linear 2s 2 alternate both;
 }
-.text-2 div{
-    font-size:16px;    
-    padding-left:.5em;
-    top:-2em;
-    position:relative;
-    animation: animation-sub 2s ease 2 alternate both;
-}*/
-
-
-

@@ -3,22 +3,35 @@
     <title>Template 03</title>
 
     <link href="styles.css" rel="stylesheet">
+    <script type="text/javascript">
+        // fetch data & pause & setTimeout to un-pause
+        function addClass(){ 
+            var seconds = 1.5;
+            
+           setTimeout(function() {
+               
+                document.getElementById('mainText').classList.add('pause');
+            },seconds * 1000);
+
+            var pauseSeconds = 5; // use a different value to pause for different times
+           setTimeout(function() {
+            document.getElementById('mainText').classList.remove('pause');
+            },pauseSeconds * 1000);
+        }
+    </script>
 
     <style>
         body { font-size: 25px; }
         .vba-area { width: 1170px; height: 720px; margin:0px auto; }
-        
     </style>
-
 </head>
-<body>
-
+<body onload="addClass">
 <section class="banner">
 <main class="vba-area">
     <div id="animation-1" class="animation">
         
         <div class="text-1">
-            <div style="color:/* text1_color */#ffffff/* /text1_color */;"><span></span><span><!-- text1 -->Lower Thirds Animation<!-- /text1 --></span></div>
+            <div style="color:/* text1_color */#ffffff/* /text1_color */;"><span></span><span id="mainText"><!-- text1 -->Lower Thirds Animation<!-- /text1 --></span></div>
         </div>
         <div class="text-2">
             <div style="color:/* text2_color */#ffffff/* /text2_color */;"><!-- text2 -->By Prax Maheshwari :-)<!-- /text2 --></div>

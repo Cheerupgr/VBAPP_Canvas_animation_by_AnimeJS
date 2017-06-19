@@ -1,0 +1,206 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+}
+
+.banner{
+    width:100%;
+    height: auto;
+    background:url(bg.jpg) no-repeat;
+    background-size:cover;
+}
+.arimo {
+    font-family: Arimo;
+}
+
+.red {
+    color: #cf4c4e;
+}
+
+.white {
+    color: white;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.mask {
+    overflow: hidden;
+    position: relative;
+}
+
+/*********************
+* Animation 1
+*********************/
+
+main {
+    font-family: "Open Sans";
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    position:relative;
+}
+.animation{
+    width:100%;
+    height:auto;
+    float:left;
+    position: absolute;
+    left:2em;
+    bottom:10em;
+}
+.animation::before{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+  z-index: 1;
+  margin: 0 -2%;
+  box-shadow: inset 0 0 0 2px;
+  animation: animation-border 2s linear 2 alternate both;
+  opacity: 0;
+  height: 2em;
+  color:#fff;
+}
+@keyframes animation-text-0{
+    0%, 20%{
+        clip-path: inset(0 100% 0 0);
+    }
+    40%,100%{
+        clip-path: inset(0 0 0 0); 
+    }
+}
+@keyframes animation-text-1{
+    0%{
+        clip-path: inset(0 100% 0 0);
+    }
+    25% {
+         clip-path: inset(0 0 0 0); 
+    }
+    50%, 100%{
+        clip-path: inset(0 0 0 0);
+    }
+}
+@keyframes animation-border {
+  0% ,30%{
+    clip: rect(0px, 4em, 1px, 0px);
+    opacity: 0;
+  }
+  31%{
+    opacity: .5;
+    clip: rect(0px, 4em, 1px, 0px);
+  }
+  50%, 100% {
+    clip: rect(0px, 20em, 1em, 18em);
+    opacity: 0;
+  }
+}
+.text-0{
+    width:auto;
+    height:auto;
+    color:#fff;
+    text-transform: uppercase;
+    font-weight: 800;
+    position: absolute;
+    background:#fff;
+    display: block;
+    padding:10px;
+    color:#000;
+    animation: animation-text-0 2s linear 2 alternate both;
+    z-index:1;
+    top:10px;
+}
+.text-1{
+    width:auto;
+    height:auto;
+    text-transform: uppercase;
+    font-weight: 800;
+    position: absolute;
+    background:#960e29;
+    display: block;
+    padding:10px;
+    color:#fff;
+    animation: animation-text-1 2s linear 2 alternate both;
+    top:10px;
+}
+
+@keyframes animation-left_block {
+    0%,50% {
+        left: 0;
+        width:0px;
+    }
+    60%{
+        width:30px;
+    }
+    70%, 100% {
+        left: 100%;
+        width:0px;
+    }
+} 
+@keyframes animation-text-2{
+    0%,50%{
+        clip-path: inset(0 100% 0 0);
+    }
+    65% {
+         clip-path: inset(0 0 0 0); 
+    }
+    80%, 100%{
+        clip-path: inset(0 0 0 0);
+    }
+}
+.text-2{
+    width:auto;
+    float:left;
+    height:1.2em;
+    position:absolute;
+    top:2.2em;
+    left:0px;
+}
+.subText{
+    font-size:16px;    
+    top:.6em;
+    left:0px;
+    position:relative;
+    color:#fff;
+    background: #960e29;
+    font-size:14px;
+    padding:5px 10px;
+    text-transform: uppercase;
+    z-index:0;
+    animation: animation-text-2 2s linear 2 alternate both;
+}
+.box1, .box2{
+    width:0px;
+    height: 100%;
+    float:left;
+    position: absolute;
+    top:0;
+    background:#fff;
+    left:0;
+    z-index:1;
+}
+.box1{
+    animation: animation-left_block 1.75s linear 2 alternate both;
+}
+.box2{
+    animation: animation-left_block 2s linear 2 alternate both;
+}
+
+

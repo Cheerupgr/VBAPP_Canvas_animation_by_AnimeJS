@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Template 03</title>
+
+    <link href="styles.css" rel="stylesheet">
+    <script type="text/javascript">
+        // fetch data & pause & setTimeout to un-pause
+        function addJs(){ 
+            var boxWidth = document.getElementById('text1').style.width;
+            console.log(boxWidth);
+           document.getElementById('text2').style.width = boxWidth;
+        }
+    </script>
+
+    <style>
+        body { font-size: 25px; }
+        .vba-area { width: 1170px; height: 720px; margin:0px auto; }
+    </style>
+</head>
+<body onload="addJs()">
+<section class="banner">
+<main class="vba-area">
+    <div id="animation-1" class="animation">
+        <div class="text-0" style="color:/* text0_color */#000/* /text0_color */;background-color:/* text0_bgcolor */#fff/* /text0_bgcolor */;">
+                <!-- text0 -->Lower Thirds Animation<!-- /text0 -->
+        </div>
+        <div class="text-1" id="text1" style="color:/* text1_color */#fff/* /text1_color */;background-color:/* text1_bgcolor */#960e29/* /text1_bgcolor */;">
+          <!-- text1 -->Lower Thirds Animation<!-- /text1 -->
+        </div>
+        <div class="text-2" id="text2" >
+            <span class="box1"></span><span class="box2"></span><span class="subText" style="color:/* text2_color */#ffffff/* /text2_color */;background-color:/* text2_bgcolor */#960e29/* /text1_bgcolor */;"><!-- text2 -->By Prax Maheshwari :-)<!-- /text2 --></span>
+        </div>
+    </div>
+</main>
+</section>
+</body>
+</html>
