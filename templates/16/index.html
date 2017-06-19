@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Template 03</title>
+
+    <link href="styles.css" rel="stylesheet">
+    <script type="text/javascript">
+        // fetch data & pause & setTimeout to un-pause
+        function addJs(){ 
+            var boxWidth = document.getElementById('text1').style.width;
+            console.log(boxWidth);
+           document.getElementById('text2').style.width = boxWidth;
+        }
+    </script>
+
+    <style>
+        body { font-size: 25px; background:#333; }
+        .vba-area { width: 1170px; height: 720px; margin:0px auto; }
+    </style>
+</head>
+<body onload="addJs()">
+<main class="vba-area">
+    <div id="animation-1" class="animation">
+        <div class="iconBox">
+            <span class="whiteHover"></span>
+            <span class="icon">$</span>
+            
+        </div>
+        <div class="text"><span>Lower Third Animations</span></div>
+    </div>
+</main>
+</body>
+</html>

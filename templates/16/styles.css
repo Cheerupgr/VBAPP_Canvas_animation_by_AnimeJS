@@ -1,0 +1,94 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+    padding:0;
+}
+@keyframes animate_icon{
+    0%, 20%{
+        transform: scale(0);
+    }
+    50%, 100%{
+        transform: scale(1);
+    }
+}
+@keyframes animate_icon_hover{
+    0%{
+        transform: scale(0);
+    }
+    30%,100%{
+        transform: scale(1); 
+        opacity: 1;
+    }
+}
+
+.animation{
+    position:relative;
+}
+.iconBox{
+    font-family: Arimo;
+    color:#fff;
+    float:left;
+    animation: anmate_icon 2s linear  alternate both;
+    position: relative;
+    top:0px;
+}
+.whiteHover{
+    background: #fff;
+    position:absolute;
+    z-index: 0;
+    width:100%;
+    height: 100%;
+    top:0px;
+    left:0px;
+    animation: animate_icon_hover 1.5s linear 2 alternate both;
+}
+.icon{
+    background:#960e29;
+    position: relative;
+    top:0px;
+    z-index:1;
+    padding:10px 15px;
+    float:left;
+    animation: animate_icon 2s linear 2 alternate both;
+}
+@keyframes animate_text_bg{
+    0%,40%{
+        clip-path: inset(0 100% 0 0); 
+    }
+    60%, 100%{
+         clip-path: inset(0 0 0 0); 
+    }
+}
+@keyframes animate_text{
+    0%,40%{
+       right:-10em;
+    }
+    60%, 100%{
+        right:0px;
+    }
+}
+.text{
+    font-family: Arimo;
+    text-transform: uppercase;
+    background: #960e29;
+    top:0px;
+    padding:10px 30px 10px 15px;
+    color:#fff;
+    float:left;
+    animation: animate_text_bg 2s linear 2 alternate both;
+    overflow: hidden;
+    margin-left:-1px;  
+}
+.text span{
+    animation: animate_text 2s ease-out 2 alternate both;
+    position:relative;
+}
