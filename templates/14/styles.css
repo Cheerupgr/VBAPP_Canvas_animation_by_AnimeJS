@@ -9,25 +9,27 @@
 }
 body {
     margin: 0;
+    background:#333;
 }
-.arimo {
-    font-family: Arimo;
+
+* {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
-.red {
-    color: #cf4c4e;
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
 }
-.white {
-    color: white;
-}
-.light {
-    font-weight: 300;
-}
-.bold {
-    font-weight: 700;
-}
-.mask {
-    overflow: hidden;
-    position: relative;
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
 }
 
 /** Animations Keyframes **/
@@ -127,7 +129,7 @@ main {
     padding:.5em 10px;
     display: block;
     clip-path: inset(0 50% 0 50%);
-    animation: ease 1.5s 2 alternate both;
+    animation: ease 1.5s 1 alternate both;
     animation-name: animation-text-1;
 }
 .text-1 .white_boxes span{
@@ -144,19 +146,19 @@ main {
     right:45%;
 }
 .text-1 .white_boxes span:first-child{
-    animation: 1.25s linear 2 alternate both;
+    animation: 1.25s linear 1 alternate both;
     animation-name: animation-left-block ;
 }
 .text-1 .white_boxes span:nth-child(2){
-    animation:1.5s linear 2 alternate both;
+    animation:1.5s linear 1 alternate both;
     animation-name: animation-left-block ;
 }
 .text-1 .white_boxes span:nth-child(3){
-    animation:  1.25s linear 2 alternate both;
+    animation:  1.25s linear 1 alternate both;
     animation-name:animation-right-block;
 }
 .text-1 .white_boxes span:nth-child(4){
-    animation: 1.5s linear 2 alternate both;
+    animation: 1.5s linear 1 alternate both;
     animation-name:animation-right-block;
 }
 .line{
@@ -165,7 +167,7 @@ main {
     height:1px;
     position:absolute;
     bottom:-30px;
-    animation: 2s linear 2 alternate both;
+    animation: 2s linear 1 alternate both;
     animation-name: animation-line;
 }
 .text-2{
@@ -176,6 +178,6 @@ main {
     position: relative;
     top:15px;
     opacity: 0;
-    animation: linear 2s 2 alternate both;
+    animation: linear 2s 1 alternate both;
     animation-name: animation-text-2;
 }
