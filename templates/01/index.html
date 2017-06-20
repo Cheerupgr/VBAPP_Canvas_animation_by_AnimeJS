@@ -1,13 +1,17 @@
 <html>
 <head>
-    <title>Template 01</title>
+    <title>Animation 01</title>
+    <base href="/animation_effects/">
 
-    <link href="styles.css" rel="stylesheet">
-
-    <style>
-        body { font-size: 25px; }
-        .vba-area { width: 1280px; height: 720px; border: 1px solid #000; }
-    </style>
+    <link href="templates/01/styles.css" rel="stylesheet">
+    <script src="js/script.js"></script>
+    <script>
+        var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+            runOnReady: true,
+            elements: ['#animation-1', '#animation-2', '#animation-3', '#animation-4', '#animation-5'],
+            delay: /* delay */3000/* /delay */
+        });
+    </script>
 
 </head>
 <body>

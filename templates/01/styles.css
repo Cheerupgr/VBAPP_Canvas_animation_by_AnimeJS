@@ -10,6 +10,29 @@
 
 body {
     margin: 0;
+    font-size: 25px;
+    background-color: transparent;
+}
+
+* {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
 }
 
 main {
@@ -20,7 +43,6 @@ main {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: none #000;
 }
 
 .animation {
@@ -102,7 +124,7 @@ main {
 #animation-1 > div:first-child {
     font-size: 4.8em;
     top: -.13em;
-    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both animation-1-slash;
+    animation: animation-1-slash 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
 }
 #animation-1 > div:nth-child(2), #animation-1 > div:nth-child(3) {
     font-size: 2em;
@@ -110,7 +132,7 @@ main {
     width: 5em;
 }
 #animation-1 > div:nth-child(2) div, #animation-1 > div:nth-child(3) div {
-    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both;
+    animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
 }
 #animation-1 div:nth-child(2) {
     top: 0;
@@ -167,13 +189,13 @@ main {
     font-size: 2.8em;
 }
 #animation-2 > div:first-child div {
-    animation: 3s ease-out 2 alternate both animation-2-name;
+    animation: animation-2-name 3s ease-out 1 alternate both;
 }
 #animation-2 > div:last-child {
     font-size: 1.1em;
 }
 #animation-2 > div:last-child div {
-    animation: 3s ease-out 2 alternate both animation-2-title;
+    animation: animation-2-title 3s ease-out 1 alternate both;
 }
 
 /*********************
@@ -212,7 +234,7 @@ main {
     letter-spacing: 1px;
 }
 #animation-3 > div:first-child div {
-    animation: 3.2s ease-out 2 alternate both animation-3-left;
+    animation: animation-3-left 3.2s ease-out 1 alternate both;
 }
 #animation-3 > div:last-child {
     font-size: 2.5em;
@@ -220,7 +242,7 @@ main {
     letter-spacing: -1px;
 }
 #animation-3 > div:last-child div {
-    animation: 3.2s ease-out 2 alternate both animation-3-right;
+    animation: animation-3-right 3.2s ease-out 1 alternate both;
 }
 
 /*********************
@@ -253,7 +275,7 @@ main {
     vertical-align: middle;
 }
 #animation-4 > div div {
-    animation: 3s ease-out 2 alternate both;
+    animation: 3s ease-out 1 alternate both;
 }
 #animation-4 > div:first-child {
     font-size: 2.8em;
@@ -349,18 +371,18 @@ main {
 }
 #animation-5 div,
 #animation-5 .clip-path {
-    animation: 3.1s ease-out 2 alternate both;
+    animation: 3.1s ease-out 1 alternate both;
 }
 #animation-5 .bottom-right,
 #animation-5 .right {
-    clip-path: url(#mask-bottom-right);
+    clip-path: url("#mask-bottom-right");
 }
 #animation-5 .top {
-    clip-path: url(#mask-top);
+    clip-path: url("#mask-top");
 }
 #animation-5 .bottom-left,
 #animation-5 .left {
-    clip-path: url(#mask-bottom-left);
+    clip-path: url("#mask-bottom-left");
 }
 #animation-5 #mask-bottom-right > .clip-path {
     animation-name: animation-5-bottom-right;
