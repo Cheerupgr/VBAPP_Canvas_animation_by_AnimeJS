@@ -1,0 +1,123 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/** Animations Keyframes **/
+
+@keyframes animation-social{
+    0%{
+        transform: scale(0);
+    }
+    20%{
+       transform: scale(1);
+    }
+    30%{
+          width:4em;
+    }
+    40%,100%{
+        width:500px;
+    }
+}
+@keyframes animation-line{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    60%, 100%{
+        opacity: 1;
+    }
+}
+@keyframes animation-text{
+    0%,40%{
+      left:-1000px;  
+    }
+    70%, 100%{
+       left:20px;
+    }
+}
+/** Animations Keyframes **/
+
+.animation{
+    position:relative;
+    width:500px;
+    height:auto;
+}
+.social{
+    opacity: 1;
+    width:4em;
+    height:4em;
+    text-align:center;
+    font-size:16px;
+    background-color: #960e29;
+    color:#fff;
+    border-radius: 50px;
+    display: table;
+    position: relative;
+    margin:0px auto;
+    animation:2s linear 2 alternate both;
+    animation-name: animation-social;
+}
+.social div:first-child{
+    width:3em;
+    height:3em;
+    position: absolute; 
+    font-size:24px;
+    top:.7em;
+    left:-.15em;
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+    animation:2s linear 2 alternate both;
+    animation-name:animation-icon;
+}
+.social div:nth-child(2){
+    color:#fff;
+    width:1px;
+    height:3em;
+    position: relative;
+    vertical-align: middle;
+    float:left;
+    left:65px;
+    background:#fff;
+    border-top:.5em solid #960e29;
+    border-bottom:.5em solid #960e29;
+    animation: 2s linear 2 alternate both;
+    animation-name: animate-line;
+}
+.social div:nth-child(3){
+    vertical-align: middle;
+    position: absolute;
+    text-align: left;
+    float:left;
+    font-family:Arimo;
+    font-size:24px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    width:450px;
+    height: 2em;
+    top:.35em;
+    left:2.7em; 
+    overflow: hidden;
+}
+.social div:nth-child(3) span{
+    position: absolute;
+    left:-350px;
+    width:100%;
+    top:.4em;
+    animation: 2s linear 2 alternate both;
+    animation-name: animation-text;
+}

@@ -12,7 +12,9 @@ body {
     margin: 0;
     padding:0;
 }
-@keyframes animate_icon{
+
+/** Animations Keyframes **/
+@keyframes animation-icon{
     0%, 20%{
         transform: scale(0);
     }
@@ -20,7 +22,7 @@ body {
         transform: scale(1);
     }
 }
-@keyframes animate_icon_hover{
+@keyframes animation-icon-hover{
     0%{
         transform: scale(0);
     }
@@ -29,6 +31,23 @@ body {
         opacity: 1;
     }
 }
+@keyframes animation-text-bg{
+    0%,40%{
+        clip-path: inset(0 100% 0 0); 
+    }
+    60%, 100%{
+         clip-path: inset(0 0 0 0); 
+    }
+}
+@keyframes animation-text{
+    0%,40%{
+       right:-10em;
+    }
+    60%, 100%{
+        right:0px;
+    }
+}
+/** Animations Keyframes **/
 
 .animation{
     position:relative;
@@ -36,10 +55,11 @@ body {
 .iconBox{
     font-family: Arimo;
     color:#fff;
-    float:left;
-    animation: anmate_icon 2s linear  alternate both;
     position: relative;
     top:0px;
+    float:left;
+    animation: 2s linear 2 alternate both;
+    animation-name:animation-icon;
 }
 .whiteHover{
     background: #fff;
@@ -49,7 +69,8 @@ body {
     height: 100%;
     top:0px;
     left:0px;
-    animation: animate_icon_hover 1.5s linear 2 alternate both;
+    animation:1.5s linear 2 alternate both;
+    animation-name:animation-icon-hover;
 }
 .icon{
     background:#960e29;
@@ -58,23 +79,8 @@ body {
     z-index:1;
     padding:10px 15px;
     float:left;
-    animation: animate_icon 2s linear 2 alternate both;
-}
-@keyframes animate_text_bg{
-    0%,40%{
-        clip-path: inset(0 100% 0 0); 
-    }
-    60%, 100%{
-         clip-path: inset(0 0 0 0); 
-    }
-}
-@keyframes animate_text{
-    0%,40%{
-       right:-10em;
-    }
-    60%, 100%{
-        right:0px;
-    }
+    animation:2s linear 2 alternate both;
+    animation-name:animation-icon;
 }
 .text{
     font-family: Arimo;
@@ -84,11 +90,13 @@ body {
     padding:10px 30px 10px 15px;
     color:#fff;
     float:left;
-    animation: animate_text_bg 2s linear 2 alternate both;
     overflow: hidden;
     margin-left:-1px;  
+    animation:2s linear 2 alternate both;
+    animation-name:animation-text-bg;
 }
 .text span{
-    animation: animate_text 2s ease-out 2 alternate both;
+    animation:2s ease-out 2 alternate both;
+    animation-name: animation-text;
     position:relative;
 }

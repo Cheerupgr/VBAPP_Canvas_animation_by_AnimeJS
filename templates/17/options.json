@@ -24,8 +24,8 @@
         ],
         [
             {
-                "name": "white_hover_bgcolor",
-                "caption": "White Hover Color",
+                "name": "line_color",
+                "caption": "Line Color",
                 "type": "color",
                 "value": "#ffffff"
             }
@@ -39,7 +39,7 @@
             },
             {
                 "name": "text_color",
-                "caption": "Text 2 color",
+                "caption": "Text color",
                 "type": "color",
                 "value": "#ffffff"
             },
