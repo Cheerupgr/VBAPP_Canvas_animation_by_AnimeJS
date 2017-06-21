@@ -10,16 +10,32 @@
 
 body {
     margin: 0;
+    font-size: 25px;
+    background-color: transparent;
 }
-main {
-    font-family: "Open Sans";
-    line-height: 1;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    position:relative;
+
+* {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
+
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
+}
+
+
 
 /** Animations Keyframes **/
 
@@ -84,6 +100,17 @@ main {
 /** Animations Keyframes **/
 
 
+main {
+    font-family: "Open Sans";
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    position:relative;
+}
+
+
 .animation{
     width:100%;
     height:auto;
@@ -105,7 +132,7 @@ main {
   opacity: 0;
   height: 2em;
   color:#fff;
-  animation: 2s linear 2 alternate both;
+  animation: 2s linear 1 alternate both;
   animation-name: animation-border;
 }
 
@@ -122,7 +149,7 @@ main {
     color:#000;
     z-index:1;
     top:10px;
-    animation: 2s linear 2 alternate both;
+    animation: 2s linear 1 alternate both;
     animation-name:animation-text-0 ;
 }
 .text-1{
@@ -136,7 +163,7 @@ main {
     padding:10px;
     color:#fff;
     top:10px;
-    animation: 2s linear 2 alternate both;
+    animation: 2s linear 1 alternate both;
     animation-name:animation-text-1;
 }
 
@@ -160,7 +187,7 @@ main {
     padding:5px 10px;
     text-transform: uppercase;
     z-index:0;
-    animation: 2s linear 2 alternate both;
+    animation: 2s linear 1 alternate both;
     animation-name: animation-text-2;
 }
 .box1, .box2{
@@ -174,11 +201,11 @@ main {
     z-index:1;
 }
 .box1{
-    animation:1.75s linear 2 alternate both;
+    animation:1.75s linear 1 alternate both;
     animation-name: animation-left-block ;
 }
 .box2{
-    animation:2s linear 2 alternate both;
+    animation:2s linear 1 alternate both;
     animation-name:  animation-left-block ;
 }
 

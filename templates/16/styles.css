@@ -10,8 +10,30 @@
 
 body {
     margin: 0;
-    padding:0;
+    font-size: 25px;
+    background-color: transparent;
 }
+* {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
+}
+
+
 
 /** Animations Keyframes **/
 @keyframes animation-icon{
@@ -58,7 +80,7 @@ body {
     position: relative;
     top:0px;
     float:left;
-    animation: 2s linear 2 alternate both;
+    animation: 2s linear 1 alternate both;
     animation-name:animation-icon;
 }
 .whiteHover{
@@ -69,7 +91,7 @@ body {
     height: 100%;
     top:0px;
     left:0px;
-    animation:1.5s linear 2 alternate both;
+    animation:1.5s linear 1 alternate both;
     animation-name:animation-icon-hover;
 }
 .icon{
@@ -79,7 +101,7 @@ body {
     z-index:1;
     padding:10px 15px;
     float:left;
-    animation:2s linear 2 alternate both;
+    animation:2s linear 1 alternate both;
     animation-name:animation-icon;
 }
 .text{
@@ -92,11 +114,11 @@ body {
     float:left;
     overflow: hidden;
     margin-left:-1px;  
-    animation:2s linear 2 alternate both;
+    animation:2s linear 1 alternate both;
     animation-name:animation-text-bg;
 }
 .text span{
-    animation:2s ease-out 2 alternate both;
+    animation:2s ease-out 1 alternate both;
     animation-name: animation-text;
     position:relative;
 }

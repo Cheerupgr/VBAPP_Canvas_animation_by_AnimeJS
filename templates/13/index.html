@@ -1,29 +1,17 @@
 <html>
 <head>
-    <title>Template 03</title>
+    <title>Template 13</title>
 
     <link href="styles.css" rel="stylesheet">
-    <script type="text/javascript">
-        // fetch data & pause & setTimeout to un-pause
-        function addClass(){ 
-            var seconds = 1.5;
-            
-           setTimeout(function() {
-               
-                document.getElementById('mainText').classList.add('pause');
-            },seconds * 1000);
-
-            var pauseSeconds = 5; // use a different value to pause for different times
-           setTimeout(function() {
-            document.getElementById('mainText').classList.remove('pause');
-            },pauseSeconds * 1000);
-        }
+    <script src="../../js/script.js"></script>
+    <script>
+    var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+        runOnReady: true,
+        elements: ['#animation-1'],
+        delay: /* delay */3000/* /delay */
+    });
     </script>
-
-    <style>
-        body { font-size: 25px; }
-        .vba-area { width: 1170px; height: 720px; margin:0px auto; }
-    </style>
+    
 </head>
 <body onload="addClass">
 <main class="vba-area">
