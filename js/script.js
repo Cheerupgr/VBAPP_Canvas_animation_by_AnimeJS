@@ -90,10 +90,10 @@ var VBAnimationTemplateLib = function( options ){
             this.iteration++;
             if( this.iteration === 1 ){
                 this.log('onAnimationFinished');
-                this.addClass(document.body, 'vba-state-paused');
-                this.addClass(document.body, 'vba-reverse');
+                this.addClass(document.body, 'vba-state-paused');                
                 setTimeout(function(){
-                    self.removeClass(document.body, 'vba-state-paused');
+                    self.addClass(document.body, 'vba-reverse');
+                    self.removeClass(document.body, 'vba-state-paused');                    
                     self.isPaused = false;
                 }, this.options.delay);
                 this.isPaused = true;

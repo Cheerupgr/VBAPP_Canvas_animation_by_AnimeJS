@@ -127,7 +127,7 @@ main {
     width:auto;
     padding:.5em 10px;
     display: block;
-    clip-path: inset(0 50% 0 50%);
+   clip-path: inset(0 0 0 0);
     animation: ease 1.5s 1 alternate both;
     animation-name: animation-text-1;
 }
