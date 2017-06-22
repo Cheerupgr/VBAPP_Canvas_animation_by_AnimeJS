@@ -40,9 +40,11 @@ body {
 @keyframes animation-social{
     0%{
         transform: scale(0);
+        width:4em;
     }
     20%{
        transform: scale(1);
+       width:4em;
     }
     30%{
         width:4em;
@@ -79,7 +81,7 @@ body {
 }
 .social{
     opacity: 1;
-    width:4em;
+    width:500px;
     height:4em;
     text-align:center;
     font-size:16px;
@@ -116,6 +118,7 @@ body {
     background:#fff;
     border-top:.5em solid #960e29;
     border-bottom:.5em solid #960e29;
+    opacity: 1;
     animation: 2s linear 1 alternate both;
     animation-name: animation-line;
 }
@@ -136,7 +139,7 @@ body {
 }
 .social div:nth-child(3) span{
     position: absolute;
-    left:-350px;
+    left:20px;
     width:100%;
     top:.4em;
     animation: 2s linear 1 alternate both;
