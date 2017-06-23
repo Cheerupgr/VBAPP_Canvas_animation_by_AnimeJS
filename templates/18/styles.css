@@ -47,6 +47,16 @@ body {
        transform: scale(1);
     }
 }
+@keyframes animation-logo-text{
+    0%, 25%{
+        opacity:0;
+        transform: scale(0);
+    }
+    35%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 @keyframes animation-text-1{
     0%,20%{
         transform: scaleY(0)
@@ -56,18 +66,18 @@ body {
     }
 }
 @keyframes animation-text-1-title{
-    0%,40%{
+    0%,30%{
       bottom:-100px;  
     }
-    55%, 100%{
+    45%, 100%{
        bottom:0px;
     }
 }
 @keyframes animation-text-1-subtitle{
-    0%,40%{
+    0%,30%{
       top:-100px;  
     }
-    55%, 100%{
+    45%, 100%{
       top:0px;
     }
 }
@@ -115,6 +125,13 @@ body {
   border-bottom-width: 0;
   border-top-color: #c13751;
   bottom: -20px;
+}
+.module span{
+    float:left;
+    width:100%;
+    height:auto;
+    animation:2s ease 1 alternate both;
+    animation-name: animation-logo-text;
 }
 .text-1{
     background:#fff;
@@ -178,6 +195,8 @@ body {
     clear:both;
     position: relative;
     overflow: hidden;
+    width: 10em;
+    height:1em;
 }
 .sub-text span{
     position: absolute;

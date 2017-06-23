@@ -70,7 +70,6 @@ body {
 @keyframes animation-line{
     0%{
         clip-path: inset(0 50% 0 50%);
-        bottom:-30px;
     }
     30%{
         clip-path: inset(0 50% 0 50%);
