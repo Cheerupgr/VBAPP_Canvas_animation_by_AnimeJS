@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Template 17</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="../../js/script.js"></script>
+    <script>
+    var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+        runOnReady: true,
+        elements: ['#animation-1'],
+        delay: /* delay */3000/* /delay */
+    });
+    function addWidth(){
+    var eleWidth = document.getElementById('text-1').offsetWidth;
+    console.log(eleWidth);
+    document.getElementById('text-2').style.width = eleWidth;
+    }
+    </script>
+</head>
+<body onload="addWidth()">
+<main class="vba-area">
+    <div id="animation-1" class="animation">
+        <div class="text-1" id="text-1">
+            <div class="icon"><img src="icon.png" alt="" /></div>
+            <div class="seperator"></div>
+            <div class="text"><span>Full HD Resolution <span></div>
+        </div>
+        <div class="text-2" id="text-2">
+            <div class="seperator" id="seperator"></div>
+            <div class="text" id="text"><span>Lower Third</span></div>
+            <div class="bottom-line"><span></span></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

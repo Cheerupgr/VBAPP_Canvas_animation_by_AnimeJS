@@ -1,0 +1,201 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+* {
+     box-sizing: border-box;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000; }
+
+/** Animations Keyframes **/
+
+/*@keyframes animation-text-1-icon{
+    0%,35%{
+        right:-50px;
+    }
+    50%,100%{
+        right:0px;
+    }
+}
+@keyframes animation-text-1-seperator{
+    0%{
+        left:100%;
+        width:4px;
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    20%{
+        width:100%;
+    }
+    40%,100%{
+        width:4px;
+        left:50px;
+    }
+}
+@keyframes animation-text-1{
+    0%,35%{
+        left:-50em;
+    }
+    60%,100%{
+        left:0px;
+    }
+}
+
+@keyframes animation-text-2-seperator{
+    0%{
+        right:100%;
+        width:4px;  
+        opacity: 0;
+    }
+    5%{
+        opacity: 1;
+    }
+    20%{
+        width:100%;
+    }
+    40%{
+        width:4px;
+        right:-35px;
+    }
+}
+@keyframes animation-text-2{
+    0%,40%{
+        right:-50em;
+    }
+    70%{
+        right:0px;
+    }
+
+}*/
+
+/** Animations Keyframes **/
+
+.animation{
+    position:relative;
+    width:auto;
+    height:auto;
+    margin:20px;
+    float: left;
+    font-family: Arimo;
+}
+@keyframes animation-line{
+    0%{
+        width:0px;
+        height: 0px;
+    }
+    1%{
+        -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+        transform: rotate(-180deg);
+        width:5px;
+        height:5em;
+    }
+    20%{
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg);
+        left:0px;
+    }
+    40%{
+        left:100%;
+    }
+    60%,100%{
+        left:0px;
+    }
+}
+@keyframes animation-text-1{
+    0%,20%{
+        clip-path: inset(0 100% 0 0);
+        color:#fff;
+        letter-spacing: 0;
+    }
+    40%{
+        clip-path: inset(0 0 0 0);
+        color:#fff;
+        letter-spacing: .05em;
+    }
+    60%,100%{
+        clip-path: inset(0 0 0 0);
+        color:#008080;
+    }
+}
+@keyframes animation-text-2{
+    0%,55%{
+        left:-10em;
+    }
+    75%,100%{
+        left:0px;
+    }
+
+}
+.line{
+    width:5px;
+    height:5em;
+    position:absolute;
+    left:0px;
+    background:#FCDA06;
+    animation: 2s ease 1 alternate both;
+    animation-name:animation-line;
+}
+.text-1 .text{
+    width:100%;
+    float:left;
+    font-size:30px;
+    color:#008080;
+    padding:10px 30px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: bold;
+    position: relative;
+    left:0px;
+    animation: 2s ease 1 alternate both;
+    animation-name:animation-text-1;
+   
+}
+.text-2{
+    width:auto;
+    float:left;
+    font-size:20px;
+    color:rgba(255,255,255,.7);
+    text-transform: uppercase;
+    left:0px;
+    padding:0px 30px;
+    position: relative;
+    overflow: hidden;
+}
+.text-2 .text{
+    position:relative;
+    animation: 2s ease 1 alternate both;
+    animation-name: animation-text-2;
+}
