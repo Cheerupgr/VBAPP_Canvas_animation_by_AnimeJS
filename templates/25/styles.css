@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Play");
+
+html, body {
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#textFill {
+    -webkit-animation: alphaRandom 1s linear infinite;
+    animation: alphaRandom 1s linear infinite;
+}
+
+#textGlow {
+    -webkit-animation: alphaRandom2 1s linear infinite;
+    animation: alphaRandom2 1s linear infinite;
+}
+
+@-webkit-keyframes alphaRandom {
+    0% {
+        opacity: 0.89624;
+    }
+    10% {
+        opacity: 0.90737;
+    }
+    20% {
+        opacity: 0.89187;
+    }
+    30% {
+        opacity: 0.8535;
+    }
+    40% {
+        opacity: 0.98346;
+    }
+    50% {
+        opacity: 0.87422;
+    }
+    60% {
+        opacity: 0.8723;
+    }
+    70% {
+        opacity: 0.81616;
+    }
+    80% {
+        opacity: 0.79421;
+    }
+    90% {
+        opacity: 0.85887;
+    }
+    100% {
+        opacity: 0.80181;
+    }
+}
+
+@keyframes alphaRandom {
+    0% {
+        opacity: 0.89624;
+    }
+    10% {
+        opacity: 0.90737;
+    }
+    20% {
+        opacity: 0.89187;
+    }
+    30% {
+        opacity: 0.8535;
+    }
+    40% {
+        opacity: 0.98346;
+    }
+    50% {
+        opacity: 0.87422;
+    }
+    60% {
+        opacity: 0.8723;
+    }
+    70% {
+        opacity: 0.81616;
+    }
+    80% {
+        opacity: 0.79421;
+    }
+    90% {
+        opacity: 0.85887;
+    }
+    100% {
+        opacity: 0.80181;
+    }
+}
+@-webkit-keyframes alphaRandom2 {
+    0% {
+        opacity: 0.94579;
+    }
+    10% {
+        opacity: 0.90098;
+    }
+    20% {
+        opacity: 0.9394;
+    }
+    30% {
+        opacity: 0.9735;
+    }
+    40% {
+        opacity: 0.87866;
+    }
+    50% {
+        opacity: 0.92717;
+    }
+    60% {
+        opacity: 0.78344;
+    }
+    70% {
+        opacity: 0.875;
+    }
+    80% {
+        opacity: 0.75955;
+    }
+    90% {
+        opacity: 0.86443;
+    }
+    100% {
+        opacity: 0.80674;
+    }
+}
+@keyframes alphaRandom2 {
+    0% {
+        opacity: 0.94579;
+    }
+    10% {
+        opacity: 0.90098;
+    }
+    20% {
+        opacity: 0.9394;
+    }
+    30% {
+        opacity: 0.9735;
+    }
+    40% {
+        opacity: 0.87866;
+    }
+    50% {
+        opacity: 0.92717;
+    }
+    60% {
+        opacity: 0.78344;
+    }
+    70% {
+        opacity: 0.875;
+    }
+    80% {
+        opacity: 0.75955;
+    }
+    90% {
+        opacity: 0.86443;
+    }
+    100% {
+        opacity: 0.80674;
+    }
+}

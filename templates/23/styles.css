@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Bubbler+One');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Essential CSS - Makes the effect work */
+
+body {
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#bubbly_text {
+    display: inline-block;
+    font-family: 'Bubbler One', sans-serif;
+    position: relative;
+}
+
+#bubbly_text h1 {
+    position: relative;
+    margin: 1em 0 0;
+    font-family: 'Bubbler One', sans-serif;
+    color: #fff;
+    z-index: 2;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 10px;
+    background-color: #fff;
+    z-index: 1;
+}
