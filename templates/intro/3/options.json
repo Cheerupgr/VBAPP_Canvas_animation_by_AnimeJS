@@ -1,0 +1,190 @@
+{
+    "caption": "Pango Intro 2",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "text",
+                "value": "$"
+            }
+        ],
+        [
+            {
+                "name": "bg_color",
+                "caption": "Background Color",
+                "type": "color",
+                "value": "#304D6D"
+            }
+        ],
+        [
+            {
+                "name": "text-1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "THE STORY"
+            },
+            {
+                "name": "text_color-1",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "BEGINS"
+            },
+            {
+                "name": "text_color-2",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-3",
+                "caption": "Text 3",
+                "type": "text",
+                "value": "AND IT'S SO COOL"
+            },
+            {
+                "name": "text_color-3",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-4",
+                "caption": "Text 4",
+                "type": "text",
+                "value": "COMPANY "
+            },
+            {
+                "name": "text_color-4",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-5",
+                "caption": "Text 5",
+                "type": "text",
+                "value": "NAME"
+            },
+            {
+                "name": "text_color-5",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-6",
+                "caption": "Text 6",
+                "type": "text",
+                "value": "www.company.com/story"
+            },
+            {
+                "name": "text_color-6",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-7",
+                "caption": "Text 7",
+                "type": "text",
+                "value": "WATCH"
+            },
+            {
+                "name": "text_color-7",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-8",
+                "caption": "Text 8",
+                "type": "text",
+                "value": "NOW"
+            },
+            {
+                "name": "text_color-8",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-9",
+                "caption": "Text 9",
+                "type": "text",
+                "value": " on www.company.com/story"
+            },
+            {
+                "name": "text_color-9",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-10",
+                "caption": "Text 10",
+                "type": "text",
+                "value": " AND SHARE"
+            },
+            {
+                "name": "text_color-10",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-11",
+                "caption": "Text 11",
+                "type": "text",
+                "value": "IT"
+            },
+            {
+                "name": "text_color-11",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-12",
+                "caption": "Text 12",
+                "type": "text",
+                "value": ":)"
+            },
+            {
+                "name": "text_color-12",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

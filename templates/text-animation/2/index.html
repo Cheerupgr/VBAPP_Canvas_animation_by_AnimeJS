@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Squiggly Text</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <script>
+    var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+        runOnReady: true,
+        elements: ['.text'],
+        delay: /* delay */3000/* /delay */
+    });
+    
+    </script>
+</head>
+<body>
+<main class="squiggly" contenteditable>
+   <h1 class="text" style="color: /*text_color*/#fff;/*text_color*/"><!--text-->I am Squiggly<!--text--></h1>
+</main>
+
+<svg version="1.1">
+    <defs>
+        <filter id="filter-0">
+            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
+            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="filter-1">
+            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="filter-2">
+            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="filter-3">
+            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="filter-4">
+            <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+    </defs>
+</svg>
+</body>
+</html>

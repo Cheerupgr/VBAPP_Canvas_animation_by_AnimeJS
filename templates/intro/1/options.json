@@ -1,0 +1,50 @@
+{
+    "caption": "Pango Intro 1",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "text",
+                "value": "$"
+            }
+        ],
+        [
+            {
+                "name": "color",
+                "caption": "Color",
+                "type": "color",
+                "value": "#F69627"
+            }
+        ],
+        [
+            {
+                "name": "text-1",
+                "caption": "Text Header",
+                "type": "text",
+                "value": ""
+            },
+            {
+                "name": "text_color-1",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-2",
+                "caption": "Text",
+                "type": "text",
+                "value": "Text Here"
+            },
+            {
+                "name": "text_color-2",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

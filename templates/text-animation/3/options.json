@@ -1,0 +1,40 @@
+{
+    "caption": "Shocking Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "outer_shock_color",
+                "caption": "Outer Shock Color",
+                "type": "color",
+                "value": "#ccc"
+            },
+            {
+                "name": "inner_shock_color",
+                "caption": "Inner Shock Color",
+                "type": "color",
+                "value": "#EC5A26"
+            },
+            {
+                "name": "glow_color",
+                "caption": "Glow Color",
+                "type": "color",
+                "value": "#00FFFFFF"
+            }
+        ],
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "IT'S SHOCKING!"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

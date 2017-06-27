@@ -1,0 +1,179 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,,800,900);
+
+[class*="ring"], .center {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+html {
+    background-color: #040F0F;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 17%;
+}
+
+.subtitle {
+    display: none;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.title {
+    font-weight: 800;
+    color: transparent;
+    font-size: 80px;
+    background: url('https://phandroid.s3.amazonaws.com/wp-content/uploads/2014/05/rainbow-nebula.jpg') repeat 40% 50%;
+    -webkit-background-clip: text;
+    position: relative;
+    text-align: center;
+    letter-spacing: -5px;
+    line-height: 90%;
+    display: none;
+}
+
+
+section {
+    cursor: pointer;
+}
+
+[class*="ring"] {
+    animation: glow 3s linear infinite;
+    border-radius: 50%;
+    border: 0.6em solid rgba(255, 255, 255, 0.8);
+    border-top: 1.5em solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1.5em solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    height: 30em;
+    transition: 1s transform ease-in-out;
+    width: 30em;
+}
+[class*="ring"] div {
+    animation: rotate 2s linear infinite;
+    border-radius: 50%;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+[class*="ring"] div:after {
+    animation: squash 2s linear infinite;
+    -moz-transform: scale(3, 1);
+    -ms-transform: scale(3, 1);
+    -webkit-transform: scale(3, 1);
+    transform: scale(3, 1);
+    border-radius: 50%;
+    content: '';
+    left: 50%;
+    height: 3em;
+    margin-left: -1.5em;
+    opacity: 0.8;
+    position: absolute;
+    top: -1.2em;
+    width: 3em;
+}
+
+.ring1 {
+    transform: rotate(120deg) scale(0.333, 1);
+}
+.ring1 div:after {
+    background: #2ecc71;
+    box-shadow: 0 0 20px #2ecc71;
+}
+section:hover .ring1 {
+    border: 0.6em solid rgba(255, 255, 255, 0.8);
+    transform: rotate(0deg) scale(0.33333, 0.33333) perspective(600px) rotateX(60deg);
+}
+section:hover .ring1 div:after {
+    animation: none;
+    top: -1.6em;
+    transform: scale(1, 1);
+}
+
+.ring2 {
+    transform: rotate(240deg) scale(0.333, 1);
+}
+.ring2 div:after {
+    background: #3498db;
+    box-shadow: 0 0 20px #3498db;
+}
+section:hover .ring2 {
+    border: 0.6em solid rgba(255, 255, 255, 0.8);
+    transform: rotate(0deg) scale(0.66667, 0.66667) perspective(600px) rotateX(60deg);
+}
+section:hover .ring2 div:after {
+    animation: none;
+    top: -1.6em;
+    transform: scale(1, 1);
+}
+
+.ring3 {
+    transform: rotate(360deg) scale(0.333, 1);
+}
+.ring3 div:after {
+    background: #e74c3c;
+    box-shadow: 0 0 20px #e74c3c;
+}
+section:hover .ring3 {
+    border: 0.6em solid rgba(255, 255, 255, 0.8);
+    transform: rotate(0deg) scale(1, 1) perspective(600px) rotateX(60deg);
+}
+section:hover .ring3 div:after {
+    animation: none;
+    top: -1.6em;
+    transform: scale(1, 1);
+}
+
+.center {
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    height: 3em;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    transition: 1s transform ease-in-out;
+    width: 3em;
+}
+section:hover .center {
+    transform: translate(0, 0.5em);
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.2), 0 0 10px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes squash {
+    0%,50%, 100% {
+        transform: scale(1, 1);
+        top: -2.6em;
+    }
+    25%, 75% {
+        transform: scale(2, 1);
+        top: -1.2em;
+    }
+}
