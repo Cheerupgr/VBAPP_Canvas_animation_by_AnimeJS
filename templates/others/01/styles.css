@@ -19,7 +19,7 @@ body {
     animation-fill-mode: forwards;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;

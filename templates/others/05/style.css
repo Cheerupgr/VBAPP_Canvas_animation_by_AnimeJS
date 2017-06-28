@@ -35,9 +35,7 @@ h1.deepshadow {
     text-align: center;
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
-
-    color: #e0dfdc;
-    background:#333;
+    background:#333333;
     letter-spacing: .1em;
     animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
 }

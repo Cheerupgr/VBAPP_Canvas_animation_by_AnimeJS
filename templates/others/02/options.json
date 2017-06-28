@@ -1,5 +1,5 @@
 {
-    "caption": "Animation 1",
+    "caption": "Template 2",
     "duration": 7000,
     "options": [
         [
@@ -41,7 +41,7 @@
                 "name": "text3_color",
                 "caption": "Text 2 color",
                 "type": "color",
-                "value": "#ffffff"
+                "value": "#cf4c4e"
             }
         ],
         [
@@ -54,76 +54,6 @@
             {
                 "name": "text4_color",
                 "caption": "Text 4 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text5",
-                "caption": "Text 5",
-                "type": "text",
-                "value": "Sarah"
-            },
-            {
-                "name": "text5_color",
-                "caption": "Text 5 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text6",
-                "caption": "Text 6",
-                "type": "text",
-                "value": "Brown"
-            },
-            {
-                "name": "text6_color",
-                "caption": "Text 6 color",
-                "type": "color",
-                "value": "#cf4c4e"
-            }
-        ],
-        [
-            {
-                "name": "text7",
-                "caption": "Text 7",
-                "type": "text",
-                "value": "John Doe"
-            },
-            {
-                "name": "text7_color",
-                "caption": "Text 7 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text8",
-                "caption": "Text 8",
-                "type": "text",
-                "value": "Nathan Fillion"
-            },
-            {
-                "name": "text8_color",
-                "caption": "Text 8 color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text9",
-                "caption": "Text 9",
-                "type": "text",
-                "value": "Director"
-            },
-            {
-                "name": "text9_color",
-                "caption": "Text 9 color",
                 "type": "color",
                 "value": "#ffffff"
             }

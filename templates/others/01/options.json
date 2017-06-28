@@ -1,5 +1,5 @@
 {
-    "caption": "Animation 1",
+    "caption": "Template 1",
     "duration": 7000,
     "delay": 3000,
     "options": [
@@ -42,7 +42,7 @@
                 "name": "text3_color",
                 "caption": "Text 2 color",
                 "type": "color",
-                "value": "#ffffff"
+                "value": "#cf4c4e"
             }
         ],
         [

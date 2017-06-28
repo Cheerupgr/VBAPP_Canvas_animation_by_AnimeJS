@@ -1,5 +1,5 @@
 {
-    "caption": "Animation 1",
+    "caption": "Lower Third Animation 2",
     "duration": 7000,
     "options": [
         [
@@ -7,7 +7,7 @@
                 "name": "text1",
                 "caption": "Text 1",
                 "type": "text",
-                "value": "Frederic"
+                "value": "Lower Thirds Animation"
             },
             {
                 "name": "text1_color",
@@ -24,38 +24,16 @@
         ],
         [
             {
-                "name": "white_hover_bgcolor",
-                "caption": "White Hover Color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "line_color",
-                "caption": "Line Color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
                 "name": "text2",
                 "caption": "Text 2",
                 "type": "text",
-                "value": "Colins"
+                "value": "Collen"
             },
             {
                 "name": "text2_color",
                 "caption": "Text 2 color",
                 "type": "color",
                 "value": "#ffffff"
-            },
-            {
-                "name": "text2_bgcolor",
-                "caption": "Text 2 background color",
-                "type": "color",
-                "value": "#000000"
             }
         ]
     ]

@@ -19,7 +19,7 @@ body {
     animation-fill-mode: forwards;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;
@@ -75,9 +75,11 @@ body {
 /** Animations Keyframes **/
 
 .animation{
-    position:relative;
     width:500px;
     height:auto;
+    float:left;
+    position:absolute;
+    bottom:3em;
 }
 .social{
     opacity: 1;
@@ -86,7 +88,6 @@ body {
     text-align:center;
     font-size:16px;
     background-color: #960e29;
-    color:#fff;
     border-radius: 50px;
     display: table;
     position: relative;
@@ -108,14 +109,13 @@ body {
     animation-name:animation-icon;
 }
 .social div:nth-child(2){
-    color:#fff;
     width:1px;
     height:3em;
     position: relative;
     vertical-align: middle;
     float:left;
     left:65px;
-    background:#fff;
+    background:#ffffff;
     border-top:.5em solid #960e29;
     border-bottom:.5em solid #960e29;
     opacity: 1;

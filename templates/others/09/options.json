@@ -1,0 +1,48 @@
+{
+  "caption": "Appear Disappear Text",
+  "duration": 700,
+  "options": [
+    [
+      {
+        "name": "text-1",
+        "caption": "Text 1",
+        "type": "text",
+        "value": "Hi, nice"
+      },
+      {
+        "name": "text_color-1",
+        "caption": "Text color 1",
+        "type": "color",
+        "value": "#31010a"
+      }
+    ],
+    [
+      {
+        "name": "text-2",
+        "caption": "Text 2",
+        "type": "text",
+        "value": "to see"
+      },
+      {
+        "name": "text_color-2",
+        "caption": "Text color 2",
+        "type": "color",
+        "value": "#31010a"
+      }
+    ],
+    [
+      {
+        "name": "text-3",
+        "caption": "Text 3",
+        "type": "text",
+        "value": "you here"
+      },
+      {
+        "name": "text_color-3",
+        "caption": "Text color 3",
+        "type": "color",
+        "value": "#ffffff"
+      }
+    ]
+  ]
+}

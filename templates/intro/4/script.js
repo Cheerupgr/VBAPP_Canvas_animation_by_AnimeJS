@@ -131,26 +131,13 @@ var VBAnimationTemplateLib = function (options) {
 /*Animation Config*/
 $(document).ready(function(){
 
-    var delay = 5000; /* delay */
-
-    var mouseX, mouseY;
-    var ww = $( window ).width();
-    var wh = $( window ).height();
-    var traX, traY;
-    $(document).mousemove(function(e){
-        mouseX = e.pageX;
-        mouseY = e.pageY;
-        traX = ((4 * mouseX) / 570) + 40;
-        traY = ((4 * mouseY) / 570) + 50;
-        $(".title").css({"background-position": traX + "%" + traY + "%"});
-    });
+    var delay = 3000; /* delay */
 
     setTimeout(function () {
 
-        $('.title, .subtitle').slideDown(1000);
-        $(".center").css({'width':'2.5em', 'height':'2.5em'});
-        $('.circle').css({'width':'20em', 'height':'20em'});
-        $('.circle, .center').animate({bottom: '-150px'}, 1000);
+        $('.logo').slideDown(1000);
+        $('.circle').animate({width: '-=15em', height: '-=15em', "margin-top": "50px"}, 1000);
+        $('.center').animate({width: '-=1em', height: '-=1em', "margin-top": "180px"}, 1000);
 
     }, delay);
 });

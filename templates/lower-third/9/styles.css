@@ -20,7 +20,7 @@ body {
     animation-fill-mode: forwards;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;
@@ -36,7 +36,7 @@ body {
     animation-direction: reverse !important;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 
 /** Animations Keyframes **/
 
@@ -117,11 +117,11 @@ body {
 /** Animations Keyframes **/
 
 .animation{
-    position:relative;
     width:auto;
     height:auto;
-    margin:20px;
-    float: left;
+    float:left;
+    position:absolute;
+    bottom:3em;
 }
 .text-1, .text-2{
     font-family:Arimo;
@@ -162,7 +162,6 @@ body {
 }
 .text-1 .text{
     font-size:24px;
-    color:#fff;
     text-transform:uppercase;
     position: relative;
     left:50px;
@@ -193,7 +192,6 @@ body {
 .text-2 .text{
     text-align:right;
     float:right;
-    color:#fff;
     position: relative;
     right:-30px;
     top:-20px;
@@ -218,7 +216,7 @@ body {
     overflow: hidden; 
 }
 .text-2 .bottom-line span{
-    background:#fff;
+    background:#ffffff;
     width:0;
     height:1px;
     position:relative;

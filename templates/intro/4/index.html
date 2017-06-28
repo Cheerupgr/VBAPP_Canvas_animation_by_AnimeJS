@@ -6,22 +6,28 @@
     <script src="script.js"></script>
 
     <script>
-    var vbAnimationTemplateLib = new VBAnimationTemplateLib({
-        runOnReady: true,
-        elements: [''],
-        delay: /* delay */3000/* /delay */
-    });
+        var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+            runOnReady: true,
+            elements: [''],
+            delay: /* delay */3000/* /delay */
+        });
     </script>
 </head>
 <body>
+<div class="logo">
+    <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="80%"><!--text-->LOGO TEXT<!--text--></text>
+        </symbol>
 
-<div class="container">
-    <div class="title" style=" /*text-1_bg*/
-                background: url('https://phandroid.s3.amazonaws.com/wp-content/uploads/2014/05/rainbow-nebula.jpg') repeat 40% 50%;
-                -webkit-background-clip: text;">
-        <!--text-1-->UNIVERSE &nbsp; WITHIN<!--text-1-->
-    </div>
-    <div class="subtitle" style="color:/*text_color-2*/ whitesmoke /*text_color-2*/"><!--text-2--> move mouse around and over rings <!--text-2--></div>
+        <g class="g-ants">
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+    </svg>
 </div>
 
 <section>
@@ -38,7 +44,6 @@
     </article>
 
 </section>
-
 
 
 </body>

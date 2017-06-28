@@ -1,5 +1,5 @@
 {
-    "caption": "Animation",
+    "caption": "Lower Third Animation 5",
     "duration": 7000,
     "options": [
         [
@@ -19,7 +19,7 @@
                 "name": "icon_bgcolor",
                 "caption": "Icon background color",
                 "type": "color",
-                "value": "#000"
+                "value": "#000000"
             }
         ],
         [
@@ -47,7 +47,7 @@
                 "name": "text_bgcolor",
                 "caption": "Text background color",
                 "type": "color",
-                "value": "#000"
+                "value": "#000000"
             }
         ]
     ]

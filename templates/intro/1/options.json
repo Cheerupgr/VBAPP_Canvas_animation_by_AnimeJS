@@ -7,7 +7,7 @@
                 "name": "icon",
                 "caption": "Icon",
                 "type": "text",
-                "value": "$"
+                "value": "https://promotionalhacks.files.wordpress.com/2013/11/your_logo_here_logomark_symbol_by_garconis-d53d7q6.png"
             }
         ],
         [
@@ -23,7 +23,7 @@
                 "name": "text-1",
                 "caption": "Text Header",
                 "type": "text",
-                "value": ""
+                "value": "HEADER"
             },
             {
                 "name": "text_color-1",

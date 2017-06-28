@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var size = randomValue(bubbleSizeArr);
         // New bubble appended to div with it's size and left position being set inline
         // Left value is set through getting a random value from emptyArr
-        $('#bubbly_text').append('<div class="bubble" style="background-color: /*bubble_color*/#fff/*bubble_color*/; left: ' + randomValue(emptyArr) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+        $('#bubbly_text').append('<div class="bubble" style="background-color: /*bubble_color*/#ffffff/*bubble_color*/; left: ' + randomValue(emptyArr) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
 
         // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
         // Callback function used to remove finished animations from the page

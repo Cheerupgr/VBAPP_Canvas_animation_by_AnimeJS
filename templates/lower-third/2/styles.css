@@ -9,13 +9,13 @@
 }
 body {
     margin: 0;
-    background:#333;
+    background:#333333;
 }
 * {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;
@@ -115,10 +115,10 @@ main {
     float:left;
     width:auto;
     height:auto;
-    color:#fff;
     overflow: hidden;
     text-transform: uppercase;
     font-weight: 800;
+    font-size: 25px;
     position: relative;
     clear:both;
 }
@@ -179,7 +179,7 @@ main {
     animation-name: animation-line;
 }
 .text-2{
-    font-size:14px;
+    font-size:16px;
     width:100%;
     float:left;
     text-align:center;

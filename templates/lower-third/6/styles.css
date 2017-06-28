@@ -19,7 +19,7 @@ body {
     animation-fill-mode: forwards;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;
@@ -35,7 +35,7 @@ body {
     animation-direction: reverse !important;
 }
 
-.vba-area { width: 1280px; height: 720px; background: none #000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 
 /** Animations Keyframes **/
 
@@ -85,9 +85,11 @@ body {
 /** Animations Keyframes **/
 
 .animation{
-    position:relative;
     width:auto;
     height:auto;
+    float:left;
+    position:absolute;
+    bottom:3em;
 }
 .module {
   background: #c13751;
@@ -134,7 +136,7 @@ body {
     animation-name: animation-logo-text;
 }
 .text-1{
-    background:#fff;
+    background:#ffffff;
     float:left;
     position:relative;
     margin-left:-1.4em;
@@ -160,18 +162,17 @@ body {
 }
 .text-1:before{
     border-left-width: 0;
-    border-bottom-color: #fff;
+    border-bottom-color: #ffffff;
     top: -20px;
 }
 .text-1:after{
     border-left-width: 0;
-    border-top-color: #fff;
+    border-top-color: #ffffff;
     bottom: -20px;
 }
 .title{
     text-transform:uppercase;
     font-size:1em;
-    color:#c13751;
     width:10em;
     height: 1em;
     float:left;

@@ -7,7 +7,7 @@
                 "name": "outer_shock_color",
                 "caption": "Outer Shock Color",
                 "type": "color",
-                "value": "#ccc"
+                "value": "#cccccc"
             },
             {
                 "name": "inner_shock_color",

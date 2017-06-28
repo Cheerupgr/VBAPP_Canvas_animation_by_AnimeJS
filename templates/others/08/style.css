@@ -97,7 +97,6 @@ body {
   text-transform: uppercase;
   text-align: center;
   /*overflow: hidden;*/
-  color: #fff;
 }
 .slashed .top:before,
 .slashed .bot:before {

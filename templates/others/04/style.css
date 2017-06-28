@@ -43,7 +43,6 @@ h1.elegantshadow {
   text-align: center;
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
-  color: #131313;
   letter-spacing: .15em;
   animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
 }

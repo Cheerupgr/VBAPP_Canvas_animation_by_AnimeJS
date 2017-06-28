@@ -28,7 +28,6 @@ h1{
 h1 span{
   width: 100%;
   float: left;
-  color: #31010a;
   -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
   clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
   transform: translateY(-50px);
@@ -45,7 +44,6 @@ h1 span:first-child {
   animation-delay: 0.7s;
 }
 h1 span:last-child {
-  color: #ffffff;
   animation-delay: 0.5s;
 }
 
