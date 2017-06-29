@@ -4,10 +4,10 @@
     "options": [
         [
             {
-                "name": "icon",
-                "caption": "Icon",
-                "type": "text",
-                "value": "https://promotionalhacks.files.wordpress.com/2013/11/your_logo_here_logomark_symbol_by_garconis-d53d7q6.png"
+                "name": "logo",
+                "caption": "Logo",
+                "type": "file",
+                "value": "img/logo.png"
             }
         ],
         [
