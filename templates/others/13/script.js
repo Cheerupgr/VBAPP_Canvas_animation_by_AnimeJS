@@ -1,4 +1,5 @@
-var VBAnimationTemplateLib = function (options) {
+
+var VBAnimationTemplateLib = function( options ){
 
     var self = this,
         pfx = ['webkit', 'moz', 'MS', 'o', ''],
@@ -14,23 +15,23 @@ var VBAnimationTemplateLib = function (options) {
     this.iteration = 0;
 
     /** Initialize */
-    this.init = function () {
+    this.init = function(){
 
-        this.extend(this.options, options);
+        this.extend( this.options, options );
 
-        if (this.options.runOnReady) {
+        if( this.options.runOnReady ){
             this.onReady(this.run.bind(this));
         }
     };
 
     /** Run */
-    this.run = function () {
-        this.log('OPTIONS', this.options);
+    this.run = function(){
+        this.log( 'OPTIONS', this.options );
         animStarted = [];
         animEnded = [];
-        this.options.elements.forEach(function (selector) {
+        this.options.elements.forEach(function(selector){
             var element = document.querySelector(selector);
-            if (element) {
+            if( element ){
                 self.prefixedEvent(element, 'AnimationStart', self.animationListener.bind(self), false);
                 self.prefixedEvent(element, 'AnimationIteration', self.animationListener.bind(self), false);
                 self.prefixedEvent(element, 'AnimationEnd', self.animationListener.bind(self), false);
@@ -39,7 +40,7 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** Extend */
-    this.extend = function (out) {
+    this.extend = function(out) {
         out = out || {};
         for (var i = 1; i < arguments.length; i++) {
             if (!arguments[i])
@@ -53,8 +54,8 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** On ready */
-    this.onReady = function (fn) {
-        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+    this.onReady = function(fn) {
+        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
             fn();
         } else {
             document.addEventListener('DOMContentLoaded', fn);
@@ -62,37 +63,37 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** Apply prefixed event handlers */
-    this.prefixedEvent = function (element, type, callback) {
+    this.prefixedEvent = function(element, type, callback){
         for (var p = 0; p < pfx.length; p++) {
             if (!pfx[p]) type = type.toLowerCase();
-            element.addEventListener(pfx[p] + type, callback, false);
+            element.addEventListener(pfx[p]+type, callback, false);
         }
     };
 
     /** Handle animation events */
-    this.animationListener = function (e) {
+    this.animationListener = function(e) {
         this.log('ANIMATION "' + e.animationName + '" type "' + e.type + '" at ' + e.elapsedTime.toFixed(2) + ' seconds');
-        if (e.type.toLowerCase() === 'animationstart') {
-            animStarted.push(e.animationName);
+        if( e.type.toLowerCase() === 'animationstart' ){
+            animStarted.push( e.animationName );
         }
-        if (e.type.toLowerCase() === 'animationend') {
-            animEnded.push(e.animationName);
-            if (animStarted.length === animEnded.length) {
+        if ( e.type.toLowerCase() === 'animationend' ) {
+            animEnded.push( e.animationName );
+            if( animStarted.length === animEnded.length ){
                 this.onAnimationFinished();
             }
         }
     };
 
     /** On all animations finished */
-    this.onAnimationFinished = function () {
-        if (!this.isPaused) {
+    this.onAnimationFinished = function(){
+        if( !this.isPaused ){
             this.iteration++;
-            if (this.iteration === 1) {
+            if( this.iteration === 1 ){
                 this.log('onAnimationFinished');
-                this.addClass(document.body, 'vba-state-paused');
-                setTimeout(function () {
+                this.addClass(document.body, 'vba-state-paused');                
+                setTimeout(function(){
                     self.addClass(document.body, 'vba-reverse');
-                    self.removeClass(document.body, 'vba-state-paused');
+                    self.removeClass(document.body, 'vba-state-paused');                    
                     self.isPaused = false;
                 }, this.options.delay);
                 this.isPaused = true;
@@ -101,7 +102,7 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** Add class */
-    this.addClass = function (el, className) {
+    this.addClass = function(el, className){
         if (el.classList)
             el.classList.add(className);
         else
@@ -109,7 +110,7 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** Remove class */
-    this.removeClass = function (el, className) {
+    this.removeClass = function(el, className){
         if (el.classList)
             el.classList.remove(className);
         else
@@ -117,27 +118,13 @@ var VBAnimationTemplateLib = function (options) {
     };
 
     /** logging */
-    this.log = function () {
-        if (this.options.logging) {
+    this.log = function(){
+        if( this.options.logging ){
             for (var i = 0; i < arguments.length; i++) {
-                console.log(arguments[i]);
+                console.log( arguments[i] );
             }
         }
     };
 
     this.init();
 };
-
-/*Animation Config*/
-$(document).ready(function(){
-
-    var delay = 3000; /* delay */
-
-    setTimeout(function () {
-
-        $('.logo').slideDown(1000);
-        $('.circle').animate({width: '-=10em', height: '-=10em', "margin-top": "50px"}, 1000);
-        $('.center').animate({width: '-=2.5em', height: '-=2.5em', "margin-top": "190px"}, 1000);
-
-    }, delay);
-});

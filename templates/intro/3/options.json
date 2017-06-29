@@ -1,5 +1,5 @@
 {
-    "caption": "Pango Intro 2",
+    "caption": "Intro 3",
     "duration": 7000,
     "options": [
         [
@@ -97,90 +97,6 @@
             },
             {
                 "name": "text_color-6",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-7",
-                "caption": "Text 7",
-                "type": "text",
-                "value": "WATCH"
-            },
-            {
-                "name": "text_color-7",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-8",
-                "caption": "Text 8",
-                "type": "text",
-                "value": "NOW"
-            },
-            {
-                "name": "text_color-8",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-9",
-                "caption": "Text 9",
-                "type": "text",
-                "value": " on www.company.com/story"
-            },
-            {
-                "name": "text_color-9",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-10",
-                "caption": "Text 10",
-                "type": "text",
-                "value": " AND SHARE"
-            },
-            {
-                "name": "text_color-10",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-11",
-                "caption": "Text 11",
-                "type": "text",
-                "value": "IT"
-            },
-            {
-                "name": "text_color-11",
-                "caption": "Text color",
-                "type": "color",
-                "value": "#ffffff"
-            }
-        ],
-        [
-            {
-                "name": "text-12",
-                "caption": "Text 12",
-                "type": "text",
-                "value": ":)"
-            },
-            {
-                "name": "text_color-12",
                 "caption": "Text color",
                 "type": "color",
                 "value": "#ffffff"

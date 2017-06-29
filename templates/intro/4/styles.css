@@ -4,11 +4,11 @@
     text-align: center;
     width: 100%;
     display: none;
-    margin-top: 17%;
+    margin-top: 23%;
 }
 
 svg {
-    font: 100px 'Montserrat';
+    font: 85px 'Montserrat';
     width: 960px;
     height: 300px;
     bottom: 0;
@@ -172,14 +172,20 @@ section:hover .ring3 div:after {
 }
 
 .center {
-    background: white;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    height: 3em;
+    height: 8em;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.3);
     transition: 1s transform ease-in-out;
-    width: 3em;
+    width: 8em;
 }
+
+.center img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 section:hover .center {
     transform: translate(0, 0.5em);
 }

@@ -1,0 +1,30 @@
+{
+  "caption": "Click with Arrow",
+  "duration": 700,
+  "options": [
+    [
+      {
+        "name": "text-1",
+        "caption": "Text 1",
+        "type": "text",
+        "value": "Click the"
+      }
+    ],
+    [
+      {
+        "name": "text-2",
+        "caption": "Text 2",
+        "type": "text",
+        "value": "button below"
+      }
+    ],
+    [
+      {
+        "name": "text_color",
+        "caption": "Text Color",
+        "type": "color",
+        "value": "#363636"
+      }
+    ]
+  ]
+}

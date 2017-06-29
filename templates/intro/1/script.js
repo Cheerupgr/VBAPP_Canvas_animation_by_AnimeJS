@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, delay);
                 });
             });
+            wordsWrapper.style.opacity = "1";
             return tl;
         }
 
@@ -332,7 +333,9 @@ document.addEventListener('DOMContentLoaded', function () {
      repeat: -1,
      repeatDelay: 0
      }))*/
+    document.querySelector('.words').style.opacity = "0";
     setTimeout(function () {
+
         intro().animateLogo(new TimelineMax());
         intro().animateWords(new TimelineMax());
     }, delay);

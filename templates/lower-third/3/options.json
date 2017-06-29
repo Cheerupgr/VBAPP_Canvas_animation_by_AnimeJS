@@ -4,12 +4,6 @@
     "options": [
         [
             {
-                "name": "text0",
-                "caption": "Text 0",
-                "type": "text",
-                "value": "Lower Thirds Animation"
-            },
-            {
                 "name": "text0_color",
                 "caption": "Text 0 color",
                 "type": "color",

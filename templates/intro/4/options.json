@@ -1,5 +1,5 @@
 {
-  "caption": "Pango Intro 2",
+  "caption": "Intro 4",
   "duration": 7000,
   "options": [
     [
@@ -8,6 +8,12 @@
         "caption": "Title",
         "type": "text",
         "value": "LOGO TEXT"
+      },
+      {
+        "name": "icon",
+        "caption": "Icon",
+        "type": "img",
+        "value": "http://virginiasalvationarmy.org/vapenredkettleclassic/files/2016/07/yourLogo_icon.png"
       }
     ]
   ]
