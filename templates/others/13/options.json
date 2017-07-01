@@ -1,13 +1,21 @@
 {
-  "caption": "Click with Arrow",
+  "caption": "Social Media Icon Animation",
   "duration": 700,
   "options": [
+    [
+      {
+        "name": "icon",
+        "caption": "Icon",
+        "type": "text",
+        "value": "&"
+      }
+    ],
     [
       {
         "name": "text-1",
         "caption": "Text 1",
         "type": "text",
-        "value": "Click the"
+        "value": "follow us"
       }
     ],
     [
@@ -15,7 +23,7 @@
         "name": "text-2",
         "caption": "Text 2",
         "type": "text",
-        "value": "button below"
+        "value": "/twitter-handle"
       }
     ],
     [
@@ -23,7 +31,7 @@
         "name": "text_color",
         "caption": "Text Color",
         "type": "color",
-        "value": "#363636"
+        "value": "#ffffff"
       }
     ]
   ]

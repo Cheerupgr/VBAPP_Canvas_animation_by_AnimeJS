@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+    font-family: 'Amatic SC', cursive;
+    background-color: #1C2321;
+    word-wrap: break-word;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.flexible {
+    font-size: 100px;
+    margin-top: 20%;
+}
+
+.flexible span {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(-150px, -50px) rotate(-180deg) scale(3);
+    animation: revolveScale .7s forwards;
+}
+
+.flexible span:nth-of-type(2) {
+    animation-delay: .05s;
+}
+.flexible span:nth-of-type(3) {
+    animation-delay: .1s;
+}
+.flexible span:nth-of-type(4) {
+    animation-delay: .15s;
+}
+.flexible span:nth-of-type(5) {
+    animation-delay: .2s;
+}
+.flexible span:nth-of-type(6) {
+    animation-delay: .25s;
+}
+.flexible span:nth-of-type(7) {
+    animation-delay: .3s;
+}
+.flexible span:nth-of-type(8) {
+    animation-delay: .35s;
+}
+.flexible span:nth-of-type(9) {
+    animation-delay: .4s;
+}
+.flexible span:nth-of-type(10) {
+    animation-delay: .45s;
+}
+.flexible span:nth-of-type(11) {
+    animation-delay: .5s;
+}
+.flexible span:nth-of-type(12) {
+    animation-delay: .55s;
+}
+.flexible span:nth-of-type(13) {
+    animation-delay: .6s;
+}
+.flexible span:nth-of-type(14) {
+    animation-delay: .65s;
+}
+
+
+@keyframes revolveScale {
+    60% {
+        transform: translate(20px, 20px) rotate(30deg) scale(.3);
+    }
+
+    100% {
+        transform: translate(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}

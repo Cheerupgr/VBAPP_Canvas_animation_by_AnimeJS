@@ -79,7 +79,8 @@ body {
     height:auto;
     float:left;
     position:absolute;
-    bottom:3em;
+    bottom:5em;
+    left: 2em;
 }
 .social{
     opacity: 1;

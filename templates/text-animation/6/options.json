@@ -1,0 +1,14 @@
+{
+    "caption": "Glitched Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "LOGO TEXT"
+            }
+        ]
+    ]
+}

@@ -84,7 +84,8 @@ body {
     height:auto;
     float:left;
     position:absolute;
-    bottom:3em;
+    bottom:5em;
+    left: 3em;
 }
 .text-1{
     min-width:2em;

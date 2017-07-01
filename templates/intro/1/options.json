@@ -4,10 +4,10 @@
     "options": [
         [
             {
-                "name": "logo",
-                "caption": "Logo",
+                "name": "icon",
+                "caption": "Icon",
                 "type": "file",
-                "value": "img/logo.png"
+                "value": "img/myimage.png"
             }
         ],
         [

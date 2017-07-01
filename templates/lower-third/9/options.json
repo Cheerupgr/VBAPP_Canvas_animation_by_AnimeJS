@@ -4,6 +4,14 @@
     "options": [
         [
             {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "file",
+                "value": "img/myimage.png"
+            }
+        ],
+        [
+            {
                 "name": "text-1",
                 "caption": "Text 1",
                 "type": "text",

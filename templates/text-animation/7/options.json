@@ -1,0 +1,90 @@
+{
+    "caption": "Rotating Text",
+    "duration": 3000,
+    "options": [
+        [
+            {
+                "name": "text-1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "This text is"
+            },
+            {
+                "name": "text_color-1",
+                "caption": "Text Color 1",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text-2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "awesome."
+            },
+            {
+                "name": "text_color-2",
+                "caption": "Text Color 2",
+                "type": "color",
+                "value": "#8e44ad"
+            }
+        ],
+        [
+            {
+                "name": "text-3",
+                "caption": "Text 3",
+                "type": "text",
+                "value": "wonderful."
+            },
+            {
+                "name": "text_color-3",
+                "caption": "Text Color 3",
+                "type": "color",
+                "value": "#2980b9"
+            }
+        ],
+        [
+            {
+                "name": "text-4",
+                "caption": "Text 4",
+                "type": "text",
+                "value": "fancy."
+            },
+            {
+                "name": "text_color-4",
+                "caption": "Text Color 4",
+                "type": "color",
+                "value": "#c0392b"
+            }
+        ],
+        [
+            {
+                "name": "text-5",
+                "caption": "Text 5",
+                "type": "text",
+                "value": "beautiful."
+            },
+            {
+                "name": "text_color-5",
+                "caption": "Text Color 5",
+                "type": "color",
+                "value": "#16a085"
+            }
+        ],
+        [
+            {
+                "name": "text-6",
+                "caption": "Text 6",
+                "type": "text",
+                "value": "cool."
+            },
+            {
+                "name": "text_color-6",
+                "caption": "Text Color 6",
+                "type": "color",
+                "value": "#FFC857"
+            }
+        ]
+    ]
+}

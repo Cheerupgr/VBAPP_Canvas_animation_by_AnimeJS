@@ -12,8 +12,8 @@
       {
         "name": "icon",
         "caption": "Icon",
-        "type": "img",
-        "value": "http://virginiasalvationarmy.org/vapenredkettleclassic/files/2016/07/yourLogo_icon.png"
+        "type": "file",
+        "value": "img/myimage.png"
       }
     ]
   ]
