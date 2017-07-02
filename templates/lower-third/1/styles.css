@@ -162,10 +162,8 @@ main {
     box-shadow: inset 0 0 0 2px;
     opacity: 0;
     clip: rect(0px, 20em, 2.5em, 18em);
-    animation: 2s linear 1 alternate both;
-    animation-name:animation-border;
-    -webkit-animation: 2s linear 1 alternate both;
-    -webkit-animation-name:animation-border;
+    animation: animation-border 2s linear 1 alternate both;
+    -webkit-animation: animation-border 2s linear 1 alternate both;
 }
 .text-1 span:first-child{
     width:100%;
@@ -175,10 +173,8 @@ main {
     float:left;
     left:-2em;
     position: absolute;
-    animation: 2s ease alternate 1 both;
-    animation-name: animation-white;
-    -webkit-animation: 2s ease alternate 1 both;
-    -webkit-animation-name: animation-white;
+    animation: animation-white 2s ease alternate 1 both;
+    -webkit-animation: animation-white 2s ease alternate 1 both;
 }
 .text-1 span:nth-child(2){
     width:90%;
@@ -188,10 +184,8 @@ main {
     padding:.5em .9em .5em .3em;
     margin:.5em 5% 0px 0px;
     position: absolute;
-    animation: 2s ease alternate 1 both;
-    animation-name: animation-text-1;
-    -webkit-animation: 2s ease alternate 1 both;
-    -webkit-animation-name: animation-text-1;
+    animation: animation-text-1 2s ease alternate 1 both;
+    -webkit-animation: animation-text-1 2s ease alternate 1 both;
 
 }
 .text-2{
@@ -207,8 +201,6 @@ main {
     padding-left:.5em;
     top:.8em;
     position:relative;
-    animation:2s linear 1 alternate both;
-    animation-name: animation-text-2;
-    -webkit-animation:2s linear 1 alternate both;
-    -webkit-animation-name: animation-text-2;
+    animation: animation-text-2 2s linear 1 alternate both;
+    -webkit-animation: animation-text-2 2s linear 1 alternate both;
 }
