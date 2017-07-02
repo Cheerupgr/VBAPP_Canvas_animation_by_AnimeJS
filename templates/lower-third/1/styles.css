@@ -14,11 +14,6 @@ body {
     background-color: transparent;
 }
 
-* {
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
 .vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-paused,
 .vba-state-paused * {
@@ -126,7 +121,7 @@ body {
     }
 }
 
-/** Animations Keyframes **/
+/** /Animations Keyframes **/
 
 
 main {
