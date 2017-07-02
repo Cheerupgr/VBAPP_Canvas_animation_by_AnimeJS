@@ -73,10 +73,10 @@ var VBAnimationTemplateLib = function( options ){
     /** Handle animation events */
     this.animationListener = function(e) {
         this.log('ANIMATION "' + e.animationName + '" type "' + e.type + '" at ' + e.elapsedTime.toFixed(2) + ' seconds');
-        if( e.type.toLowerCase() === 'animationstart' ){
+        if( e.type.toLowerCase().indexOf('animationstart') > -1 ){
             animStarted.push( e.animationName );
         }
-        if ( e.type.toLowerCase() === 'animationend' ) {
+        if ( e.type.toLowerCase().indexOf('animationend') > -1 ) {
             animEnded.push( e.animationName );
             if( animStarted.length === animEnded.length ){
                 this.onAnimationFinished();
@@ -86,13 +86,13 @@ var VBAnimationTemplateLib = function( options ){
 
     /** On all animations finished */
     this.onAnimationFinished = function(){
+        this.log('onAnimationFinished');
         if( !this.isPaused ){
             this.iteration++;
             if( this.iteration === 1 ){
-                this.log('onAnimationFinished');
+                self.addClass(document.body, 'vba-reverse');
                 this.addClass(document.body, 'vba-state-paused');                
                 setTimeout(function(){
-                    self.addClass(document.body, 'vba-reverse');
                     self.removeClass(document.body, 'vba-state-paused');                    
                     self.isPaused = false;
                 }, this.options.delay);
