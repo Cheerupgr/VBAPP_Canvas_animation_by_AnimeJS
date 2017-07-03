@@ -113,7 +113,7 @@ var VBAnimationTemplateLib = function( options ){
      */
     this.onAnimationIterationStartPause = function(){
         this.iterationStarted = true;
-        console.log('ITERATION START');
+        this.log('ITERATION START');
         if( !this.isPaused ){
             this.iteration++;
             this.addClass(document.body, 'vba-state-paused');
