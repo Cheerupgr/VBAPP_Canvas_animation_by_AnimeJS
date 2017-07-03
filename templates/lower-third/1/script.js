@@ -7,7 +7,7 @@ var VBAnimationTemplateLib = function( options ){
         animEnded = [];
     this.options = {
         runOnReady: false,
-        logging: true,
+        logging: false,
         elements: [],
         delay: 0
     };

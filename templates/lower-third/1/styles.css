@@ -10,7 +10,7 @@
 
 body {
     margin: 0;
-    font-size: 25px;
+    font-size: 35px;
     background-color: transparent;
 }
 
@@ -140,12 +140,12 @@ main {
     position: relative;
 }
 .animation{
-    width:17em;
+    width: 17em;
     height: auto;
-    float:left;
+    float: left;
     position: absolute;
-    left:2em;
-    bottom:10em;
+    left: 2em;
+    bottom: 10em;
 }
 .text-1, .text-1::before{
   position: absolute;
@@ -155,9 +155,9 @@ main {
   right: 0;
 }
 .text-1{
-    float:left;
-    width:100%;
-    height:2.5em;
+    float: left;
+    width: 100%;
+    height: 2.5em;
     overflow: hidden;
     text-transform: uppercase;
     font-weight: 800;
@@ -173,41 +173,40 @@ main {
     -webkit-animation: animation-border 2s linear 1 alternate both;
 }
 .text-1 span:first-child{
-    width:100%;
-    background:#ffffff;
-    height:2em;
-    margin:.5em 0px;
-    float:left;
-    left:-2em;
+    width: 100%;
+    background: #ffffff;
+    height: 2em;
+    margin: .5em 0px;
+    float: left;
+    left: -2em;
     position: absolute;
     animation: animation-white 2s ease alternate 1 both;
     -webkit-animation: animation-white 2s ease alternate 1 both;
 }
 .text-1 span:nth-child(2){
-    width:90%;
-    background:#960e29;
+    width: 90%;
+    background: #960e29;
     height: 2em;
-    float:left;
-    padding:.5em .9em .5em .3em;
-    margin:.5em 5% 0px 0px;
+    float: left;
+    padding: .5em .9em .5em .3em;
+    margin: .5em 5% 0px 0px;
     position: absolute;
     animation: animation-text-1 2s ease alternate 1 both;
     -webkit-animation: animation-text-1 2s ease alternate 1 both;
-
 }
 .text-2{
-    width:100%;
-    float:left;
+    width: 100%;
+    float: left;
     height: 2em;
-    position:absolute;
-    top:2.5em;
+    position: absolute;
+    top: 2.5em;
     overflow: hidden;
 }
 .text-2 div{
-    font-size:16px;    
-    padding-left:.5em;
-    top:.8em;
-    position:relative;
+    font-size: 30px;
+    padding-left: .5em;
+    top: .8em;
+    position: relative;
     animation: animation-text-2 2s linear 1 alternate both;
     -webkit-animation: animation-text-2 2s linear 1 alternate both;
 }
