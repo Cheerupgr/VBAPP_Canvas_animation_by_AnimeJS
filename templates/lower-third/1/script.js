@@ -141,16 +141,21 @@ var VBAnimationTemplateLib = function( options ){
 
     /**
      * Animation play/pause toggle
+     * @param pause
+     * @param element
      */
-    this.animationPauseToggle = function(pause){
+    this.animationPauseToggle = function(pause, element){
+        if( typeof element === 'undefined' ){
+            element = document.body;
+        }
         if( typeof pause === 'undefined' ){
-            pause = !this.isPaused;
+            pause = element.className.indexOf('vba-state-paused') === -1;
         }
         if( pause ){
-            this.addClass(document.body, 'vba-state-paused');
+            this.addClass(element, 'vba-state-paused');
             this.isPaused = true;
         } else {
-            this.removeClass(document.body, 'vba-state-paused');
+            this.removeClass(element, 'vba-state-paused');
             this.isPaused = false;
         }
     };
