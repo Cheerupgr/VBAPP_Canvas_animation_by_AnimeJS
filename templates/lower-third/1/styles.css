@@ -15,12 +15,19 @@ body {
 }
 
 .vba-area { width: 1280px; height: 720px; background: none #000000; }
-.vba-state-paused,
-.vba-state-paused * {
+.vba-state-stopped,
+.vba-state-stopped * {
     -webkit-animation-name: none !important;
     -moz-animation-name: none !important;
     -o-animation-name: none !important;
     animation-name: none !important;
+}
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-play-state: paused !important;
+    -moz-animation-play-state: paused !important;
+    -o-animation-play-state: paused !important;
+    animation-play-state: paused !important;
 }
 .vba-reverse,
 .vba-reverse * {

@@ -8,7 +8,7 @@
     var vbAnimationTemplateLib = new VBAnimationTemplateLib({
         runOnReady: true,
         elements: ['#animation-1'],
-        delay: /* delay */ 3000 /* delay */
+        delay: /* delay */ 1000 /* delay */
     });
     </script>
     
@@ -28,5 +28,29 @@
         </div>
     </div>
 </main>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 10px; top: 10px;">
+    <button type="button" onclick="vbAnimationTemplateLib.animationPauseToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" onclick="vbAnimationTemplateLib.animationPauseToggle(false); return false;">
+        Play
+    </button>
+    <button type="button" onclick="vbAnimationTemplateLib.animationPauseToggle(true); return false;">
+        Pause
+    </button>
+    <button type="button" onclick="vbAnimationTemplateLib.animationRestart(); return false;">
+        Restart
+    </button>
+</div>
+<script>
+    //To display button add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
 </body>
 </html>

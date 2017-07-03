@@ -7,7 +7,7 @@ var VBAnimationTemplateLib = function( options ){
         animEnded = [];
     this.options = {
         runOnReady: false,
-        logging: false,
+        logging: true,
         elements: [],
         delay: 0
     };
@@ -91,14 +91,45 @@ var VBAnimationTemplateLib = function( options ){
             this.iteration++;
             if( this.iteration === 1 ){
                 this.addClass(document.body, 'vba-reverse');
-                this.addClass(document.body, 'vba-state-paused');
+                this.addClass(document.body, 'vba-state-stopped');
                 setTimeout(function(){
-                    self.removeClass(document.body, 'vba-state-paused');
+                    self.removeClass(document.body, 'vba-state-stopped');
                     self.isPaused = false;
                 }, this.options.delay);
                 this.isPaused = true;
             }
         }
+    };
+
+    /**
+     * Animation play/pause toggle
+     */
+    this.animationPauseToggle = function(pause){
+        if( typeof pause === 'undefined' ){
+            pause = !this.isPaused;
+        }
+        if( pause ){
+            this.addClass(document.body, 'vba-state-paused');
+            this.isPaused = true;
+        } else {
+            this.removeClass(document.body, 'vba-state-paused');
+            this.isPaused = false;
+        }
+    };
+
+    /**
+     * Restart animation
+     */
+    this.animationRestart = function(){
+        var self = this;
+        this.addClass(document.body, 'vba-state-stopped');
+        this.removeClass(document.body, 'vba-reverse');
+        animStarted = [];
+        animEnded = [];
+        this.iteration = 0;
+        setTimeout(function(){
+            self.removeClass(document.body, 'vba-state-stopped');
+        }, 1);
     };
 
     /** Add class */
