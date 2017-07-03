@@ -176,7 +176,7 @@ main {
     box-shadow: inset 0 0 0 2px;
     opacity: 0;
     clip: rect(0, 20em, 2.5em, 18em);
-    animation: animation-border 2s linear 0s 2 alternate both;
+    animation: animation-border 2s linear 01s 2 alternate both;
     -webkit-animation: animation-border 2s linear 0s 2 alternate both;
 }
 .text1 span:first-child {
