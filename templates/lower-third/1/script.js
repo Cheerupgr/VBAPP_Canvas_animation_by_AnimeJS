@@ -13,6 +13,7 @@ var VBAnimationTemplateLib = function( options ){
     };
     this.isPaused = false;
     this.iteration = 0;
+    this.iterationStarted = false;
 
     /** Initialize */
     this.init = function(){
@@ -76,17 +77,23 @@ var VBAnimationTemplateLib = function( options ){
         if( e.type.toLowerCase().indexOf('animationstart') > -1 ){
             animStarted.push( e.animationName );
         }
+        if( e.type.toLowerCase().indexOf('animationiteration') > -1 ){
+            if( !this.iterationStarted ){
+                this.onAnimationIterationStartPause();
+            }
+        }
         if ( e.type.toLowerCase().indexOf('animationend') > -1 ) {
             animEnded.push( e.animationName );
             if( animStarted.length === animEnded.length ){
-                this.onAnimationFinished();
+                //this.onAnimationFinishedPause();
             }
         }
     };
 
     /** On all animations finished */
-    this.onAnimationFinished = function(){
+    this.onAnimationFinishedPause = function(){
         this.log('onAnimationFinished');
+        this.iterationStarted = false;
         if( !this.isPaused ){
             this.iteration++;
             if( this.iteration === 1 ){
@@ -99,6 +106,37 @@ var VBAnimationTemplateLib = function( options ){
                 this.isPaused = true;
             }
         }
+    };
+
+    /**
+     * On new iteration start
+     */
+    this.onAnimationIterationStartPause = function(){
+        this.iterationStarted = true;
+        console.log('ITERATION START');
+        if( !this.isPaused ){
+            this.iteration++;
+            this.addClass(document.body, 'vba-state-paused');
+            this.isPaused = true;
+            setTimeout(function(){
+                self.removeClass(document.body, 'vba-state-paused');
+                self.isPaused = false;
+                self.iterationStarted = false;
+            }, this.options.delay);
+        }
+    };
+
+    /**
+     * Reset
+     */
+    this.reset = function(){
+        this.removeClass(document.body, 'vba-state-paused');
+        this.removeClass(document.body, 'vba-reverse');
+        animStarted = [];
+        animEnded = [];
+        this.iteration = 0;
+        this.isPaused = false;
+        this.iterationStarted = false;
     };
 
     /**
@@ -121,12 +159,8 @@ var VBAnimationTemplateLib = function( options ){
      * Restart animation
      */
     this.animationRestart = function(){
-        var self = this;
+        this.reset();
         this.addClass(document.body, 'vba-state-stopped');
-        this.removeClass(document.body, 'vba-reverse');
-        animStarted = [];
-        animEnded = [];
-        this.iteration = 0;
         setTimeout(function(){
             self.removeClass(document.body, 'vba-state-stopped');
         }, 1);
