@@ -79,13 +79,13 @@ var VBAnimationTemplateLib = function( options ){
         }
         if( e.type.toLowerCase().indexOf('animationiteration') > -1 ){
             if( !this.iterationStarted ){
-                this.onAnimationIterationStartPause();
+                //this.onAnimationIterationStartPause();
             }
         }
         if ( e.type.toLowerCase().indexOf('animationend') > -1 ) {
             animEnded.push( e.animationName );
             if( animStarted.length === animEnded.length ){
-                //this.onAnimationFinishedPause();
+                this.onAnimationFinishedPause();
             }
         }
     };
@@ -97,7 +97,7 @@ var VBAnimationTemplateLib = function( options ){
         if( !this.isPaused ){
             this.iteration++;
             if( this.iteration === 1 ){
-                this.addClass(document.body, 'vba-reverse');
+                self.addClass(document.body, 'vba-reverse');
                 this.addClass(document.body, 'vba-state-stopped');
                 setTimeout(function(){
                     self.removeClass(document.body, 'vba-state-stopped');
@@ -123,6 +123,41 @@ var VBAnimationTemplateLib = function( options ){
                 self.isPaused = false;
                 self.iterationStarted = false;
             }, this.options.delay);
+        }
+    };
+
+    /**
+     * Get style
+     * @param el
+     * @param styleProp
+     * @returns {*}
+     */
+    this.getStyle = function(el, styleProp) {
+        var value, defaultView = el.ownerDocument.defaultView;
+        // W3C standard way:
+        if (defaultView && defaultView.getComputedStyle) {
+            // sanitize property name to css notation (hypen separated words eg. font-Size)
+            styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+            return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        } else if (el.currentStyle) { // IE
+            // sanitize property name to camelCase
+            styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+                return letter.toUpperCase();
+            });
+            value = el.currentStyle[styleProp];
+            // convert other units to pixels on IE
+            if (/^\d+(em|pt|%|ex)?$/i.test(value)) {
+                return (function(value) {
+                    var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+                    el.runtimeStyle.left = el.currentStyle.left;
+                    el.style.left = value || 0;
+                    value = el.style.pixelLeft + "px";
+                    el.style.left = oldLeft;
+                    el.runtimeStyle.left = oldRsLeft;
+                    return value;
+                })(value);
+            }
+            return value;
         }
     };
 

@@ -14,7 +14,7 @@ body {
     background-color: transparent;
 }
 
-.vba-area { width: 1280; height: 720; background: none #000000; }
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 .vba-state-stopped,
 .vba-state-stopped * {
     -webkit-animation-name: none !important;
@@ -46,6 +46,20 @@ body {
 
 /** Animations Keyframes **/
 
+@keyframes animation-border {
+    0% {
+        clip: rect(0, 4em, 2px, 0);
+        opacity: 0;
+    }
+    1%{
+        opacity: .5;
+        clip: rect(0, 4em, 2px, 0);
+    }
+    50%,100%{
+        clip: rect(0, 20em, 2.5em, 18em);
+        opacity: .5;
+    }
+}
 @keyframes animation-white {
     0% {
         left: -18em;
@@ -56,7 +70,6 @@ body {
     100% {
         left: 18em;
     }
-
 }  
 @keyframes animation-text1 {
     0% {
@@ -75,22 +88,22 @@ body {
     }
     
 }
-@keyframes animation-border {
-  0% {
-    clip: rect(0, 4em, 2px, 0);
-    opacity: 0;
-  }
-  1%{
-    opacity: .5;
-    clip: rect(0, 4em, 2px, 0);
-  }
-  50%,100%{
-    clip: rect(0, 20em, 2.5em, 18em);
-    opacity: .5;
-  }
-}
 
 /* Webkit */
+@-webkit-keyframes animation-border {
+    0% {
+        clip: rect(0, 4em, 2px, 0);
+        opacity: 0;
+    }
+    1%{
+        opacity: .5;
+        clip: rect(0, 4em, 2px, 0);
+    }
+    50%,100%{
+        clip: rect(0, 20em, 2.5em, 18em);
+        opacity: .5;
+    }
+}
 @-webkit-keyframes animation-white {
     0% {
         left: -18em;
@@ -120,23 +133,7 @@ body {
     }
 
 }
-@-webkit-keyframes animation-border {
-    0% {
-        clip: rect(0, 4em, 2px, 0);
-        opacity: 0;
-    }
-    1%{
-        opacity: .5;
-        clip: rect(0, 4em, 2px, 0);
-    }
-    50%,100%{
-        clip: rect(0, 20em, 2.5em, 18em);
-        opacity: .5;
-    }
-}
-
 /** /Animations Keyframes **/
-
 
 main {
     font-family: "Open Sans";
@@ -176,8 +173,8 @@ main {
     box-shadow: inset 0 0 0 2px;
     opacity: 0;
     clip: rect(0, 20em, 2.5em, 18em);
-    animation: animation-border 2s linear 01s 2 alternate both;
-    -webkit-animation: animation-border 2s linear 0s 2 alternate both;
+    animation: animation-border 2s linear 0s 1 alternate both;
+    -webkit-animation: animation-border 2s linear 0s 1 alternate both;
 }
 .text1 span:first-child {
     width: 100%;
@@ -187,8 +184,8 @@ main {
     float: left;
     left: -2em;
     position: absolute;
-    animation: animation-white 2s ease 0s 2 alternate both;
-    -webkit-animation: animation-white 2s ease 0s 2 alternate both;
+    animation: animation-white 2s ease 0s 1 alternate both;
+    -webkit-animation: animation-white 2s ease 0s 1 alternate both;
 }
 .text1 span:nth-child(2) {
     width: 90%;
@@ -198,8 +195,8 @@ main {
     padding: .5em .9em .5em .5em;
     margin: .5em 5% 0 0;
     position: absolute;
-    animation: animation-text1 2s ease 0s 2 alternate both;
-    -webkit-animation: animation-text1 2s ease 0s 2 alternate both;
+    animation: animation-text1 2s ease 0s 1 alternate forwards;
+    -webkit-animation: animation-text1 2s ease 0s 1 alternate forwards;
 }
 .text2 {
     width: 100%;
@@ -214,6 +211,6 @@ main {
     padding-left: .5em;
     top: .8em;
     position: relative;
-    animation: animation-text2 2s linear 0s 2 alternate both;
-    -webkit-animation: animation-text2 2s linear 0s 2 alternate both;
+    animation: animation-text2 2s linear 0s 1 alternate both;
+    -webkit-animation: animation-text2 2s linear 0s 1 alternate both;
 }
