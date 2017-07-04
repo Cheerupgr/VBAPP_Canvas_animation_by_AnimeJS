@@ -13,6 +13,7 @@ var VBAnimationTemplateLib = function( options ){
     };
     this.isPaused = false;
     this.iteration = 0;
+    this.iterationStarted = false;
 
     /** Initialize */
     this.init = function(){
@@ -73,32 +74,136 @@ var VBAnimationTemplateLib = function( options ){
     /** Handle animation events */
     this.animationListener = function(e) {
         this.log('ANIMATION "' + e.animationName + '" type "' + e.type + '" at ' + e.elapsedTime.toFixed(2) + ' seconds');
-        if( e.type.toLowerCase() === 'animationstart' ){
+        if( e.type.toLowerCase().indexOf('animationstart') > -1 ){
             animStarted.push( e.animationName );
         }
-        if ( e.type.toLowerCase() === 'animationend' ) {
+        if( e.type.toLowerCase().indexOf('animationiteration') > -1 ){
+            if( !this.iterationStarted ){
+                //this.onAnimationIterationStartPause();
+            }
+        }
+        if ( e.type.toLowerCase().indexOf('animationend') > -1 ) {
             animEnded.push( e.animationName );
             if( animStarted.length === animEnded.length ){
-                this.onAnimationFinished();
+                //this.onAnimationFinishedPause();
             }
         }
     };
 
     /** On all animations finished */
-    this.onAnimationFinished = function(){
+    this.onAnimationFinishedPause = function(){
+        this.log('onAnimationFinished');
+        this.iterationStarted = false;
         if( !this.isPaused ){
             this.iteration++;
             if( this.iteration === 1 ){
-                this.log('onAnimationFinished');
-                this.addClass(document.body, 'vba-state-paused');                
+                self.addClass(document.body, 'vba-reverse');
+                this.addClass(document.body, 'vba-state-stopped');
                 setTimeout(function(){
-                    self.addClass(document.body, 'vba-reverse');
-                    self.removeClass(document.body, 'vba-state-paused');                    
+                    self.removeClass(document.body, 'vba-state-stopped');
                     self.isPaused = false;
                 }, this.options.delay);
                 this.isPaused = true;
             }
         }
+    };
+
+    /**
+     * On new iteration start
+     */
+    this.onAnimationIterationStartPause = function(){
+        this.iterationStarted = true;
+        this.log('ITERATION START');
+        if( !this.isPaused ){
+            this.iteration++;
+            this.addClass(document.body, 'vba-state-paused');
+            this.isPaused = true;
+            setTimeout(function(){
+                self.removeClass(document.body, 'vba-state-paused');
+                self.isPaused = false;
+                self.iterationStarted = false;
+            }, this.options.delay);
+        }
+    };
+
+    /**
+     * Get style
+     * @param el
+     * @param styleProp
+     * @returns {*}
+     */
+    this.getStyle = function(el, styleProp) {
+        var value, defaultView = el.ownerDocument.defaultView;
+        // W3C standard way:
+        if (defaultView && defaultView.getComputedStyle) {
+            // sanitize property name to css notation (hypen separated words eg. font-Size)
+            styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+            return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        } else if (el.currentStyle) { // IE
+            // sanitize property name to camelCase
+            styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+                return letter.toUpperCase();
+            });
+            value = el.currentStyle[styleProp];
+            // convert other units to pixels on IE
+            if (/^\d+(em|pt|%|ex)?$/i.test(value)) {
+                return (function(value) {
+                    var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+                    el.runtimeStyle.left = el.currentStyle.left;
+                    el.style.left = value || 0;
+                    value = el.style.pixelLeft + "px";
+                    el.style.left = oldLeft;
+                    el.runtimeStyle.left = oldRsLeft;
+                    return value;
+                })(value);
+            }
+            return value;
+        }
+    };
+
+    /**
+     * Reset
+     */
+    this.reset = function(){
+        this.removeClass(document.body, 'vba-state-paused');
+        this.removeClass(document.body, 'vba-reverse');
+        animStarted = [];
+        animEnded = [];
+        this.iteration = 0;
+        this.isPaused = false;
+        this.iterationStarted = false;
+    };
+
+    /**
+     * Animation play/pause toggle
+     * @param pause
+     * @param element
+     */
+    this.animationPauseToggle = function(pause, element){
+        if( typeof element === 'undefined' ){
+            element = document.body;
+        }
+        if( typeof pause === 'undefined' ){
+            pause = element.className.indexOf('vba-state-paused') === -1;
+        }
+        if( pause ){
+            this.addClass(element, 'vba-state-paused');
+            this.isPaused = true;
+        } else {
+            this.removeClass(element, 'vba-state-paused');
+            this.isPaused = false;
+        }
+    };
+
+    /**
+     * Restart animation
+     */
+    this.animationRestart = function(){
+        this.reset();
+        this.addClass(document.body, 'vba-state-stopped');
+        setTimeout(function(){
+            self.removeClass(document.body, 'vba-state-stopped');
+        }, 1);
     };
 
     /** Add class */

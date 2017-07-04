@@ -2,13 +2,13 @@
   "name": "animation_templates",
   "version": "0.1",
   "authors": [
-    "andchir <andchir@gmail.com>"
+    ""
   ],
   "main": "index.html",
   "license": "Commercial",
   "homepage": "",
   "dependencies": {
-
+    "pixi-action": "https://github.com/hustcc/pixi-action.git#^1.0.1"
   },
   "keywords": [
     "animation"
