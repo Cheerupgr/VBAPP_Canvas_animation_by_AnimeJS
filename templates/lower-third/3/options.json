@@ -4,20 +4,6 @@
     "options": [
         [
             {
-                "name": "text0_color",
-                "caption": "Text 0 color",
-                "type": "color",
-                "value": "#ffffff"
-            },
-            {
-                "name": "text0_bgcolor",
-                "caption": "Text 0 background color",
-                "type": "color",
-                "value": "#000000"
-            }
-        ],
-        [
-            {
                 "name": "text1",
                 "caption": "Text 1",
                 "type": "text",

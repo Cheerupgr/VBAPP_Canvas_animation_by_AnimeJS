@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Intro Animation 7</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css"/>
+    <link href="styles.css" rel="stylesheet">
+    <script src="anime.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        var vbAnimationTemplateLib = new VBAnimationTemplateLib({
+            runOnReady: true,
+            elements: [''],
+            delay: /* delay */ 3000 /* delay */
+        });
+
+        /* Animation trigger */
+
+        var delay = 2000;
+        document.documentElement.className = 'js';
+
+        setTimeout(function () {
+            document.querySelector('.content').style.opacity = 1;
+            document.body.classList.remove('loading');
+
+            var section = document.getElementById('image_div'),
+                imageDiv = new RevealFx(section, {
+                    revealSettings: {
+                        bgcolor: '#F8B334',
+                        onCover: function (contentEl, revealerEl) {
+                            contentEl.style.opacity = 1;
+                        }
+                    }
+                }),
+                title1 = new RevealFx(document.querySelector('#title-1'), {
+                    revealSettings: {
+                        bgcolor: '#CB2025',
+                        direction: 'rl',
+                        delay: 250,
+                        onCover: function (contentEl, revealerEl) {
+                            contentEl.style.opacity = 1;
+                        }
+                    }
+                }),
+                title2 = new RevealFx(document.querySelector('#title-2'), {
+                    revealSettings: {
+                        bgcolor: '#CB2025',
+                        direction: 'rl',
+                        delay: 500,
+                        onCover: function (contentEl, revealerEl) {
+                            contentEl.style.opacity = 1;
+                        }
+                    }
+                });
+
+            imageDiv.reveal();
+            title1.reveal();
+            title2.reveal();
+            document.querySelector('.content__title').className += ' zoomIn';
+            document.querySelector('#image_div').className += ' moveRight';
+
+        }, delay);
+
+    </script>
+</head>
+<body>
+
+<main>
+    <section class="content content--full flexy flexy--row" style="color: /* text_color */ #ffffff /* text_color */;">
+        <div id="image_div" class="content__image-wrap content__image-wrap--half">
+            <img class="content__image" src="myimage.jpg" width="100" height="500" alt="Some image"/>
+        </div>
+        <h2 class="content__title content__title--medium content__title--half content__title--left">
+            <div id="title-1" class="content__title__inner"> <!--text-1--> image logo <!--text-1--> </div>
+            <br/>
+            <div id="title-2" class="content__title__inner content__title__inner--offset"> <!--text-2--> with tagline <!--text-2--> </div>
+        </h2>
+    </section>
+</main>
+
+
+</body>
+</html>

@@ -77,6 +77,43 @@ body {
     }
 }
 
+@-webkit-keyframes animation-title-bg{
+    0%{
+        /*-webkit-clip-path: polygon(0 0, 0% 0, 0% 8%, 0% 80%, 0% 100%, 0 100%, 0% 80%, 0% 8%);*/
+        clip-path: polygon(100% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 100% 100%, 100% 80%, 100% 20%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(8% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 8% 100%, 0% 80%, 0% 20%);
+        clip-path: polygon(8% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 8% 100%, 0% 80%, 0% 20%);
+    }
+}
+@-webkit-keyframes animation-sub-text-bg{
+    0%{
+        -webkit-clip-path: polygon(0 0, 0% 0, 0% 20%, 0% 80%, 0% 100%, 0 100%, 0% 80%, 0% 20%);
+        clip-path: polygon(0 0, 0 0, 0% 20%, 0% 80%, 0 100%, 0 100%, 0% 80%, 0% 20%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(0 0, 92% 0, 100% 20%, 100% 80%, 92% 100%, 0 100%, 0% 80%, 0% 20%);
+        clip-path: polygon(0 0, 92% 0, 100% 20%, 100% 80%, 92% 100%, 0 100%, 0% 80%, 0% 20%);
+    }
+}
+@-webkit-keyframes animation-title-text{
+    0%,25%{
+        right:-10em;
+    }
+    60%,100%{
+        right:10px;
+    }
+}
+@-webkit-keyframes animation-sub-text{
+    0%,25%{
+        left:-10em;
+    }
+    60%, 100%{
+        left:10px;
+    }
+}
+
 /** Animations Keyframes **/
 
 .animation{
@@ -109,15 +146,19 @@ body {
     overflow: hidden;
     -webkit-clip-path: polygon(8% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 8% 100%, 0% 80%, 0% 20%);
     clip-path: polygon(8% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 8% 100%, 0% 80%, 0% 20%);
-    animation:2s ease 1 alternate both;
-    animation-name:animation-title-bg;
+    animation:animation-title-bg 2s ease 1 alternate both;
+    -webkit-animation:animation-title-bg 2s ease 1 alternate both;
+    -moz-animation:animation-title-bg 2s ease 1 alternate both;
+    -o-animation:animation-title-bg 2s ease 1 alternate both;
 }
 .text-1 .title span{
     position: relative;
     right:10px;
     width:100%;
-    animation:2s ease 1 alternate both;
-    animation-name:animation-title-text;
+    animation:animation-title-text 2s ease 1 alternate both;
+    -webkit-animation:animation-title-text 2s ease 1 alternate both;
+    -moz-animation:animation-title-text 2s ease 1 alternate both;
+    -o-animation:animation-title-text 2s ease 1 alternate both;
 }
 .text-1 .sub-text{
     width:50%;
@@ -129,13 +170,17 @@ body {
     overflow: hidden;
     -webkit-clip-path: polygon(0 0, 92% 0, 100% 20%, 100% 80%, 92% 100%, 0 100%, 0% 80%, 0% 20%);
     clip-path: polygon(0 0, 92% 0, 100% 20%, 100% 80%, 92% 100%, 0 100%, 0% 80%, 0% 20%);
-    animation: 2s ease 1 alternate both;
-    animation-name: animation-sub-text-bg;
+    animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -webkit-animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -moz-animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -o-animation:animation-sub-text-bg 2s ease 1 alternate both;
 }
 .text-1 .sub-text span{
     position: relative;
     left:10px;
     width:100%;
-    animation:2s ease 1 alternate both;
-    animation-name:animation-sub-text;
+    animation:animation-sub-text 2s ease 1 alternate both;
+    -webkit-animation:animation-sub-text 2s ease 1 alternate both;
+    -moz-animation:animation-sub-text 2s ease 1 alternate both;
+    -o-animation:animation-sub-text 2s ease 1 alternate both;
 }

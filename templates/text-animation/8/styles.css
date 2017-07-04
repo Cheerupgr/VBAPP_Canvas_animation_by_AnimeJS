@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Shadows Into Light', cursive;
-    background-color: #2E282A;
+    background-color: #000000;
 }
 
 .text {
@@ -25,6 +25,9 @@ body {
     width: 20px;
     background-color: #3498db;
     animation: blink .5s infinite linear;
+    -webkit-animation: blink .5s infinite linear;
+    -moz-animation: blink .5s infinite linear;
+    -o-animation: blink .5s infinite linear;
 }
 
 .input {
@@ -32,6 +35,42 @@ body {
 }
 
 @keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes blink {
     0% {
         opacity: 1;
     }

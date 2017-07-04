@@ -4,13 +4,13 @@
     "options": [
         [
             {
-                "name": "text-1",
+                "name": "text1",
                 "caption": "Text 1",
                 "type": "text",
                 "value": "This is"
             },
             {
-                "name": "text_color-1",
+                "name": "text1_color",
                 "caption": "Text Color 1",
                 "type": "color",
                 "value": "#e55643"
@@ -18,13 +18,13 @@
         ],
         [
             {
-                "name": "text-2",
+                "name": "text2",
                 "caption": "Text 2",
                 "type": "text",
                 "value": "lettering"
             },
             {
-                "name": "text_color-2",
+                "name": "text2_color",
                 "caption": "Text Color 2",
                 "type": "color",
                 "value": "#2b9f5e"
@@ -32,13 +32,13 @@
         ],
         [
             {
-                "name": "text-3",
+                "name": "text3",
                 "caption": "Text 3",
                 "type": "text",
                 "value": "text effect."
             },
             {
-                "name": "text_color-3",
+                "name": "text3_color",
                 "caption": "Text Color 3",
                 "type": "color",
                 "value": "#f1c83c"

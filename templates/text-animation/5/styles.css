@@ -2,7 +2,7 @@
 
 body {
     height: 100vh;
-    background-color: #00a9f1;
+    background-color: #000000;
     position: relative;
 }
 body:before {
@@ -41,7 +41,6 @@ h1 span {
     -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
     transition: -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
     transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
-    transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1), -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
     -webkit-transform: translate(20%, 100%);
     transform: translate(20%, 100%);
     position: relative;
@@ -62,7 +61,6 @@ h1 span:before {
     -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
     transition: -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
     transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
-    transition: transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1), -webkit-transform 0.6s cubic-bezier(0.65, 0.02, 0.23, 1);
 }
 h1 span.row {
     overflow: hidden;
@@ -76,9 +74,13 @@ h1 span.row:before {
 }
 h1 .animate {
     -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
     transform: translate(0, 0);
 }
 h1 .animate:before {
     -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -o-transform: translateY(100%);
     transform: translateY(100%);
 }

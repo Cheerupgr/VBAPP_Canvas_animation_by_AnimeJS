@@ -20,6 +20,9 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   animation: blur .75s ease-out ;
+  -webkit-animation: blur .75s ease-out ;
+  -moz-animation: blur .75s ease-out ;
+  -o-animation: blur .75s ease-out ;
   text-shadow: 0px 0px 5px #ffffff, 0px 0px 7px #ffffff;
 }
 
@@ -46,6 +49,73 @@ body {
   }
 }
 
+@-webkit-keyframes blur {
+    from {
+        text-shadow:0px 0px 10px #ffffff,
+        0px 0px 10px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #7B96B8,
+        0px 0px 150px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px -10px 100px #7B96B8,
+        0px -10px 100px #7B96B8;
+    }
+}
 
+@-moz-keyframes blur {
+    from {
+        text-shadow:0px 0px 10px #ffffff,
+        0px 0px 10px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #7B96B8,
+        0px 0px 150px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px -10px 100px #7B96B8,
+        0px -10px 100px #7B96B8;
+    }
+}
+
+@-o-keyframes blur {
+    from {
+        text-shadow:0px 0px 10px #ffffff,
+        0px 0px 10px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 25px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #ffffff,
+        0px 0px 50px #7B96B8,
+        0px 0px 150px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px 10px 100px #7B96B8,
+        0px -10px 100px #7B96B8,
+        0px -10px 100px #7B96B8;
+    }
+}
 
 

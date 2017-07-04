@@ -82,6 +82,49 @@ body {
     }
 }
 
+
+@-webkit-keyframes animation-logo{
+    0%{
+        transform: scale(0);
+    }
+    25%,100%{
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes animation-logo-text{
+    0%, 25%{
+        opacity:0;
+        transform: scale(0);
+    }
+    35%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes animation-text-1{
+    0%,20%{
+        transform: scaleY(0)
+    }
+    30%,100%{
+        transform: scaleY(1)
+    }
+}
+@-webkit-keyframes animation-text-1-title{
+    0%,30%{
+        bottom:-100px;
+    }
+    45%, 100%{
+        bottom:0px;
+    }
+}
+@-webkit-keyframes animation-text-1-subtitle{
+    0%,30%{
+        top:-100px;
+    }
+    45%, 100%{
+        top:0px;
+    }
+}
 /** Animations Keyframes **/
 
 .animation{
@@ -105,7 +148,9 @@ body {
   z-index: 1;
   text-align:center;
   animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
   animation-name: animation-logo;
+    -webkit-animation-name: animation-logo;
 }
 .module:before,
 .module:after {
@@ -134,7 +179,9 @@ body {
     width:100%;
     height:auto;
     animation:2s ease 1 alternate both;
+    -webkit-animation:2s ease 1 alternate both;
     animation-name: animation-logo-text;
+    -webkit-animation-name: animation-logo-text;
 }
 .text-1{
     background:#ffffff;
@@ -147,7 +194,9 @@ body {
     min-width: 10em;
     font-family:Arimo;
     animation:2s linear alternate both;
+    -webkit-animation:2s linear alternate both;
     animation-name:animation-text-1;
+    -webkit-animation-name:animation-text-1;
 }
 .text-1:before,
 .text-1:after {
@@ -187,7 +236,9 @@ body {
     bottom:0px;
     left:0px;
     animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
     animation-name: animation-text-1-title;
+    -webkit-animation-name: animation-text-1-title;
 }
 .sub-text{
     font-size:.8em;
@@ -205,5 +256,7 @@ body {
     top:0px;
     left:0px;
     animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
     animation-name: animation-text-1-subtitle;
+    -webkit-animation-name: animation-text-1-subtitle;
 }

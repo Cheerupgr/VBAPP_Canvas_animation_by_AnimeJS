@@ -10,6 +10,14 @@
         "value": "LOGO TEXT"
       },
       {
+        "name": "text_color",
+        "caption": "Text Color",
+        "type": "color",
+        "value": "#ffffff"
+      }
+    ],
+    [
+      {
         "name": "icon",
         "caption": "Icon",
         "type": "file",

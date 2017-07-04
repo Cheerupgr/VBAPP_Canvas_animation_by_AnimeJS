@@ -1,0 +1,30 @@
+{
+  "caption": "Intro Animation 6",
+  "duration": 7000,
+  "options": [
+    [
+      {
+        "name": "text",
+        "caption": "Text",
+        "type": "text",
+        "value": "Intro 6"
+      }
+    ],
+    [
+      {
+        "name": "text_color",
+        "caption": "Text Color",
+        "type": "color",
+        "value": "#ffffff"
+      }
+    ],
+    [
+      {
+        "name": "background_image",
+        "caption": "Background Image",
+        "type": "file",
+        "value": "img/myimage.png"
+      }
+    ]
+  ]
+}

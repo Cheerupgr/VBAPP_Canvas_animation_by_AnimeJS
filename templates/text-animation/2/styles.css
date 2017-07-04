@@ -2,12 +2,14 @@
 
 body {
     line-height: 100vh;
-    background: #ff9966;
+    background: #000000;
 }
 
 .squiggly {
     -webkit-animation: squiggly-anim 0.34s linear infinite;
     animation: squiggly-anim 0.34s linear infinite;
+    -moz-animation: squiggly-anim 0.34s linear infinite;
+    -o-animation: squiggly-anim 0.34s linear infinite;
     display: inline-block;
     vertical-align: middle;
     width: 100%;
@@ -43,6 +45,52 @@ body {
     }
 }
 @keyframes squiggly-anim {
+    0% {
+        -webkit-filter: url("#filter-0");
+        filter: url("#filter-0");
+    }
+    25% {
+        -webkit-filter: url("#filter-1");
+        filter: url("#filter-1");
+    }
+    50% {
+        -webkit-filter: url("#filter-2");
+        filter: url("#filter-2");
+    }
+    75% {
+        -webkit-filter: url("#filter-3");
+        filter: url("#filter-3");
+    }
+    100% {
+        -webkit-filter: url("#filter-4");
+        filter: url("#filter-4");
+    }
+}
+
+@-moz-keyframes squiggly-anim {
+    0% {
+        -webkit-filter: url("#filter-0");
+        filter: url("#filter-0");
+    }
+    25% {
+        -webkit-filter: url("#filter-1");
+        filter: url("#filter-1");
+    }
+    50% {
+        -webkit-filter: url("#filter-2");
+        filter: url("#filter-2");
+    }
+    75% {
+        -webkit-filter: url("#filter-3");
+        filter: url("#filter-3");
+    }
+    100% {
+        -webkit-filter: url("#filter-4");
+        filter: url("#filter-4");
+    }
+}
+
+@-o-keyframes squiggly-anim {
     0% {
         -webkit-filter: url("#filter-0");
         filter: url("#filter-0");

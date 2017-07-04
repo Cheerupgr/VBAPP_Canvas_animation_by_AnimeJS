@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Amatic SC', cursive;
-    background-color: #1C2321;
+    background-color: #000000;
     word-wrap: break-word;
 }
 
@@ -24,6 +24,9 @@ body {
     opacity: 0;
     transform: translate(-150px, -50px) rotate(-180deg) scale(3);
     animation: revolveScale .7s forwards;
+    -webkit-animation: revolveScale .7s forwards;
+    -moz-animation: revolveScale .7s forwards;
+    -o-animation: revolveScale .7s forwards;
 }
 
 .flexible span:nth-of-type(2) {
@@ -68,6 +71,39 @@ body {
 
 
 @keyframes revolveScale {
+    60% {
+        transform: translate(20px, 20px) rotate(30deg) scale(.3);
+    }
+
+    100% {
+        transform: translate(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes revolveScale {
+    60% {
+        transform: translate(20px, 20px) rotate(30deg) scale(.3);
+    }
+
+    100% {
+        transform: translate(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes revolveScale {
+    60% {
+        transform: translate(20px, 20px) rotate(30deg) scale(.3);
+    }
+
+    100% {
+        transform: translate(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes revolveScale {
     60% {
         transform: translate(20px, 20px) rotate(30deg) scale(.3);
     }

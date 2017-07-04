@@ -105,6 +105,126 @@ main {
         left:53.3%;
     }
 }
+
+@-webkit-keyframes animation-1-slash {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+    45% {
+        left: 100%;
+        opacity: 0;
+    }
+    65% {
+        left: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-webkit-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 53.3%;
+    }
+    100%{
+        left:53.3%;
+    }
+}
+
+@-moz-keyframes animation-1-slash {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+    45% {
+        left: 100%;
+        opacity: 0;
+    }
+    65% {
+        left: 0;
+        opacity: 1;
+    }
+}
+@-moz-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-moz-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 53.3%;
+    }
+    100%{
+        left:53.3%;
+    }
+}
+
+@-o-keyframes animation-1-slash {
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+    45% {
+        left: 100%;
+        opacity: 0;
+    }
+    65% {
+        left: 0;
+        opacity: 1;
+    }
+}
+@-o-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-o-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 53.3%;
+    }
+    100%{
+        left:53.3%;
+    }
+}
 #animation-1 div {
     position: absolute;
 }
@@ -118,6 +238,9 @@ main {
     top: 5px;
     left:-5px;
     animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both animation-1-slash ;
+    -webkit-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both animation-1-slash ;
+    -moz-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both animation-1-slash ;
+    -o-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both animation-1-slash ;
     overflow: hidden;
 }
 #animation-1 > div:first-child div{
@@ -140,9 +263,15 @@ main {
 }
 #animation-1 > div:nth-child(2) div {
     animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both;
+    -webkit-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both;
+    -moz-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both;
+    -o-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1)  alternate both;
 }
 #animation-1 > div:nth-child(3) div{
      animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both;
+     -webkit-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both;
+     -moz-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both;
+     -o-animation: 2s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both;
 }
 #animation-1 div:nth-child(2) {
     top: 0;
@@ -150,6 +279,9 @@ main {
 }
 #animation-1 div:nth-child(2) div {
     animation-name: animation-1-text-1;
+    -webkit-animation-name: animation-1-text-1;
+    -moz-animation-name: animation-1-text-1;
+    -o-animation-name: animation-1-text-1;
 }
 #animation-1 div:nth-child(3) {
     top: 2em;
@@ -157,6 +289,9 @@ main {
 }
 #animation-1 div:nth-child(3) div {
     animation-name: animation-1-text-2;
+    -webkit-animation-name: animation-1-text-2;
+    -moz-animation-name: animation-1-text-2;
+    -o-animation-name: animation-1-text-2;
 }
 .text-1 div{
    background:#424043;

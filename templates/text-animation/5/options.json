@@ -8,9 +8,7 @@
                 "caption": "Text",
                 "type": "text",
                 "value": "We are born"
-            }
-        ],
-        [
+            },
             {
                 "name": "text_color",
                 "caption": "Text Color",

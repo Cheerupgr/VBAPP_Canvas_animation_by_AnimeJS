@@ -12,6 +12,36 @@ body{
     }   
 }
 
+@-webkit-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: -0.01em -0.01em 0.01em #111, 0.02em 0.02em 0.01em #363636;
+    }
+}
+
+@-moz-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: -0.01em -0.01em 0.01em #111, 0.02em 0.02em 0.01em #363636;
+    }
+}
+
+@-o-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: -0.01em -0.01em 0.01em #111, 0.02em 0.02em 0.01em #363636;
+    }
+}
+
 h1.insetshadow {
 
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
@@ -23,4 +53,7 @@ h1.insetshadow {
     background-color: #2d2d2d;
     letter-spacing: .1em;
     animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -webkit-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -moz-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -o-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
 }

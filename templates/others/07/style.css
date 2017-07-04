@@ -9,6 +9,39 @@
     }   
 }
 
+@-webkit-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: .02em .02em 0em #d5d5d5, .06em .06em 0em rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+@-moz-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: .02em .02em 0em #d5d5d5, .06em .06em 0em rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+@-o-keyframes animation-shadow{
+    0%{
+
+    }
+
+    100%{
+        text-shadow: .02em .02em 0em #d5d5d5, .06em .06em 0em rgba(0, 0, 0, 0.2);
+    }
+}
+
+
 h1.retroshadow {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 4em;
@@ -19,4 +52,7 @@ h1.retroshadow {
     background-color: #d5d5d5;
     letter-spacing: .05em;
     animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -webkit-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -moz-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
+    -o-animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both animation-shadow;
 }

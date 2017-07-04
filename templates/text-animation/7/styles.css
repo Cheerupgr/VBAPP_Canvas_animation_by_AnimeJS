@@ -4,7 +4,7 @@ body {
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
     font-size: 50px;
-    background-color: #323031;
+    background-color: #000000;
 }
 
 .text {
@@ -34,19 +34,40 @@ p {
     position: relative;
     float: left;
     transform: translateZ(25px);
+    -webkit-transform: translateZ(25px);
+    -moz-transform: translateZ(25px);
+    -o-transform: translateZ(25px);
     transform-origin: 50% 50% 25px;
+    -webkit-transform-origin: 50% 50% 25px;
+    -moz-transform-origin: 50% 50% 25px;
+    -o-transform-origin: 50% 50% 25px;
 }
 
 .letter.out {
+    -webkit-transform: rotateX(90deg);;
+    -moz-transform: rotateX(90deg);;
+    -o-transform: rotateX(90deg);;
     transform: rotateX(90deg);
     transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -webkit-transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -moz-transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -o-transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .letter.behind {
     transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
 }
 
 .letter.in {
     transform: rotateX(0deg);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
     transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

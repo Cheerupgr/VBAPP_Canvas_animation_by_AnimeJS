@@ -16,6 +16,8 @@ body {
 
 * {
     -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
 
@@ -118,6 +120,124 @@ main {
         left: 0;
     }
 }
+
+@-webkit-keyframes animation-1-slash {
+    0% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    25% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    45% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-webkit-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 0;
+    }
+}
+
+@-moz-keyframes animation-1-slash {
+    0% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    25% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    45% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-moz-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 0;
+    }
+}
+
+@-o-keyframes animation-1-slash {
+    0% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    25% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    45% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: 0;
+    }
+}
+@-o-keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    55% {
+        left: -100%;
+    }
+    75% {
+        left: 0;
+    }
+}
+
 #animation-1 div {
     position: absolute;
 }
@@ -125,6 +245,9 @@ main {
     font-size: 4.8em;
     top: -.13em;
     animation: animation-1-slash 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -webkit-animation: animation-1-slash 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -moz-animation: animation-1-slash 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -o-animation: animation-1-slash 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
 }
 #animation-1 > div:nth-child(2), #animation-1 > div:nth-child(3) {
     font-size: 2em;
@@ -133,6 +256,9 @@ main {
 }
 #animation-1 > div:nth-child(2) div, #animation-1 > div:nth-child(3) div {
     animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -webkit-animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -moz-animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
+    -o-animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 1 alternate both;
 }
 #animation-1 div:nth-child(2) {
     top: 0;
@@ -140,6 +266,9 @@ main {
 }
 #animation-1 div:nth-child(2) div {
     animation-name: animation-1-text-1;
+    -webkit-animation-name: animation-1-text-1;
+    -moz-animation-name: animation-1-text-1;
+    -o-animation-name: animation-1-text-1;
 }
 #animation-1 div:nth-child(3) {
     top: .8em;
@@ -147,6 +276,9 @@ main {
 }
 #animation-1 div:nth-child(3) div {
     animation-name: animation-1-text-2;
+    -webkit-animation-name: animation-1-text-2;
+    -moz-animation-name: animation-1-text-2;
+    -o-animation-name: animation-1-text-2;
 }
 
 /*********************
@@ -174,6 +306,75 @@ main {
         transform: translate3d(0, 0, 0);
     }
 }
+
+@-webkit-keyframes animation-2-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    30% {
+        transform: translate3d(0, 100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-2-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes animation-2-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    30% {
+        transform: translate3d(0, 100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-2-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-o-keyframes animation-2-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    30% {
+        transform: translate3d(0, 100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-2-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
 #animation-2 {
     text-align: center;
 }
@@ -190,12 +391,18 @@ main {
 }
 #animation-2 > div:first-child div {
     animation: animation-2-name 3s ease-out 1 alternate both;
+    -webkit-animation: animation-2-name 3s ease-out 1 alternate both;
+    -moz-animation: animation-2-name 3s ease-out 1 alternate both;
+    -o-animation: animation-2-name 3s ease-out 1 alternate both;
 }
 #animation-2 > div:last-child {
     font-size: 1.1em;
 }
 #animation-2 > div:last-child div {
     animation: animation-2-title 3s ease-out 1 alternate both;
+    -webkit-animation: animation-2-title 3s ease-out 1 alternate both;
+    -moz-animation: animation-2-title 3s ease-out 1 alternate both;
+    -o-animation: animation-2-title 3s ease-out 1 alternate both;
 }
 
 /*********************
@@ -223,6 +430,75 @@ main {
         transform: translate3d(0, 0, 0);
     }
 }
+
+@-webkit-keyframes animation-3-left {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-3-right {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes animation-3-left {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-3-right {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-o-keyframes animation-3-left {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-3-right {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    30% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
 #animation-3 > div {
     display: inline-block;
     width: 50%;
@@ -235,6 +511,9 @@ main {
 }
 #animation-3 > div:first-child div {
     animation: animation-3-left 3.2s ease-out 1 alternate both;
+    -webkit-animation: animation-3-left 3.2s ease-out 1 alternate both;
+    -moz-animation: animation-3-left 3.2s ease-out 1 alternate both;
+    -o-animation: animation-3-left 3.2s ease-out 1 alternate both;
 }
 #animation-3 > div:last-child {
     font-size: 2.5em;
@@ -243,6 +522,9 @@ main {
 }
 #animation-3 > div:last-child div {
     animation: animation-3-right 3.2s ease-out 1 alternate both;
+    -webkit-animation: animation-3-right 3.2s ease-out 1 alternate both;
+    -moz-animation: animation-3-right 3.2s ease-out 1 alternate both;
+    -o-animation: animation-3-right 3.2s ease-out 1 alternate both;
 }
 
 /*********************
@@ -270,24 +552,102 @@ main {
         transform: translate3d(0, 0, 0);
     }
 }
+
+@-webkit-keyframes animation-4-stroke {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-4-text {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    50% {
+        transform: translate3d(0, -100%, 0);
+    }
+    80% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes animation-4-stroke {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-4-text {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    50% {
+        transform: translate3d(0, -100%, 0);
+    }
+    80% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-o-keyframes animation-4-stroke {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    30% {
+        transform: translate3d(0, -100%, 0);
+    }
+    60% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-4-text {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    50% {
+        transform: translate3d(0, -100%, 0);
+    }
+    80% {
+        transform: translate3d(0, 0, 0);
+    }
+}
 #animation-4 > div {
     display: inline-block;
     vertical-align: middle;
 }
 #animation-4 > div div {
     animation: 3s ease-out 1 alternate both;
+    -webkit-animation: 3s ease-out 1 alternate both;
+    -moz-animation: 3s ease-out 1 alternate both;
+    -o-animation: 3s ease-out 1 alternate both;
 }
 #animation-4 > div:first-child {
     font-size: 2.8em;
 }
 #animation-4 > div:first-child div {
     animation-name: animation-4-text;
+    -webkit-animation-name: animation-4-text;
+    -moz-animation-name: animation-4-text;
+    -o-animation-name: animation-4-text;
 }
 #animation-4 > div:last-child div {
     width: .38em;
     height: 2.4em;
     background-color: #cf4c4e;
     animation-name: animation-4-stroke;
+    -webkit-animation-name: animation-4-stroke;
+    -moz-animation-name: animation-4-stroke;
+    -o-animation-name: animation-4-stroke;
 }
 
 /*********************
@@ -354,6 +714,192 @@ main {
         transform: translate3d(0, 0, 0);
     }
 }
+
+@-webkit-keyframes animation-5-bottom-right {
+    0% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    8% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    30% {
+        transform: translate3d(0, 96%, 0);
+    }
+    38% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-5-top {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    38% {
+        transform: translate3d(100%, 0, 0);
+    }
+    58% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-5-bottom-left {
+    0% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    58% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    64% {
+        transform: translate3d(-98%, 0, 0);
+    }
+    84% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-5-text-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    25% {
+        transform: translate3d(0, 100%, 0);
+    }
+    45% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes animation-5-text-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    35% {
+        transform: translate3d(0, -100%, 0);
+    }
+    55% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes animation-5-bottom-right {
+    0% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    8% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    30% {
+        transform: translate3d(0, 96%, 0);
+    }
+    38% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-5-top {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    38% {
+        transform: translate3d(100%, 0, 0);
+    }
+    58% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-5-bottom-left {
+    0% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    58% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    64% {
+        transform: translate3d(-98%, 0, 0);
+    }
+    84% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-5-text-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    25% {
+        transform: translate3d(0, 100%, 0);
+    }
+    45% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-moz-keyframes animation-5-text-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    35% {
+        transform: translate3d(0, -100%, 0);
+    }
+    55% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-o-keyframes animation-5-bottom-right {
+    0% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    8% {
+        transform: translate3d(-100%, 96%, 0);
+    }
+    30% {
+        transform: translate3d(0, 96%, 0);
+    }
+    38% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-5-top {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    38% {
+        transform: translate3d(100%, 0, 0);
+    }
+    58% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-5-bottom-left {
+    0% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    58% {
+        transform: translate3d(-98%, -100%, 0);
+    }
+    64% {
+        transform: translate3d(-98%, 0, 0);
+    }
+    84% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-5-text-name {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    25% {
+        transform: translate3d(0, 100%, 0);
+    }
+    45% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-o-keyframes animation-5-text-title {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    35% {
+        transform: translate3d(0, -100%, 0);
+    }
+    55% {
+        transform: translate3d(0, 0, 0);
+    }
+}
 #animation-5 {
     text-align: center;
     height: 3.5em;
@@ -372,6 +918,9 @@ main {
 #animation-5 div,
 #animation-5 .clip-path {
     animation: 3.1s ease-out 1 alternate both;
+    -webkit-animation: 3.1s ease-out 1 alternate both;
+    -moz-animation: 3.1s ease-out 1 alternate both;
+    -o-animation: 3.1s ease-out 1 alternate both;
 }
 #animation-5 .bottom-right,
 #animation-5 .right {
@@ -386,12 +935,21 @@ main {
 }
 #animation-5 #mask-bottom-right > .clip-path {
     animation-name: animation-5-bottom-right;
+    -webkit-animation-name: animation-5-bottom-right;
+    -moz-animation-name: animation-5-bottom-right;
+    -o-animation-name: animation-5-bottom-right;
 }
 #animation-5 #mask-top > .clip-path {
     animation-name: animation-5-top;
+    -webkit-animation-name: animation-5-top;
+    -moz-animation-name: animation-5-top;
+    -o-animation-name: animation-5-top;
 }
 #animation-5 #mask-bottom-left > .clip-path {
     animation-name: animation-5-bottom-left;
+    -webkit-animation-name: animation-5-bottom-left;
+    -moz-animation-name: animation-5-bottom-left;
+    -o-animation-name: animation-5-bottom-left;
 }
 #animation-5 > div:nth-child(2) {
     font-size: 2em;
@@ -399,6 +957,9 @@ main {
 }
 #animation-5 > div:nth-child(2) div {
     animation-name: animation-5-text-name;
+    -webkit-animation-name: animation-5-text-name;
+    -moz-animation-name: animation-5-text-name;
+    -o-animation-name: animation-5-text-name;
 }
 #animation-5 > div:nth-child(3) {
     font-size: .9em;
@@ -407,4 +968,7 @@ main {
 }
 #animation-5 > div:nth-child(3) div {
     animation-name: animation-5-text-title;
+    -webkit-animation-name: animation-5-text-title;
+    -moz-animation-name: animation-5-text-title;
+    -o-animation-name: animation-5-text-title;
 }

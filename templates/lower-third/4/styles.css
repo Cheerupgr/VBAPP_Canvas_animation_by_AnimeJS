@@ -69,6 +69,40 @@ body {
         right:0px;
     }
 }
+
+@-webkit-keyframes animation-icon{
+    0%, 20%{
+        transform: scale(0);
+    }
+    50%, 100%{
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes animation-icon-hover{
+    0%{
+        transform: scale(0);
+    }
+    30%,100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes animation-text-bg{
+    0%,40%{
+        clip-path: inset(0 100% 0 0);
+    }
+    60%, 100%{
+        clip-path: inset(0 0 0 0);
+    }
+}
+@-webkit-keyframes animation-text{
+    0%,40%{
+        right:-10em;
+    }
+    60%, 100%{
+        right:0px;
+    }
+}
 /** Animations Keyframes **/
 
 .animation{
@@ -85,7 +119,9 @@ body {
     top:0px;
     float:left;
     animation: 2s linear 1 alternate both;
+    -webkit-animation: 2s linear 1 alternate both;
     animation-name:animation-icon;
+    -webkit-animation-name:animation-icon;
 }
 .whiteHover{
     background: #fff;
@@ -96,7 +132,9 @@ body {
     top:0px;
     left:0px;
     animation:1.5s linear 1 alternate both;
+    -webkit-animation:1.5s linear 1 alternate both;
     animation-name:animation-icon-hover;
+    -webkit-animation-name:animation-icon-hover;
 }
 .icon{
     background:#960e29;
@@ -106,7 +144,9 @@ body {
     padding:10px 15px;
     float:left;
     animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
     animation-name:animation-icon;
+    -webkit-animation-name:animation-icon;
 }
 .text{
     font-family: Arimo;
@@ -118,10 +158,14 @@ body {
     overflow: hidden;
     margin-left:-1px;  
     animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
     animation-name:animation-text-bg;
+    -webkit-animation-name:animation-text-bg;
 }
 .text span{
     animation:2s ease-out 1 alternate both;
+    -webkit-animation:2s ease-out 1 alternate both;
     animation-name: animation-text;
+    -webkit-animation-name: animation-text;
     position:relative;
 }

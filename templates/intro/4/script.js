@@ -134,10 +134,7 @@ $(document).ready(function(){
     var delay = 3000; /* delay */
 
     setTimeout(function () {
-
-        $('.logo').slideDown(1000);
         $('.circle').animate({width: '-=10em', height: '-=10em', "margin-top": "50px"}, 1000);
         $('.center').animate({width: '-=2.5em', height: '-=2.5em', "margin-top": "190px"}, 1000);
-
     }, delay);
 });

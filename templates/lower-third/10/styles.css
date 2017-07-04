@@ -159,6 +159,57 @@ body {
     }
 
 }
+
+@-webkit-keyframes animation-line{
+    0%{
+        width:0px;
+        height: 0px;
+    }
+    1%{
+        -webkit-transform: rotate(-180deg); /* Chrome, Safari, Opera */
+        transform: rotate(-180deg);
+        width:5px;
+        height:5em;
+    }
+    20%{
+        -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+        transform: rotate(0deg);
+        left:0px;
+    }
+    40%{
+        left:100%;
+    }
+    60%,100%{
+        left:0px;
+    }
+}
+@-webkit-keyframes animation-text-1{
+    0%,20%{
+        clip-path: inset(0 100% 0 0);
+        color:#ffffff;
+        letter-spacing: 0;
+    }
+    40%{
+        clip-path: inset(0 0 0 0);
+        color:#ffffff;
+        letter-spacing: .05em;
+    }
+    60%,100%{
+        clip-path: inset(0 0 0 0);
+        color:#008080;
+    }
+}
+@-webkit-keyframes animation-text-2{
+    0%,55%{
+        left:-10em;
+    }
+    75%,100%{
+        left:0px;
+    }
+
+}
+
+
 .line{
     width:5px;
     height:5em;
@@ -166,7 +217,9 @@ body {
     left:0px;
     background:#FCDA06;
     animation: 2s ease 1 alternate both;
+    -webkit-animation: 2s ease 1 alternate both;
     animation-name:animation-line;
+    -webkit-animation-name:animation-line;
 }
 .text-1 .text{
     width:100%;
@@ -177,10 +230,13 @@ body {
     letter-spacing: .05em;
     font-weight: bold;
     position: relative;
+    font-family: Arimo;
     left:0px;
     animation: 2s ease 1 alternate both;
+    -webkit-animation: 2s ease 1 alternate both;
     animation-name:animation-text-1;
-   
+    -webkit-animation-name:animation-text-1;
+
 }
 .text-2{
     width:auto;
@@ -188,6 +244,7 @@ body {
     font-size:20px;
     text-transform: uppercase;
     left:0px;
+    font-family: Arimo;
     padding:0px 30px;
     position: relative;
     overflow: hidden;
@@ -195,5 +252,7 @@ body {
 .text-2 .text{
     position:relative;
     animation: 2s ease 1 alternate both;
+    -webkit-animation: 2s ease 1 alternate both;
     animation-name: animation-text-2;
+    -webkit-animation-name: animation-text-2;
 }

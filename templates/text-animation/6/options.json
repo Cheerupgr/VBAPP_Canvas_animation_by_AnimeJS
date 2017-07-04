@@ -8,6 +8,12 @@
                 "caption": "Text",
                 "type": "text",
                 "value": "LOGO TEXT"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text Color",
+                "type": "color",
+                "value": "#2e2e2e"
             }
         ]
     ]

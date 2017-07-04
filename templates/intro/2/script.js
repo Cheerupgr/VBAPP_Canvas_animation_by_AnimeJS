@@ -333,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
      repeatDelay: 0
      }))*/
     setTimeout(function () {
+        document.querySelector('.square-wrapper').style.opacity = "1";
         intro().animateLogo(new TimelineMax());
         intro().animateWords(new TimelineMax());
     }, delay);
