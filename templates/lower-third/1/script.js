@@ -85,7 +85,7 @@ var VBAnimationTemplateLib = function( options ){
         if ( e.type.toLowerCase().indexOf('animationend') > -1 ) {
             animEnded.push( e.animationName );
             if( animStarted.length === animEnded.length ){
-                this.onAnimationFinishedPause();
+                //this.onAnimationFinishedPause();
             }
         }
     };
