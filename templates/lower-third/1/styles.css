@@ -114,8 +114,7 @@ body {
     100% {
         left: 18em;
     }
-
-<<<<<<< HEAD
+}
 @-webkit-keyframes animation-white {
     0% {
         left: -18em;
@@ -128,11 +127,7 @@ body {
     }
 
 }
-@-webkit-keyframes animation-text-1 {
-=======
-}
 @-webkit-keyframes animation-text1 {
->>>>>>> refs/remotes/origin/master
     0% {
         left: -20em;
     }
@@ -140,19 +135,13 @@ body {
         left: 0;
     }
 }
-<<<<<<< HEAD
-@-webkit-keyframes animation-text-2 {
-=======
 @-webkit-keyframes animation-text2 {
->>>>>>> refs/remotes/origin/master
     0%,50% {
         top: -2em;
     }
     80%,100%{
         top: .8em;
     }
-<<<<<<< HEAD
-
 }
 @-webkit-keyframes animation-border {
     0% {
@@ -169,11 +158,6 @@ body {
     }
 }
 
-/** Animations Keyframes **/
-=======
->>>>>>> refs/remotes/origin/master
-
-}
 /** /Animations Keyframes **/
 
 main {
@@ -213,18 +197,9 @@ main {
     margin: 0 ;
     box-shadow: inset 0 0 0 2px;
     opacity: 0;
-<<<<<<< HEAD
-    clip: rect(0px, 20em, 2.5em, 18em);
-    animation: 2s linear 1 alternate both;
-    -webkit-animation: 2s linear 1 alternate both;
-    animation-name:animation-border;
-    -webkit-animation-name:animation-border;
-
-=======
     clip: rect(0, 20em, 2.5em, 18em);
     animation: animation-border 2s linear 0s 2 alternate both;
     -webkit-animation: animation-border 2s linear 0s 2 alternate both;
->>>>>>> refs/remotes/origin/master
 }
 .text1 span:first-child {
     width: 100%;
@@ -234,15 +209,8 @@ main {
     float: left;
     left: -2em;
     position: absolute;
-<<<<<<< HEAD
-    animation: 2s ease alternate 1 both;
-    -webkit-animation: 2s ease alternate 1 both;
-    animation-name: animation-white;
-    -webkit-animation-name: animation-white;
-=======
     animation: animation-white 2s ease 0s 2 alternate both;
     -webkit-animation: animation-white 2s ease 0s 2 alternate both;
->>>>>>> refs/remotes/origin/master
 }
 .text1 span:nth-child(2) {
     width: 90%;
@@ -252,16 +220,8 @@ main {
     padding: .5em .9em .5em .5em;
     margin: .5em 5% 0 0;
     position: absolute;
-<<<<<<< HEAD
-    animation: 2s ease alternate 1 both;
-    -webkit-animation: 2s ease alternate 1 both;
-    animation-name: animation-text-1;
-    -webkit-animation-name: animation-text-1;
-
-=======
     animation: animation-text1 2s ease 0s 2 alternate forwards;
     -webkit-animation: animation-text1 2s ease 0s 2 alternate forwards;
->>>>>>> refs/remotes/origin/master
 }
 .text2 {
     width: 100%;
@@ -271,7 +231,7 @@ main {
     top: 2.5em;
     overflow: hidden;
 }
-<<<<<<< HEAD
+
 .text-2 div{
     font-size:16px;    
     padding-left:.5em;
@@ -282,7 +242,6 @@ main {
     animation-name: animation-text-2;
     -webkit-animation-name: animation-text-2;
 }
-=======
 .text2 div {
     font-size: 30px;
     padding-left: .5em;
@@ -291,4 +250,3 @@ main {
     animation: animation-text2 2s linear 0s 2 alternate both;
     -webkit-animation: animation-text2 2s linear 0s 2 alternate both;
 }
->>>>>>> refs/remotes/origin/master
