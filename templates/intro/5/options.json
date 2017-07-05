@@ -23,7 +23,7 @@
         "name": "background_image",
         "caption": "Background Image",
         "type": "file",
-        "value": "img/myimage.png"
+        "value": "placeholder.jpg"
       }
     ]
   ]

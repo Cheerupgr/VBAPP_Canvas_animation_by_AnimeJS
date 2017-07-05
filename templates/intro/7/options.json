@@ -31,7 +31,7 @@
         "name": "icon",
         "caption": "Icon",
         "type": "file",
-        "value": "img/myimage.png"
+        "value": "placeholder.jpg"
       }
     ]
   ]

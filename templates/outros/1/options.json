@@ -23,7 +23,7 @@
         "name": "text_color",
         "caption": "Text Color",
         "type": "color",
-        "value": "#363636"
+        "value": "#ffffff"
       }
     ]
   ]
