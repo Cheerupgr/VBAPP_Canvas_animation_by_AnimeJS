@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title>Lower Thirds animation #1</title>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+    <script src="lib/animejs/anime.min.js"></script>
+</head>
+<body>
+
+<div class="vba-area">
+
+    <div id="line"></div>
+    <div id="container1">
+        <div id="text2">
+            Subtitle
+        </div>
+        <div id="text1">
+            Text Title
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        delay: 3000,
+        isPaused: false
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    timeline
+        .add({
+            targets: '#line',
+            easing: 'linear',
+            duration: 1000,
+            left: '1280px'
+        })
+        .add({
+            targets: '#container1',
+            easing: 'linear',
+            left: '100px',
+            duration: 1000,
+            offset: 200
+        })
+        .add({
+            targets: '#text2',
+            easing: 'linear',
+            duration: 500,
+            top: '90px',
+            complete: function(anim) {
+                timeline.reverse();
+                mainOptions.isPaused = true;
+                setTimeout(function(){
+                    mainOptions.isPaused = false;
+                    timeline.play();
+                }, mainOptions.delay);
+            }
+        });
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 10px; top: 10px;">
+    <button type="button" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" onclick="timeline.restart(); return false;">
+        Restart
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
