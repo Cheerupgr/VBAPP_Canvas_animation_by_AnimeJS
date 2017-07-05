@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
      }))*/
     document.querySelector('.words').style.opacity = "0";
     setTimeout(function () {
-
+        document.querySelector('.square-wrapper').style.opacity = "1";
         intro().animateLogo(new TimelineMax());
         intro().animateWords(new TimelineMax());
     }, delay);

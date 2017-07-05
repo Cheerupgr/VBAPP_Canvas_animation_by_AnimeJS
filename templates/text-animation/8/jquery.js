@@ -1190,7 +1190,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				"<select id='" + expando + "-\r\\' msallowcapture=''>" +
 				"<option selected=''></option></select>";
 
-			// Support: IE8, Opera 11-12.4
+			// Support: IE8, Opera 11-1.4
 			// Nothing should be selected when empty strings follow ^= or $= or *=
 			// The test attribute must be unknown in Opera but "safe" for WinRT
 			// http://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
@@ -5799,7 +5799,7 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 	ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined;
 
-	// Support: Opera 12.1x only
+	// Support: Opera 1.1x only
 	// Fall back to style even without computed
 	// computed is undefined for elems on document fragments
 	if ( ( ret === "" || ret === undefined ) && !jQuery.contains( elem.ownerDocument, elem ) ) {
@@ -8905,7 +8905,7 @@ jQuery.expr.filters.hidden = function( elem ) {
 };
 jQuery.expr.filters.visible = function( elem ) {
 
-	// Support: Opera <= 12.12
+	// Support: Opera <= 1.1
 	// Opera reports offsetWidths and offsetHeights less than zero on some elements
 	// Use OR instead of AND as the element is not visible if either is true
 	// See tickets #10406 and #13132

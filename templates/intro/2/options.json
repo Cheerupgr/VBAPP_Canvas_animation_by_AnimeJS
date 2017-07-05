@@ -12,13 +12,13 @@
     ],
     [
       {
-        "name": "text-1",
+        "name": "text1",
         "caption": "Text Header",
         "type": "text",
         "value": "NAME"
       },
       {
-        "name": "text_color-1",
+        "name": "text1_color",
         "caption": "Text color",
         "type": "color",
         "value": "#ffffff"
@@ -26,13 +26,13 @@
     ],
     [
       {
-        "name": "text-2",
+        "name": "text2",
         "caption": "Text Subtitle",
         "type": "text",
         "value": "SUBTITLE"
       },
       {
-        "name": "text_color-2",
+        "name": "text2_color",
         "caption": "Text color",
         "type": "color",
         "value": "#ffffff"

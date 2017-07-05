@@ -1,29 +1,21 @@
 {
-  "caption": "Social Media Icon Animation",
+  "caption": "Outro 1",
   "duration": 700,
   "options": [
     [
       {
-        "name": "icon",
-        "caption": "Icon",
-        "type": "text",
-        "value": "&"
-      }
-    ],
-    [
-      {
-        "name": "text-1",
+        "name": "text1",
         "caption": "Text 1",
         "type": "text",
-        "value": "follow us"
+        "value": "Click the"
       }
     ],
     [
       {
-        "name": "text-2",
+        "name": "text2",
         "caption": "Text 2",
         "type": "text",
-        "value": "/twitter-handle"
+        "value": "button below"
       }
     ],
     [
@@ -31,7 +23,7 @@
         "name": "text_color",
         "caption": "Text Color",
         "type": "color",
-        "value": "#ffffff"
+        "value": "#363636"
       }
     ]
   ]

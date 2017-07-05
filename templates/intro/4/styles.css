@@ -114,6 +114,8 @@ section {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.3);
     transition: 1s transform ease-in-out;
     width: 8em;
+    padding: 5px;
+    text-align: center;
     animation: scaleDown 2s 3s forwards;
     -webkit-animation: scaleDown 2s 3s forwards;
     -moz-animation: scaleDown 2s 3s forwards;
@@ -121,6 +123,7 @@ section {
 }
 
 .center img {
+    margin-top:20%;
     max-width: 100%;
     max-height: 100%;
 }
