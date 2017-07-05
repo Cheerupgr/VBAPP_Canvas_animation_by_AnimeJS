@@ -8,6 +8,8 @@
     src: url("fonts/Open_Sans/OpenSans-Light.ttf");
 }
 
+html, body { margin: 0; padding: 0; }
+
 body {
     margin: 0;
     font-size: 35px;
