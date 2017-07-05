@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
 
 html, body { margin: 0; padding: 0; }
+.vba-area { width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
 
 body {
     line-height: 100vh;
 }
-
-.vba-area { width: 1280px; height: 720px; background: none #000000; }
 
 .squiggly {
     -webkit-animation: squiggly-anim 0.34s linear infinite;

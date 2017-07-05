@@ -1,6 +1,6 @@
-body {
-    background-color: #000000;
-}
+
+html, body { margin: 0; padding: 0; }
+.vba-area { width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
 
 .text {
     width: 100%;

@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300');
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
 
+html, body { margin: 0; padding: 0; }
+.vba-area { width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
+
 *{
     box-sizing: border-box;
 }
-
 
 * {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
 
-body {
-    background: none #000000;
-}
-
-.vba-area { width: 1280px; height: 720px; margin-top: 10% }
 .vba-state-paused,
 .vba-state-paused * {
     -webkit-animation-name: none !important;
@@ -30,9 +27,6 @@ body {
     -o-animation-direction: reverse !important;
     animation-direction: reverse !important;
 }
-
-.vba-area { width: 1280px; height: 720px; background: none #000000; }
-
 
 /** Animations Keyframes **/
 
