@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'RobotoCondensedBold';
+	src: url('./RobotoCondensedBold.eot');
+	src: local('RobotoCondensedBold'), url('./RobotoCondensedBold.woff') format('woff'), url('./RobotoCondensedBold.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_72351">Text with this font applied</p> */
+.fontsforweb_fontid_72351 {
+	font-family: 'RobotoCondensedBold' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

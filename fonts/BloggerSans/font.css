@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'BloggerSans0';
+	src: url('./BloggerSans0.eot');
+	src: local('BloggerSans0'), url('./BloggerSans0.woff') format('woff'), url('./BloggerSans0.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_59578">Text with this font applied</p> */
+.fontsforweb_fontid_59578 {
+	font-family: 'BloggerSans0' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
