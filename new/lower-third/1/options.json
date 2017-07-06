@@ -36,6 +36,14 @@
                 "type": "color",
                 "value": "#ffffff"
             }
+        ],
+        [
+            {
+                "name": "lines_color",
+                "caption": "Color of lines",
+                "type": "color",
+                "value": "#ffffff"
+            }
         ]
     ]
 }
