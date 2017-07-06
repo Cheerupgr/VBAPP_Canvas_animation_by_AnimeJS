@@ -1,14 +1,12 @@
 {
   "name": "animation_templates",
   "version": "0.1",
-  "authors": [
-    ""
-  ],
+  "authors": [],
   "main": "index.html",
   "license": "Commercial",
   "homepage": "",
   "dependencies": {
-    "pixi-action": "https://github.com/hustcc/pixi-action.git#^1.0.1"
+    "animejs": "^2.0.2"
   },
   "keywords": [
     "animation"

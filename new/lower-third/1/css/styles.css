@@ -1,9 +1,4 @@
 
-@font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
-}
-
 html, body { margin: 0; padding: 0; box-sizing: border-box; }
 .vba-area { position: relative; width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
 * { box-sizing: border-box; }
@@ -19,8 +14,7 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     left: 0;
     top: 0;
     font-size: 50px;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
+    font-family: 'proximanovalight', sans-serif;
     background-color: #960e29;
     width: 600px;
     padding: 10px 20px;
@@ -32,7 +26,7 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     left: 0;
     top: 0;
     font-size: 40px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'proximanovalight', sans-serif;
     width: 600px;
     padding: 10px 20px;
     color: #ffffff;
