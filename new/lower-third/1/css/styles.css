@@ -5,30 +5,32 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
 
 #container1 {
     position: absolute;
-    left: -800px;
+    left: 100px;
     top: 450px;
 }
 
 #text1 {
+    width: 600px;
+    height: 67px;
+    padding: 10px 20px;
     position: absolute;
     left: 0;
     top: 0;
     font-size: 50px;
     font-family: 'proximanovalight', sans-serif;
     background-color: #960e29;
-    width: 600px;
-    padding: 10px 20px;
     color: #ffffff;
 }
 
 #text2 {
+    width: 600px;
+    height: 67px;
+    padding: 10px 20px;
     position: absolute;
     left: 0;
     top: 0;
     font-size: 40px;
     font-family: 'proximanovalight', sans-serif;
-    width: 600px;
-    padding: 10px 20px;
     color: #ffffff;
 }
 
@@ -39,4 +41,13 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     width: 600px;
     height: 5px;
     background-color: #ffffff;
+}
+
+#box {
+    width: 300px;
+    height: 67px;
+    background-color: #ffffff;
+    position: absolute;
+    left: -800px;
+    top: 450px;
 }

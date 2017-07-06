@@ -13,6 +13,7 @@
 <div class="vba-area">
 
     <div id="line" style="background-color: /* lines_color */#ffffff/* /lines_color */;"></div>
+    <div id="box" style="background-color: /* lines_color */#ffffff/* /lines_color */;"></div>
     <div id="container1">
         <div id="text2" style="color: /* text2_color */#ffffff/* /text2_color */;">
             <!-- text2 -->Subtitle<!-- /text2 -->
@@ -46,11 +47,19 @@
             left: '1280px'
         })
         .add({
+            targets: '#box',
+            easing: 'linear',
+            duration: 1000,
+            left: [-800, 800],
+            width: [300, 300, 0],
+            offset: 150
+        })
+        .add({
             targets: '#container1',
             easing: 'linear',
-            left: '100px',
+            left: ['-800px', '100px'],
             duration: 1000,
-            offset: 200
+            offset: 300
         })
         .add({
             targets: '#text2',
@@ -65,8 +74,8 @@
                     mainOptions.isPaused = false;
                     timeline.play();
                 }, mainOptions.isRendering
-                    ? mainOptions.delay * 2
-                    : mainOptions.delay);//delay x2 - for better rendering
+                    ? mainOptions.delay * 3//delay x3 - for better rendering
+                    : mainOptions.delay);
             }
         });
 
