@@ -1,0 +1,140 @@
+<html>
+<head>
+    <title>Lower Thirds animation #1</title>
+
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <div id="text1">
+        <!-- text1 -->Click the<!-- /text1 -->
+    </div>
+    <div id="text2">
+        <!-- text2 -->button below<!-- /text2 -->
+    </div>
+
+    <biv class="arrow" id="arrow1">
+        <div></div>
+        <div></div>
+    </biv>
+    <biv class="arrow arrow2" id="arrow2">
+        <div></div>
+        <div></div>
+    </biv>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
+        isPaused: false,
+        isRendering: false
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    /*
+    timeline
+        .add({
+            targets: '#line',
+            easing: 'linear',
+            duration: 1000,
+            left: '1280px'
+        })
+        .add({
+            targets: '#box',
+            easing: 'linear',
+            duration: 1000,
+            left: [-800, 800],
+            width: [300, 300, 0],
+            offset: 150
+        })
+        .add({
+            targets: '#container1',
+            easing: 'linear',
+            left: ['-800px', '100px'],
+            duration: 1000,
+            offset: 300
+        })
+        .add({
+            targets: '#text2',
+            easing: 'linear',
+            duration: 500,
+            top: '90px',
+            complete: function(anim) {
+                console.log( 'complete' );
+                timeline.reverse();
+                mainOptions.isPaused = true;
+                setTimeout(function(){
+                    mainOptions.isPaused = false;
+                    timeline.play();
+                }, mainOptions.isRendering
+                    ? mainOptions.delay * 3//delay x3 - for better rendering
+                    : mainOptions.delay);
+            }
+        });
+    */
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 10px; top: 10px;">
+    <button type="button" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" onclick="timeline.restart(); return false;">
+        Restart
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

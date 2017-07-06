@@ -1,0 +1,86 @@
+
+html, body { margin: 0; padding: 0; box-sizing: border-box; }
+.vba-area { position: relative; width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
+* { box-sizing: border-box; }
+
+#text1 {
+    width: 600px;
+    height: 67px;
+    padding: 10px 20px;
+    position: absolute;
+    left: 50%;
+    top: 70px;
+    margin-left: -300px;
+    font-size: 70px;
+    font-family: 'proximanovalight', sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
+#text2 {
+    width: 600px;
+    height: 67px;
+    padding: 10px 20px;
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    margin-left: -300px;
+    font-size: 70px;
+    font-family: 'proximanovalight', sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
+.arrow {
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    margin-left: -150px;
+}
+
+.arrow > div {
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #9fa8a0;
+}
+
+.arrow > div:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.63+0,0+100 */
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0.63) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0.63) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,0.63) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+}
+
+.arrow > div:nth-child(1) {
+    -ms-transform: skewY(20deg);
+    -webkit-transform: skewY(20deg);
+    transform: skewY(20deg);
+}
+
+.arrow > div:nth-child(2) {
+    left: 150px;
+    -ms-transform: skewY(-20deg);
+    -webkit-transform: skewY(-20deg);
+    transform: skewY(-20deg);
+}
+
+.arrow2 {
+    top: 360px;
+}
+.arrow2 > div {
+    background-color: #1da823;
+}
