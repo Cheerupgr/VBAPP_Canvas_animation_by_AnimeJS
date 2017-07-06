@@ -28,7 +28,8 @@
 
     var mainOptions = {
         delay: /* delay */3000/* /delay */,
-        isPaused: false
+        isPaused: false,
+        isRendering: false
     };
 
     var timeline = anime.timeline({
@@ -63,7 +64,9 @@
                 setTimeout(function(){
                     mainOptions.isPaused = false;
                     timeline.play();
-                }, mainOptions.delay * 2);//delay x2 - for better rendering
+                }, mainOptions.isRendering
+                    ? mainOptions.delay * 2
+                    : mainOptions.delay);//delay x2 - for better rendering
             }
         });
 
