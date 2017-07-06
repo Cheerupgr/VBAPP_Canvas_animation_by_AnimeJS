@@ -9,12 +9,13 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     padding: 10px 20px;
     position: absolute;
     left: 50%;
-    top: 70px;
+    top: 300px;
     margin-left: -300px;
     font-size: 70px;
-    font-family: 'proximanovalight', sans-serif;
-    color: #ffffff;
+    font-family: 'BloggerSans0', sans-serif;
+    color: /* text1_color */#ffffff/* /text1_color */;
     text-align: center;
+    opacity: 0;
 }
 
 #text2 {
@@ -23,12 +24,13 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     padding: 10px 20px;
     position: absolute;
     left: 50%;
-    top: 150px;
+    top: 380px;
     margin-left: -300px;
     font-size: 70px;
-    font-family: 'proximanovalight', sans-serif;
-    color: #ffffff;
+    font-family: 'BloggerSans0', sans-serif;
+    color: /* text2_color */#ffffff/* /text2_color */;
     text-align: center;
+    opacity: 0;
 }
 
 .arrow {
@@ -36,7 +38,7 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     height: 50px;
     position: absolute;
     left: 50%;
-    top: 300px;
+    top: -200px;
     margin-left: -150px;
 }
 
@@ -46,7 +48,7 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     position: absolute;
     left: 0;
     top: 0;
-    background-color: #9fa8a0;
+    background-color: /* arrow1_color */#9fa8a0/* /arrow1_color */;
 }
 
 .arrow > div:after {
@@ -78,9 +80,6 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     transform: skewY(-20deg);
 }
 
-.arrow2 {
-    top: 360px;
-}
 .arrow2 > div {
-    background-color: #1da823;
+    background-color: /* arrow2_color */#1da823/* /arrow2_color */;
 }

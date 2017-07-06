@@ -1,26 +1,19 @@
 {
-    "caption": "Lower Third Animation 1",
-    "duration": 5000,
-    "delay": 3000,
+    "caption": "Click the button below",
+    "duration": 3000,
     "options": [
         [
             {
                 "name": "text1",
                 "caption": "Text 1",
                 "type": "text",
-                "value": "Text Title"
+                "value": "Click the"
             },
             {
                 "name": "text1_color",
                 "caption": "Text 1 color",
                 "type": "color",
                 "value": "#ffffff"
-            },
-            {
-                "name": "text1_bgcolor",
-                "caption": "Text 1 background color",
-                "type": "color",
-                "value": "#960e29"
             }
         ],
         [
@@ -28,7 +21,7 @@
                 "name": "text2",
                 "caption": "Text 2",
                 "type": "text",
-                "value": "Subtitle"
+                "value": "button below"
             },
             {
                 "name": "text2_color",
@@ -39,10 +32,16 @@
         ],
         [
             {
-                "name": "lines_color",
-                "caption": "Color of lines",
+                "name": "arrow1_color",
+                "caption": "Arrow 1 color",
                 "type": "color",
-                "value": "#ffffff"
+                "value": "#9fa8a0"
+            },
+            {
+                "name": "arrow2_color",
+                "caption": "Arrow 2 color",
+                "type": "color",
+                "value": "#1da823"
             }
         ]
     ]

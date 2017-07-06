@@ -18,8 +18,8 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     top: 0;
     font-size: 50px;
     font-family: 'proximanovalight', sans-serif;
-    background-color: #960e29;
-    color: #ffffff;
+    background-color: /* text1_bgcolor */#960e29/* /text1_bgcolor */;
+    color: /* text1_color */#ffffff/* /text1_color */;
 }
 
 #text2 {
@@ -31,7 +31,7 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     top: 0;
     font-size: 40px;
     font-family: 'proximanovalight', sans-serif;
-    color: #ffffff;
+    color: /* text2_color */#ffffff/* /text2_color */;
 }
 
 #line {
@@ -40,13 +40,13 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
     top: 420px;
     width: 600px;
     height: 5px;
-    background-color: #ffffff;
+    background-color: /* lines_color */#ffffff/* /lines_color */;
 }
 
 #box {
     width: 300px;
     height: 67px;
-    background-color: #ffffff;
+    background-color: /* lines_color */#ffffff/* /lines_color */;
     position: absolute;
     left: -800px;
     top: 450px;

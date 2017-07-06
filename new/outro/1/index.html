@@ -1,8 +1,8 @@
 <html>
 <head>
-    <title>Lower Thirds animation #1</title>
+    <title>Click the button below</title>
 
-    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/BloggerSans/font.css" rel="stylesheet">
     <script src="../../../lib/animejs/anime.min.js"></script>
 
     <link href="css/styles.css" rel="stylesheet">
@@ -19,11 +19,11 @@
         <!-- text2 -->button below<!-- /text2 -->
     </div>
 
-    <biv class="arrow" id="arrow1">
+    <biv class="arrow arrow1">
         <div></div>
         <div></div>
     </biv>
-    <biv class="arrow arrow2" id="arrow2">
+    <biv class="arrow arrow2">
         <div></div>
         <div></div>
     </biv>
@@ -33,7 +33,6 @@
 <script>
 
     var mainOptions = {
-        delay: /* delay */3000/* /delay */,
         isPaused: false,
         isRendering: false
     };
@@ -44,47 +43,34 @@
         autoplay: true
     });
 
-    /*
     timeline
         .add({
-            targets: '#line',
-            easing: 'linear',
+            targets: '#text1',
+            top: 70,
+            opacity: [0, 1],
             duration: 1000,
-            left: '1280px'
-        })
-        .add({
-            targets: '#box',
-            easing: 'linear',
-            duration: 1000,
-            left: [-800, 800],
-            width: [300, 300, 0],
-            offset: 150
-        })
-        .add({
-            targets: '#container1',
-            easing: 'linear',
-            left: ['-800px', '100px'],
-            duration: 1000,
-            offset: 300
+            easing: 'linear'
         })
         .add({
             targets: '#text2',
-            easing: 'linear',
-            duration: 500,
-            top: '90px',
-            complete: function(anim) {
-                console.log( 'complete' );
-                timeline.reverse();
-                mainOptions.isPaused = true;
-                setTimeout(function(){
-                    mainOptions.isPaused = false;
-                    timeline.play();
-                }, mainOptions.isRendering
-                    ? mainOptions.delay * 3//delay x3 - for better rendering
-                    : mainOptions.delay);
-            }
+            top: 150,
+            opacity: [0, 1],
+            duration: 1000,
+            easing: 'linear'
+        })
+        .add({
+            targets: '.arrow',
+            top: function(el, index){
+                return 300 + (index * 70);
+            },
+            delay: function(el, i){
+                return i * 300;
+            },
+            opacity: [0, 1],
+            duration: 2000,
+            easing: 'easeOutQuad',
+            offset: 1000
         });
-    */
 
     var animationPlayToggle = function(){
         if( mainOptions.isPaused ){
