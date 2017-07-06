@@ -57,12 +57,13 @@
             duration: 500,
             top: '90px',
             complete: function(anim) {
+                console.log( 'complete' );
                 timeline.reverse();
                 mainOptions.isPaused = true;
                 setTimeout(function(){
                     mainOptions.isPaused = false;
                     timeline.play();
-                }, mainOptions.delay);
+                }, mainOptions.delay * 2);//delay x2 - for better rendering
             }
         });
 
