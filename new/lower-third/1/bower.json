@@ -1,0 +1,14 @@
+{
+  "name": "animation_templates",
+  "version": "0.1",
+  "authors": [],
+  "main": "index.html",
+  "license": "Commercial",
+  "homepage": "",
+  "dependencies": {
+    "animejs": "^2.0.2"
+  },
+  "keywords": [
+    "animation"
+  ]
+}

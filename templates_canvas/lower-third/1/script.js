@@ -104,6 +104,14 @@ var action_seq = new PIXI.action.Sequence([
 ]);
 PIXI.actionManager.runAction(text1Container, action_seq);
 
+app.ticker.add(function( time ) {
+    if( !isPaused ) {
+        app.renderer.render(app.stage);
+        PIXI.actionManager.update();
+    }
+});
+
+/*
 function animate() {
     if( !isPaused ){
         app.renderer.render( app.stage );
@@ -112,6 +120,7 @@ function animate() {
     window.requestAnimationFrame( animate );
 }
 animate();
+*/
 
 var animationPauseToggle = function(pause){
     if( typeof pause === 'undefined' ){
@@ -120,7 +129,7 @@ var animationPauseToggle = function(pause){
         isPaused = pause;
     }
     if( !isPaused ){
-        animate();
+        //animate();
     }
 };
 

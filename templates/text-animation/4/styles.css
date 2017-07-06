@@ -1,12 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
+html, body { margin: 0; padding: 0; }
+
 body {
-    background: #000000;
     font: 50px 'Indie Flower', cursive;
     text-align: center;
     line-height: 6;
     vertical-align: bottom;
 }
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 
 span {
     display: inline-block;

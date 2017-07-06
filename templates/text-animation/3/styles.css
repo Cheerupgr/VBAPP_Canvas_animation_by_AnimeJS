@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Play");
 
+html, body { margin: 0; padding: 0; }
+
 html, body {
-    background: #000000;
     margin: 0;
     height: 100%;
     overflow: hidden;
 }
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
 
 #textFill {
     -webkit-animation: alphaRandom 1s linear infinite;

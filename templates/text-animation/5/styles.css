@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
+html, body { margin: 0; padding: 0; }
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
+
 body {
     height: 100vh;
-    background-color: #000000;
     position: relative;
 }
 body:before {
