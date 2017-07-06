@@ -1,0 +1,5 @@
+
+html, body { margin: 0; padding: 0; box-sizing: border-box; }
+.vba-area { position: relative; width: 1280px; height: 720px; overflow: hidden; background: none #000000; }
+* { box-sizing: border-box; }
+

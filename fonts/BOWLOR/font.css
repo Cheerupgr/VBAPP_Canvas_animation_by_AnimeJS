@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'BOWLOR';
+	src: url('./BOWLOR.eot');
+	src: local('BOWLOR'), url('./BOWLOR.woff') format('woff'), url('./BOWLOR.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_997">Text with this font applied</p> */
+.fontsforweb_fontid_997 {
+	font-family: 'BOWLOR' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

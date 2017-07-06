@@ -1,0 +1,222 @@
+<html>
+<head>
+    <title>Fireworks</title>
+
+    <link href="../../../fonts/eurof55/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="fireworks"></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        isPaused: false,
+        isRendering: false
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.fireworks');
+    var ctx = canvasEl.getContext('2d');
+    var numberOfParticules = 50;
+    var colors = ['#FF1461', '#18FF92', '#5A87FF', '#FBF38C'];
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function setParticuleDirection(p) {
+        var angle = anime.random(0, 500) * Math.PI / 180;
+        var value = anime.random(90, 400);
+        var radius = [-1, 1][anime.random(0, 1)] * value;
+        return {
+            x: p.x + radius * Math.cos(angle),
+            y: p.y + radius * Math.sin(angle)
+        }
+    }
+
+    function createParticule(x,y) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.color = colors[anime.random(0, colors.length - 1)];
+        p.radius = anime.random(32, 56);
+        p.endPos = setParticuleDirection(p);
+        p.draw = function() {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+        };
+        return p;
+    }
+
+    function createCircle(x,y) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.color = '#FFF';
+        p.radius = 0.1;
+        p.alpha = .5;
+        p.lineWidth = 70;
+        p.draw = function() {
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
+            ctx.lineWidth = p.lineWidth;
+            ctx.strokeStyle = p.color;
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        };
+        return p;
+    }
+
+    function createText(text, x, y, fontSize){
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.draw = function() {
+            ctx.font = p.fontSize + 'px eurof55';
+            ctx.fillStyle = /* text_color */'#ffffff'/* /text_color */;
+            ctx.textAlign = 'center';
+            ctx.fillText(text, p.x, p.y);
+        };
+        return p;
+    }
+
+    function renderParticule(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function animateParticules(x, y) {
+        var circle = createCircle(x, y);
+        var particules = [];
+        for (var i = 0; i < numberOfParticules; i++) {
+            particules.push(createParticule(x, y));
+        }
+        var text = createText(/* text */'Fireworks'/* /text */, x, y, 0);
+        timeline
+            .add({
+                targets: particules,
+                x: function(p) { return p.endPos.x; },
+                y: function(p) { return p.endPos.y; },
+                radius: 0.1,
+                duration: anime.random(2000, 2500),
+                easing: 'easeOutExpo',
+                update: renderParticule
+            })
+            .add({
+                targets: circle,
+                radius: anime.random(300, 400),
+                lineWidth: 0,
+                alpha: {
+                    value: 0,
+                    easing: 'linear',
+                    duration: anime.random(600, 800)
+                },
+                duration: anime.random(2000, 2500),
+                easing: 'easeOutExpo',
+                update: renderParticule,
+                offset: 0
+            })
+            .add({
+                targets: text,
+                fontSize: 120,
+                duration: 1000,
+                easing: 'linear',
+                update: renderParticule,
+                offset: 200
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            }
+        }
+    });
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+    animateParticules( centerX, centerY );
+
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 10px; top: 10px;">
+    <button type="button" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" onclick="animationRestart(); return false;">
+        Restart
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

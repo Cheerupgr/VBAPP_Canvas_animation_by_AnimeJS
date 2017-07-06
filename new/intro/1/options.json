@@ -1,0 +1,48 @@
+{
+    "caption": "Fireworks",
+    "duration": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "Click the"
+            },
+            {
+                "name": "text1_color",
+                "caption": "Text 1 color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "button below"
+            },
+            {
+                "name": "text2_color",
+                "caption": "Text 2 color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "arrow1_color",
+                "caption": "Arrow 1 color",
+                "type": "color",
+                "value": "#9fa8a0"
+            },
+            {
+                "name": "arrow2_color",
+                "caption": "Arrow 2 color",
+                "type": "color",
+                "value": "#1da823"
+            }
+        ]
+    ]
+}
