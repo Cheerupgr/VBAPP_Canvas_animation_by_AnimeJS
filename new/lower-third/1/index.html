@@ -106,24 +106,27 @@
 </script>
 
 <!-- BUTTONS -->
-<div id="vba-buttons" style="display: none; position: fixed; right: 10px; top: 10px;">
-    <button type="button" onclick="animationPlayToggle(); return false;">
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 70px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
         Play
     </button>
-    <button type="button" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
         Pause
     </button>
-    <button type="button" onclick="timeline.restart(); return false;">
-        Restart
-    </button>
 </div>
+<button type="button" class="vba-btn" id="vba-button-replay" onclick="timeline.restart(); return false;" style="display: none; position: fixed; right: 20px; top: 15px;">
+    Restart
+</button>
 <script>
     //To display buttons add #buttons hash to page address and reload
     if( window.location.hash.indexOf('buttons') > -1 ){
         document.getElementById('vba-buttons').style.display = 'block';
+    }
+    if( window.location.hash.indexOf('replay') > -1 ){
+        document.getElementById('vba-button-replay').style.display = 'block';
     }
 </script>
 <!-- /BUTTONS -->
