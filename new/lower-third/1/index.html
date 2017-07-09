@@ -30,7 +30,8 @@
     var mainOptions = {
         delay: /* delay */3000/* /delay */,
         isPaused: false,
-        isRendering: false
+        isRendering: false,
+        timer: null
     };
 
     var timeline = anime.timeline({
@@ -67,9 +68,10 @@
             duration: 500,
             top: '90px',
             complete: function(anim) {
+                console.log( 'complete' );
                 timeline.reverse();
                 mainOptions.isPaused = true;
-                setTimeout(function(){
+                mainOptions.timer = setTimeout(function(){
                     mainOptions.isPaused = false;
                     timeline.play();
                 }, mainOptions.isRendering
@@ -108,13 +110,9 @@
     };
 
     var animationStop = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.reversed ){
-            timeline.reverse();
-        }
-        timeline.seek(0);
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
         timeline.pause();
     };
 

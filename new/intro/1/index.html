@@ -194,13 +194,9 @@
     };
 
     var animationStop = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.reversed ){
-            timeline.reverse();
-        }
-        timeline.seek(0);
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
         timeline.pause();
     };
 
