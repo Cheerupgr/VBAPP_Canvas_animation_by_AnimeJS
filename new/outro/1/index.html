@@ -97,10 +97,22 @@
         timeline.pause();
     };
 
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.seek(0);
+        timeline.pause();
+    };
+
 </script>
 
 <!-- BUTTONS -->
-<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 70px;">
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
     <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
         Play / Pause
     </button>
@@ -110,17 +122,17 @@
     <button type="button" class="vba-btn" onclick="animationPause(); return false;">
         Pause
     </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
 </div>
-<button type="button" class="vba-btn" id="vba-button-replay" onclick="timeline.restart(); return false;" style="display: none; position: fixed; right: 20px; top: 15px;">
-    Replay
-</button>
 <script>
     //To display buttons add #buttons hash to page address and reload
     if( window.location.hash.indexOf('buttons') > -1 ){
         document.getElementById('vba-buttons').style.display = 'block';
-    }
-    if( window.location.hash.indexOf('replay') > -1 ){
-        document.getElementById('vba-button-replay').style.display = 'block';
     }
 </script>
 <!-- /BUTTONS -->
