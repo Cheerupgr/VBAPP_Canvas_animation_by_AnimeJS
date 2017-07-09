@@ -152,17 +152,20 @@
         duration: Infinity,
         update: function() {
             if( !timeline.paused ){
-                ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+                clearCanvas();
             }
         }
     });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
 
     setCanvasSize();
 
     var centerX = canvasEl.width / 2;
     var centerY = canvasEl.height / 2;
     animateParticules( centerX, centerY );
-
 
     var animationPlayToggle = function(){
         if( mainOptions.isPaused ){
@@ -198,6 +201,7 @@
         clearTimeout( mainOptions.timer );
         timeline.restart();
         timeline.pause();
+        clearCanvas();
     };
 
 </script>
