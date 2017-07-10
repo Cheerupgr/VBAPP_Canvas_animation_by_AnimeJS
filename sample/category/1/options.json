@@ -1,0 +1,52 @@
+{
+    "caption": "Fireworks",
+    "duration": 3000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "Fireworks",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            }
+        ],
+        [
+            {
+                "name": "fireworks_color1",
+                "caption": "Fireworks color 1",
+                "type": "color",
+                "value": "#FF1461",
+                "quotes": true
+            },
+            {
+                "name": "fireworks_color2",
+                "caption": "Fireworks color 2",
+                "type": "color",
+                "value": "#18FF92",
+                "quotes": true
+            },
+            {
+                "name": "fireworks_color3",
+                "caption": "Fireworks color 3",
+                "type": "color",
+                "value": "#5A87FF",
+                "quotes": true
+            },
+            {
+                "name": "fireworks_color4",
+                "caption": "Fireworks color 4",
+                "type": "color",
+                "value": "#FBF38C",
+                "quotes": true
+            }
+        ]
+    ]
+}
