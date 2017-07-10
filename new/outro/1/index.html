@@ -73,7 +73,7 @@
         });
 
     //Playback control
-    var animationPlayer = {
+    var playbackControl = {
 
         playToggle: function(){
             if( mainOptions.isPaused ){
@@ -109,7 +109,6 @@
             clearTimeout( mainOptions.timer );
             timeline.restart();
             timeline.pause();
-            clearCanvas();
         },
 
         seek: function( miliseconds ){
@@ -126,22 +125,22 @@
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayer.playToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlayer.play(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlayer.pause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlayer.stop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlayer.seek(2000); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2000); return false;">
         Jump to 50% time
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlayer.restart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>
