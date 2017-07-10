@@ -24,8 +24,14 @@
         timer: null
     };
 
-    var canvasEl = document.querySelector('canvas');
-    var ctx = canvasEl.getContext('2d');
+    var canvasEl = document.querySelector('canvas'),
+        ctx = canvasEl.getContext('2d'),
+        colors = [
+            /* text_color1 */'#FF1461'/* /text_color1 */,
+            /* text_color2 */'#18FF92'/* /text_color2 */,
+            /* text_color3 */'#5A87FF'/* /text_color3 */,
+            /* text_color4 */'#FBF38C'/* /text_color4 */
+        ];
 
     function setCanvasSize() {
         var rectObject = canvasEl.parentNode.getBoundingClientRect();
@@ -87,10 +93,11 @@
         p.startY = y;
         p.fontSize = fontSize;
         p.angle = 20;
+        p.color = colors[anime.random(0, colors.length - 1)];
         p.draw = function() {
             ctx.save();
             ctx.font = p.fontSize + 'px GOHAN, sans-serif';
-            ctx.fillStyle = /* text_color */'#ffffff'/* /text_color */;
+            ctx.fillStyle = p.color;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.translate(p.startX, p.startY);
@@ -115,6 +122,9 @@
                 },
                 fontSize: function(p, i){
                     return anime.random(p.fontSize - 60, p.fontSize + 60);
+                },
+                color: function(p, i){
+                    return colors[anime.random(0, colors.length - 1)];
                 },
                 duration: 500,
                 easing: 'linear',
