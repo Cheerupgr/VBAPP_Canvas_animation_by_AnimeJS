@@ -1,0 +1,231 @@
+<html>
+<head>
+    <title>Dancing letters</title>
+
+    <link href="../../../fonts/GOHAN/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area" style="font-family: GOHAN, sans-serif;">
+
+    <canvas></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var canvasEl = document.querySelector('canvas');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        var rectObject = canvasEl.parentNode.getBoundingClientRect();
+        canvasEl.width = rectObject.width;
+        canvasEl.height = rectObject.height;
+        canvasEl.style.width = rectObject.width + 'px';
+        canvasEl.style.height = rectObject.height + 'px';
+    }
+
+    var timeline = anime.timeline({
+        loop: true,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    function drawObjects( anim ) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    createSplitText = function(text, x, y, fontSize, spacing)
+    {
+        ctx.font = fontSize + 'px GOHAN, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        var widthTotal = ctx.measureText(text).width,
+            letters = [];
+
+        x -= widthTotal / 2;
+
+        while (text !== ''){
+            var char = text.substr(0, 1);
+            text = text.substr(1);
+            var charSize = ctx.measureText(char);
+
+            var curX = x + charSize.width / 2;
+            var p = createText(char, curX, y, fontSize);
+            p.w = charSize.width;
+            p.h = charSize.height;
+
+            var width = text === '' ? 0 : ctx.measureText(text).width;
+            var widthChar = widthTotal - width;
+
+            x += widthChar + spacing;
+            widthTotal = width;
+
+            letters.push( p );
+        }
+        return letters;
+    };
+
+    function createText(text, x, y, fontSize){
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.startX = x;
+        p.startY = y;
+        p.fontSize = fontSize;
+        p.angle = 20;
+        p.draw = function() {
+            ctx.save();
+            ctx.font = p.fontSize + 'px GOHAN, sans-serif';
+            ctx.fillStyle = /* text_color */'#ffffff'/* /text_color */;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.translate(p.startX, p.startY);
+            ctx.rotate(Math.PI / 180 * p.angle);
+            ctx.translate(-p.startX, -p.startY);
+            ctx.fillText(text, p.x, p.y);
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function doAnimation() {
+
+        var centerPoint = [ canvasEl.width / 2, canvasEl.height / 2 ];
+        var splitText = createSplitText(/* text */'Dancing letters'/* /text */, centerPoint[0], centerPoint[1], 120, 0);
+
+        timeline
+            .add({
+                targets: splitText,
+                angle: function(p) {
+                    return p.angle - 40;
+                },
+                fontSize: function(p, i){
+                    return anime.random(p.fontSize - 60, p.fontSize + 60);
+                },
+                duration: 500,
+                easing: 'linear',
+                update: drawObjects,
+                //delay: function(el, i, l) {
+                //    return i * 100;
+                //},
+                offset: 0
+            });
+
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    window.onload = function () {
+        setCanvasSize();
+        setTimeout(doAnimation, 10);//Time for load font
+    };
+
+    //Playback control
+    var playbackControl = {
+
+        playToggle: function(){
+            if( mainOptions.isPaused ){
+                return;
+            }
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
+            if( mainOptions.isPaused ){
+                return;
+            }
+            timeline.play();
+        },
+
+        pause: function(){
+            if( mainOptions.isPaused ){
+                return;
+            }
+            timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearCanvas();
+            mainOptions.isPaused = false;
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            mainOptions.isPaused = false;
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
+        }
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

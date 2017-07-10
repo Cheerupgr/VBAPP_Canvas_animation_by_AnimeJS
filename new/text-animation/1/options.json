@@ -1,0 +1,22 @@
+{
+    "caption": "Dancing letters",
+    "duration": 4000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "Dancing letters",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            }
+        ]
+    ]
+}

@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'GOHAN';
+	src: url('./GOHAN.eot');
+	src: local('GOHAN'), url('./GOHAN.woff') format('woff'), url('./GOHAN.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_881">Text with this font applied</p> */
+.fontsforweb_fontid_881 {
+	font-family: 'GOHAN' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
