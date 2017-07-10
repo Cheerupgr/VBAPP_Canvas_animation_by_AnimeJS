@@ -11,29 +11,29 @@
                 "quotes": true
             },
             {
-                "name": "text_color1",
-                "caption": "Text color 1",
+                "name": "letter_color1",
+                "caption": "Letter color 1",
                 "type": "color",
                 "value": "#FF1461",
                 "quotes": true
             },
             {
-                "name": "text_color2",
-                "caption": "Text color 2",
+                "name": "letter_color2",
+                "caption": "Letter color 2",
                 "type": "color",
                 "value": "#18FF92",
                 "quotes": true
             },
             {
-                "name": "text_color3",
-                "caption": "Text color 3",
+                "name": "letter_color3",
+                "caption": "Letter color 3",
                 "type": "color",
                 "value": "#5A87FF",
                 "quotes": true
             },
             {
-                "name": "text_color4",
-                "caption": "Text color 4",
+                "name": "letter_color4",
+                "caption": "Letter color 4",
                 "type": "color",
                 "value": "#FBF38C",
                 "quotes": true
