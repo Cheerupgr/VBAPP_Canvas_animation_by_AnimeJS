@@ -73,9 +73,7 @@
                 mainOptions.timer = setTimeout(function(){
                     mainOptions.isPaused = false;
                     timeline.play();
-                }, mainOptions.isRendering
-                    ? mainOptions.delay * 3//delay x3 - for better rendering
-                    : mainOptions.delay);
+                }, mainOptions.delay);
             }
         });
 
