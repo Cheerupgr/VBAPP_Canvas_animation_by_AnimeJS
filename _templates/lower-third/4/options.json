@@ -1,0 +1,54 @@
+{
+    "caption": "Lower Third Animation 4",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "text",
+                "value": "$"
+            },
+            {
+                "name": "icon_color",
+                "caption": "Icon color",
+                "type": "color",
+                "value": "#ffffff"
+            },
+            {
+                "name": "icon_bgcolor",
+                "caption": "Icon background color",
+                "type": "color",
+                "value": "#000"
+            }
+        ],
+        [
+            {
+                "name": "white_hover_bgcolor",
+                "caption": "White Hover Color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "Lower Thirds Animation"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text 2 color",
+                "type": "color",
+                "value": "#ffffff"
+            },
+            {
+                "name": "text_bgcolor",
+                "caption": "Text background color",
+                "type": "color",
+                "value": "#000000"
+            }
+        ]
+    ]
+}

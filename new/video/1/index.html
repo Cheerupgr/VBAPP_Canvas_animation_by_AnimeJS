@@ -1,0 +1,202 @@
+<html>
+<head>
+    <title>Logo presentation #1</title>
+
+    <link href="../../../fonts/BOWLOR/font.css" rel="stylesheet">
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <video src="video/video.mp4" width="480" height="360" autoplay="autoplay" controls style="display:none;"></video>
+
+    <canvas></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        isRendering: false,
+        timer: null
+    };
+
+    var canvasEl, ctx, video, img, videoWidth, videoHeight, imageWidth, imageHeight;
+
+    function setCanvasSize() {
+        var rectObject = canvasEl.parentNode.getBoundingClientRect();
+        canvasEl.width = rectObject.width;
+        canvasEl.height = rectObject.height;
+        canvasEl.style.width = rectObject.width + 'px';
+        canvasEl.style.height = rectObject.height + 'px';
+    }
+
+    function drawText( text, x, y ) {
+
+        ctx.font = '60px BOWLOR';
+        ctx.fillStyle = /* text_color */'#ffffff'/* /text_color */;
+        ctx.textAlign = 'center';
+        ctx.fillText(text, x, y);
+
+    }
+
+    function getProps( sourceWidth, sourceHeight ) {
+
+        var naturalRatio = sourceWidth / sourceHeight,
+            canvasWidth = canvasEl.width,
+            canvasHeight = canvasEl.height,
+            aspectRatio = canvasWidth / canvasHeight,
+            props;
+
+        if ( naturalRatio >= aspectRatio ) {
+
+            props = {
+                dx: 0,
+                dy: (canvasHeight - (canvasWidth / naturalRatio)) / 2,
+                dWidth: canvasWidth,
+                dHeight: canvasWidth / naturalRatio
+            };
+
+        } else {
+
+            props = {
+                dx: (canvasWidth - (canvasHeight * naturalRatio)) / 2,
+                dy: 0,
+                dWidth: canvasHeight * naturalRatio,
+                dHeight: canvasHeight
+            };
+
+        }
+
+        return props;
+    }
+
+    function drawVideo() {
+
+        var centerX = canvasEl.width / 2,
+            centerY = canvasEl.height / 2,
+            videoProps = getProps( videoWidth, videoHeight ),
+            imgProps = {
+                dx: centerX - (imageWidth / 2),
+                dy: centerY - (imageHeight / 2),
+                dWidth: imageWidth,
+                dHeight: imageHeight
+            };
+
+        mainOptions.timer = setInterval(function(){
+
+            ctx.drawImage( video, videoProps.dx, videoProps.dy, videoProps.dWidth, videoProps.dHeight );
+            ctx.drawImage( img, imgProps.dx, imgProps.dy, imgProps.dWidth, imgProps.dHeight );
+            drawText( /* text */'Your logo here'/* /text */, centerX, centerY - 200 );
+
+        }, 1000 / 25);
+    }
+
+    function init() {
+        canvasEl = document.querySelector('canvas');
+        ctx = canvasEl.getContext('2d');
+        video = document.querySelector('video');
+
+        //Load image
+        img = new Image;
+        img.onload = function() {
+            imageWidth = this.width;
+            imageHeight = this.height;
+        };
+        img.src = /* logo_image */'img/logo.png'/* /logo_image */;
+
+        setCanvasSize();
+
+        video.addEventListener('loadeddata', function(){
+            videoWidth = video.videoWidth;
+            videoHeight = video.videoHeight;
+        }, false);
+
+        video.addEventListener('play', function(){
+            drawVideo();
+        }, false);
+
+        video.addEventListener('pause', function(){
+            clearInterval( mainOptions.timer );
+        }, false);
+    }
+
+    window.onload = function() {
+        init();
+    };
+
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return video.paused;
+        },
+
+        playToggle: function(){
+            if( video.paused ){
+                video.play();
+            } else {
+                video.pause();
+            }
+        },
+
+        play: function(){
+            video.play();
+        },
+
+        pause: function(){
+            video.pause();
+        },
+
+        restart: function(){
+            video.currentTime = 0;
+            video.play();
+        },
+
+        stop: function(){
+            video.currentTime = 0;
+            video.pause();
+        },
+
+        seek: function( miliseconds ){
+            video.currentTime = miliseconds;
+            video.play();
+        }
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

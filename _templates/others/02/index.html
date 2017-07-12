@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Template 02</title>
+
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+        body { font-size: 25px; }
+        .vba-area { width: 1280px; height: 720px; border: 1px solid #000; }
+    </style>
+    <script type="text/javascript">
+        function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    };
+    rawFile.send(null);
+}
+
+
+var task1 = function (){
+  return new Promise (function(resolve, reject){
+    readTextFile("options.json", function(text){
+    var data = JSON.parse(text);
+    var options = data.options;
+    document.getElementById('text1_name').innerHTML = options[0][0]['value'];
+    document.getElementById("text1_name").style.color = options[0][1]['value'];
+    document.getElementById('text1_caption').innerHTML = options[1][0]['value'];
+    document.getElementById("text1_name").style.color = options[1][1]['value'];
+    
+    }); 
+  });
+};
+task1();
+
+    </script>
+</head>
+<body>
+
+<main class="vba-area">
+    <div id="animation-1" class="animation">
+        <div class="red" style="color:/* lines_color */#cf4c4e/* /lines_color */;">/</div>
+        <div class="white light mask">
+            <div id="text1_name"></div>
+        </div>
+        <div class="white light mask">
+            <div id="text1_caption"></div>
+        </div>
+    </div>
+
+    <div id="animation-2" class="animation">
+        <div class="red bold arimo mask">
+            <div id="text2_name"> <!-- text3 --> John Doe <!-- /text3 --> </div>
+        </div>
+        <div class="white light mask">
+            <div id="text2_caption"> <!-- text4 --> Motion Designer <!-- /text4 --> </div>
+        </div>
+    </div>
+
+    
+</main>
+
+</body>
+</html>

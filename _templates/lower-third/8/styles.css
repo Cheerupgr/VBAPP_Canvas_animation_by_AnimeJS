@@ -1,0 +1,185 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+* {
+     box-sizing: border-box;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
+
+/** Animations Keyframes **/
+
+@keyframes animation-title-bg{
+    0%{
+        -webkit-clip-path: polygon(0 0, 100% 0%, 100% 0%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 0% 0%, 0% 0%, 00% 100%, 0 100%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+    }
+}
+@keyframes animation-sub-text-bg{
+    0%{
+        -webkit-clip-path: polygon(0 0, 0% 0, 00% 100%, 100% 100%, 0% 70%);
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 70%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+    }
+}
+@keyframes animation-title-text{
+    0%,25%{
+        bottom:-2em;
+    }
+    60%,100%{
+        bottom:0px;
+    }
+}
+@keyframes animation-sub-text{
+    0%,25%{
+      top:-2em;
+    }
+    60%, 100%{
+       top:0px;
+    }
+}
+
+@-webkit-keyframes animation-title-bg{
+    0%{
+        -webkit-clip-path: polygon(0 0, 100% 0%, 100% 0%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 0% 0%, 0% 0%, 00% 100%, 0 100%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+    }
+}
+@-webkit-keyframes animation-sub-text-bg{
+    0%{
+        -webkit-clip-path: polygon(0 0, 0% 0, 00% 100%, 100% 100%, 0% 70%);
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 70%);
+    }
+    35%,100%{
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+    }
+}
+@-webkit-keyframes animation-title-text{
+    0%,25%{
+        bottom:-2em;
+    }
+    60%,100%{
+        bottom:0px;
+    }
+}
+@-webkit-keyframes animation-sub-text{
+    0%,25%{
+        top:-2em;
+    }
+    60%, 100%{
+        top:0px;
+    }
+}
+
+/** Animations Keyframes **/
+
+.animation{
+    width:auto;
+    height:auto;
+    float:left;
+    position:absolute;
+    bottom:5em;
+    left: 3em;
+}
+.text-1{
+    min-width:2em;
+    height: auto;
+    text-align:center;
+    float:left;
+    font-family:Arimo;
+    letter-spacing: .05em;
+    margin-top:20px;
+}
+.text-1 .title{
+    font-size:20px;
+    text-transform: uppercase;
+    background:#659de5;
+    padding:5px 20px;
+    vertical-align: middle;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    -webkit-clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 93% 0%, 100% 30%, 100% 100%, 0 100%);
+    animation:animation-title-bg 2s ease 1 alternate both;
+    -webkit-animation:animation-title-bg 2s ease 1 alternate both;
+    -moz-animation:animation-title-bg 2s ease 1 alternate both;
+    -o-animation:animation-title-bg 2s ease 1 alternate both;
+}
+.text-1 .title span{
+    position: relative;
+    right:0px;
+    width:100%;
+    animation:animation-title-text 2s ease 1 alternate both;
+    -webkit-animation:animation-title-text 2s ease 1 alternate both;
+    -moz-animation:animation-title-text 2s ease 1 alternate both;
+    -o-animation:animation-title-text 2s ease 1 alternate both;
+}
+.text-1 .sub-text{
+    width:100%;
+    background:#fff;
+    padding:5px 20px;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%, 0% 70%);
+    animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -webkit-animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -moz-animation:animation-sub-text-bg 2s ease 1 alternate both;
+    -o-animation:animation-sub-text-bg 2s ease 1 alternate both;
+}
+.text-1 .sub-text span{
+    position: relative;
+    left:0px;
+    width:100%;
+    animation:animation-sub-text 2s ease 1 alternate both;
+    -webkit-animation:animation-sub-text 2s ease 1 alternate both;
+    -moz-animation:animation-sub-text 2s ease 1 alternate both;
+    -o-animation:animation-sub-text 2s ease 1 alternate both;
+}

@@ -1,0 +1,42 @@
+{
+    "caption": "Lower Third Animation 9",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "file",
+                "value": "img/myimage.png"
+            }
+        ],
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "Full HD Resolution "
+            },
+            {
+                "name": "text1_color",
+                "caption": "Text color 1",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "Lower Third"
+            },
+            {
+                "name": "text2_color",
+                "caption": "Text color 2",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

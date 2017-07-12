@@ -1,0 +1,54 @@
+{
+  "caption": "Intro Animation 8",
+  "duration": 7000,
+  "options": [
+    [
+      {
+        "name": "text-1",
+        "caption": "Text 1",
+        "type": "text",
+        "value": "This intro"
+      }
+    ],
+    [
+      {
+        "name": "text-2",
+        "caption": "Text 2",
+        "type": "text",
+        "value": "is sensational"
+      }
+    ],
+    [
+      {
+        "name": "text-3",
+        "caption": "Text 3",
+        "type": "text",
+        "value": "and"
+      }
+    ],
+    [
+      {
+        "name": "text-4",
+        "caption": "Text 4",
+        "type": "text",
+        "value": "awesome..."
+      }
+    ],
+    [
+      {
+        "name": "text-5",
+        "caption": "Text 5",
+        "type": "text",
+        "value": "YOUR LOGO"
+      }
+    ],
+    [
+      {
+        "name": "text_color",
+        "caption": "Text Color",
+        "type": "color",
+        "value": "#ffffff"
+      }
+    ]
+  ]
+}

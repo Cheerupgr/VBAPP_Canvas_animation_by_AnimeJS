@@ -1,0 +1,170 @@
+@import "https://fonts.googleapis.com/css?family=Baloo+Paaji";
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Baloo Paaji', cursive;
+  background: -webkit-radial-gradient(center, #dc143c, #580818);
+  background: -moz-radial-gradient(center, #dc143c, #580818);
+  background: -o-radial-gradient(center, #dc143c, #580818);
+  background: -ms-radial-gradient(center, #dc143c, #580818);
+  background: radial-gradient(center, #dc143c, #580818);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:0px;
+  padding:0px;
+}
+.container {
+  width: 1080px;
+  height: auto;
+  position: relative;
+}
+h1{
+  font-size: 75px;
+  text-transform: uppercase;
+}
+h1 span{
+  width: 100%;
+  float: left;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: titleAnimation 3s ease;
+  -webkit-animation: titleAnimation 3s ease;
+  -moz-animation: titleAnimation 3s ease;
+  -o-animation: titleAnimation 3s ease;
+
+}
+h1 span {
+  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+h1 span:first-child {
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  -o-animation-delay: 0.7s;
+}
+h1 span:last-child {
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+}
+
+@keyframes titleAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+  }
+}
+
+@-webkit-keyframes titleAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+  }
+}
+
+@-moz-keyframes titleAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+  }
+}
+
+@-o-keyframes titleAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+  }
+}

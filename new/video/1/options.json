@@ -1,0 +1,31 @@
+{
+    "caption": "Logo presentation #1",
+    "duration": 15000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "Your logo here",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            }
+        ],
+        [
+            {
+                "name": "logo_image",
+                "caption": "Logo",
+                "type": "file",
+                "value": "img/logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}

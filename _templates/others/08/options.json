@@ -1,0 +1,20 @@
+{
+  "caption": "Slashed Text",
+  "duration": 700,
+  "options": [
+    [
+      {
+        "name": "text",
+        "caption": "Text",
+        "type": "text",
+        "value": "Slashed"
+      },
+      {
+        "name": "text_color",
+        "caption": "Text color",
+        "type": "color",
+        "value": "#2c2c2c"
+      }
+    ]
+  ]
+}

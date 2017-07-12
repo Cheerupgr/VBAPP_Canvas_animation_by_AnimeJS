@@ -1,0 +1,20 @@
+{
+    "caption": "Squiggly Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "I am Squiggly"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

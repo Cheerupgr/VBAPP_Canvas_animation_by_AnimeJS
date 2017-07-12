@@ -1,0 +1,20 @@
+{
+    "caption": "Flexible Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "Your text here"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text Color",
+                "type": "color",
+                "value": "#BAD9A2"
+            }
+        ]
+    ]
+}

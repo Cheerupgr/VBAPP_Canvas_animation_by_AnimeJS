@@ -1,0 +1,14 @@
+{
+  "caption": "Animation with SVG",
+  "duration": 700,
+  "options": [
+    [
+      {
+        "name": "text",
+        "caption": "Text",
+        "type": "text",
+        "value": "SVG Animation"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+    "caption": "Glitched Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "LOGO TEXT"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text Color",
+                "type": "color",
+                "value": "#2e2e2e"
+            }
+        ]
+    ]
+}

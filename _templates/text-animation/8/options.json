@@ -1,0 +1,20 @@
+{
+    "caption": "Typing Text",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "This is typing text!"
+            },
+            {
+                "name": "text_color",
+                "caption": "Text Color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}

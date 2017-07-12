@@ -1,0 +1,70 @@
+{
+    "caption": "Template 2",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "Frederic"
+            },
+            {
+                "name": "text1_color",
+                "caption": "Text 1 color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "Colins"
+            },
+            {
+                "name": "text1_color",
+                "caption": "Text 2 color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text3",
+                "caption": "Text 3",
+                "type": "text",
+                "value": "John Doe"
+            },
+            {
+                "name": "text3_color",
+                "caption": "Text 2 color",
+                "type": "color",
+                "value": "#cf4c4e"
+            }
+        ],
+        [
+            {
+                "name": "text4",
+                "caption": "Text 4",
+                "type": "text",
+                "value": "Motion Designer"
+            },
+            {
+                "name": "text4_color",
+                "caption": "Text 4 color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "lines_color",
+                "caption": "Color of the lines",
+                "type": "color",
+                "value": "#cf4c4e"
+            }
+        ]
+    ]
+}

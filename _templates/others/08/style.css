@@ -1,0 +1,261 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -o-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  background: -webkit-radial-gradient(center, #dc143c, #580818);
+  background: -moz-radial-gradient(center, #dc143c, #580818);
+  background: -o-radial-gradient(center, #dc143c, #580818);
+  background: -ms-radial-gradient(center, #dc143c, #580818);
+  background: radial-gradient(center, #dc143c, #580818);
+}
+
+@-webkit-keyframes bounce-in {
+  0%{
+	opacity: 0;
+	transform: scale(.3);
+  }
+  25%{
+     opacity: 1;
+	transform: scale(1.0); 
+  }
+  50%{
+    transform: scale(0.9);
+  }
+  75%{
+	transform: scale(1);
+  }
+}
+@keyframes bounce-in {
+  0%{
+	opacity: 0;
+	transform: scale(.3);
+  }
+  20%{
+     opacity: 1;
+	transform: scale(1.0); 
+  }
+  35%{
+    transform: scale(0.9);
+  }
+  50%{
+	transform: scale(1);
+  }
+}
+
+@-moz-keyframes bounce-in {
+  0%{
+    opacity: 0;
+    transform: scale(.3);
+  }
+  25%{
+    opacity: 1;
+    transform: scale(1.0);
+  }
+  50%{
+    transform: scale(0.9);
+  }
+  75%{
+    transform: scale(1);
+  }
+}
+@-o-keyframes bounce-in {
+  0%{
+    opacity: 0;
+    transform: scale(.3);
+  }
+  20%{
+    opacity: 1;
+    transform: scale(1.0);
+  }
+  35%{
+    transform: scale(0.9);
+  }
+  50%{
+    transform: scale(1);
+  }
+}
+
+@keyframes slashed-top {
+  0%{
+	opacity: 0;
+  }
+  75%{
+    opacity: 0;
+    left:0px;
+    overflow:inherit;
+  }
+  100%{
+	opacity: 1;
+    left:5px;
+    overflow:hidden;
+  }
+}
+@-webkit-keyframes slashed-top {
+  0%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+    left:0px;
+    overflow:inherit;
+  }
+  100%{
+    opacity: 1;
+    left:5px;
+    overflow:hidden;
+  }
+}
+@-moz-keyframes slashed-top {
+  0%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+    left:0px;
+    overflow:inherit;
+  }
+  100%{
+    opacity: 1;
+    left:5px;
+    overflow:hidden;
+  }
+}
+@-o-keyframes slashed-top {
+  0%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 0;
+    left:0px;
+    overflow:inherit;
+  }
+  100%{
+    opacity: 1;
+    left:5px;
+    overflow:hidden;
+  }
+}
+
+@keyframes slashed-bot {
+  0%{
+  }
+  75%{
+    right:0px;
+    overflow:inherit;
+  }
+  100%{
+	right: 5px;
+    overflow:hidden;
+  }
+}
+
+@-webkit-keyframes slashed-bot {
+  0%{
+  }
+  75%{
+    right:0px;
+    overflow:inherit;
+  }
+  100%{
+    right: 5px;
+    overflow:hidden;
+  }
+}
+
+@-moz-keyframes slashed-bot {
+  0%{
+  }
+  75%{
+    right:0px;
+    overflow:inherit;
+  }
+  100%{
+    right: 5px;
+    overflow:hidden;
+  }
+}
+
+@-o-keyframes slashed-bot {
+  0%{
+  }
+  75%{
+    right:0px;
+    overflow:inherit;
+  }
+  100%{
+    right: 5px;
+    overflow:hidden;
+  }
+}
+
+.slashed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    -webkit-animation: bounce-in 1s ease-in normal ;
+    animation: bounce-in 1s ease-in normal ;
+}
+.slashed .top{
+    opacity: 0;
+}
+.slashed .top,
+.slashed .bot {
+  text-align: center;
+  font: 62px/100px arial;
+  text-transform: uppercase;
+  text-align: center;
+  /*overflow: hidden;*/
+}
+.slashed .top:before,
+.slashed .bot:before {
+  content: attr(title);
+  -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+.slashed .top {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  right: 0;
+  bottom: 50%;
+  animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-top;
+  -webkit-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-top;
+  -moz-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-top;
+  -o-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-top;
+}
+.slashed .top:before {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+}
+.slashed .bot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0px;
+  bottom: 0;
+  animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-bot;
+  -webkit-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-bot;
+  -moz-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-bot;
+  -o-animation: 1s cubic-bezier(0.19, 0.76, 0.32, 1) alternate both slashed-bot;
+}
+.slashed .bot:before {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,106 @@
+{
+    "caption": "Intro 3",
+    "duration": 7000,
+    "options": [
+        [
+            {
+                "name": "icon",
+                "caption": "Icon",
+                "type": "file",
+                "value": "placeholder.png"
+            }
+        ],
+        [
+            {
+                "name": "bg_color",
+                "caption": "Background Color",
+                "type": "color",
+                "value": "#304D6D"
+            }
+        ],
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "THE STORY"
+            },
+            {
+                "name": "text1_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "BEGINS"
+            },
+            {
+                "name": "text2_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text3",
+                "caption": "Text 3",
+                "type": "text",
+                "value": "AND IT'S SO COOL"
+            },
+            {
+                "name": "text3_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text4",
+                "caption": "Text 4",
+                "type": "text",
+                "value": "COMPANY "
+            },
+            {
+                "name": "text4_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text5",
+                "caption": "Text 5",
+                "type": "text",
+                "value": "NAME"
+            },
+            {
+                "name": "text5_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ],
+        [
+            {
+                "name": "text6",
+                "caption": "Text 6",
+                "type": "text",
+                "value": "www.company.com/story"
+            },
+            {
+                "name": "text6_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff"
+            }
+        ]
+    ]
+}
