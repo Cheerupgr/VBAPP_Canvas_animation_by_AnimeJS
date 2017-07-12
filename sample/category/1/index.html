@@ -20,7 +20,6 @@
 
     var mainOptions = {
         delay: /* delay */3000/* /delay */,
-        isPaused: false,
         isRendering: false,
         timer: null
     };
@@ -49,10 +48,11 @@
     //Playback control
     var playbackControl = {
 
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
         playToggle: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
             if( timeline.paused ){
                 timeline.play();
             } else {
@@ -61,16 +61,10 @@
         },
 
         play: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
             timeline.play();
         },
 
         pause: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
             timeline.pause();
         },
 
@@ -79,14 +73,12 @@
         },
 
         stop: function(){
-            mainOptions.isPaused = false;
             clearTimeout( mainOptions.timer );
             timeline.restart();
             timeline.pause();
         },
 
         seek: function( miliseconds ){
-            mainOptions.isPaused = false;
             clearTimeout( mainOptions.timer );
             if( timeline.reversed ){
                 timeline.reverse();
