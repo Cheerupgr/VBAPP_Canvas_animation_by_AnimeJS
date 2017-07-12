@@ -28,7 +28,7 @@
 <script>
 
     var mainOptions = {
-        delay: /* delay */2000/* /delay */,
+        delay: /* delay */5000/* /delay */,
         isPaused: false,
         isRendering: false,
         timer: null
@@ -72,7 +72,7 @@
         .add({
             targets: '#text2',
             easing: 'linear',
-            duration: mainOptions.delay,
+            duration: mainOptions.delay / 2,//time in + time out = need / 2
             top: '90px'
         });
 
