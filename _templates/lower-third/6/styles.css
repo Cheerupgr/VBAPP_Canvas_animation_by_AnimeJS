@@ -1,0 +1,262 @@
+
+@font-face {
+    font-family: Arimo;
+    src: url("fonts/Arimo/Arimo-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+* {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
+.vba-state-paused,
+.vba-state-paused * {
+    -webkit-animation-name: none !important;
+    -moz-animation-name: none !important;
+    -o-animation-name: none !important;
+    animation-name: none !important;
+}
+.vba-reverse,
+.vba-reverse * {
+    -webkit-animation-direction: reverse !important;
+    -moz-animation-direction: reverse !important;
+    -o-animation-direction: reverse !important;
+    animation-direction: reverse !important;
+}
+
+.vba-area { width: 1280px; height: 720px; background: none #000000; }
+
+/** Animations Keyframes **/
+
+@keyframes animation-logo{
+    0%{
+        transform: scale(0);
+    }
+    25%,100%{
+       transform: scale(1);
+    }
+}
+@keyframes animation-logo-text{
+    0%, 25%{
+        opacity:0;
+        transform: scale(0);
+    }
+    35%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes animation-text-1{
+    0%,20%{
+        transform: scaleY(0)
+    }
+    30%,100%{
+        transform: scaleY(1) 
+    }
+}
+@keyframes animation-text-1-title{
+    0%,30%{
+      bottom:-100px;  
+    }
+    45%, 100%{
+       bottom:0px;
+    }
+}
+@keyframes animation-text-1-subtitle{
+    0%,30%{
+      top:-100px;  
+    }
+    45%, 100%{
+      top:0px;
+    }
+}
+
+
+@-webkit-keyframes animation-logo{
+    0%{
+        transform: scale(0);
+    }
+    25%,100%{
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes animation-logo-text{
+    0%, 25%{
+        opacity:0;
+        transform: scale(0);
+    }
+    35%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes animation-text-1{
+    0%,20%{
+        transform: scaleY(0)
+    }
+    30%,100%{
+        transform: scaleY(1)
+    }
+}
+@-webkit-keyframes animation-text-1-title{
+    0%,30%{
+        bottom:-100px;
+    }
+    45%, 100%{
+        bottom:0px;
+    }
+}
+@-webkit-keyframes animation-text-1-subtitle{
+    0%,30%{
+        top:-100px;
+    }
+    45%, 100%{
+        top:0px;
+    }
+}
+/** Animations Keyframes **/
+
+.animation{
+    width:auto;
+    height:auto;
+    float:left;
+    position:absolute;
+    bottom:5em;
+    left: 2em;
+}
+.module {
+  background: #c13751;
+  position: relative;
+  margin: 30px 0px 30px 20px;
+  padding: 10px 25px;
+  width:auto;
+  float:left;
+  font-family: Arimo;
+  text-transform: uppercase;
+  color:#fff;
+  z-index: 1;
+  text-align:center;
+  animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
+  animation-name: animation-logo;
+    -webkit-animation-name: animation-logo;
+}
+.module:before,
+.module:after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 20px;
+  content: "";
+  display: block;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.module:before {
+  border-top-width: 0;
+  border-bottom-color: #c13751;
+  top: -20px;
+}
+.module:after {
+  border-bottom-width: 0;
+  border-top-color: #c13751;
+  bottom: -20px;
+}
+.module span{
+    float:left;
+    width:100%;
+    height:auto;
+    animation:2s ease 1 alternate both;
+    -webkit-animation:2s ease 1 alternate both;
+    animation-name: animation-logo-text;
+    -webkit-animation-name: animation-logo-text;
+}
+.text-1{
+    background:#ffffff;
+    float:left;
+    position:relative;
+    margin-left:-1.4em;
+    margin-top:1.5em;
+    padding:.2em 40px .2em 40px;
+    width:auto;
+    min-width: 10em;
+    font-family:Arimo;
+    animation:2s linear alternate both;
+    -webkit-animation:2s linear alternate both;
+    animation-name:animation-text-1;
+    -webkit-animation-name:animation-text-1;
+}
+.text-1:before,
+.text-1:after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 10px;
+  content: "";
+  display: block;
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
+.text-1:before{
+    border-left-width: 0;
+    border-bottom-color: #ffffff;
+    top: -20px;
+}
+.text-1:after{
+    border-left-width: 0;
+    border-top-color: #ffffff;
+    bottom: -20px;
+}
+.title{
+    text-transform:uppercase;
+    font-size:1em;
+    width:10em;
+    height: 1em;
+    float:left;
+    clear:both;
+    position: relative;
+    overflow: hidden;
+    padding-right:10px;
+}
+.title span{
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
+    animation-name: animation-text-1-title;
+    -webkit-animation-name: animation-text-1-title;
+}
+.sub-text{
+    font-size:.8em;
+    padding-top:.2em;
+    float:left;
+    width:auto;
+    clear:both;
+    position: relative;
+    overflow: hidden;
+    width: 10em;
+    height:1em;
+}
+.sub-text span{
+    position: absolute;
+    top:0px;
+    left:0px;
+    animation:2s linear 1 alternate both;
+    -webkit-animation:2s linear 1 alternate both;
+    animation-name: animation-text-1-subtitle;
+    -webkit-animation-name: animation-text-1-subtitle;
+}

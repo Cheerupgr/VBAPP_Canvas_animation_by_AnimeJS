@@ -1,0 +1,38 @@
+{
+  "caption": "Outro 2",
+  "duration": 700,
+  "options": [
+    [
+      {
+        "name": "icon",
+        "caption": "Icon",
+        "type": "file",
+        "value": "twitter.png"
+      }
+    ],
+    [
+      {
+        "name": "text1",
+        "caption": "Text 1",
+        "type": "text",
+        "value": "follow us"
+      }
+    ],
+    [
+      {
+        "name": "text2",
+        "caption": "Text 2",
+        "type": "text",
+        "value": "/twitter-handle"
+      }
+    ],
+    [
+      {
+        "name": "text_color",
+        "caption": "Text Color",
+        "type": "color",
+        "value": "#ffffff"
+      }
+    ]
+  ]
+}
