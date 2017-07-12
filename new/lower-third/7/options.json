@@ -1,0 +1,63 @@
+{
+    "caption": "Text Animation 5",
+    "duration": 5000,
+    "delay": 2000,
+    "options": [
+      [
+        {
+            "name": "subtitle",
+            "caption": "Subtitle",
+            "type": "text",
+            "value": "SINCE LAUNCH WEEK"
+        },
+        {
+            "name": "subtitle_color",
+            "caption": "Subtitle color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ],
+      [
+        {
+            "name": "title",
+            "caption": "Title",
+            "type": "text",
+            "value": "OUR SALES HAVE BEEN AMAZING"
+        },
+        {
+            "name": "title_color",
+            "caption": "Title color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ],
+      [
+        {
+            "name": "effecttext",
+            "caption": "Stripe text",
+            "type": "text",
+            "value": "OVER 50K SOLD"
+        },
+        {
+            "name": "effecttext_color",
+            "caption": "Stripe text color",
+            "type": "color",
+            "value": "#ffff00"
+        }
+      ],
+      [
+        {
+            "name": "strip_color1",
+            "caption": "Strip color 1",
+            "type": "color",
+            "value": "#ffffff"
+        },
+        {
+            "name": "strip_color2",
+            "caption": "Strip color 2",
+            "type": "color",
+            "value": "#ffff00"
+        }
+      ]
+    ]
+}

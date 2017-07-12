@@ -1,0 +1,24 @@
+@font-face {
+	font-family: 'TekoBold';
+	src: url('./Teko-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'TekoLight';
+	src: url('./Teko-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'TekoMedium';
+	src: url('./Teko-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'TekoRegular';
+	src: url('./Teko-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'TekoSemiBold';
+	src: url('./Teko-SemiBold.ttf') format('truetype');
+}

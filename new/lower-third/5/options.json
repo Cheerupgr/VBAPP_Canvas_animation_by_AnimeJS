@@ -1,0 +1,30 @@
+{
+    "caption": "Text Animation 3",
+    "duration": 5200,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Title",
+                "type": "text",
+                "value": "AMAZING 3D AVATARS",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Title color ",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            },
+            {
+                "name": "triangle_color",
+                "caption": "Triangle color",
+                "type": "color",
+                "value": "#fbb829",
+                "quotes": true
+            }
+        ]
+    ]
+}

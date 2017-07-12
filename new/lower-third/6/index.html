@@ -1,0 +1,337 @@
+<html>
+<head>
+    <title>Circle-1</title>
+
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="effect-rgn"></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        duration: /* duration */4000/* /duration */,
+        delay: /* delay */3000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        reversed: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function createRisingText(text, x, y, y0, fontSize, color){
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.y0 = y0;
+        p.fontSize = fontSize;
+        p.color = color;
+        p.draw = function() 
+        {
+            if (mainOptions.reversed) {
+              ctx.globalCompositeOperation="destination-over";
+            } else {
+              ctx.globalCompositeOperation="source-over";
+            }
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, 0, 1280, p.y0);
+            ctx.clip();
+            ctx.font = p.fontSize + 'px OpenSansBold';
+            ctx.textAlign = 'center';
+            ctx.textBaseline="top";
+            ctx.fillStyle = p.color;
+            ctx.fillText(text, p.x, p.y);
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function createDownText(text, x, y, y0, fontSize, color){
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.y0 = y0;
+        p.fontSize = fontSize;
+        p.color = color;
+        p.draw = function() 
+        {
+            if (mainOptions.reversed) {
+              ctx.globalCompositeOperation="destination-over";
+            } else {
+              ctx.globalCompositeOperation="source-over";
+            }
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(0, p.y0, 1280, 720-p.y0);
+            ctx.clip();
+            ctx.font = p.fontSize + 'px proximanovalight';
+            ctx.textAlign = 'center';
+            ctx.textBaseline="top";
+            ctx.fillStyle = p.color;
+            ctx.fillText(text, p.x, p.y);
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function createBox(x, y, width, height, color) {
+      var p = {};
+      p.x = x;
+      p.y = y;
+      p.width = width;
+      p.height = height;
+      p.color = color;
+      p.draw = function() {
+        if (mainOptions.reversed) {
+          ctx.globalCompositeOperation="destination-over";
+        } else {
+          ctx.globalCompositeOperation="source-over";
+        }
+        ctx.fillStyle=p.color;
+        ctx.fillRect(p.x, p.y, p.width, p.height);
+      };
+      return p;
+    }
+
+    function createArc(x, y, radius, width, start, end, color) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.radius = radius;
+        p.start = start;
+        p.end = end;
+        p.width = width;
+        p.color = color;
+        p.draw = function () {
+            ctx.beginPath();
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = p.color;
+            ctx. arc(p.x, p.y, p.radius, p.start, p.end, false);
+            ctx.stroke();
+        };
+        return p;
+    }
+
+    function createErasingCircle(x, y, radius, reversed) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.radius = radius;
+        p.reversed = reversed;
+        p.draw = function () {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+            ctx.lineTo(ctx.canvas.width, p.y);
+            ctx.lineTo(ctx.canvas.width, 0);
+            ctx.lineTo(0, 0);
+            ctx.lineTo(0, ctx.canvas.height);
+            ctx.lineTo(ctx.canvas.width, ctx.canvas.height);
+            ctx.lineTo(ctx.canvas.width, p.y);
+            ctx.closePath();
+            ctx.clip();
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function doAnimation(x, y) {
+        var arc = createArc(x, y, /* circle_size */ 400 /* /circle_size *//2, 2, Math.PI/-2 , Math.PI/-2,
+            /* circle_color */'#ffffff'/* /circle_color */);
+        var texts = /* title_words */[
+            {
+                "text": "INCLUDED",
+                "color": "#ffffff"
+            }, {
+               "text": "TUTORIAL",
+                "color": "#ffff00" 
+            }, {
+                "text": "VIDEO",
+                "color": "#ffff00"
+            }
+        ]/* /title_words */;
+
+        var line_height = /* circle_size */ 400 /* /circle_size */ * 0.6 / (texts.length + 1);
+        var font_size = line_height * 0.9;
+
+        for (var i =  0; i < texts.length; i++) {
+            var t = createRisingText(texts[i].text, x, y + line_height, y - line_height * (i - 1),
+                font_size , texts[i].color);
+            timeline
+                .add({
+                    targets: t,
+                    easing: 'linear',
+                    duration: mainOptions.duration / 4,
+                    y: [y + line_height, y - line_height * i],
+                    easing: 'linear',
+                    update: renderObjects
+                });
+        }
+
+        var divider = createBox(x - /* circle_size */ 400 /* /circle_size */ * 0.4, 430,
+            /* circle_size */ 400 /* /circle_size */ * 0.8, 4, /* divider_color */'#ffffff'/* /divider_color */);
+
+        var sub_text = createDownText('HIGH DEFINITION', x, 420, 442,
+            24, /* subtext_color */'#ffffff'/* /subtext_color */);
+
+        var erase_r = /* circle_size */ 400 /* /circle_size */ / 2;
+        var eraseMask = createErasingCircle(x, y, erase_r + 2 * 2, true);
+
+        timeline
+            .add({
+                targets: divider,
+                easing: 'linear',
+                duration: mainOptions.duration / 4,
+                width: [0, /* circle_size */ 400 /* /circle_size */ *0.8],
+                easing: 'linear',
+                update: renderObjects
+            })
+            .add({
+                targets: sub_text,
+                easing: 'linear',
+                duration: mainOptions.duration / 4,
+                y: [420, 450],
+                easing: 'linear',
+                update: renderObjects
+            })
+            .add({
+                targets: arc,
+                easing: 'linear',
+                duration: mainOptions.duration / 4,
+                end: 2 * Math.PI,
+                easing: 'linear',
+                update: renderObjects
+            })
+            .add({
+                targets: eraseMask,
+                easing: 'linear',
+                duration: 1000,
+                radius: [erase_r + 2 * 2, 0],
+                easing: 'linear',
+                delay: mainOptions.delay,
+                update: renderObjects
+            })
+            ;
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

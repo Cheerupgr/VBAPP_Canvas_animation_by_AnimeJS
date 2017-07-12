@@ -1,0 +1,354 @@
+<html>
+<head>
+    <title>Strip-1</title>
+
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="effect-rgn"></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        duration: /* duration */5000/* /duration */,
+        delay: /* delay */2000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        reversed: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function createBox(x, y, width, height, color) {
+      var p = {};
+      p.x = x;
+      p.y = y;
+      p.width = width;
+      p.height = height;
+      p.color = color;
+      p.draw = function() {
+        if (mainOptions.reversed) {
+          ctx.globalCompositeOperation="destination-over";
+        } else {
+          ctx.globalCompositeOperation="source-over";
+        }
+        ctx.fillStyle=p.color;
+        ctx.fillRect(p.x, p.y, p.width, p.height);
+      };
+      return p;
+    }
+
+    function createText(text, x, y, fontName, fontSize, color) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.color = color;
+        p.fontName = fontName;
+        p.draw = function() {
+            if (mainOptions.reversed) {
+              ctx.globalCompositeOperation="destination-over";
+            } else {
+              ctx.globalCompositeOperation="source-over";
+            }
+            ctx.font = p.fontSize + 'px ' + fontName;
+            ctx.fillStyle = p.color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline="top";
+            ctx.fillText(text, p.x, p.y);
+        };
+        return p;
+    }
+
+    function createAngledText(text, x, y, fontName, fontSize, color, angle) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.color = color;
+        p.fontName = fontName;
+        p.draw = function() {
+            if (mainOptions.reversed) {
+              ctx.globalCompositeOperation="destination-over";
+            } else {
+              ctx.globalCompositeOperation="source-over";
+            }
+            ctx.font = p.fontSize + 'px ' + fontName;
+            ctx.fillStyle = p.color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline="top";
+            ctx.save();
+            ctx.rotate(angle * Math.PI/180);
+            ctx.fillText(text, p.x, p.y);
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function createStrip(x, y, width, height, angle, color1, color2, strip_percent, strip_object) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.angle = angle;
+        p.strip_percent = strip_percent;
+        p.strip_percent_old = strip_percent;
+        p.color1 = color1;
+        p.color2 = color2;
+        p.draw = function () {
+
+            /*--------------------*/
+            
+            var xst = p.x + p.height * Math.tan((angle + 20) * Math.PI / 180);
+            var xsb = p.x;
+            var yt = p.y;
+            var yb = p.y + p.height;
+            var dws = p.width;
+             // - p.height * Math.tan((angle + 20) * Math.PI / 180);
+
+            var xt = xst + dws * p.strip_percent / 100;
+            var xb = xsb + dws * p.strip_percent / 100;
+
+            var clipLeft = function () {
+                ctx.save();
+                ctx.rotate(angle * Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(xt, yt);
+                ctx.lineTo(xb, yb);
+                ctx.lineTo(xb, ctx.canvas.height);
+                ctx.lineTo(0, ctx.canvas.height);
+                ctx.lineTo(0, 0);
+                ctx.lineTo(xt, 0);
+                ctx.closePath();
+                ctx.clip();
+            };
+
+            var clipRight = function () {
+                ctx.save();
+                ctx.rotate(angle * Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(xt, yt);
+                ctx.lineTo(xb, yb);
+                ctx.lineTo(xb, ctx.canvas.height);
+                ctx.lineTo(ctx.canvas.width, ctx.canvas.height);
+                ctx.lineTo(ctx.canvas.width, 0);
+                ctx.lineTo(xt, 0);
+                ctx.closePath();
+                ctx.clip();
+            };
+
+            if (mainOptions.reversed) {
+                clipRight();
+            } else {
+                clipLeft();
+            }
+
+            strip_object.draw();
+            p.strip_percent_old = p.strip_percent;
+            ctx.restore();
+            clipLeft();
+
+            ctx.beginPath();
+            var xet = xst - dws * Math.cos((angle + 20) * Math.PI / 180);
+            var yet = yt - dws * Math.sin((angle + 20) * Math.PI / 180);
+            var xeb = xsb - dws * Math.cos((angle + 20) * Math.PI / 180);
+            var yeb = yb - dws* Math.sin((angle + 20) * Math.PI / 180);
+            var dye = dws * Math.sin((angle + 20) * Math.PI / 180);
+            var dxe = dws * Math.cos((angle + 20) * Math.PI / 180);
+            ctx.moveTo(xt, yt);
+            ctx.lineTo(xb, yb);
+            ctx.lineTo(xb - dxe * (1- p.strip_percent / 100), yb - dye * (1- p.strip_percent / 100));
+            ctx.lineTo(xt - dxe * (1- p.strip_percent / 100), yt - dye * (1- p.strip_percent / 100));
+            ctx.closePath();
+            
+            ctx.fillStyle=p.color1;
+            ctx.fillRect(p.x, p.y, p.width, p.height);
+            ctx.fillStyle=p.color2;
+            ctx.fill();
+            
+            ctx.restore();
+        };
+        return p;
+    }
+
+    function createClearDown (width, height, clear_percent) {
+        p = {};
+        p.width = width;
+        p.height = height;
+        p.clear_percent = clear_percent;
+        p.draw = function () {
+            ctx.save();
+            ctx.clearRect(0, 0, p.width, p.height * p.clear_percent / 100);
+            ctx.restore();
+        }
+        return p;
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function doAnimation(x, y) {
+        var subTitle = createText(/* subtitle */'THE PLAN YOU FEEL TODAY'/* /subtitle */, x, y - 64, 'OpenSansBold', 30, /* subtitle_color */'#ffffff'/* /subtitle_color */);
+        var Title = createText(/* title */'WILL BE THE STRENGTH'/* /title */, x, y - 30, 'OpenSansExtraBold', 60, /* title_color */'#ffffff'/* /title_color */);
+        ctx.font = 54 + 'px ' + 'OpenSansItalic';
+        var w = ctx.measureText(/* effecttext */'YOU FEEL TOMORROW'/* /effecttext */).width;
+        var effectText = createText('YOU FEEL TOMORROW', x, y + 90, 'OpenSansItalic', 54, /* effecttext_color */'#ffff00'/* /effecttext_color */);
+
+        var strip = createStrip(x - w / 2, y + 90 + 0.2 * 54, w, 54, -2, 
+            /* strip_color1 */'#ffffff'/* /strip_color1 */, /* strip_color2 */'#ffff00'/* /strip_color2 */, -1000, effectText);
+
+        var clearDown = createClearDown (ctx.canvas.width, ctx.canvas.height, 0);
+        timeline
+            .add({
+                targets: [subTitle, Title],
+                easing: 'linear',
+                duration: mainOptions.duration * 0.2,
+                update: renderObjects
+            })
+            .add({
+                targets: strip,
+                easing: 'linear',
+                duration: mainOptions.duration * 0.4,
+                strip_percent: [-1000, 0, 100],
+                easing: 'linear',
+                update: renderObjects,
+
+            })
+            .add({
+                targets: strip,
+                easing: 'linear',
+                duration: mainOptions.duration * 0.4,
+                strip_percent: [100, 0, -1000],
+                easing: 'linear',
+                update: renderObjects,
+                run: function (anim) {
+                    mainOptions.reversed = true;
+                }
+            })
+            .add({
+                targets: clearDown,
+                easing: 'linear',
+                duration: 1500,
+                clear_percent: [0, 100],
+                update: renderObjects,
+                delay: mainOptions.delay
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
