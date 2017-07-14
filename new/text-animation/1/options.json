@@ -1,41 +1,42 @@
 {
-    "caption": "Dancing letters",
-    "duration": 4000,
+    "caption": "Text Animation 1",
+    "duration": 3500,
+    "delay": 3000,
     "options": [
-        [
+        [   
             {
-                "name": "text",
-                "caption": "Text",
+                "name": "line_color",
+                "caption": "Line color",
+                "type": "color",
+                "value": "#fbb829",
+                "quotes": true
+            }
+            {
+                "name": "text1",
+                "caption": "Title",
                 "type": "text",
-                "value": "Dancing letters",
+                "value": "VIDEO BUILDER",
                 "quotes": true
             },
             {
-                "name": "letter_color1",
-                "caption": "Letter color 1",
+                "name": "text_color1",
+                "caption": "Title color",
                 "type": "color",
-                "value": "#FF1461",
+                "value": "#ffffff",
+                "quotes": true
+            }
+            {
+                "name": "text2",
+                "caption": "Subtitle",
+                "type": "text",
+                "value": "3D ANIMATIONS",
                 "quotes": true
             },
             {
-                "name": "letter_color2",
-                "caption": "Letter color 2",
+                "name": "text_color2",
+                "caption": "Subtitle color",
                 "type": "color",
-                "value": "#18FF92",
-                "quotes": true
-            },
-            {
-                "name": "letter_color3",
-                "caption": "Letter color 3",
-                "type": "color",
-                "value": "#5A87FF",
-                "quotes": true
-            },
-            {
-                "name": "letter_color4",
-                "caption": "Letter color 4",
-                "type": "color",
-                "value": "#FBF38C",
+                "value": "#ffffff",
                 "quotes": true
             }
         ]

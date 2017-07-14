@@ -1,0 +1,37 @@
+{
+    "caption": "Introduction 2",
+    "duration": 3400,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Title",
+                "type": "text",
+                "value": "VIDEO BUILDER",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#323032",
+                "quotes": true
+            },
+            {
+                "name": "background_color",
+                "caption": "Shape color",
+                "type": "color",
+                "value": "#88c148",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "#88c148",
+                "quotes": true
+            }
+        ]
+    ]
+}

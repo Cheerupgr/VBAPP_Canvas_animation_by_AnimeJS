@@ -1,161 +1,180 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Dancing letters</title>
+	<meta charset="UTF-8">
+	<title>Effect</title>
 
-    <link href="../../../fonts/GOHAN/font.css" rel="stylesheet">
-    <script src="../../../lib/animejs/anime.min.js"></script>
-
-    <link href="css/styles.css" rel="stylesheet">
-
+	<script src="js/anime.min.js"></script>
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="vba-area" style="font-family: GOHAN, sans-serif;">
-
-    <canvas></canvas>
-
+<div class="vba-area">
+    <canvas class="Effect"></canvas>
 </div>
 
 <script>
-
-    var mainOptions = {
+		var mainOptions = {
+				delay: /* delay */3000/* /delay */,
         isPaused: false,
         isRendering: false,
         timer: null
     };
 
-    var canvasEl = document.querySelector('canvas'),
-        ctx = canvasEl.getContext('2d'),
-        colors = [
-            /* letter_color1 */'#FF1461'/* /letter_color1 */,
-            /* letter_color2 */'#18FF92'/* /letter_color2 */,
-            /* letter_color3 */'#5A87FF'/* /letter_color3 */,
-            /* letter_color4 */'#FBF38C'/* /letter_color4 */
-        ];
-
-    function setCanvasSize() {
-        var rectObject = canvasEl.parentNode.getBoundingClientRect();
-        canvasEl.width = rectObject.width;
-        canvasEl.height = rectObject.height;
-        canvasEl.style.width = rectObject.width + 'px';
-        canvasEl.style.height = rectObject.height + 'px';
-    }
-
     var timeline = anime.timeline({
-        loop: true,
+        loop: false,
         direction: 'alternate',
         autoplay: true
-    });
+    });	
 
-    function drawObjects( anim ) {
+    var canvasEl = document.querySelector('.Effect');
+    var ctx = canvasEl.getContext('2d');
+
+    var textUp = /* text1 */"AFTER EFFECTS"/* /text1 */;
+    var textDown = /* text2 */"CS5 AND ABOVE"/* /text2 */;
+
+//------------------------------------------------------
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function createLine() {
+      var p = {};
+      p.x1 = 150;
+      p.y = 369;
+      p.x2 = 1100; 
+      p.color = /* line_color */'#FBB829'/* /line_color */;
+      p.lineWidth = 2;
+      p.alpha = 0;
+      p.draw = function () {
+        ctx.beginPath();
+        ctx.moveTo(p.x1, p.y);
+        ctx.lineTo(p.x2, p.y);
+        ctx.globalAlpha = p.alpha;
+        ctx.lineWidth = p.lineWidth;
+        ctx.strokeStyle = p.color;
+        ctx.stroke();
+      };
+      return p;
+    }
+    function createTextUp() {
+      var p = {};
+      p.x = 640; 
+      p.y = 440; //345
+      p.color = /* text_color1 */'#FFF'/* /text_color1 */;
+      p.draw = function() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 268, 1280, 100);
+        ctx.clip(); 
+        ctx.font = "bold 80px Arial"
+        ctx.textAlign = "center";
+        ctx.fillStyle = p.color;
+        ctx.fillText(textUp, p.x, p.y);
+        ctx.restore(); 
+      };
+      return p;  
+    }
+    function createTextDown() {
+      var p = {};
+      p.x = 640;
+      p.y = 340; //410
+      p.color = /* text_color2 */'#FFF'/* /text_color2 */;
+      p.yMask = 369;
+      p.draw = function() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, p.yMask, 1280, 70);
+        ctx.clip(); 
+        ctx.font = "50px Arial"
+        ctx.textAlign = "center";
+        ctx.fillStyle = p.color;
+        ctx.fillText(textDown, p.x, p.y);
+        ctx.restore();
+      };
+      return p;
+    }
+
+     function renderEffect(anim) {
         for (var i = 0; i < anim.animatables.length; i++) {
             anim.animatables[i].target.draw();
         }
     }
 
-    createSplitText = function(text, x, y, fontSize, spacing)
-    {
-        ctx.font = fontSize + 'px GOHAN, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        var widthTotal = ctx.measureText(text).width,
-            letters = [];
-
-        x -= widthTotal / 2;
-
-        while (text !== ''){
-            var char = text.substr(0, 1);
-            text = text.substr(1);
-            var charSize = ctx.measureText(char);
-
-            var curX = x + charSize.width / 2;
-            var p = createText(char, curX, y, fontSize);
-            p.w = charSize.width;
-            p.h = charSize.height;
-
-            var width = text === '' ? 0 : ctx.measureText(text).width;
-            var widthChar = widthTotal - width;
-
-            x += widthChar + spacing;
-            widthTotal = width;
-
-            letters.push( p );
-        }
-        return letters;
-    };
-
-    function createText(text, x, y, fontSize){
-        var p = {};
-        p.x = x;
-        p.y = y;
-        p.startX = x;
-        p.startY = y;
-        p.fontSize = fontSize;
-        p.angle = 20;
-        p.color = colors[anime.random(0, colors.length - 1)];
-        p.draw = function() {
-            ctx.save();
-            ctx.font = p.fontSize + 'px GOHAN, sans-serif';
-            ctx.fillStyle = p.color;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.translate(p.startX, p.startY);
-            ctx.rotate(Math.PI / 180 * p.angle);
-            ctx.translate(-p.startX, -p.startY);
-            ctx.fillText(text, p.x, p.y);
-            ctx.restore();
-        };
-        return p;
-    }
-
-    function doAnimation() {
-
-        var centerPoint = [ canvasEl.width / 2, canvasEl.height / 2 ];
-        var splitText = createSplitText(/* text */'Dancing letters'/* /text */, centerPoint[0], centerPoint[1], 120, 0);
-
-        timeline
-            .add({
-                targets: splitText,
-                angle: function(p) {
-                    return p.angle - 40;
-                },
-                fontSize: function(p, i){
-                    return anime.random(p.fontSize - 60, p.fontSize + 60);
-                },
-                color: function(p, i){
-                    return colors[anime.random(0, colors.length - 1)];
-                },
-                duration: 500,
-                easing: 'linear',
-                update: drawObjects,
-                //delay: function(el, i, l) {
-                //    return i * 100;
-                //},
-                offset: 0
-            });
-
-    }
-
     var render = anime({
-        duration: Infinity,
-        update: function() {
-            if( !timeline.paused ){
-                clearCanvas();
-            }
-        }
-    });
+          duration: Infinity,
+          update: function() {
+              if( !timeline.paused ){
+                  clearCanvas();
+              }
+          }
+      });
 
     var clearCanvas = function(){
-        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-    };
+         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      };
+//------------------------------------------------------
+    function animateTitle() {
+      var line = createLine();
+      var text1 = createTextUp();
+      var text2 = createTextDown();
+      timeline
+          .add({
+                targets: line,
+                alpha: [0, 1],
+                duration: 500,
+                easing: 'linear',
+                update: renderEffect
+          })
+          .add({
+                targets: text1,
+                y: [440, 355],
+                duration: 1000,
+                easing: 'easeOutCubic',
+                update: renderEffect
+          })
+          .add({
+                targets: text2,
+                y: [340, 420],
+                duration: 1000,
+                easing: 'easeOutCubic',
+                update: renderEffect,
+                offset: 500
+          })
+          .add({
+                targets: text1,
+                y: [355, 440],
+                duration: 1000,
+                easing: 'easeInCubic',
+                update: renderEffect,
+                offset: 1500 + mainOptions.delay
+          })
+          .add({
+                targets: text2,
+                yMask: [369, 745],
+                duration: 1000,
+                easing: 'easeInCubic',
+                update: renderEffect,
+                offset: 2500 + mainOptions.delay
+          })
+          .add({
+                targets: line,
+                duration: 1000,
+                y: [369, 745],
+                easing: 'easeInCubic',
+                update: renderEffect,
+                offset: 2500 + mainOptions.delay
+          })
 
-    window.onload = function () {
-        setCanvasSize();
-        setTimeout(doAnimation, 15);//Time for load font
-    };
+    }
 
-    //Playback control
+    setCanvasSize()
+    animateTitle();
+
+//Playback control
     var playbackControl = {
 
         playToggle: function(){
@@ -188,7 +207,6 @@
         },
 
         stop: function(){
-            clearCanvas();
             mainOptions.isPaused = false;
             clearTimeout( mainOptions.timer );
             timeline.restart();
@@ -205,11 +223,10 @@
             timeline.play();
         }
     };
-
 </script>
 
 <!-- BUTTONS -->
-<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+<div id="vba-buttons" style="position: fixed; right: 20px; top: 20px;">
     <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
@@ -236,6 +253,6 @@
     }
 </script>
 <!-- /BUTTONS -->
-
+	
 </body>
 </html>

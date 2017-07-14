@@ -1,0 +1,35 @@
+{
+    "caption": "Text Animation 7,
+    "duration": 3000,
+    "delay": 2000,
+    "options": [
+      [
+        {
+            "name": "title_text",
+            "caption": "Title text",
+            "type": "text",
+            "value": "AMAZING LIFE-LIFE 3D AVATARS"
+        },
+        {
+            "name": "title_color",
+            "caption": "Title color",
+            "type": "color",
+            "value": "#000000"
+        }
+      ],
+      [
+        {
+            "name": "box_color1",
+            "caption": "Box color 1",
+            "type": "color",
+            "value": "#ffffff"
+        },
+        {
+            "name": "box_color2",
+            "caption": "Box color 2",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ]
+    ]
+}

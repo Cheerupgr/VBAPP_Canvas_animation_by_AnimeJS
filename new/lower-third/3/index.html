@@ -1,259 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Effect</title>
-
-    <script src="../../../lib/animejs/anime.min.js"></script>
-    <link href="css/styles.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="../../../fonts/font.css">
+	<link rel="stylesheet" href="css/style.css"/>
+	<script src="../../../lib/animejs/anime.min.js"></script>
 </head>
 <body>
+	<div class="vba-area">
+		<canvas class="lower-third"></canvas>
+	</div>
 
-<div class="vba-area">
-    <canvas class="Effect"></canvas>
-</div>
-
+	<!-- BUTTONS -->
+	<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+		<button type="button" id="playpause" class="vba-btn">
+			Play / Pause
+		</button>
+		<button type="button" id="play" class="vba-btn">
+			Play
+		</button>
+		<button type="button" id="pause" class="vba-btn">
+			Pause
+		</button>
+		<button type="button" id="stop" class="vba-btn">
+			Stop
+		</button>
+		<button type="button" id="restart" class="vba-btn">
+			Replay
+		</button>
+	</div>
+</body>
 <script>
-		var mainOptions = {
-				delay: /* delay */3000/* /delay */,
-        isPaused: false,
-        isRendering: false,
-        timer: null
-    };
+	var mainOptions = {
+		delay: 1000,
+		duration: 3000,
+		options: [
+			[{
+				//text 1
+				value: "MDLABDESIGN",
+				fontSize: 24, 
+				color: "#fffefe",
+				backColor: "#669de7",
+				direction: -1
+			}, {
+				//text 2
+				value: "creative studio",
+				fontSize: 24,
+				color: "#669de7",
+				backColor: "#fffefe",
+				direction: 1
+			}]
+		]
+	}
 
-    var timeline = anime.timeline({
-        loop: false,
-        direction: 'alternate',
-        autoplay: true
-    });	
+	var timeline = anime.timeline({
+		loop: 2,
+		direction: 'alternate',
+		autoplay: true
+	});
 
-    var canvasEl = document.querySelector('.Effect');
-    var ctx = canvasEl.getContext('2d');
+	var canvasEl = document.querySelector('.lower-third');
+	var ctx = canvasEl.getContext('2d');
 
-    var textUp = /* text1 */"AFTER EFFECTS"/* /text1 */;
-    var textDown = /* text2 */"CS5 AND ABOVE"/* /text2 */;
+	function setCanvasSize() {
+		var rectObject = canvasEl.parentNode.getBoundingClientRect();
+		canvasEl.width = rectObject.width;
+		canvasEl.height = rectObject.height;
+		canvasEl.style.width = rectObject.width + 'px';
+		canvasEl.style.height = rectObject.height + 'px';
+	}
 
-//------------------------------------------------------
-    function setCanvasSize() {
-        canvasEl.width = canvasEl.parentNode.offsetWidth;
-        canvasEl.height = canvasEl.parentNode.offsetHeight;
-        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
-        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
-    }
+	var orgX = 250, orgY = 500, orgWidth = 220;
+	var path = [ // text 1 background
+		// start line
+		{x: orgX,	y: orgY},
+		{x: orgX,	y: orgY + 80},
 
-    function createLine() {
-      var p = {};
-      p.x1 = 150;
-      p.y = 369;
-      p.x2 = 1100; 
-      p.color = /* line_color */'#FBB829'/* /line_color */;
-      p.lineWidth = 2;
-      p.alpha = 0;
-      p.draw = function () {
-        ctx.beginPath();
-        ctx.moveTo(p.x1, p.y);
-        ctx.lineTo(p.x2, p.y);
-        ctx.globalAlpha = p.alpha;
-        ctx.lineWidth = p.lineWidth;
-        ctx.strokeStyle = p.color;
-        ctx.stroke();
-      };
-      return p;
-    }
-    function createTextUp() {
-      var p = {};
-      p.x = 640; 
-      p.y = 440; //345
-      p.color = /* text_color1 */'#FFF'/* /text_color1 */;
-      p.draw = function() {
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(0, 268, 1280, 100);
-        ctx.clip(); 
-        ctx.font = "bold 80px Arial"
-        ctx.textAlign = "center";
-        ctx.fillStyle = p.color;
-        ctx.fillText(textUp, p.x, p.y);
-        ctx.restore(); 
-      };
-      return p;  
-    }
-    function createTextDown() {
-      var p = {};
-      p.x = 640;
-      p.y = 340; //410
-      p.color = /* text_color2 */'#FFF'/* /text_color2 */;
-      p.yMask = 369;
-      p.draw = function() {
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(0, p.yMask, 1280, 70);
-        ctx.clip(); 
-        ctx.font = "50px Arial"
-        ctx.textAlign = "center";
-        ctx.fillStyle = p.color;
-        ctx.fillText(textDown, p.x, p.y);
-        ctx.restore();
-      };
-      return p;
-    }
+		{x: orgX - 200,	y: orgY + 80},
+		{x: orgX - 220,	y: orgY + 65},
 
-     function renderEffect(anim) {
-        for (var i = 0; i < anim.animatables.length; i++) {
-            anim.animatables[i].target.draw();
-        }
-    }
+		{x: orgX - 220,	y: orgY + 15},
+		{x: orgX - 200,	y: orgY}
+	];
 
-    var render = anime({
-          duration: Infinity,
-          update: function() {
-              if( !timeline.paused ){
-                  clearCanvas();
-              }
-          }
-      });
+	var path1 = [ // text 2 background
+		// start line
+		{x: orgX,	y: orgY},
+		{x: orgX,	y: orgY + 80},
 
-    var clearCanvas = function(){
-         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-      };
-//------------------------------------------------------
-    function animateTitle() {
-      var line = createLine();
-      var text1 = createTextUp();
-      var text2 = createTextDown();
-      timeline
-          .add({
-                targets: line,
-                alpha: [0, 1],
-                duration: 500,
-                easing: 'linear',
-                update: renderEffect
-          })
-          .add({
-                targets: text1,
-                y: [440, 355],
-                duration: 1000,
-                easing: 'easeOutCubic',
-                update: renderEffect
-          })
-          .add({
-                targets: text2,
-                y: [340, 420],
-                duration: 1000,
-                easing: 'easeOutCubic',
-                update: renderEffect,
-                offset: 500
-          })
-          .add({
-                targets: text1,
-                y: [355, 440],
-                duration: 1000,
-                easing: 'easeInCubic',
-                update: renderEffect,
-                offset: 1500 + mainOptions.delay
-          })
-          .add({
-                targets: text2,
-                yMask: [369, 745],
-                duration: 1000,
-                easing: 'easeInCubic',
-                update: renderEffect,
-                offset: 2500 + mainOptions.delay
-          })
-          .add({
-                targets: line,
-                duration: 1000,
-                y: [369, 745],
-                easing: 'easeInCubic',
-                update: renderEffect,
-                offset: 2500 + mainOptions.delay
-          })
+		{x: orgX + 200,	y: orgY + 80},
+		{x: orgX + 220,	y: orgY + 65},
 
-    }
+		{x: orgX + 220,	y: orgY + 15},
+		{x: orgX + 200,	y: orgY}
+	];
 
-    setCanvasSize()
-    animateTitle();
+	function createShape(path, text) {
+		var p = {};
+		p.offsetX = -220;
+		p.direction = text.direction;
+		p.draw = function() {
+			ctx.save();
+			// clip range
+			ctx.beginPath();
+			if (p.direction > 0) {
+				ctx.rect(orgX, orgY, orgWidth, 100);
+			} else {
+				ctx.rect(orgX - orgWidth, orgY, orgWidth, 100);
+			}
+			ctx.clip();
+			p.offsetX *= p.direction;
+			// draw polygon
+			ctx.beginPath();
+			ctx.moveTo(Math.round(p.offsetX)  + path[0].x, path[0].y);
+			for (var i = 1; i < path.length; i++) {
+				ctx.lineTo(Math.round(p.offsetX)  + path[i].x, path[i].y);
+			}
+			// complete custom shape
+			ctx.fillStyle = text.backColor;
+			ctx.fill();
+			// draw text
+			ctx.font = text.fontSize + 'px Arial';
+			ctx.fillStyle = text.color;
+			// text position
+			ctx.textAlign = 'left';
+			textX = Math.round(p.offsetX) + orgX - 200;
+			if (p.direction > 0) {
+				textX += 220;
+			}
+			ctx.fillText(text.value, textX, orgY + 50);
+			ctx.closePath();
+			//
+			ctx.restore();
+		}
+		return p;
+	}
 
-//Playback control
-    var playbackControl = {
+	var clearCanvas = function(){
+		ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+	};
 
-        playToggle: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            if( timeline.paused ){
-                timeline.play();
-            } else {
-                timeline.pause();
-            }
-        },
+	function drawTargets(anim) {
+		clearCanvas();
+		for (var i = 0; i < anim.animatables.length; i++) {
+			anim.animatables[i].target.draw();
+		}
+	}
 
-        play: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            timeline.play();
-        },
+	setCanvasSize();
 
-        pause: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            timeline.pause();
-        },
+	var shape = createShape(path, mainOptions.options[0][0]);
+	var shape1 = createShape(path1, mainOptions.options[0][1]);
 
-        restart: function(){
-            timeline.restart();
-        },
+	timeline.add({
+		targets: [shape, shape1],
+		offsetX: 0,
+		easing: 'easeOutExpo',
+		delay: mainOptions.delay,
+		duration: mainOptions.duration,
+		update: drawTargets
+	}).complete = clearCanvas;
 
-        stop: function(){
-            mainOptions.isPaused = false;
-            clearTimeout( mainOptions.timer );
-            timeline.restart();
-            timeline.pause();
-        },
 
-        seek: function( miliseconds ){
-            mainOptions.isPaused = false;
-            clearTimeout( mainOptions.timer );
-            if( timeline.reversed ){
-                timeline.reverse();
-            }
-            timeline.seek( miliseconds );
-            timeline.play();
-        }
-    };
-</script>
+	document.getElementById("playpause").onclick = function() {
+		if ( mainOptions.isPaused ) {
+			return;
+		}
+		if( timeline.paused ){
+			timeline.play();
+		} else {
+			timeline.pause();
+		}
+	};
 
-<!-- BUTTONS -->
-<div id="vba-buttons" style="position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
-        Play / Pause
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
-        Play
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
-        Pause
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
-        Stop
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
-        Jump to 50% time
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
-        Replay
-    </button>
-</div>
-<script>
+	document.getElementById("play").onclick = function(){
+		if( mainOptions.isPaused ){
+			return;
+		}
+		timeline.play();
+	};
+
+	document.getElementById("pause").onclick = function(){
+		if( mainOptions.isPaused ){
+			return;
+		}
+		timeline.pause();
+	};
+
+	document.getElementById("stop").onclick = function(){
+		mainOptions.isPaused = false;
+		clearTimeout( mainOptions.timer );
+		timeline.restart();
+		timeline.pause();
+		clearCanvas();
+	};
+
+	document.getElementById("restart").onclick = function(){
+		timeline.restart();
+	};
+
     //To display buttons add #buttons hash to page address and reload
     if( window.location.hash.indexOf('buttons') > -1 ){
         document.getElementById('vba-buttons').style.display = 'block';
     }
 </script>
-<!-- /BUTTONS -->
-	
-</body>
 </html>

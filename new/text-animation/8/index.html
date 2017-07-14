@@ -1,0 +1,347 @@
+<html>
+<head>
+    <title>Stand apart 1</title>
+
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/FONTH/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/Anton/font.css" rel="stylesheet">
+    <link href="../../../fonts/Teko/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="effect-rgn"></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        duration: /* duration */6000/* /duration */,
+        delay: /* delay */2000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        reversed: false,
+        timer: null
+    };
+
+    var cleaning = false;
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function createText(text, x, y, fontName, fontSize, color, baseline, align) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.fontName = fontName;
+        p.color = color;
+        p.baseline = baseline;
+        p.align = align;
+        p.draw = function() {
+            ctx.font = p.fontSize + 'px ' + fontName;
+            ctx.textAlign = p.align;
+            ctx.textBaseline = p.baseline;
+            ctx.fillStyle = p.color;
+            ctx.fillText(text, p.x, p.y);
+        };
+        return p;
+    }
+
+    function createDevider(x, y, angle, width, height, color) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.angle = angle;
+        p.width = width;
+        p.height = height;
+        p.color = color;
+        p.draw = function () {
+            var dx = p.height * Math.tan(p.angle * Math.PI / 180) / 2;
+            var dy = p.height / 2;
+            ctx.beginPath();
+            ctx.moveTo(p.x - dx, p.y - dy);
+            ctx.lineTo(+p.x + +dx, +p.y + +dy);
+            ctx.strokeStyle = p.color;
+            ctx.lineWidth = p.width;
+            ctx.stroke();
+        };
+        return p;
+    }
+
+    function clipLeft(height, angle) {
+        ctx.save();
+        ctx.beginPath();
+        var x = ctx.canvas.width / 2;
+        var y = ctx.canvas.height / 2
+        var dx = height * Math.tan(angle * Math.PI / 180) / 2;
+        var dy = height / 2;
+        ctx.moveTo(x - dx, y - dy);
+        ctx.lineTo(0, y - dy);
+        ctx.lineTo(0, y + dy);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.closePath();
+        // ctx.fillStyle = '#ff0000';
+        // ctx.fill();
+        ctx.clip();
+    }
+
+    function clipRight(height, angle) {
+        ctx.save();
+        ctx.beginPath();
+        var x = ctx.canvas.width / 2;
+        var y = ctx.canvas.height / 2
+        var dx = height * Math.tan(angle * Math.PI / 180) / 2;
+        var dy = height / 2;
+        ctx.moveTo(x - dx, y - dy);
+        ctx.lineTo(ctx.canvas.width, y - dy);
+        ctx.lineTo(ctx.canvas.width, y + dy);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.closePath();
+        // ctx.fillStyle = '#ff0000';
+        // ctx.fill();
+        ctx.clip();
+    }
+
+    function createClearMask(x, angle) {
+        var p = {};
+        p.x = x;
+        p.angle = angle;
+        p.draw = function () {
+            if (cleaning) {
+                var dx = ctx.canvas.height * Math.tan(p.angle * Math.PI / 180) / 2;
+                console.log(p.x);
+                console.log(dx);
+                console.log(+p.x + +dx);
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(+p.x + +dx, 0);
+                ctx.lineTo(0, 0);
+                ctx.lineTo(0, ctx.canvas.height);
+                ctx.lineTo(p.x - dx, ctx.canvas.height);
+                ctx.closePath();
+                // ctx.fillStyle = '#ff0000';
+                // ctx.fill();
+            ctx.clip();
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.restore();
+            }
+        };
+        return p;
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function doAnimation(x, y) {
+        var center = {
+            x: ctx.canvas.width / 2,
+            y: ctx.canvas.height / 2
+        };
+
+        var divider_angle = 30;
+        ctx.font = 72 + 'px ' + 'OpenSansLight';
+
+        var text_left_text = /* text_left */'NEVER'/* /text_left */;
+        var text_left_width = ctx.measureText(text_left_text).width;
+        var text_left = createText(text_left_text, 2000, center.y, 'OpenSansLight', 72, /* text_left_color */'#ffffff'/* /text_left_color */, 'middle', 'right');
+
+        var divider = createDevider(center.x, center.y, divider_angle, 4, 150, /* divider_color */'#d1ae51'/* /divider_color */);
+
+        var text_right_text = /* text_right */'GIVE UP'/* /text_right */;
+        var text_right_width = ctx.measureText(text_right_text).width;
+        var text_right = createText(text_right_text, -2000, center.y, 'OpenSansLight', 72, /* text_right_color */'#ffffff'/* /text_right_color */, 'middle', 'left');
+
+        var clear = createClearMask(center.x, divider_angle);
+
+        timeline
+            .add({
+                targets: divider,
+                easing: 'linear',
+                height: [0, 150],
+                duration: mainOptions.duration * 0.1,
+                update: renderObjects
+            })
+            .add({
+                targets: text_left,
+                easing: 'linear',
+                x: [
+                  {value : center.x + text_left_width, duration: 0.1},
+                  {value : center.x - 50, duration: mainOptions.duration * 0.4 -1}
+                ],
+                duration: mainOptions.duration * 0.4,
+                update: renderObjects,
+                begin: function () {
+                    clipLeft(150, divider_angle);
+                }
+            })
+            .add({
+                targets: divider,
+                easing: 'linear',
+                angle: [divider_angle, divider_angle * -1],
+                duration: mainOptions.duration * 0.1,
+                update: renderObjects,
+                begin: function () {
+                    ctx.restore();
+                }
+            })
+            .add({
+                targets: text_right,
+                easing: 'linear',
+                x: [
+                  {value : center.x - text_right_width, duration: 0.1},
+                  {value : center.x + 50, duration: mainOptions.duration * 0.4 -1}
+                ],
+                duration: mainOptions.duration * 0.4,
+                update: renderObjects,
+                begin: function () {
+                    clipRight(150, -1 * divider_angle);
+                }
+            })
+            .add({
+                targets: text_left,
+                easing: 'linear',
+                x: [center.x - 50, center.x + text_left_width, 2000],
+                duration: 1000,
+                update: renderObjects,
+                delay: mainOptions.delay,
+                begin: function () {
+                    ctx.restore();
+                    clipLeft(150, -1 * divider_angle);
+                }
+            })
+            .add({
+                targets: clear,
+                easing: 'linear',
+                x: [center.x, 2000],
+                duration: 2000,
+                update: renderObjects,
+                begin: function () {
+                    ctx.restore();
+                    cleaning = true;
+                },
+                offset: mainOptions.duration + mainOptions.delay + 1000
+            })
+            .add({
+                targets: divider,
+                easing: 'linear',
+                x: [center.x + 4, 2000],
+                duration: 2000,
+                update: renderObjects,
+                begin: function () {
+                    ctx.restore();
+                },
+                offset: mainOptions.duration + mainOptions.delay + 1000
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

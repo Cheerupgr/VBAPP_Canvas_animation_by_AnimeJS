@@ -1,0 +1,89 @@
+{
+    "caption": "Text Animation 4",
+    "duration": 4000,
+    "delay": 3000,
+    "options": [
+      [
+        {
+            "name": "text1",
+            "caption": "Text 1",
+            "type": "text",
+            "value": "AMAZING"
+        },
+        {
+            "name": "text1_color",
+            "caption": "Text 1 color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ],
+      [
+        {
+            "name": "text2",
+            "caption": "Text 2",
+            "type": "text",
+            "value": "LIFELIFE"
+        },
+        {
+            "name": "text2_color",
+            "caption": "Text 2 color",
+            "type": "color",
+            "value": "#ffff00"
+        }
+      ],
+      [
+        {
+            "name": "text3",
+            "caption": "Text 3",
+            "type": "text",
+            "value": "AVATARS"
+        },
+        {
+            "name": "text3_color",
+            "caption": "Text 3 color",
+            "type": "color",
+            "value": "#ffff00"
+        }
+      ],
+      [
+        {
+            "name": "circle_size",
+            "caption": "Circle Diameter",
+            "type": "value",
+            "value": 400,
+            "quotes": true
+        },
+        {
+            "name": "circle_color",
+            "caption": "Circle color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],
+      [
+        {
+            "name": "divider_color",
+            "caption": "Divider color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],
+      [
+        {
+            "name": "subtitle",
+            "caption": "Subtitle",
+            "type": "text",
+            "value": "HIGH DEFINITION"
+        },
+        {
+            "name": "subtitle_color",
+            "caption": "Subtitle color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ]
+    ]
+}

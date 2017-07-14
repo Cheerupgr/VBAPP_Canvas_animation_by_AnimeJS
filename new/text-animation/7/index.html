@@ -1,0 +1,279 @@
+<html>
+<head>
+    <title>Background flow 1</title>
+
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/FONTH/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/Anton/font.css" rel="stylesheet">
+    <link href="../../../fonts/Teko/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="effect-rgn"></canvas>
+
+</div>
+
+<script>
+
+    var mainOptions = {
+        duration: /* duration */3000/* /duration */,
+        delay: /* delay */2000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        reversed: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    function createBox(x, y, width, height, color) {
+      var p = {};
+      p.x = x;
+      p.y = y;
+      p.width = width;
+      p.height = height;
+      p.color = color;
+      p.draw = function() {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.width, p.height);
+      };
+      return p;
+    }
+
+    function createText(text, x, y, fontName, fontSize, color, baseline, align) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.fontName = fontName;
+        p.color = color;
+        p.baseline = baseline;
+        p.align = align;
+        p.draw = function() {
+            ctx.font = p.fontSize + 'px ' + fontName;
+            ctx.textAlign = p.align;
+            ctx.textBaseline = p.baseline;
+            ctx.fillStyle = p.color;
+            ctx.fillText(text, p.x, p.y);
+        };
+        return p;
+    }
+
+    function createRectMask (x, y, width, height, corner_radius) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(p.x, p.y, p.width, p.height);
+        ctx.clip();
+    }
+
+    function removeClip () {
+        ctx.restore();
+    }
+
+    function createClearRight (width, height, clear_percent) {
+        p = {};
+        p.width = width;
+        p.height = height;
+        p.clear_percent = clear_percent;
+        p.draw = function () {
+            ctx.save();
+            ctx.clearRect(0, 0, p.width * p.clear_percent / 100, p.height);
+            ctx.restore();
+        }
+        return p;
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function doAnimation(x, y) {
+        var title_fontsize = 40;
+        ctx.font = title_fontsize + 'px OpenSansbold';
+        var title_text = /* title_text */'SOMETIMES YOU WIN, SOMETIMES YOU LEARN'/* /title_text */;
+        var title_width = ctx.measureText(title_text).width;
+
+        var center = {
+            x: ctx.canvas.width / 2,
+            y: ctx.canvas.height / 2
+        };
+
+        var box = {
+            width: title_width * 1.2,
+            height: title_fontsize * 3
+        };
+
+        var box1 = createBox(0, center.y - box.height / 2, 0, box.height, /* box_color1 */'#ffffff'/* /box_color1 */);
+        var box2 = createBox(center.x - box.width / 2, center.y - box.height / 2, 0, box.height, /* box_color2 */'#d1ae51'/* /box_color2 */);
+        var title = createText(title_text, -1000, center.y, 'OpenSansbold', title_fontsize, /* title_color */'#000000'/* /title_color */, 'middle', 'center');
+        var clearRight = createClearRight (ctx.canvas.width, ctx.canvas.width, 0);
+        
+        timeline
+            .add({
+                targets: box1,
+                easing: 'linear',
+                x: [-100, center.x - box.width / 2],
+                width: [100, 100, 0],
+                duration: mainOptions.duration * 0.15,
+                update: renderObjects
+            })
+            .add({
+                targets: box1,
+                easing: 'easeInCubic',
+                width: [0, box.width],
+                duration: mainOptions.duration * 0.15,
+                update: renderObjects,
+                run: function () {
+                    createRectMask(center.x - box.width / 2 - 2, 0, box.width + 4, ctx.canvas.height);
+                }
+            })
+            .add({
+                targets: title,
+                easing: 'easeInCubic',
+                x: [-1000, 0, center.x],
+                duration: mainOptions.duration * 0.2,
+                update: renderObjects,
+                offset: mainOptions.duration * 0.15
+            })
+            .add([
+                {
+                    targets: box2,
+                    easing: 'easeInCubic',
+                    width: [0, box.width],
+                    duration: mainOptions.duration * 0.2,
+                    update: renderObjects,
+                    delay: mainOptions.duration * 0.2
+                }, {
+                    targets: title,
+                    easing: 'easeInCubic',
+                    x: [center.x, center.x],
+                    duration: mainOptions.duration * 0.2,
+                    update: renderObjects,
+                    delay: mainOptions.duration * 0.2
+                }
+            ])
+            .add({
+                targets: clearRight,
+                easing: 'easeInCubic',
+                clear_percent: [0, 100],
+                duration: 1000,
+                update: renderObjects,
+                delay: mainOptions.delay
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

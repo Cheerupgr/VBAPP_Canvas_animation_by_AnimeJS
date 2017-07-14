@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'FONTH';
+	src: url('./FONTH.eot');
+	src: local('FONTH'), url('./FONTH.woff') format('woff'), url('./FONTH.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_196">Text with this font applied</p> */
+.fontsforweb_fontid_196 {
+	font-family: 'FONTH' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
