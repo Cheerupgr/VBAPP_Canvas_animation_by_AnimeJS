@@ -1,32 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="../../../fonts/font.css">
+
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="../../../lib/animejs/anime.min.js"></script>
+
 </head>
 <body>
 	<div class="vba-area">
 		<canvas class="lower-third"></canvas>
-	</div>
-
-	<!-- BUTTONS -->
-	<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-		<button type="button" id="playpause" class="vba-btn">
-			Play / Pause
-		</button>
-		<button type="button" id="play" class="vba-btn">
-			Play
-		</button>
-		<button type="button" id="pause" class="vba-btn">
-			Pause
-		</button>
-		<button type="button" id="stop" class="vba-btn">
-			Stop
-		</button>
-		<button type="button" id="restart" class="vba-btn">
-			Replay
-		</button>
 	</div>
 
 <script>
@@ -36,17 +18,17 @@
 		options: [
 			[{
 				//text 1
-				value: "MDLABDESIGN",
+				value: /* text1 */'COMPANY'/* /text1 */,
 				fontSize: 24,
-				color: "#fffefe",
-				backColor: "#669de7",
+				color: /* text1_color */'#fffefe'/* /text1_color */,
+				backColor: /* text1_bgcolor */'#669de7'/* /text1_bgcolor */,
 				direction: -1
 			}, {
 				//text 2
-				value: "creative studio",
+				value: /* text2 */'ABOUT US'/* /text2 */,
 				fontSize: 24,
-				color: "#669de7",
-				backColor: "#fffefe",
+				color: /* text2_color */'#669de7'/* /text2_color */,
+				backColor: /* text2_bgcolor */'#fffefe'/* /text2_bgcolor */,
 				direction: 1
 			}]
 		]
@@ -131,7 +113,7 @@
 			ctx.closePath();
 			//
 			ctx.restore();
-		}
+		};
 		return p;
 	}
 
@@ -160,49 +142,78 @@
 		update: drawTargets
 	}).complete = clearCanvas;
 
+    //Playback control
+    var playbackControl = {
 
-	document.getElementById("playpause").onclick = function() {
-		if ( mainOptions.isPaused ) {
-			return;
-		}
-		if( timeline.paused ){
-			timeline.play();
-		} else {
-			timeline.pause();
-		}
-	};
+        getIsPaused: function(){
+            return timeline.paused;
+        },
 
-	document.getElementById("play").onclick = function(){
-		if( mainOptions.isPaused ){
-			return;
-		}
-		timeline.play();
-	};
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
 
-	document.getElementById("pause").onclick = function(){
-		if( mainOptions.isPaused ){
-			return;
-		}
-		timeline.pause();
-	};
+        play: function(){
+            timeline.play();
+        },
 
-	document.getElementById("stop").onclick = function(){
-		mainOptions.isPaused = false;
-		clearTimeout( mainOptions.timer );
-		timeline.restart();
-		timeline.pause();
-		clearCanvas();
-	};
+        pause: function(){
+            timeline.pause();
+        },
 
-	document.getElementById("restart").onclick = function(){
-		timeline.restart();
-	};
+        restart: function(){
+            timeline.restart();
+        },
 
-	//To display buttons add #buttons hash to page address and reload
-	if( window.location.hash.indexOf('buttons') > -1 ){
-		document.getElementById('vba-buttons').style.display = 'block';
-	}
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
+        }
+    };
 </script>
+
+	<!-- BUTTONS -->
+	<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+		<button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
+			Play / Pause
+		</button>
+		<button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
+			Play
+		</button>
+		<button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
+			Pause
+		</button>
+		<button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
+			Stop
+		</button>
+		<button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+			Jump to 50% time
+		</button>
+		<button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
+			Replay
+		</button>
+	</div>
+	<script>
+        //To display buttons add #buttons hash to page address and reload
+        if( window.location.hash.indexOf('buttons') > -1 ){
+            document.getElementById('vba-buttons').style.display = 'block';
+        }
+	</script>
+	<!-- /BUTTONS -->
 
 </body>
 </html>

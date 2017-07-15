@@ -26,10 +26,10 @@
                 "quotes": true
             },
             {
-                "name": "file",
-                "caption": "Image",
+                "name": "logo",
+                "caption": "Logo",
                 "type": "file",
-                "value": "#88c148",
+                "value": "",
                 "quotes": true
             }
         ]

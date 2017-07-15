@@ -17,7 +17,9 @@
                 "type": "color",
                 "value": "#187c94",
                 "quotes": true
-            },
+            }
+        ],
+        [
             {
                 "name": "text2",
                 "caption": "Text 2",
@@ -31,7 +33,9 @@
                 "type": "color",
                 "value": "#0a3953",
                 "quotes": true
-            },
+            }
+        ],
+        [
             {
                 "name": "background_color1",
                 "caption": "Background color 1",

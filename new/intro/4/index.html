@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Intro</title>
 
-	<script src="js/anime.min.js"></script>
-  <link href="css/styles.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -16,8 +17,8 @@
 </div>
 
 <script>
-		var mainOptions = {
-				delay: /* delay */3000/* /delay */,
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
         isPaused: false,
         isRendering: false,
         timer: null
@@ -32,19 +33,15 @@
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
 
-    ctx.font = "30px 'Century Gothic'";
-    var text = /* text */"Your Tagline Here"/* /text */;
+    ctx.font = '30px "Century Gothic"';
+    var text = /* text */'VideoBuilder'/* /text */;
     var widthText = Math.ceil(ctx.measureText(text).width);
 
     if(widthText == 0) { var pointsR = 0;}
     else {var pointsR = 5;}
 
-
-
     var bgColor1 = /* background_color1 */'#3bb0f9'/* /background_color1 */;
     var bgColor2 = /* background_color2 */'#2fe4a2'/* /background_color2 */;
-
-
 
 //-------------------------function
 	function setCanvasSize() {
@@ -263,7 +260,7 @@
             {p.height = (120 / widthImg) * heightImg * p.scale; p.width = 120 * p.scale;}
             else {p.width = (120 / heightImg) * widthImg * p.scale; p.height = 120 * p.scale;}
           };
-          img.src = /* file */"logo.png"/* /file */;
+          img.src = /* logo */'logo.png'/* /logo */;
           return p;
   }
 
@@ -403,14 +400,7 @@
                 y: [150, 300],
                 scale: [0, 1],
                 update: renderEffect,
-                offset: 1000,
-                complete: function(anim) {
-                mainOptions.timer = setTimeout(function(){
-                    clearCanvas();
-                }, mainOptions.isRendering
-                    ? mainOptions.delay * 3//delay x3 - for better rendering
-                    : mainOptions.delay);
-            }
+                offset: 1000
           })
     }
 
@@ -445,6 +435,7 @@
         },
 
         stop: function(){
+            clearCanvas();
             clearTimeout( mainOptions.timer );
             timeline.restart();
             timeline.pause();

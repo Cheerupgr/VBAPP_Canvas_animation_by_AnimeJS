@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Intro</title>
 
-	<script src="js/anime.min.js"></script>
-  <link href="css/styles.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -16,8 +17,8 @@
 </div>
 
 <script>
-		var mainOptions = {
-				delay: /* delay */3000/* /delay */,
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
         isPaused: false,
         isRendering: false,
         timer: null
@@ -32,9 +33,9 @@
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
 
-    var textUp = /* text1 */"DEARTS"/* /text1 */;
+    var textUp = /* text1 */'VIDEOBUILDER'/* /text1 */;
     ctx.font = "30px Arial";
-    var textDown = /* text2 */"MOTION GRAPHICS"/* /text2 */;
+    var textDown = /* text2 */'3D AVATARS'/* /text2 */;
     var widthTextDown = Math.ceil(ctx.measureText(textDown).width);
 
 //-------------------------function
@@ -44,7 +45,8 @@
         canvasEl.height = rectObject.height;
         canvasEl.style.width = rectObject.width + 'px';
         canvasEl.style.height = rectObject.height + 'px';
-    }    
+    }
+
   function createRect1() {
        var p = {};
           p.x = 0;
@@ -189,10 +191,10 @@
         }
     });
 
-  var clearCanvas = function(){
+    var clearCanvas = function(){
        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
     };
-//----------------------------------------
+    //----------------------------------------
     function animateIntro() {
         var rect1 = createRect1();
         var rect2 = createRect2();
@@ -200,7 +202,6 @@
         var text1 = createTextUp();
         var text2 = createTextDown();
         var img = createImage();
-
 
         timeline
           .add({
@@ -340,6 +341,7 @@
         },
 
         stop: function(){
+            clearCanvas();
             clearTimeout( mainOptions.timer );
             timeline.restart();
             timeline.pause();

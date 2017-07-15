@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Intro</title>
 
-	<script src="js/anime.min.js"></script>
+	<script src="../../../lib/animejs/anime.min.js"></script>
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -17,22 +17,21 @@
 
 <script>
 		var mainOptions = {
-				delay: /* delay */3000/* /delay */,
-        isPaused: false,
-        isRendering: false,
-        timer: null
-    };
+            delay: /* delay */3000/* /delay */,
+            isPaused: false,
+            isRendering: false,
+            timer: null
+        };
 
 
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
 
-    ctx.font = "20px 'Century Gothic'"
-    var text_logo = /* text */"ENVATO MARKET"/* /text */;
+    ctx.font = '20px "Century Gothic"';
+    var text_logo = /* text */'VIDEO BUILDER'/* /text */;
     var widthText = Math.ceil(ctx.measureText(text_logo).width);
 
-
-//-------------------------function
+    //-------------------------function
 	function setCanvasSize() {
         var rectObject = canvasEl.parentNode.getBoundingClientRect();
         canvasEl.width = rectObject.width;
@@ -41,7 +40,7 @@
         canvasEl.style.height = rectObject.height + 'px';
     }
 
-  var timeline = anime.timeline({
+    var timeline = anime.timeline({
         loop: false,
         direction: 'alternate',
         autoplay: true
@@ -53,7 +52,7 @@
       p.y1 = 370;
       p.x2 = 640;
       p.y2 = 370;
-      p.color = '#323032';
+      p.color = /* text_color */'#323032'/* /text_color */;
       p.radius = 6;
       p.draw = function() { 
         ctx.beginPath();
@@ -191,7 +190,7 @@
             {p.height = (100 / widthImg) * heightImg; p.width = 100;}
             else {p.width = (100 / heightImg) * widthImg; p.height = 100;}
           };
-          img.src = /* file */"logo.png"/* /file */;
+          img.src = /* logo */'logo.png'/* /logo */;
         return p;
 
   }

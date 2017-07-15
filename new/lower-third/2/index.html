@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Effect</title>
 
-	<script src="js/anime.min.js"></script>
+	<script src="../../../lib/animejs/anime.min.js"></script>
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -15,11 +15,11 @@
 
 <script>
 		var mainOptions = {
-				delay: /* delay */3000/* /delay */,
-        isPaused: false,
-        isRendering: false,
-        timer: null
-    };
+		    delay: /* delay */3000/* /delay */,
+            isPaused: false,
+            isRendering: false,
+            timer: null
+        };
 
     var timeline = anime.timeline({
         loop: false,
@@ -30,12 +30,12 @@
     var canvasEl = document.querySelector('.Effect');
     var ctx = canvasEl.getContext('2d');
 
-    ctx.font = "bold 19px Arial"
-    var textDown = /* text2 */"MOTION GRAPHIC DESIGNER"/* /text2 */;
+    ctx.font = "bold 24px Arial";
+    var textDown = /* text2 */'MOTION GRAPHIC DESIGNER'/* /text2 */;
     var widthTextDown = Math.ceil(ctx.measureText(textDown).width);
 
-    ctx.font = "45px Arial"
-    var textUp = /* text1 */"PAUL HOOPER"/* /text1 */;
+    ctx.font = '45px Arial';
+    var textUp = /* text1 */'PAUL HOOPER'/* /text1 */;
     var widthTextUp = Math.ceil(ctx.measureText(textUp).width);
 
 //-------------------------function
@@ -71,7 +71,7 @@
       	ctx.save();
       	ctx.rect(192 + widthTextUp, 605, widthTextDown + 20, 27);
       	ctx.clip();
-      	ctx.font = "bold 19px Arial"
+      	ctx.font = "bold 24px Arial";
     		ctx.fillStyle = p.color;
 	  		ctx.fillText(textDown, p.x, p.y);
 	  		ctx.restore();
@@ -79,10 +79,10 @@
 	  	return p;
   }
   function createCircle() {
-  		var p = {};
+      var p = {};
       p.x = 120;
       p.y = 740;
-      p.color = '#FFF';
+      p.color = '#FFFFFF';
       p.radius = 5;
     	p.draw = function() {
 	  		ctx.beginPath();
@@ -261,8 +261,9 @@
 
     setCanvasSize();
     animateTitle();
-//-------------------------------------------
-//Playback control
+
+    //-------------------------------------------
+    //Playback control
     var playbackControl = {
 
         playToggle: function(){

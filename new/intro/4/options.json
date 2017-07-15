@@ -17,7 +17,9 @@
                 "type": "color",
                 "value": "#000000",
                 "quotes": true
-            },
+            }
+        ],
+        [
             {
                 "name": "background_color1",
                 "caption": "Background color 1",
@@ -33,8 +35,8 @@
                 "quotes": true
             },
             {
-                "name": "file",
-                "caption": "Image",
+                "name": "logo",
+                "caption": "Logo",
                 "type": "file",
                 "value": "logo.png",
                 "quotes": true
