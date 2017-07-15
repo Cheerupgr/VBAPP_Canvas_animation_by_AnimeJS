@@ -28,7 +28,7 @@
 			Replay
 		</button>
 	</div>
-</body>
+
 <script>
 	var mainOptions = {
 		delay: 1000,
@@ -37,7 +37,7 @@
 			[{
 				//text 1
 				value: "MDLABDESIGN",
-				fontSize: 24, 
+				fontSize: 24,
 				color: "#fffefe",
 				backColor: "#669de7",
 				direction: -1
@@ -198,9 +198,11 @@
 		timeline.restart();
 	};
 
-    //To display buttons add #buttons hash to page address and reload
-    if( window.location.hash.indexOf('buttons') > -1 ){
-        document.getElementById('vba-buttons').style.display = 'block';
-    }
+	//To display buttons add #buttons hash to page address and reload
+	if( window.location.hash.indexOf('buttons') > -1 ){
+		document.getElementById('vba-buttons').style.display = 'block';
+	}
 </script>
+
+</body>
 </html>
