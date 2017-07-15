@@ -1,0 +1,65 @@
+{
+    "caption": "Introduction 3",
+    "duration": 5000,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "VIDEOBUILDER",
+                "quotes": true
+            },
+            {
+                "name": "text_color1",
+                "caption": "Text color 1",
+                "type": "color",
+                "value": "#187c94",
+                "quotes": true
+            },
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "3D AVATARS",
+                "quotes": true
+            },
+            {
+                "name": "text_color2",
+                "caption": "Text color 2",
+                "type": "color",
+                "value": "#0a3953",
+                "quotes": true
+            },
+            {
+                "name": "background_color1",
+                "caption": "Background color 1",
+                "type": "color",
+                "value": "#0a3953",
+                "quotes": true
+            },
+            {
+                "name": "background_color2",
+                "caption": "Background color 2",
+                "type": "color",
+                "value": "#187c94",
+                "quotes": true
+            },
+            {
+                "name": "background_color3",
+                "caption": "Background color 3",
+                "type": "color",
+                "value": "#7fc6bd",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}

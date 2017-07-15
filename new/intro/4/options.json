@@ -1,0 +1,44 @@
+{
+    "caption": "Introduction 4",
+    "duration": 2000,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text",
+                "caption": "Text",
+                "type": "text",
+                "value": "VideoBuilder",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#000000",
+                "quotes": true
+            },
+            {
+                "name": "background_color1",
+                "caption": "Background color 1",
+                "type": "color",
+                "value": "#3bb0f9",
+                "quotes": true
+            },
+            {
+                "name": "background_color2",
+                "caption": "Background color 2",
+                "type": "color",
+                "value": "#2fe4a2",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}
