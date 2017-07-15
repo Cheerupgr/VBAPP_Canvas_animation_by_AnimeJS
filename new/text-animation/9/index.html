@@ -1,8 +1,12 @@
 <html>
 <head>
-    <title>Dancing letters</title>
+    <title>Stand apart 2</title>
 
-    <link href="../../../fonts/GOHAN/font.css" rel="stylesheet">
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/FONTH/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/Anton/font.css" rel="stylesheet">
+    <link href="../../../fonts/Teko/font.css" rel="stylesheet">
     <script src="../../../lib/animejs/anime.min.js"></script>
 
     <link href="css/styles.css" rel="stylesheet">
@@ -10,131 +14,197 @@
 </head>
 <body>
 
-<div class="vba-area" style="font-family: GOHAN, sans-serif;">
+<div class="vba-area">
 
-    <canvas></canvas>
+    <canvas class="effect-rgn"></canvas>
 
 </div>
 
 <script>
 
     var mainOptions = {
+        duration: /* duration */3000/* /duration */,
+        delay: /* delay */2000/* /delay */,
         isPaused: false,
         isRendering: false,
+        reversed: false,
         timer: null
     };
 
-    var canvasEl = document.querySelector('canvas'),
-        ctx = canvasEl.getContext('2d'),
-        colors = [
-            /* letter_color1 */'#FF1461'/* /letter_color1 */,
-            /* letter_color2 */'#18FF92'/* /letter_color2 */,
-            /* letter_color3 */'#5A87FF'/* /letter_color3 */,
-            /* letter_color4 */'#FBF38C'/* /letter_color4 */
-        ];
-
-    function setCanvasSize() {
-        var rectObject = canvasEl.parentNode.getBoundingClientRect();
-        canvasEl.width = rectObject.width;
-        canvasEl.height = rectObject.height;
-        canvasEl.style.width = rectObject.width + 'px';
-        canvasEl.style.height = rectObject.height + 'px';
-    }
-
     var timeline = anime.timeline({
-        loop: true,
+        loop: false,
         direction: 'alternate',
         autoplay: true
     });
 
-    function drawObjects( anim ) {
-        for (var i = 0; i < anim.animatables.length; i++) {
-            anim.animatables[i].target.draw();
-        }
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
     }
 
-    createSplitText = function(text, x, y, fontSize, spacing)
-    {
-        ctx.font = fontSize + 'px GOHAN, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        var widthTotal = ctx.measureText(text).width,
-            letters = [];
-
-        x -= widthTotal / 2;
-
-        while (text !== ''){
-            var char = text.substr(0, 1);
-            text = text.substr(1);
-            var charSize = ctx.measureText(char);
-
-            var curX = x + charSize.width / 2;
-            var p = createText(char, curX, y, fontSize);
-            p.w = charSize.width;
-            p.h = charSize.height;
-
-            var width = text === '' ? 0 : ctx.measureText(text).width;
-            var widthChar = widthTotal - width;
-
-            x += widthChar + spacing;
-            widthTotal = width;
-
-            letters.push( p );
-        }
-        return letters;
-    };
-
-    function createText(text, x, y, fontSize){
+    function createText(text, x, y, fontName, fontSize, color, baseline, align, angle) {
         var p = {};
         p.x = x;
         p.y = y;
-        p.startX = x;
-        p.startY = y;
         p.fontSize = fontSize;
-        p.angle = 20;
-        p.color = colors[anime.random(0, colors.length - 1)];
+        p.fontName = fontName;
+        p.color = color;
+        p.baseline = baseline;
+        p.align = align;
+        p.angle = angle;
         p.draw = function() {
-            ctx.save();
-            ctx.font = p.fontSize + 'px GOHAN, sans-serif';
+            ctx.font = p.fontSize + 'px ' + fontName;
+            ctx.textAlign = p.align;
+            ctx.textBaseline = p.baseline;
             ctx.fillStyle = p.color;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.translate(p.startX, p.startY);
-            ctx.rotate(Math.PI / 180 * p.angle);
-            ctx.translate(-p.startX, -p.startY);
+            ctx.save();
+            ctx.rotate(p.angle * Math.PI/180);
             ctx.fillText(text, p.x, p.y);
             ctx.restore();
         };
         return p;
     }
 
-    function doAnimation() {
+    function createDevider(x, y, angle, width, height, color) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.angle = angle;
+        p.width = width;
+        p.height = height;
+        p.color = color;
+        p.draw = function () {
+            var dx = p.height * Math.tan(p.angle * Math.PI / 180) / 2;
+            var dy = p.height / 2;
+            ctx.beginPath();
+            ctx.moveTo(p.x - dx, p.y - dy);
+            ctx.lineTo(p.x + dx, p.y + dy);
+            ctx.strokeStyle = p.color;
+            ctx.lineWidth = p.width;
+            ctx.stroke();
+        };
+        return p;
+    }
 
-        var centerPoint = [ canvasEl.width / 2, canvasEl.height / 2 ];
-        var splitText = createSplitText(/* text */'Dancing letters'/* /text */, centerPoint[0], centerPoint[1], 120, 0);
+    function clipLeft(x, height, angle) {
+        ctx.save();
+        ctx.beginPath();
+        var x = x;
+        var y = ctx.canvas.height / 2
+        var dx = height * Math.tan(angle * Math.PI / 180) / 2;
+        var dy = height / 2;
+        ctx.moveTo(x - dx, y - dy);
+        ctx.lineTo(0, y - dy);
+        ctx.lineTo(0, y + dy);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.closePath();
+        // ctx.fillStyle = '#ff0000';
+        // ctx.fill();
+        ctx.clip();
+    }
+
+    function clipRight(x, height, angle) {
+        ctx.save();
+        ctx.beginPath();
+        var x = x;
+        var y = ctx.canvas.height / 2
+        var dx = height * Math.tan(angle * Math.PI / 180) / 2;
+        var dy = height / 2;
+        ctx.moveTo(x - dx, y - dy);
+        ctx.lineTo(ctx.canvas.width, y - dy);
+        ctx.lineTo(ctx.canvas.width, y + dy);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.closePath();
+        // ctx.fillStyle = '#ff0000';
+        // ctx.fill();
+        ctx.clip();
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function doAnimation(x, y) {
+        var center = {
+            x: ctx.canvas.width / 2,
+            y: ctx.canvas.height / 2
+        };
+
+        ctx.font = 48 + 'px ' + 'OpenSansRegular';
+
+        var text_left_text = /* text_left */'\"have less'/* /text_left */;
+        var text_left_width = ctx.measureText(text_left_text).width;
+        var text_left = createText(text_left_text, 2000, center.y, 'OpenSansRegular', 48, /* text_left_color */'#ffffff'/* /text_left_color */, 'alphabetic', 'right', 0);
+
+        var divider_angle = 0;
+
+        ctx.font = 72 + 'px ' + 'OpenSansBold';
+        var text_right_text = /* text_right */'do more!\"'/* /text_right */;
+        var text_right_width = ctx.measureText(text_right_text).width;
+        var text_right = createText(text_right_text, -2000, center.y, 'OpenSansBold', 72, /* text_right_color */'#ffffff'/* /text_right_color */, 'alphabetic', 'left', 0);
+
+        var x = center.x;
 
         timeline
             .add({
-                targets: splitText,
-                angle: function(p) {
-                    return p.angle - 40;
-                },
-                fontSize: function(p, i){
-                    return anime.random(p.fontSize - 60, p.fontSize + 60);
-                },
-                color: function(p, i){
-                    return colors[anime.random(0, colors.length - 1)];
-                },
-                duration: 500,
+                targets: [text_right, text_left],
                 easing: 'linear',
-                update: drawObjects,
-                //delay: function(el, i, l) {
-                //    return i * 100;
-                //},
-                offset: 0
-            });
-
+                duration: 10,
+                update: function (anim) {
+                    x = (ctx.canvas.width - (text_right_width + text_left_width)) / 2 + text_left_width;
+                }
+            })
+            .add({
+                targets: text_right,
+                easing: 'linear',
+                x: [-2000, x - text_right_width, x + 15],
+                duration: mainOptions.duration * 0.5,
+                update: renderObjects,
+                begin: function () {
+                    clipRight(x, ctx.canvas.height, -1 * divider_angle);
+                }
+            })
+            .add({
+                targets: text_left,
+                easing: 'linear',
+                x: [2000, x + text_left_width, x - 15],
+                duration: mainOptions.duration * 0.5,
+                update: renderObjects,
+                begin: function () {
+                    ctx.restore();
+                    clipLeft(x, ctx.canvas.height, divider_angle);
+                }
+            })
+            .add([
+                {   
+                    targets: text_right,
+                    easing: 'easeInQuad',
+                    y: [center.y, 1000],
+                    angle: [0, 10],
+                    duration: 2000,
+                    update: renderObjects,
+                    offset: mainOptions.delay + mainOptions.duration,
+                    begin: function () {
+                        ctx.restore();
+                    }
+                },
+                {
+                    targets: text_left,
+                    easing: 'easeInQuad',
+                    y: [center.y, 1000],
+                    angle: [0, -10],
+                    duration: 2000,
+                    update: renderObjects,
+                    offset: mainOptions.delay + mainOptions.duration
+                }
+            ]);
     }
 
     var render = anime({
@@ -150,82 +220,67 @@
         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
     };
 
-    window.onload = function () {
-        setCanvasSize();
-        setTimeout(doAnimation, 15);//Time for load font
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
     };
 
-    //Playback control
-    var playbackControl = {
-
-        playToggle: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            if( timeline.paused ){
-                timeline.play();
-            } else {
-                timeline.pause();
-            }
-        },
-
-        play: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            timeline.play();
-        },
-
-        pause: function(){
-            if( mainOptions.isPaused ){
-                return;
-            }
-            timeline.pause();
-        },
-
-        restart: function(){
-            timeline.restart();
-        },
-
-        stop: function(){
-            clearCanvas();
-            mainOptions.isPaused = false;
-            clearTimeout( mainOptions.timer );
-            timeline.restart();
-            timeline.pause();
-        },
-
-        seek: function( miliseconds ){
-            mainOptions.isPaused = false;
-            clearTimeout( mainOptions.timer );
-            if( timeline.reversed ){
-                timeline.reverse();
-            }
-            timeline.seek( miliseconds );
-            timeline.play();
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
         }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
-        Jump to 50% time
-    </button>
-    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
         Replay
     </button>
 </div>

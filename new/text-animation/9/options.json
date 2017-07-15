@@ -1,43 +1,35 @@
 {
-    "caption": "Dancing letters",
-    "duration": 4000,
+    "caption": "Text Animation 9",
+    "duration": 6000,
+    "delay": 2000,
     "options": [
-        [
-            {
-                "name": "text",
-                "caption": "Text",
-                "type": "text",
-                "value": "Dancing letters",
-                "quotes": true
-            },
-            {
-                "name": "letter_color1",
-                "caption": "Letter color 1",
-                "type": "color",
-                "value": "#FF1461",
-                "quotes": true
-            },
-            {
-                "name": "letter_color2",
-                "caption": "Letter color 2",
-                "type": "color",
-                "value": "#18FF92",
-                "quotes": true
-            },
-            {
-                "name": "letter_color3",
-                "caption": "Letter color 3",
-                "type": "color",
-                "value": "#5A87FF",
-                "quotes": true
-            },
-            {
-                "name": "letter_color4",
-                "caption": "Letter color 4",
-                "type": "color",
-                "value": "#FBF38C",
-                "quotes": true
-            }
-        ]
+      [
+        {
+            "name": "text_left",
+            "caption": "Left text",
+            "type": "text",
+            "value": "SAVE TIME"
+        },
+        {
+            "name": "text_left_color",
+            "caption": "Left text color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ],
+      [
+        {
+            "name": "text_right",
+            "caption": "Right text",
+            "type": "text",
+            "value": "DO MORE"
+        },
+        {
+            "name": "text_right_color",
+            "caption": "Right text color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ]
     ]
 }
