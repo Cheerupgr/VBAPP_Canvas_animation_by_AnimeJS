@@ -8,7 +8,8 @@
           "name": "mark_color",
           "caption": "Mark color",
           "type": "color",
-          "value": "#ffffff"
+          "value": "#ffffff",
+          "quotes": true
         }
       ],
       [
@@ -16,13 +17,15 @@
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
-            "value": "Like us now"
+            "value": "Like us now",
+          "quotes": true
         },
         {
             "name": "text1_color",
             "caption": "Text 1 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+          "quotes": true
         }
       ],
       [
@@ -30,13 +33,15 @@
             "name": "text2",
             "caption": "Text 2",
             "type": "text",
-            "value": "/videobuilder"
+            "value": "/videobuilder",
+          "quotes": true
         },
         {
             "name": "text2_color",
             "caption": "Text 2 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+          "quotes": true
         }
       ]
     ]

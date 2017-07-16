@@ -23,7 +23,6 @@
 
     var mainOptions = {
         duration: /* duration */2000/* duration */,
-        delay: /* delay */3000/* /delay */,
         isPaused: false,
         isRendering: false
     };
@@ -286,60 +285,69 @@
     var centerY = canvasEl.height / 2;
     doAnimation( centerX, centerY );
 
-    var animationPlayToggle = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.paused ){
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
             timeline.play();
-        } else {
+        },
+
+        pause: function(){
             timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
         }
-    };
-
-    var animationPlay = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.play();
-    };
-
-    var animationPause = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.pause();
-    };
-
-    var animationRestart = function(){
-        timeline.restart();
-    };
-
-    var animationStop = function(){
-        mainOptions.isPaused = false;
-        clearTimeout( mainOptions.timer );
-        timeline.restart();
-        timeline.pause();
-        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>
