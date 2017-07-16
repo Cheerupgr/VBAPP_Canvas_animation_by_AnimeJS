@@ -1,0 +1,407 @@
+<html>
+<head>
+    <title>Introduction 5</title>
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas class="effect-rgn"></canvas>
+    <canvas class="effect-rgn0"></canvas>
+    <canvas class="effect-rgn1"></canvas>
+</div>
+
+<script>
+
+    var mainOptions = {
+        duration: /* duration */4000/* /duration */,
+        delay: /* delay */1000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    var canvasEl0 = document.querySelector('.effect-rgn0');
+    var ctx0 = canvasEl0.getContext('2d');
+
+    var canvasEl1 = document.querySelector('.effect-rgn1');
+    var ctx1 = canvasEl1.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+
+        canvasEl0.width = canvasEl.width;
+        canvasEl0.height = canvasEl.height;
+        canvasEl0.style.width = canvasEl.style.width;
+        canvasEl0.style.height = canvasEl.style.height;
+
+        canvasEl1.width = canvasEl.width;
+        canvasEl1.height = canvasEl.height;
+        canvasEl1.style.width = canvasEl.style.width;
+        canvasEl1.style.height = canvasEl.style.height;
+    }
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function createRoundRect (x, y, width, height, color, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.color = color;
+        p.draw = function () {
+            var r = p.height / 2;
+            context.beginPath();
+            context.moveTo(+ p.x+ +p.width / 2 - r, p.y - r);
+            context.arcTo(+ p.x+ +p.width / 2, p.y - r, + p.x+ +p.width / 2, p.y, r);
+            context.arcTo(+ p.x+ +p.width / 2, +p.y + +r, + p.x+ +p.width / 2 - r, +p.y + +r, r);
+            context.lineTo(+p.x - p.width / 2 + +r, +p.y + +r);
+            context.arcTo(+p.x - p.width / 2, +p.y + +r, p.x - p.width / 2, p.y, r);
+            context.arcTo(+p.x - p.width / 2, p.y - r, p.x - p.width / 2 + +r, p.y - r, r);
+            context.closePath();
+            context.shadowBlur = 8;
+            context.shadowColor = p.color;
+            context.fillStyle = '#000000';
+            context.fill();
+            context.strokeStyle = p.color;
+            context.lineWidth = 2;
+            context.stroke();
+        };
+        return p;
+    }
+
+    function createText(text, x, y, fontName, fontSize, color, angle, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.fontSize = fontSize;
+        p.fontName = fontName;
+        p.color = color;
+        p.angle = angle;
+        p.text = text;
+        p.draw = function() {
+            context.font = p.fontSize + 'px ' + p.fontName;
+            var w = context.measureText(p.text).width;
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillStyle = p.color;
+            context.save();
+            context.translate(p.x, p.y);
+            context.rotate(p.angle * Math.PI/180);
+            context.translate(-p.x, -p.y);
+            context.fillText(p.text, p.x, p.y);
+            context.restore();
+        };
+        return p;
+    }
+
+    function createImage(x, y, width, height, src, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.src = src;
+        p.draw = function () {
+            var imageObj = new Image();
+            imageObj.onload = function () {
+                context.drawImage(imageObj, p.x, p.y, p.width, p.height);
+            };
+            imageObj.src = p.src;
+        };
+        return p;
+    }
+
+    function createArc(x, y, radius, angle, color, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.radius = radius;
+        p.angle = angle;
+        p.color = color;
+        p.draw = function () {
+            context.beginPath();
+            var a0 = p.angle * Math.PI / 180;
+            var a1 = p.angle * Math.PI / 180 + 3 * Math.PI / 2;
+            context.arc(p.x, p.y, p.radius, a0, a1);
+            context.strokeStyle = p.color;
+            context.lineWidth = 4;
+            context.stroke();
+        };
+        return p;
+    }
+
+    function doAnimation(x, y) {
+        var center = {
+            x: ctx.canvas.width / 2,
+            y: ctx.canvas.height / 2
+        };
+
+        var searchBarColor = /* searchbar_color */'#ffffff'/* /searchbar_color */;
+
+        var spinner = createArc(center.x, center.y, 21, 0, searchBarColor, ctx1);
+
+        var border = createRoundRect (center.x, -100, 42, 42, searchBarColor, ctx);
+        var searchButton = createText('\uF002', center.x, -100, 'FontAwesome', 30, searchBarColor, 45, ctx);
+        var searchText = /* url_text */"videobuilder.com"/* /url_text */;
+        var searchArray = searchText.split('');
+        var inputed = 0;
+        var t = "";
+
+        var inputedText = createText("I", center.x, -100, 'OpenSansLight', 30, searchBarColor, 0, ctx0);
+
+        var updatetmr = null;
+
+        var updateString = function () {
+            updatetmr = setTimeout(function () {
+                if (inputed < searchArray.length) {
+                    t = t + searchArray[inputed];
+
+                    if (inputed < searchArray.length - 1) {
+                        inputedText.text = t + 'I';
+                    } else {
+                        inputedText.text = t;
+                    }
+                    console.log(inputedText.text);
+                    inputed++;
+                    updateString();
+                } else {
+                    clearTimeout( updatetmr );
+                }
+            }, 200);
+        };
+
+        var tt = function () {
+            ctx0.clearRect(0, 0, ctx0.canvas.width, ctx0.canvas.height);
+        };
+
+        var nameText = createText(/* name_text */"videobuilder"/* /name_text */, -100, -100, 'OpenSansLight', 20, /* name_color */'#ffffff'/* /name_color */, 0, ctx0);
+        var img = createImage(center.x, center.y, 100, 100, 'img/logo.png', ctx);
+
+        timeline
+            .add({
+                targets: spinner,
+                easing: 'linear',
+                angle: 360,
+                duration: 1000,
+                update: renderObjects
+            })
+            .add({
+                targets: spinner,
+                easing: 'linear',
+                y: -100,
+                duration: 0.1,
+                update: renderObjects
+            })
+            .add({
+                targets: [border, searchButton, inputedText],
+                y: [
+                    {value: center.y, duration: 0.1}
+                ],
+                easing: 'linear',
+                duration: 100,
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                width: ctx.canvas.width / 3,
+                duration: mainOptions.duration / 6,
+                update:renderObjects
+            })
+            .add({
+                targets: searchButton,
+                easing: 'linear',
+                angle: 0,
+                x: center.x + ctx.canvas.width / 6 - 28,
+                duration: mainOptions.duration / 6,
+                offset: '-=' + mainOptions.duration / 6,
+                update: renderObjects
+            })
+            .add({
+                targets: inputedText,
+                duration: 1000,
+                color: ['#ffffff', '#000000', '#ffffff'],
+                update: renderObjects
+            })
+            .add({
+                targets: inputedText,
+                duration: 200 * searchArray.length + 1000,
+                begin: updateString,
+                update: renderObjects
+            })
+            .add({
+                targets: searchButton,
+                easing: 'linear',
+                fontSize: [30, 34, 30],
+                duration: mainOptions.duration / 2,
+                delay: mainOptions.delay,
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                width: 42,
+                duration: mainOptions.duration / 4,
+                update: renderObjects
+            })
+            .add({
+                targets: inputedText,
+                duration: 0.1,
+                y: -100,
+                offset: '-=' + mainOptions.duration / 4,
+                update: renderObjects
+            })
+            .add({
+                targets: searchButton,
+                easing: 'linear',
+                x: center.x,
+                duration: mainOptions.duration / 4,
+                update: renderObjects,
+                offset: '-=' + mainOptions.duration / 4,
+                begin: tt
+            })
+            .add({
+                targets: [border, searchButton],
+                duration: 0.1,
+                y: -100,
+                update: renderObjects
+            })
+            .add({
+                targets: img,
+                x: center.x - 50,
+                y: center.y - 50,
+                width: 100,
+                height: 100,
+                duration: mainOptions.duration / 4,
+                offset: '-=' + mainOptions.duration * 5 / 8,
+                update: renderObjects
+            })
+            .add({
+                targets: nameText,
+                easing: 'linear',
+                fontSize: 30,
+                x: [
+                    {value: center.x, duration: 0.1}
+                ],
+                y: [
+                    {value: center.y, duration: 0.1},
+                    {value: center.y + 72, duration: mainOptions.duration / 8}
+                ],
+                duration: mainOptions.duration / 4,
+                update: renderObjects
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx0.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx1.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    setCanvasSize();
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
