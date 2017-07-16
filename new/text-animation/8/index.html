@@ -165,13 +165,13 @@
         var divider_angle = 30;
         ctx.font = 72 + 'px ' + 'OpenSansLight';
 
-        var text_left_text = /* text_left */'NEVER'/* /text_left */;
+        var text_left_text = /* text_left */'100%'/* /text_left */;
         var text_left_width = ctx.measureText(text_left_text).width;
         var text_left = createText(text_left_text, 2000, center.y, 'OpenSansLight', 72, /* text_left_color */'#ffffff'/* /text_left_color */, 'middle', 'right');
 
         var divider = createDevider(center.x, center.y, divider_angle, 4, 150, /* divider_color */'#d1ae51'/* /divider_color */);
 
-        var text_right_text = /* text_right */'GIVE UP'/* /text_right */;
+        var text_right_text = /* text_right */'GUARANTEED'/* /text_right */;
         var text_right_width = ctx.measureText(text_right_text).width;
         var text_right = createText(text_right_text, -2000, center.y, 'OpenSansLight', 72, /* text_right_color */'#ffffff'/* /text_right_color */, 'middle', 'left');
 
@@ -278,60 +278,69 @@
 
     doAnimation(centerX, centerY);
 
-    var animationPlayToggle = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.paused ){
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
             timeline.play();
-        } else {
+        },
+
+        pause: function(){
             timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
         }
-    };
-
-    var animationPlay = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.play();
-    };
-
-    var animationPause = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.pause();
-    };
-
-    var animationRestart = function(){
-        timeline.restart();
-    };
-
-    var animationStop = function(){
-        mainOptions.isPaused = false;
-        clearTimeout( mainOptions.timer );
-        timeline.restart();
-        timeline.pause();
-        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>

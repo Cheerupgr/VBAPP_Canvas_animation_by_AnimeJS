@@ -8,13 +8,15 @@
             "name": "title_text",
             "caption": "Title text",
             "type": "text",
-            "value": "AMAZING LIFE-LIFE 3D AVATARS"
+            "value": "AMAZING LIFE-LIFE 3D AVATARS",
+            "quotes": true
         },
         {
             "name": "title_color",
             "caption": "Title color",
             "type": "color",
-            "value": "#000000"
+            "value": "#000000",
+            "quotes": true
         }
       ],
       [
@@ -22,13 +24,15 @@
             "name": "box_color1",
             "caption": "Box color 1",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         },
         {
             "name": "box_color2",
             "caption": "Box color 2",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ]
     ]
