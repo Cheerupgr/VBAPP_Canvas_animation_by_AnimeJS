@@ -188,11 +188,11 @@
         var line_height = /* circle_size */ 400 /* /circle_size */ * 0.6 / (texts.length + 1);
         var font_size = line_height * 0.9;
 
-        var t1 = createRisingText(/* text1 */'INCLUDED'/* /text1 */, x, y + line_height, y - line_height * (0 - 1), font_size , /* text1_color */'#ffffff'/* /text1_color */);
+        var t1 = createRisingText(/* text1 */'AMAZING'/* /text1 */, x, y + line_height, y - line_height * (0 - 1), font_size , /* text1_color */'#ffffff'/* /text1_color */);
 
-        var t2 = createRisingText(/* text2 */'TUTORIAL'/* /text2 */, x, y + line_height, y - line_height * (1 - 1), font_size , /* text2_color */'#ffff00'/* /text2_color */);
+        var t2 = createRisingText(/* text2 */'LIFELIFE'/* /text2 */, x, y + line_height, y - line_height * (1 - 1), font_size , /* text2_color */'#ffff00'/* /text2_color */);
 
-        var t3 = createRisingText(/* text3 */'VIDEO'/* /text3 */, x, y + line_height, y - line_height * (2 - 1), font_size , /* text3_color */'#ffff00'/* /text3_color */);
+        var t3 = createRisingText(/* text3 */'AVATARS'/* /text3 */, x, y + line_height, y - line_height * (2 - 1), font_size , /* text3_color */'#ffff00'/* /text3_color */);
 
         var divider = createBox(x - /* circle_size */ 400 /* /circle_size */ * 0.4, 430,
             /* circle_size */ 400 /* /circle_size */ * 0.8, 4, /* divider_color */'#ffffff'/* /divider_color */);
@@ -206,7 +206,6 @@
         timeline
             .add({
                 targets: t1,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 y: [y + line_height, y - line_height * 0],
                 easing: 'linear',
@@ -214,7 +213,6 @@
             })
             .add({
                 targets: t2,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 y: [y + line_height, y - line_height * 1],
                 easing: 'linear',
@@ -222,7 +220,6 @@
             })
             .add({
                 targets: t3,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 y: [y + line_height, y - line_height * 2],
                 easing: 'linear',
@@ -230,7 +227,6 @@
             })
             .add({
                 targets: divider,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 width: [0, /* circle_size */ 400 /* /circle_size */ *0.8],
                 easing: 'linear',
@@ -238,7 +234,6 @@
             })
             .add({
                 targets: sub_text,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 y: [420, 450],
                 easing: 'linear',
@@ -246,7 +241,6 @@
             })
             .add({
                 targets: arc,
-                easing: 'linear',
                 duration: mainOptions.duration / 4,
                 end: 2 * Math.PI,
                 easing: 'linear',
@@ -254,14 +248,12 @@
             })
             .add({
                 targets: eraseMask,
-                easing: 'linear',
                 duration: 1000,
                 radius: [erase_r + 2 * 2, 0],
                 easing: 'linear',
                 delay: mainOptions.delay,
                 update: renderObjects
-            })
-            ;
+            });
     }
 
     var render = anime({
@@ -284,60 +276,69 @@
 
     doAnimation(centerX, centerY);
 
-    var animationPlayToggle = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.paused ){
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
             timeline.play();
-        } else {
+        },
+
+        pause: function(){
             timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
         }
-    };
-
-    var animationPlay = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.play();
-    };
-
-    var animationPause = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.pause();
-    };
-
-    var animationRestart = function(){
-        timeline.restart();
-    };
-
-    var animationStop = function(){
-        mainOptions.isPaused = false;
-        clearTimeout( mainOptions.timer );
-        timeline.restart();
-        timeline.pause();
-        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>

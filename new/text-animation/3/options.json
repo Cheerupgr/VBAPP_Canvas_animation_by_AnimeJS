@@ -13,7 +13,7 @@
             },
             {
                 "name": "text_color",
-                "caption": "Title color ",
+                "caption": "Title color",
                 "type": "color",
                 "value": "#ffffff",
                 "quotes": true

@@ -3,14 +3,7 @@
     "duration": 4000,
     "delay": 3000,
     "options": [
-        [   
-            {
-                "name": "lines_color",
-                "caption": "Line color",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
+        [
             {
                 "name": "text1",
                 "caption": "Title",
@@ -24,7 +17,9 @@
                 "type": "color",
                 "value": "#ffffff",
                 "quotes": true
-            },
+            }
+        ],
+        [
             {
                 "name": "text2",
                 "caption": "Text",
@@ -37,6 +32,15 @@
                 "caption": "Text color",
                 "type": "color",
                 "value": "#fbb829",
+                "quotes": true
+            }
+        ],
+        [
+            {
+                "name": "lines_color",
+                "caption": "Line color",
+                "type": "color",
+                "value": "#ffffff",
                 "quotes": true
             }
         ]

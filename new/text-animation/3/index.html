@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Effect</title>
 
-	<script src="js/anime.min.js"></script>
+	<script src="../../../lib/animejs/anime.min.js"></script>
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -30,8 +30,8 @@
     var canvasEl = document.querySelector('.Effect');
     var ctx = canvasEl.getContext('2d');
 
-    ctx.font = "55px 'Century Gothic'"
-    var text = /* text */"EASY CUSTOMIZATION"/* /text */;
+    ctx.font = "55px 'Century Gothic'";
+    var text = /* text */'AMAZING 3D AVATARS'/* /text */;
     var widthText = Math.ceil(ctx.measureText(text).width);
 
     var triangleColor = /* triangle_color */'#FBB829'/* /triangle_color */;
@@ -55,13 +55,13 @@
       p.y = 397;
       p.widthMask = 0;
       p.heightMask = 70;
-      p.color = /* text_color */'#FFF'/* /text_color */;
+      p.color = /* text_color */'#FFFFFF'/* /text_color */;
       p.draw = function() {
         ctx.save();
         ctx.beginPath();
         ctx.rect(points.v1, 340, p.widthMask, p.heightMask);
         ctx.clip(); 
-        ctx.font = "55px 'Century Gothic'"
+        ctx.font = "55px 'Century Gothic'";
         ctx.textAlign = "center";
         ctx.fillStyle = p.color;
         ctx.fillText(text, p.x, p.y);
@@ -235,7 +235,7 @@
 </script>
 
 <!-- BUTTONS -->
-<div id="vba-buttons" style="position: fixed; right: 20px; top: 20px;">
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
     <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>

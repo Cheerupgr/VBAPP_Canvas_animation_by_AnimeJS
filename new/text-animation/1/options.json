@@ -3,14 +3,7 @@
     "duration": 3500,
     "delay": 3000,
     "options": [
-        [   
-            {
-                "name": "line_color",
-                "caption": "Line color",
-                "type": "color",
-                "value": "#fbb829",
-                "quotes": true
-            },
+        [
             {
                 "name": "text1",
                 "caption": "Title",
@@ -24,7 +17,9 @@
                 "type": "color",
                 "value": "#ffffff",
                 "quotes": true
-            },
+            }
+        ],
+        [
             {
                 "name": "text2",
                 "caption": "Subtitle",
@@ -37,6 +32,15 @@
                 "caption": "Subtitle color",
                 "type": "color",
                 "value": "#ffffff",
+                "quotes": true
+            }
+        ],
+        [
+            {
+                "name": "line_color",
+                "caption": "Line color",
+                "type": "color",
+                "value": "#fbb829",
                 "quotes": true
             }
         ]

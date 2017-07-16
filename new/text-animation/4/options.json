@@ -8,13 +8,15 @@
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
-            "value": "AMAZING"
+            "value": "AMAZING",
+            "quotes": true
         },
         {
             "name": "text1_color",
             "caption": "Text 1 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -22,13 +24,15 @@
             "name": "text2",
             "caption": "Text 2",
             "type": "text",
-            "value": "LIFELIFE"
+            "value": "LIFELIFE",
+            "quotes": true
         },
         {
             "name": "text2_color",
             "caption": "Text 2 color",
             "type": "color",
-            "value": "#ffff00"
+            "value": "#ffff00",
+            "quotes": true
         }
       ],
       [
@@ -36,13 +40,31 @@
             "name": "text3",
             "caption": "Text 3",
             "type": "text",
-            "value": "AVATARS"
+            "value": "AVATARS",
+            "quotes": true
         },
         {
             "name": "text3_color",
             "caption": "Text 3 color",
             "type": "color",
-            "value": "#ffff00"
+            "value": "#ffff00",
+            "quotes": true
+        }
+      ],
+      [
+        {
+          "name": "subtitle",
+          "caption": "Subtitle",
+          "type": "text",
+          "value": "HIGH DEFINITION",
+          "quotes": true
+        },
+        {
+          "name": "subtitle_color",
+          "caption": "Subtitle color",
+          "type": "color",
+          "value": "#ffffff",
+          "quotes": true
         }
       ],
       [
@@ -59,27 +81,10 @@
             "type": "color",
             "value": "#ffffff",
             "quotes": true
-        }
-      ],
-      [
+        },
         {
             "name": "divider_color",
             "caption": "Divider color",
-            "type": "color",
-            "value": "#ffffff",
-            "quotes": true
-        }
-      ],
-      [
-        {
-            "name": "subtitle",
-            "caption": "Subtitle",
-            "type": "text",
-            "value": "HIGH DEFINITION"
-        },
-        {
-            "name": "subtitle_color",
-            "caption": "Subtitle color",
             "type": "color",
             "value": "#ffffff",
             "quotes": true

@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Effect</title>
 
-	<script src="js/anime.min.js"></script>
-  <link href="css/styles.css" rel="stylesheet">
+	<script src="../../../lib/animejs/anime.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -30,8 +30,8 @@
     var canvasEl = document.querySelector('.Effect');
     var ctx = canvasEl.getContext('2d');
 
-    var textUp = /* text1 */"AFTER EFFECTS"/* /text1 */;
-    var textDown = /* text2 */"CS5 AND ABOVE"/* /text2 */;
+    var textUp = /* text1 */'VIDEO BUILDER'/* /text1 */;
+    var textDown = /* text2 */'3D ANIMATIONS'/* /text2 */;
 
 //------------------------------------------------------
     function setCanvasSize() {
@@ -64,7 +64,7 @@
       var p = {};
       p.x = 640; 
       p.y = 440; //345
-      p.color = /* text_color1 */'#FFF'/* /text_color1 */;
+      p.color = /* text_color1 */'#FFFFFF'/* /text_color1 */;
       p.draw = function() {
         ctx.save();
         ctx.beginPath();
@@ -226,7 +226,7 @@
 </script>
 
 <!-- BUTTONS -->
-<div id="vba-buttons" style="position: fixed; right: 20px; top: 20px;">
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
     <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
