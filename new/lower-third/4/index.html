@@ -1,0 +1,476 @@
+<html>
+<head>
+    <title>Lower Third Animation 4</title>
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+    <canvas class="effect-rgn"></canvas>
+    <canvas class="effect-rgn0"></canvas>
+    <canvas class="effect-rgn1"></canvas>
+    <canvas class="effect-rgn2"></canvas>
+    <canvas class="effect-rgn3"></canvas>
+</div>
+
+<script>
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    var canvasEl0 = document.querySelector('.effect-rgn0');
+    var ctx0 = canvasEl0.getContext('2d');
+
+    var canvasEl1 = document.querySelector('.effect-rgn1');
+    var ctx1 = canvasEl1.getContext('2d');
+
+    var canvasEl2 = document.querySelector('.effect-rgn2');
+    var ctx2 = canvasEl2.getContext('2d');
+
+    var canvasEl3 = document.querySelector('.effect-rgn3');
+    var ctx3 = canvasEl3.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+
+        canvasEl0.width = canvasEl.width;
+        canvasEl0.height = canvasEl.height;
+        canvasEl0.style.width = canvasEl.style.width;
+        canvasEl0.style.height = canvasEl.style.height;
+
+        canvasEl1.width = canvasEl.width;
+        canvasEl1.height = canvasEl.height;
+        canvasEl1.style.width = canvasEl.style.width;
+        canvasEl1.style.height = canvasEl.style.height;
+
+        canvasEl2.width = canvasEl.width;
+        canvasEl2.height = canvasEl.height;
+        canvasEl2.style.width = canvasEl.style.width;
+        canvasEl2.style.height = canvasEl.style.height;
+
+        canvasEl3.width = canvasEl.width;
+        canvasEl3.height = canvasEl.height;
+        canvasEl3.style.width = canvasEl.style.width;
+        canvasEl3.style.height = canvasEl.style.height;
+    }
+
+    setCanvasSize();
+
+    var mainOptions = {
+        duration: /* duration */4000/* /duration */,
+        delay: /* delay */1000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var org = {
+        y: ctx.canvas.height - 60,
+        x: 100
+    };
+
+    var text1 = {
+        text: /* text1 */'FREDRIC'/* /text1 */,
+        font: 'OpenSansLight',
+        size: 40
+    };
+
+    var text2 = {
+        text: /* text2 */'BERTRAM'/* text2 */,
+        font: 'OpenSansBold',
+        size: 40
+    };
+
+    var text3 = {
+        text: /* text3 */'VISUAL EFFECTS SUPERVISOR'/* text3 */,
+        font: 'OpenSansLight',
+        size: 20
+    };
+
+    var mainRect = {
+        width: 300,
+        height: 100
+    };
+
+    
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function clipRect (context) {
+        context.rect(org.x, org.y - mainRect.height - 20, mainRect.width + 20, mainRect.height + 4);
+        context.clip();
+    }
+
+    function createBorder(x, y, width, height, length, color, dx, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.length = length;
+        p.color = color;
+        p.dx = dx;
+        p.draw = function () {
+            context.beginPath();
+            context.lineWidth = 2;
+            context.strokeStyle = p.color;
+            if (+p.dx < +p.width) {
+                context.moveTo(+p.x + +p.dx, p.y);
+                if (+p.dx + +p.length < +p.width) {
+                    context.lineTo(+p.x + +p.dx + +p.length, p.y);
+                } else {
+                    console.log('2');
+                    context.lineTo(+p.x + +p.width, p.y);
+                    context.lineTo(+p.x + +p.width, +p.y + (+p.dx + +p.length - p.width));
+                }
+            } else {
+                context.moveTo(+p.x + +p.width, +p.y + +p.dx - p.width);
+                context.lineTo(+p.x + +p.width, +p.y + +p.dx - p.width + +p.length);
+            }
+            context.stroke();
+        };
+        return p;
+    }
+
+    function createLayer1 (backgroundColor, textColor, context) {
+        var p = {};
+        p.draw = function () {
+            var font1 = text1.size + 'px ' + text1.font;
+            var w1 = context.measureText(text1.text).width;
+
+            var font2 = text2.size + 'px ' + text2.font;
+            var w2 = context.measureText(text2.text).width;
+
+            var w = w1 + w2;
+
+            var padding = 4;
+
+            mainRect.width = w + padding;
+            mainRect.height = text1.size + text2.size + padding * 4;
+
+            context.fillStyle = backgroundColor,
+            context.fillRect(org.x, org.y - mainRect.height, w + 2 * padding, text1.size + padding * 2);
+
+            context.textAlign = 'left';
+            context.textBaseline = 'middle';
+            context.fillStyle = textColor;
+
+            context.font = font1;
+            context.fillText(text1.text, org.x + padding, org.y - mainRect.height + text1.size / 2 + padding);
+
+            context.font = font2;
+            context.fillText(text2.text, org.x + padding + w1, org.y - mainRect.height + text2.size / 2 + padding);
+        };
+        return p;
+    }
+
+    function createLayer3 (backgroundColor, textColor, context) {
+        var p = {};
+        p.draw = function () {
+            var padding = 4;
+
+            context.fillStyle = backgroundColor,
+            context.fillRect(org.x, org.y - mainRect.height + text1.size + padding * 3, mainRect.width + padding, text3.size + padding * 2);
+
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillStyle = textColor;
+
+            context.font = text3.size + 'px ' + text3.font;
+            context.fillText(text3.text, org.x + mainRect.width / 2, org.y - mainRect.height + text1.size + text3.size / 2 + padding * 4);
+        };
+        return p;
+    }
+
+    function createClearRect(x, y, width, height, layer, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.draw = function () {
+            context.clearRect(p.x, p.y, p.width, p.height);
+        };
+        return p;
+    }
+
+    function createRect(x, y, width, height, color, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.width = width;
+        p.height = height;
+        p.color = color;
+        p.draw = function () {
+            context.fillStyle = p.color;
+            context.fillRect(p.x, p.y, p.width, p.height);
+        };
+        return p;
+    }
+
+    function doAnimation(x, y) {
+        var padding = 4;
+        var border = createBorder(0, 0, 0, 0, 0, '#ffffff', -100, ctx2);
+
+        var layer1 = createLayer1(/* background_color_1 */'#bf5013'/* /background_color_1 */, /* text1_color_1 */'#ffffff'/* /text1_color_1 */, ctx);
+        var layer2 = createLayer1(/* background_color_2 */'#ffffff'/* /background_color_2 */, /* text1_color_2 */'#000000'/* /text1_color_2 */, ctx1);
+        var layer3 = createLayer3(/* background_color_1 */'#bf5013'/* /background_color_1 */, '#ffffff', ctx0);
+
+        var clearRect1 = createClearRect(0, 0, 70, ctx.canvas.height, layer1, ctx);
+        var clearRect11 = createClearRect(0, 0, ctx.canvas.width, ctx.canvas.height, layer1, ctx);
+        var clearRect2 = createClearRect(0, 0, ctx.canvas.width, ctx.canvas.height, layer2, ctx1);
+        var clearRect3 = createClearRect(0, 0, ctx.canvas.width, ctx.canvas.height, layer2, ctx0);
+
+        var rect1 = createRect(org.x, org.y, 0, 0, '#ffffff', ctx3);
+
+        timeline
+            .add({
+                targets: layer1,
+                easing: 'linear',
+                duration: 1,
+                update: renderObjects
+            })
+            .add({
+                targets: layer2,
+                easing: 'linear',
+                duration: 1,
+                update: renderObjects
+            })
+            .add({
+                targets: layer3,
+                easing: 'linear',
+                duration: 1,
+                update: renderObjects
+            })
+            .add({
+                targets: [clearRect1, clearRect2, clearRect11, clearRect3],
+                x: -100,
+                y: org.y - mainRect.height,
+                height: mainRect.height,
+                duration: 100,
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect11,
+                easing: 'linear',
+                x: org.x + mainRect.width,
+                duration: 1000,
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect1,
+                easing: 'linear',
+                x: org.x + mainRect.width,
+                duration: 1000,
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect2,
+                easing: 'linear',
+                x: org.x + mainRect.width,
+                duration: 1000,
+                offset: '-=950',
+                update: renderObjects,
+                update: function (anim) {
+                    clipRect(ctx2);
+                    renderObjects(anim);
+                }
+            })
+            .add({
+                targets: border,
+                x: org.x,
+                length: 100,
+                dx: 0,
+                y: org.y - padding - mainRect.height,
+                width: mainRect.width + padding,
+                height: mainRect.height + padding,
+                duration: 0.1,
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                dx: mainRect.width + mainRect.height + 100,
+                duration: 2000,
+                offset: '-=100',
+                update: renderObjects
+            })
+            .add({
+                targets: rect1,
+                easing: 'linear',
+                width: [0, 20, 6],
+                height: [
+                    {value: text3.size + 8, duration: 0.1}
+                ],
+                y: [
+                    {value: org.y - mainRect.height + text1.size + 12, duration: 0.1}
+                ],
+                x: org.x + mainRect.width - 6,
+                duration: 1000,
+                offset: '-=2000',
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect3,
+                easing: 'linear',
+                x: org.x + mainRect.width,
+                duration: 1000,
+                offset: '-=2100',
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect3,
+                easing: 'linear',
+                x: org.x,
+                duration: 1000,
+                delay: mainOptions.delay,
+                update: renderObjects
+            })
+            .add({
+                targets: rect1,
+                easing: 'linear',
+                width: [6, 20, 0],
+                x: org.x,
+                duration: 1000,
+                offset: '-=700',
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                dx: -100,
+                duration: 1000,
+                offset: '-=800',
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect2,
+                easing: 'linear',
+                x: org.x,
+                duration: 1000,
+                update: renderObjects,
+                offset: '-=700'
+            })
+            .add({
+                targets: clearRect1,
+                easing: 'linear',
+                x: -100,
+                duration: 1000,
+                offset: '-=650',
+                update: renderObjects
+            })
+            .add({
+                targets: clearRect11,
+                easing: 'linear',
+                x: org.x,
+                duration: 1000,
+                update: renderObjects
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx0.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx1.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx2.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx3.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
