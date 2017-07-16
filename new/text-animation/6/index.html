@@ -2,12 +2,12 @@
 <head>
     <title>Rising text 1</title>
 
-    <link href="fonts/proximanovalight/font.css" rel="stylesheet">
-    <link href="fonts/FONTH/font.css" rel="stylesheet">
-    <link href="fonts/Open_Sans/font.css" rel="stylesheet">
-    <link href="fonts/Anton/font.css" rel="stylesheet">
-    <link href="fonts/Teko/font.css" rel="stylesheet">
-    <script src="animejs/anime.min.js"></script>
+    <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
+    <link href="../../../fonts/FONTH/font.css" rel="stylesheet">
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/Anton/font.css" rel="stylesheet">
+    <link href="../../../fonts/Teko/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
 
     <link href="css/styles.css" rel="stylesheet">
 
@@ -118,10 +118,10 @@
         var x0 = 40;
         var y0 = ctx.canvas.height - 40;
         ctx.font = '72px OpenSansBold';
-        var w = ctx.measureText(/* text2 */'COLOR CUSTOMIZATION'/* /text2 */).width * 1.2;
-        var text2 = createText(/* text2 */'COLOR CUSTOMIZATION'/* /text2 */, ctx.canvas.width / 2, ctx.canvas.height, 'OpenSansBold', 72, /* text2_color */'#ffffff'/* /text2_color */, 'top', 'center');
+        var w = ctx.measureText(/* text2 */'3D TALKING AVATARS'/* /text2 */).width * 1.2;
+        var text2 = createText(/* text2 */'3D TALKING AVATARS'/* /text2 */, ctx.canvas.width / 2, ctx.canvas.height, 'OpenSansBold', 72, /* text2_color */'#ffffff'/* /text2_color */, 'top', 'center');
         var box = createBox((ctx.canvas.width - w) / 2, ctx.canvas.height, w, 200, /* box_color */'#d1ae51'/* /box_color */);
-        var text1 = createText(/* text1 */'VERY EASY CONTROL'/* /text1 */, ctx.canvas.width / 2, -100, 'OpenSansBold', 40, /* text1_color */'#000000'/* /text1_color */, 'top', 'center');
+        var text1 = createText(/* text1 */'REAL LIPSYNC'/* /text1 */, ctx.canvas.width / 2, -100, 'OpenSansBold', 40, /* text1_color */'#000000'/* /text1_color */, 'top', 'center');
         var clearLeft = createClearLeft (ctx.canvas.width, ctx.canvas.height, 0);
         
         timeline
@@ -178,60 +178,69 @@
 
     doAnimation(centerX, centerY);
 
-    var animationPlayToggle = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.paused ){
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
             timeline.play();
-        } else {
+        },
+
+        pause: function(){
             timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
         }
-    };
-
-    var animationPlay = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.play();
-    };
-
-    var animationPause = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.pause();
-    };
-
-    var animationRestart = function(){
-        timeline.restart();
-    };
-
-    var animationStop = function(){
-        mainOptions.isPaused = false;
-        clearTimeout( mainOptions.timer );
-        timeline.restart();
-        timeline.pause();
-        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>

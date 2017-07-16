@@ -5,7 +5,7 @@
     <link href="fonts/proximanovalight/font.css" rel="stylesheet">
     <link href="fonts/FONTH/font.css" rel="stylesheet">
     <link href="fonts/Open_Sans/font.css" rel="stylesheet">
-    <script src="animejs/anime.min.js"></script>
+    <script src="../../../lib/animejs/anime.min.js"></script>
 
     <link href="css/styles.css" rel="stylesheet">
 
@@ -218,11 +218,11 @@
     }
 
     function doAnimation(x, y) {
-        var subTitle = createText(/* subtitle */'THE PLAN YOU FEEL TODAY'/* /subtitle */, x, y - 64, 'OpenSansBold', 30, /* subtitle_color */'#ffffff'/* /subtitle_color */);
-        var Title = createText(/* title */'WILL BE THE STRENGTH'/* /title */, x, y - 30, 'OpenSansExtraBold', 60, /* title_color */'#ffffff'/* /title_color */);
+        var subTitle = createText(/* subtitle */'SINCE LAUNCH WEEK'/* /subtitle */, x, y - 64, 'OpenSansBold', 30, /* subtitle_color */'#ffffff'/* /subtitle_color */);
+        var Title = createText(/* title */'OUR SALES HAVE BEEN AMAZING'/* /title */, x, y - 30, 'OpenSansExtraBold', 60, /* title_color */'#ffffff'/* /title_color */);
         ctx.font = 54 + 'px ' + 'OpenSansItalic';
-        var w = ctx.measureText(/* effecttext */'YOU FEEL TOMORROW'/* /effecttext */).width;
-        var effectText = createText('YOU FEEL TOMORROW', x, y + 90, 'OpenSansItalic', 54, /* effecttext_color */'#ffff00'/* /effecttext_color */);
+        var w = ctx.measureText(/* effecttext */'OVER 50K SOLD'/* /effecttext */).width;
+        var effectText = createText(/* effecttext */'OVER 50K SOLD'/* /effecttext */, x, y + 90, 'OpenSansItalic', 54, /* effecttext_color */'#ffff00'/* /effecttext_color */);
 
         var strip = createStrip(x - w / 2, y + 90 + 0.2 * 54, w, 54, -2, 
             /* strip_color1 */'#ffffff'/* /strip_color1 */, /* strip_color2 */'#ffff00'/* /strip_color2 */, -1000, effectText);
@@ -237,7 +237,6 @@
             })
             .add({
                 targets: strip,
-                easing: 'linear',
                 duration: mainOptions.duration * 0.4,
                 strip_percent: [-1000, 0, 100],
                 easing: 'linear',
@@ -246,7 +245,6 @@
             })
             .add({
                 targets: strip,
-                easing: 'linear',
                 duration: mainOptions.duration * 0.4,
                 strip_percent: [100, 0, -1000],
                 easing: 'linear',
@@ -285,60 +283,69 @@
 
     doAnimation(centerX, centerY);
 
-    var animationPlayToggle = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        if( timeline.paused ){
+    //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
             timeline.play();
-        } else {
+        },
+
+        pause: function(){
             timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
         }
-    };
-
-    var animationPlay = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.play();
-    };
-
-    var animationPause = function(){
-        if( mainOptions.isPaused ){
-            return;
-        }
-        timeline.pause();
-    };
-
-    var animationRestart = function(){
-        timeline.restart();
-    };
-
-    var animationStop = function(){
-        mainOptions.isPaused = false;
-        clearTimeout( mainOptions.timer );
-        timeline.restart();
-        timeline.pause();
-        clearCanvas();
     };
 
 </script>
 
 <!-- BUTTONS -->
 <div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
-    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
         Play / Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
         Play
     </button>
-    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
         Pause
     </button>
-    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
         Stop
     </button>
-    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
         Replay
     </button>
 </div>

@@ -8,13 +8,15 @@
             "name": "subtitle",
             "caption": "Subtitle",
             "type": "text",
-            "value": "SINCE LAUNCH WEEK"
+            "value": "SINCE LAUNCH WEEK",
+            "quotes": true
         },
         {
             "name": "subtitle_color",
             "caption": "Subtitle color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -22,13 +24,15 @@
             "name": "title",
             "caption": "Title",
             "type": "text",
-            "value": "OUR SALES HAVE BEEN AMAZING"
+            "value": "OUR SALES HAVE BEEN AMAZING",
+            "quotes": true
         },
         {
             "name": "title_color",
             "caption": "Title color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -36,13 +40,15 @@
             "name": "effecttext",
             "caption": "Stripe text",
             "type": "text",
-            "value": "OVER 50K SOLD"
+            "value": "OVER 50K SOLD",
+            "quotes": true
         },
         {
             "name": "effecttext_color",
             "caption": "Stripe text color",
             "type": "color",
-            "value": "#ffff00"
+            "value": "#ffff00",
+            "quotes": true
         }
       ],
       [
@@ -50,13 +56,15 @@
             "name": "strip_color1",
             "caption": "Strip color 1",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         },
         {
             "name": "strip_color2",
             "caption": "Strip color 2",
             "type": "color",
-            "value": "#ffff00"
+            "value": "#ffff00",
+            "quotes": true
         }
       ]
     ]
