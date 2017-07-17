@@ -1,0 +1,386 @@
+<html>
+<head>
+    <title>Lower Third Animation 8</title>
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+    <canvas class="effect-rgn"></canvas>
+    <canvas class="effect-rgn0"></canvas>
+    <canvas class="effect-rgn1"></canvas>
+</div>
+
+<script>
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    var canvasEl0 = document.querySelector('.effect-rgn0');
+    var ctx0 = canvasEl0.getContext('2d');
+
+    var canvasEl1 = document.querySelector('.effect-rgn1');
+    var ctx1 = canvasEl1.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+
+        canvasEl0.width = canvasEl.width;
+        canvasEl0.height = canvasEl.height;
+        canvasEl0.style.width = canvasEl.style.width;
+        canvasEl0.style.height = canvasEl.style.height;
+
+        canvasEl1.width = canvasEl.width;
+        canvasEl1.height = canvasEl.height;
+        canvasEl1.style.width = canvasEl.style.width;
+        canvasEl1.style.height = canvasEl.style.height;
+    }
+
+    setCanvasSize();
+
+    var mainOptions = {
+        delay: /* delay */2000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    var org = {
+        y: ctx.canvas.height - 60,
+        x: 100
+    };
+
+    var text1 = {
+        text: /* text1 */'GABRIEL'/* /text1 */,
+        font: 'OpenSansBold',
+        size: 90,
+        width: 0,
+        height: 0
+    };
+
+    var text2 = {
+        text: /* text2 */'JONATHAN'/* text2 */,
+        font: 'OpenSansBold',
+        size: 40,
+        width: 0,
+        height: 0
+    };
+
+    var text3 = {
+        text: /* text3 */'SUPERVISOR'/* text3 */,
+        font: 'OpenSansLight',
+        size: 40,
+        width: 0,
+        height: 0
+    };
+
+    var mainRect = {
+        width: 0,
+        height: 0
+    };
+
+
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function clipRect (context) {
+        context.rect(org.x, org.y - mainRect.height, mainRect.width, mainRect.height);
+        context.clip();
+    }
+
+    function calculateSizes () {
+        var margin = 4;
+
+        var font1 = text1.size + 'px ' + text1.font;
+        text1.width = ctx.measureText(text1.text).width;
+        text1.height = text1.size + margin * 2;
+
+        var font2 = text2.size + 'px ' + text2.font;
+        text2.width = ctx0.measureText(text2.text).width;
+        text2.height = text2.size + margin * 2;
+
+        var font3 = text3.size + 'px ' + text3.font;
+        text3.width = ctx1.measureText(text3.text).width;
+        text3.height = text3.size + margin * 2;
+
+        var w1 = text1.width + 20;
+
+        if (text2.width > text3.width) {
+            w2 = text2.width + 50;
+        } else {
+            w2 = text3.width + 50;
+        }
+
+        var w = +w1 + +w2;
+
+        mainRect.width = +w + +margin * 2;
+        mainRect.height = +text2.height + +text3.height + +margin * 2;
+    }
+
+    function createLayer1 (textColor, dx, context) {
+        var p = {};
+        p.dx = dx;
+        p.draw = function () {
+            var font1 = text1.size + 'px ' + text1.font;
+
+            var margin = 4;
+            context.textAlign = 'left';
+            context.textBaseline = 'middle';
+            context.fillStyle = '#00ff00';
+
+            context.font = font1;
+            context.fillStyle = textColor;
+            context.fillText(text1.text, +p.dx + +org.x + +margin, org.y - mainRect.height / 2);
+        };
+        return p;
+    }
+
+    function createLayer2 (text2_color, text3_bkcolor, text3_color, dx, context) {
+        var p = {};
+        p.text2_color = text2_color;
+        p.text3_bkcolor = text3_bkcolor;
+        p.text3_color = text3_color;
+        p.dx = dx;
+        p.draw = function () {
+
+            var margin = 4;
+
+            if (text2.width > text3.width) {
+                w2 = text2.width + 50;
+            } else {
+                w2 = text3.width + 50;
+            }
+
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillStyle = p.text3_bkcolor;
+            context.fillRect(org.x + +p.dx + mainRect.width - w2 - margin, org.y - text3.height - margin, w2, text3.height);
+
+            context.font = text2.size + 'px ' + text2.font;
+            context.fillStyle = p.text2_color;
+            context.fillText(text2.text, +p.dx + +org.x + +mainRect.width - margin - w2 / 2, org.y - mainRect.height + text2.height / 2);
+
+            context.font = text3.size + 'px ' + text3.font;
+            context.fillStyle = p.text3_color;
+            context.fillText(text3.text, +p.dx + +org.x + +mainRect.width - margin - w2 / 2, org.y - margin - text3.height / 2);
+
+        };
+        return p;
+    }
+
+    function createBorder (length, color, t, dx, context) {
+        var p = {};
+        p.length = length;
+        p.color = color;
+        p.t = t;
+        p.dx = dx;
+        p.draw = function () {
+            context.beginPath();
+            var startPoint = {};
+
+            if (p.dx < mainRect.height) {
+                startPoint.x = +org.x + +mainRect.width;
+                startPoint.y = org.y - mainRect.height + +p.dx;
+            } else if (p.dx < mainRect.height + mainRect.width) {
+                startPoint.x = +org.x + +mainRect.width - (p.dx - mainRect.height);
+                startPoint.y = org.y;
+            } else {
+                startPoint.x = org.x;
+                startPoint.y = org.y - (p.dx - (mainRect.width + mainRect.height));
+            }
+
+            context.moveTo(startPoint.x, startPoint.y);
+            // context.lineTo(0, 0);
+
+            if (+p.dx + +p.length - mainRect.height < 0) {
+                console.log(1);
+                context.lineTo(+org.x + +mainRect.width, org.y - mainRect.height + +p.dx + +p.length);
+            } else if (+p.dx < mainRect.height) {
+                console.log(2);
+                context.lineTo(+org.x + +mainRect.width, org.y);
+                context.lineTo(+org.x + +mainRect.width - (+p.dx + +p.length - mainRect.height), org.y);
+            } else if (+p.dx + +p.length < +mainRect.width + +mainRect.height) {
+                console.log(3);
+                context.lineTo(+org.x + +mainRect.width - (+p.dx + +p.length - mainRect.height), org.y);
+            } else if (p.dx < +mainRect.width + +mainRect.height) {
+                console.log(4);
+                context.lineTo(org.x, org.y);
+                context.lineTo(org.x, org.y - p.length - (p.dx - (mainRect.width + mainRect.height)));
+            } else {
+                context.lineTo(org.x, org.y - p.length - (p.dx - (mainRect.width + mainRect.height)));
+            }
+
+            context.lineWidth = p.t;
+            context.strokeStyle = p.color;
+            context.stroke();
+        };
+        return p;
+    }
+
+    function doAnimation(x, y) {
+        var layer1 = createLayer1 ('#ffffff', -1000, ctx);
+        var layer2 = createLayer2 ('#bf5013', '#bf5013', '#ffffff', 2000, ctx0);
+
+        var border = createBorder (0, '#bf5013', 6, -100, ctx1);
+        timeline
+            .add({
+                duration: 1000,
+                update:  function () {
+                    calculateSizes();
+                }
+            })
+            .add({
+                targets: layer1,
+                easing: 'linear',
+                dx: [
+                    {value: -mainRect.width, duration: 0.1},
+                    {value: 0, duration: 1000},
+                ],
+                duration: 1000,
+                update: renderObjects,
+                begin: function () {
+                    clipRect(ctx);
+                    clipRect(ctx0);
+                }
+            })
+            .add({
+                targets: layer2,
+                easing: 'linear',
+                dx: [
+                    {value: mainRect.width, duration: 0.1},
+                    {value: 0, duration: 1000},
+                ],
+                duration: 1000,
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                dx: +mainRect.height * 2 + +mainRect.width - 100,
+                length: [100, 150, 100],
+                duration: 2000,
+                offset: '-=1800',
+                update: renderObjects
+            })
+            .add({
+                targets: layer2,
+                easing: 'linear',
+                dx: mainRect.width,
+                delay: mainOptions.delay,
+                duration: 1000,
+                update: renderObjects
+            })
+            .add({
+                targets: layer1,
+                easing: 'linear',
+                dx: -mainRect.width,
+                duration: 1000,
+                offset: '-=1000',
+                update: renderObjects
+            });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx0.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx1.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
