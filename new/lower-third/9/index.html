@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Lower Third Animation 8</title>
+    <title>Lower Third Animation 9</title>
     <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
     <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <script src="../../../lib/animejs/anime.min.js"></script>
@@ -100,13 +100,13 @@
         }
     }
 
-    function clipRect (context) {
-        context.rect(org.x, org.y - mainRect.height, mainRect.width, mainRect.height);
+    function clipRect (context, offset) {
+        context.rect(org.x - offset, org.y - mainRect.height - offset, mainRect.width + offset * 2, mainRect.height + offset * 2);
         context.clip();
     }
 
     function calculateSizes () {
-        var margin = 4;
+        var margin = 8;
 
         var font1 = text1.size + 'px ' + text1.font;
         text1.width = ctx.measureText(text1.text).width;
@@ -140,14 +140,14 @@
         p.draw = function () {
             var font1 = text1.size + 'px ' + text1.font;
 
-            var margin = 4;
+            var margin = 8;
             context.textAlign = 'left';
             context.textBaseline = 'middle';
             context.fillStyle = '#00ff00';
 
             context.font = font1;
             context.fillStyle = textColor;
-            context.fillText(text1.text, +p.dx + +org.x + +margin, org.y - mainRect.height / 2);
+            context.fillText(text1.text, +p.dx + +org.x + +margin * 2, org.y - mainRect.height / 2);
         };
         return p;
     }
@@ -160,7 +160,7 @@
         p.dx = dx;
         p.draw = function () {
 
-            var margin = 4;
+            var margin = 8;
 
             if (text2.width > text3.width) {
                 w2 = text2.width + 50;
@@ -175,7 +175,7 @@
 
             context.font = text2.size + 'px ' + text2.font;
             context.fillStyle = p.text2_color;
-            context.fillText(text2.text, +p.dx + +org.x + +mainRect.width - margin - w2 / 2, org.y - mainRect.height + text2.height / 2);
+            context.fillText(text2.text, +p.dx + +org.x + +mainRect.width - margin - w2 / 2, org.y - mainRect.height + text2.height / 2 + margin);
 
             context.font = text3.size + 'px ' + text3.font;
             context.fillStyle = p.text3_color;
@@ -249,6 +249,29 @@
             .add({
                 targets: layer1,
                 easing: 'linear',
+                dx: -1000,
+                duration: 1,
+                update: renderObjects
+            })
+            .add({
+                targets: layer2,
+                easing: 'linear',
+                dx: 1000,
+                duration: 1,
+                update: renderObjects
+            })
+            .add({
+                targets: border,
+                easing: 'linear',
+                dx: +mainRect.height * 2 + +mainRect.width - 140,
+                length: [100, 150, 100],
+                duration: 1000,
+                // offset: '-=2500',
+                update: renderObjects
+            })
+            .add({
+                targets: layer1,
+                easing: 'linear',
                 dx: [
                     {value: -mainRect.width, duration: 0.1},
                     {value: 0, duration: 1000},
@@ -256,8 +279,9 @@
                 duration: 1000,
                 update: renderObjects,
                 begin: function () {
-                    clipRect(ctx);
-                    clipRect(ctx0);
+                    clipRect(ctx, 0);
+                    clipRect(ctx0, 0);
+                    clipRect(ctx1, 4);
                 }
             })
             .add({
@@ -268,21 +292,13 @@
                     {value: 0, duration: 1000},
                 ],
                 duration: 1000,
-                update: renderObjects
-            })
-            .add({
-                targets: border,
-                easing: 'linear',
-                dx: +mainRect.height * 2 + +mainRect.width - 130,
-                length: [100, 150, 100],
-                duration: 2000,
-                offset: '-=1800',
+                offset: '-=800',
                 update: renderObjects
             })
             .add({
                 targets: layer2,
                 easing: 'linear',
-                dx: mainRect.width,
+                dx: mainRect.width + 10,
                 delay: mainOptions.delay,
                 duration: 1000,
                 update: renderObjects
@@ -298,9 +314,14 @@
             .add({
               targets: border,
               easing: 'linear',
-              dx: 0,
-              length: [150, 100, 0],
-              duration: 2000,
+              dx: -0,
+              length: [
+                {value: 150, duration: 330},
+                {value: 100, duration: 330},
+                {value: 0, duration: 330},
+                {value: 0, duration: 100}
+              ],
+              duration: 1000,
               update: renderObjects
             });
     }
