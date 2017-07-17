@@ -47,6 +47,7 @@
 
     var mainOptions = {
         delay: /* delay */2000/* /delay */,
+        duration: /* duration */3000/* /duration */,
         isPaused: false,
         isRendering: false,
         timer: null
@@ -241,7 +242,7 @@
         var border = createBorder (0, '#bf5013', 6, -100, ctx1);
         timeline
             .add({
-                duration: 1000,
+                duration: mainOptions.duration / 4,
                 update:  function () {
                     calculateSizes();
                 }
@@ -265,7 +266,7 @@
                 easing: 'linear',
                 dx: +mainRect.height * 2 + +mainRect.width - 140,
                 length: [100, 150, 100],
-                duration: 1000,
+                duration: mainOptions.duration / 4,
                 // offset: '-=2500',
                 update: renderObjects
             })
@@ -274,7 +275,7 @@
                 easing: 'linear',
                 dx: [
                     {value: -mainRect.width, duration: 0.1},
-                    {value: 0, duration: 1000},
+                    {value: 0, duration: mainOptions.duration / 4},
                 ],
                 duration: 1000,
                 update: renderObjects,
@@ -289,7 +290,7 @@
                 easing: 'linear',
                 dx: [
                     {value: mainRect.width, duration: 0.1},
-                    {value: 0, duration: 1000},
+                    {value: 0, duration: mainOptions.duration / 3},
                 ],
                 duration: 1000,
                 offset: '-=800',
@@ -300,28 +301,28 @@
                 easing: 'linear',
                 dx: mainRect.width + 10,
                 delay: mainOptions.delay,
-                duration: 1000,
+                duration: mainOptions.duration / 4,
                 update: renderObjects
             })
             .add({
                 targets: layer1,
                 easing: 'linear',
                 dx: -mainRect.width,
-                duration: 1000,
+                duration: mainOptions.duration / 4,
                 offset: '-=1000',
                 update: renderObjects
             })
             .add({
               targets: border,
               easing: 'linear',
-              dx: -0,
+              dx: 0,
               length: [
-                {value: 150, duration: 330},
-                {value: 100, duration: 330},
-                {value: 0, duration: 330},
-                {value: 0, duration: 100}
+                {value: 150, duration: mainOptions.duration * 3 / 40},
+                {value: 100, duration: mainOptions.duration * 3 / 40},
+                {value: 0, duration: mainOptions.duration * 3 / 40},
+                {value: 0, duration: mainOptions.duration / 40}
               ],
-              duration: 1000,
+              duration: mainOptions.duration / 4,
               update: renderObjects
             });
     }
