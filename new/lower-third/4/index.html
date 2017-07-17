@@ -84,18 +84,21 @@
     var text1 = {
         text: /* text1 */'FREDRIC'/* /text1 */,
         font: 'OpenSansLight',
+        width: 0,
         size: 40
     };
 
     var text2 = {
         text: /* text2 */'BERTRAM'/* text2 */,
         font: 'OpenSansBold',
+        width: 0,
         size: 40
     };
 
     var text3 = {
         text: /* text3 */'VISUAL EFFECTS SUPERVISOR'/* text3 */,
         font: 'OpenSansLight',
+        width: 0,
         size: 20
     };
 
@@ -115,6 +118,18 @@
     function clipRect (context) {
         context.rect(org.x, org.y - mainRect.height - 20, mainRect.width + 20, mainRect.height + 4);
         context.clip();
+    }
+
+    function calculateSizes () {
+        var margin = 8;
+        text1.width = text1.size * text1.text.length * 0.58;
+        text2.width = text2.size * text2.text.length * 0.68;
+        var w = +text1.width + +text2.width;
+        var padding = 4;
+        mainRect.width = +w + +padding;
+        mainRect.height = +text1.size + +text2.size + +padding * 4;
+        // ctx.fillStyle = '#00ff00';
+        // ctx.fillRect(org.x, org.y - mainRect.height, mainRect.width, mainRect.height);
     }
 
     function createBorder(x, y, width, height, length, color, dx, context) {
@@ -151,13 +166,10 @@
     function createLayer1 (backgroundColor, textColor, context) {
         var p = {};
         p.draw = function () {
+          console.log('***',mainRect);
             var font1 = text1.size + 'px ' + text1.font;
-            var w1 = context.measureText(text1.text).width;
-
             var font2 = text2.size + 'px ' + text2.font;
-            var w2 = context.measureText(text2.text).width;
-
-            var w = w1 + w2;
+            var w = text1.width + text2.width;
 
             var padding = 4;
 
@@ -175,7 +187,7 @@
             context.fillText(text1.text, org.x + padding, org.y - mainRect.height + text1.size / 2 + padding);
 
             context.font = font2;
-            context.fillText(text2.text, org.x + padding + w1, org.y - mainRect.height + text2.size / 2 + padding);
+            context.fillText(text2.text, org.x + text1.width, org.y - mainRect.height + text2.size / 2 + padding);
         };
         return p;
     }
@@ -241,19 +253,13 @@
 
         timeline
             .add({
-                targets: layer1,
-                easing: 'linear',
-                duration: 1,
-                update: renderObjects
+                duration: 100,
+                update:  function () {
+                    calculateSizes();
+                }
             })
             .add({
-                targets: layer2,
-                easing: 'linear',
-                duration: 1,
-                update: renderObjects
-            })
-            .add({
-                targets: layer3,
+                targets: [layer1, layer2, layer3],
                 easing: 'linear',
                 duration: 1,
                 update: renderObjects
@@ -264,6 +270,7 @@
                 y: org.y - mainRect.height,
                 height: mainRect.height,
                 duration: 100,
+                offset: '-=1',
                 update: renderObjects
             })
             .add({
