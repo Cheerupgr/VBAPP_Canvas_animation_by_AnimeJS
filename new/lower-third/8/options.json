@@ -1,0 +1,44 @@
+{
+    "caption": "Lower Third Animation 8",
+    "duration": 7200,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "Executive Producer and Motion Graphics Designer",
+                "quotes": true
+            },
+            {
+                "name": "text_color1",
+                "caption": "Text color 1",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            },
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "Jordan Hamilton Hivanis",
+                "quotes": true
+            },
+            {
+                "name": "text_color2",
+                "caption": "Text color 2",
+                "type": "color",
+                "value": "#eeb945",
+                "quotes": true
+            },
+            {
+                "name": "background_color",
+                "caption": "Background color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            }
+        ]
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "caption": "Lower Third Animation 5",
+    "duration": 3000,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "VIDEOBUILDER",
+                "quotes": true
+            },
+            {
+                "name": "text_color1",
+                "caption": "Text color 1",
+                "type": "color",
+                "value": "#669de7",
+                "quotes": true
+            },
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "creative studio",
+                "quotes": true
+            },
+            {
+                "name": "text_color2",
+                "caption": "Text color 2",
+                "type": "color",
+                "value": "#9f9f9f",
+                "quotes": true
+            },
+            {
+                "name": "background_color1",
+                "caption": "Background color 1",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            },
+            {
+                "name": "background_color2",
+                "caption": "Background color 2",
+                "type": "color",
+                "value": "#669de7",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}
