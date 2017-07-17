@@ -1,0 +1,37 @@
+{
+    "caption": "Introduction 5",
+    "duration": 4000,
+    "delay": 2000,
+    "options": [
+      [
+        {
+            "name": "searchbar_color",
+            "caption": "Searchbar color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ],
+      [
+        {
+            "name": "url_text",
+            "caption": "Url text",
+            "type": "text",
+            "value": "videobuilder.com"
+        }
+      ],
+      [
+        {
+            "name": "name_text",
+            "caption": "Name text",
+            "type": "text",
+            "value": "videobuilder"
+        },
+        {
+            "name": "name_color",
+            "caption": "Name color",
+            "type": "color",
+            "value": "#ffffff"
+        }
+      ]
+    ]
+}
