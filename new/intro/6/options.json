@@ -1,0 +1,51 @@
+{
+    "caption": "Introduction 6",
+    "duration": 5700,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "VIDEO",
+                "quotes": true
+            },
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "BUILDER",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#616265",
+                "quotes": true
+            },
+            {
+                "name": "background_color",
+                "caption": "Background color",
+                "type": "color",
+                "value": "#43ba83",
+                "quotes": true
+            },
+            {
+                "name": "line_color",
+                "caption": "Line color",
+                "type": "color",
+                "value": "#c6c136",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}
