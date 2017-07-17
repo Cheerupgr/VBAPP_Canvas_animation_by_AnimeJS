@@ -273,7 +273,7 @@
             .add({
                 targets: border,
                 easing: 'linear',
-                dx: +mainRect.height * 2 + +mainRect.width - 100,
+                dx: +mainRect.height * 2 + +mainRect.width - 130,
                 length: [100, 150, 100],
                 duration: 2000,
                 offset: '-=1800',
@@ -294,6 +294,14 @@
                 duration: 1000,
                 offset: '-=1000',
                 update: renderObjects
+            })
+            .add({
+              targets: border,
+              easing: 'linear',
+              dx: 0,
+              length: [150, 100, 0],
+              duration: 2000,
+              update: renderObjects
             });
     }
 
