@@ -1,0 +1,491 @@
+<html>
+<head>
+    <title>Introduction 9</title>
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+    <canvas class="effect-rgn"></canvas>
+</div>
+
+<script>
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    setCanvasSize();
+
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
+        duration: /* duration */2000/* /duration */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function createLogo(dx, dy, scale, context) {
+        var p = {};
+        p.dx = dx;
+        p.dy = dy;
+        p.scale = scale;
+        var img = new Image;
+        p.draw = function () {
+            context.save();
+            var x = context.canvas.width/2 + +dx;
+            var y = context.canvas.height/2 + + dy;
+
+            context.translate(x, y);
+            context.scale(p.scale, p.scale);
+            context.translate(-1 * x, -1 * y);
+      
+            var width = parseInt(img.width);
+            var height = parseInt(img.height);
+            var heightToShow = 140;
+            var widthToShow = width * 140 / height;
+            
+            context.shadowOffsetX = 0;
+            context.shadowOffsetY = 0;
+            context.shadowBlur = 0;
+
+            context.drawImage(img, x - widthToShow / 2, y - heightToShow / 2, widthToShow, heightToShow);
+
+            context.restore();
+        };
+        img.src = /* file */"img/logo.png"/* /file */;
+        return p;
+    }
+
+    function createText (text, size, scale, x, y, color, context) {
+        var p = {};
+        p.text = text;
+        p.x = x;
+        p.y = y;
+        p.color = color;
+        p.size = size;
+        p.scale = scale;
+        p.draw = function () {
+            context.save();
+            context.translate(p.x, p.y);
+            context.scale(p.scale, 1);
+            context.translate(-1 * p.x, -1 * p.y);
+            context.font = p.size + 'px OpenSansRegular';
+            context.textAlign = 'center';
+            context.textBaseline = 'top';
+            context.fillStyle = p.color;
+            context.fillText(p.text, p.x, p.y);
+            context.restore();
+        };
+        return p;
+    }
+
+    function clip (anim) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, ctx.canvas.height / 2 + 60, ctx.canvas.width, ctx.canvas.height / 2 - 60);
+        ctx.clip();
+    }
+
+    function createRoundRect(width, height, radius, t, color, context) {
+        var p = {};
+        p.width = width;
+        p.height = height;
+        p.t = t;
+        p.color = color;
+        p.radius = radius;
+        p.draw = function () {
+            var x0 = (context.canvas.width - p.width) / 2;
+            var y0 = (context.canvas.height - 160 - p.height) / 2;
+            // ---------- draw rectangle --------------- //
+            context.beginPath();
+            context.moveTo(+x0 + +p.width - p.radius, y0);
+            context.arcTo(+x0 + +p.width, y0, +x0 + +p.width, +y0 + +p.radius, p.radius);
+            context.lineTo(+x0 + +p.width, +y0 + +p.height - p.radius);
+            context.arcTo(+x0 + +p.width, +y0 + +p.height, +x0 + +p.width - p.radius, +y0 + +p.height, p.radius);
+            context.lineTo(+x0 + +p.radius, +y0 + +p.height);
+            context.arcTo(+x0, +y0 + +p.height, +x0, +y0 + +p.height - p.radius, p.radius);
+            context.lineTo(x0, +y0 + +p.radius);
+            context.arcTo(x0, +y0, +x0 + +p.radius, +y0, p.radius);
+            context.closePath();
+            context.fillStyle = p.color;
+            context.fill();
+
+            context.shadowColor = "#999";
+            context.shadowOffsetX = 0;
+            context.shadowOffsetY = 700;
+            context.shadowBlur = 100;
+
+            var shadowWidth = +p.width + 200;
+
+            context.fillRect((context.canvas.width -shadowWidth) / 2, -100, shadowWidth, 20);
+        };
+        return p;
+    }
+
+    function createRoundBorder(width, height, radius, t, color, context) {
+        var p = {};
+        p.width = width;
+        p.height = height;
+        p.t = t;
+        p.color = color;
+        p.radius = radius;
+        p.draw = function () {
+            var x0 = (context.canvas.width - p.width) / 2;
+            var y0 = (context.canvas.height - 160 - p.height) / 2;
+            var offset_width = +p.width + +p.t * 4;
+            var offset_height = +p.height + +p.t * 4;
+            var offset_radius = +p.radius + +p.t * 2;
+            var offset_x0 = x0 - p.t * 2;
+            var offset_y0 = y0 - p.t * 2;
+            // ---------- draw offset border --------------- //
+            context.beginPath();
+            context.moveTo(+offset_x0 + +offset_width - offset_radius, offset_y0);
+            context.arcTo(+offset_x0 + +offset_width, offset_y0, +offset_x0 + +offset_width,+offset_y0 + +offset_radius, offset_radius);
+            context.lineTo(+offset_x0 + +offset_width, +offset_y0 + +offset_height - offset_radius);
+            context.arcTo(+offset_x0 + +offset_width, +offset_y0 + +offset_height, +offset_x0 + +offset_width - offset_radius, +offset_y0 + +offset_height, offset_radius);
+            context.lineTo(+offset_x0 + +offset_radius, +offset_y0 + +offset_height);
+            context.arcTo(+offset_x0, +offset_y0 + +offset_height, +offset_x0, +offset_y0 + +offset_height - offset_radius, offset_radius);
+            context.lineTo(offset_x0, +offset_y0 + +offset_radius);
+            context.arcTo(offset_x0, +offset_y0, +offset_x0 + +offset_radius, +offset_y0, offset_radius);
+            context.closePath();
+            context.strokeStyle = p.color;
+            context.lineWidth = p.t;
+            context.stroke();
+        };
+        return p;
+    }
+
+    function clipOutOfRect(x, y, width, height, context) {
+        context.save();
+        context.beginPath();
+        context.moveTo(x, y);
+        context.lineTo(+x + +width, y);
+        context.lineTo(+x + +width, +y + +height);
+        context.lineTo(x, +y + +height);
+        context.lineTo(x, y);
+        context.lineTo(x, 0);
+        context.lineTo(0, 0);
+        context.lineTo(0, context.canvas.height);
+        context.lineTo(context.canvas.width, context.canvas.height);
+        context.lineTo(context.canvas.width, 0);
+        context.lineTo(x, 0);
+        context.closePath();
+        // context.strokeStyle = '#ff0000';
+        // context.stroke();
+        context.clip();
+    }
+
+    function createRect (x, y, d, alpa, color, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.d = d;
+        p.alpa = alpa;
+        p.color = color;
+        p.draw = function () {
+            context.save();
+            clipOutOfRect((context.canvas.width - 160) / 2, context.canvas.height / 2 -160 , 160, 160, context);
+            context.translate(p.x, p.y);
+            context.rotate(p.alpa * Math.PI / 180);
+            context.translate(-1 * p.x, -1 * p.y);
+            context.fillStyle = p.color;
+            context.fillRect(p.x, p.y, p.d, p.d);
+            context.restore();
+
+            context.save();
+            clipOutOfRect((context.canvas.width - 160) / 2, context.canvas.height / 2 -160 , 160, 160, context);
+            context.translate(context.canvas.width - p.x - p.d, p.y);
+            context.rotate(-1 * p.alpa * Math.PI / 180);
+            context.translate(-1 * (context.canvas.width - p.x - p.d), -1 * p.y);
+            context.fillRect(context.canvas.width - p.x - p.d, p.y, p.d, p.d);
+            context.restore();
+        };
+        return p;
+    }
+
+    function createEle(x, y, d, alpa, context) {
+        var p = {};
+        p.x = x;
+        p.y = y;
+        p.d = d;
+        p.alpa = alpa;
+        var img = new Image;
+        p.draw = function () {
+            context.save();
+            clipOutOfRect((context.canvas.width - 160) / 2, context.canvas.height / 2 -160 , 160, 160, context);
+            context.translate(p.x, p.y);
+            context.rotate(p.alpa * Math.PI / 180);
+            context.translate(-1 * p.x, -1 * p.y);
+            context.drawImage(img, p.x - p.d / 2, p.y - p.d / 2, p.d, p.d);
+            context.restore();
+
+            context.save();
+            clipOutOfRect((context.canvas.width - 160) / 2, context.canvas.height / 2 -160 , 160, 160, context);
+            context.translate(context.canvas.width - p.x - p.d / 2, p.y);
+            context.rotate(-1 * p.alpa * Math.PI / 180);
+            context.translate(-1 * (context.canvas.width - p.x - p.d / 2), -1 * p.y);
+            context.drawImage(img, context.canvas.width - p.x - p.d / 2, p.y, p.d, p.d);
+            context.restore();
+        };
+        img.src = /* file */"img/logo.png"/* /file */;
+        return p;
+    }
+
+    function doAnimation(x, y) {
+        var roundRect = createRoundRect(0, 0, 0, 4, /* rect_color */'#92b633'/* /rect_color */, ctx);
+        var roundBorder = createRoundBorder(0, 0, 0, 0, /* border_color */'#ffffff'/* /border_color */, ctx);
+        var logo = createLogo(0, -80, 0, ctx)
+        var title = createText (/* title */'videobuilder'/* /title */, 0, 0.8, ctx.canvas.width / 2, ctx.canvas.height / 2 + 50, /* title_color */'#ffffff'/* /title_color */, ctx)
+        var url = createText (/* url */'https://videobuilderapp.com'/* /url */, 0, 1, ctx.canvas.width / 2, ctx.canvas.height / 2 + 100, /* url_color */'#ffffff'/* url_color */, ctx)
+        var rects = [];
+        var eles = [];
+        for (var i = 0; i < 10; i++) {
+            var alpa = 10;
+            var color = /* particle_rect_color */'#92b633'/* /particle_rect_color */;
+            var rect = createRect (ctx.canvas.width / 2, ctx.canvas.height / 2 - 50, 0, alpa, color, ctx);
+            var ele = createEle(ctx.canvas.width / 2, ctx.canvas.height / 2 - 50, 0, alpa, ctx);
+            rects.push(rect);
+            eles.push(ele);
+        }
+
+        timeline
+            .add({
+                targets: roundBorder,
+                easing: 'linear',
+                width: 160,
+                height: 160,
+                radius: 10,
+                t: 4,
+                duration: mainOptions.duration/2,
+                update: renderObjects
+            })
+            .add({
+                targets: roundRect,
+                easing: 'easeOutBack',
+                width: 160,
+                height: 160,
+                radius: 10,
+                duration: mainOptions.duration/2,
+                offset: '-=' + mainOptions.duration/5,
+                update: renderObjects
+            })
+            .add({
+                targets: logo,
+                easing: 'easeOutBack',
+                scale: [
+                    {value: 1.4, duration: mainOptions.duration/2},
+                    {value: 1, duration: mainOptions.duration/4}
+                ],
+                duration: mainOptions.duration/2,
+                offset: '-=' + mainOptions.duration/2,
+                update: renderObjects
+            })
+            .add({
+                targets: title,
+                easing: 'linear',
+                size: [
+                    {value: 40, duration: 700},
+                    {value: 40, duration: 300}
+                ],
+                scale: [
+                    {value: 0.6, duration: 700},
+                    {value: 1, duration: 300}
+                ],
+                duration: mainOptions.duration/2,
+                offset: '-=' + mainOptions.duration/2,
+                update: renderObjects
+            })
+            .add({
+                targets: url,
+                easing: 'linear',
+                size: [
+                    {value: 20, duration: 700},
+                    {value: 20, duration: 300}
+                ],
+                scale: [
+                    {value: 2, duration: 700},
+                    {value: 1, duration: 300}
+                ],
+                duration: mainOptions.duration/2,
+                offset: '-=' + mainOptions.duration/2,
+                update: renderObjects
+            });
+
+        var xtr = [];
+        var ytr = [];
+        var widthtr = [];
+
+        var xte = [];
+        var yte = [];
+        var widthte = [];
+
+        for (var i = 0; i < 10; i++) {
+            var xx = anime.random(ctx.canvas.width / 2 - 100, ctx.canvas.width / 2 - 400);
+            var yy = anime.random(ctx.canvas.height / 2 - 250, ctx.canvas.height / 2);
+            var tt = anime.random(10, 50);
+            xtr.push(xx);
+            ytr.push(yy);
+            widthtr.push(tt);
+            xx = anime.random(ctx.canvas.width / 2 - 100, ctx.canvas.width / 2 - 400);
+            yy = anime.random(ctx.canvas.height / 2 - 250, ctx.canvas.height / 2);
+            tt = anime.random(10, 50);
+            xte.push(xx);
+            yte.push(yy);
+            widthte.push(tt);
+        }
+
+        for (var i = 0; i < 10; i++) {
+            timeline.add({
+                targets: rects[i],
+                x: xtr[i],
+                y: ytr[i],
+                d: [widthtr, 0],
+                easing: 'linear',
+                duration: mainOptions.duration/2,
+                offset: mainOptions.duration - 100,
+                update: renderObjects
+            });
+
+            if (i ==9) {
+                console.log(4);
+                timeline.add({
+                    targets: eles[i],
+                    x: xte[i],
+                    y: yte[i],
+                    d: [widthte, 0],
+                    easing: 'linear',
+                    duration: mainOptions.duration/2,
+                    offset: mainOptions.duration,
+                    update: renderObjects,
+                    complete: function () {
+                        ctx.restore();
+                        mainOptions.timer = setTimeout(function(){
+                            clearCanvas();
+                        }, mainOptions.isRendering
+                            ? mainOptions.delay * 3
+                            : mainOptions.delay);
+                    }
+                });
+            } else {
+                timeline.add({
+                    targets: eles[i],
+                    x: xte[i],
+                    y: yte[i],
+                    d: [widthte, 0],
+                    easing: 'linear',
+                    duration: mainOptions.duration/2,
+                    offset: mainOptions.duration - 100,
+                    update: renderObjects
+                });
+            }
+        }
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
