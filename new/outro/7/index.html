@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Outro linkedin</title>
+    <title>Outro instagram</title>
 
     <link href="../../../fonts/proximanovalight/font.css" rel="stylesheet">
     <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
@@ -143,9 +143,12 @@
         context.clip();
     }
 
-    function setBackground(color, context) {
-        context.fillStyle = color;
-        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+    function setGradient(color1, color2, context) {
+        var grd=context.createLinearGradient(0,0,0,context.canvas.height);
+        grd.addColorStop(0,color1);
+        grd.addColorStop(1,color2);
+        context.fillStyle=grd;
+        context.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
     }
 
     function renderObjects(anim) {
@@ -156,12 +159,12 @@
 
     function doAnimation(x, y) {
 
-        setBackground('#4877B4', backctx);
+        setGradient('#622CA4', '#CF581F', backctx);
 
-        var mark = createText('\uF0e1', x, 0, 'FontAwesome', 0, /* mark_color */'#ffffff'/* /mark_color */, 'middle', 'center', -180, ctx);
+        var mark = createText('\uF16d', x, 0, 'FontAwesome', 0, /* mark_color */'#ffffff'/* /mark_color */, 'middle', 'center', -180, ctx);
 
         ctx.font = '48px OpenSansLight';
-        var t1 = /* text1 */'Pin it up'/* /text1 */;
+        var t1 = /* text1 */'follow us'/* /text1 */;
         var w = ctx.measureText(t1).width * 1.2;
 
         var center = {
