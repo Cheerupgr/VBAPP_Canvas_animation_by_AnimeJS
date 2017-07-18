@@ -61,12 +61,12 @@
             context.translate(x, y);
             context.scale(p.scale, p.scale);
             context.translate(-1 * x, -1 * y);
-      
+
             var width = parseInt(img.width);
             var height = parseInt(img.height);
             var heightToShow = 140;
             var widthToShow = width * 140 / height;
-            
+
             context.shadowOffsetX = 0;
             context.shadowOffsetY = 0;
             context.shadowBlur = 0;
@@ -274,7 +274,7 @@
         timeline
             .add({
                 targets: roundBorder,
-                easing: 'linear',
+                easing: 'easeOutBack',
                 width: 160,
                 height: 160,
                 radius: 10,
