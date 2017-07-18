@@ -1,0 +1,319 @@
+<html>
+<head>
+    <title>Text animation 10</title>
+    <link href="../../../fonts/Open_Sans/font.css" rel="stylesheet">
+    <link href="../../../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+    <canvas class="effect-rgn"></canvas>
+</div>
+
+<script>
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    setCanvasSize();
+
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
+        duration: /* duration */3000/* /duration */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function createText (text, font, size, angle, align, baseline, x, y, color, context) {
+        var p = {};
+        p.text = text;
+        p.x = x;
+        p.y = y;
+        p.color = color;
+        p.size = size;
+        p.angle = angle;
+        p.align = align;
+        p.baseline = baseline;
+        p.font = font;
+        p.draw = function () {
+            context.save();
+            context.translate(p.x, p.y);
+            context.rotate(p.angle*Math.PI/180);
+            context.translate(-1 * p.x, -1 * p.y);
+            context.font = p.size + 'px ' + p.font;
+            context.textAlign = p.align;
+            context.textBaseline = p.baseline;
+            context.fillStyle = p.color;
+            context.fillText(p.text, p.x, p.y);
+            context.restore();
+        };
+        return p;
+    }
+
+    function clipOutOfRect(x, y, width, height, context) {
+        context.save();
+        context.beginPath();
+        context.moveTo(x, y);
+        context.lineTo(+x + +width, y);
+        context.lineTo(+x + +width, +y + +height);
+        context.lineTo(x, +y + +height);
+        context.lineTo(x, y);
+        context.lineTo(x, 0);
+        context.lineTo(0, 0);
+        context.lineTo(0, context.canvas.height);
+        context.lineTo(context.canvas.width, context.canvas.height);
+        context.lineTo(context.canvas.width, 0);
+        context.lineTo(x, 0);
+        context.closePath();
+        context.clip();
+    }
+
+
+    function doAnimation(x, y) {
+        var title = {
+            text: /* title */'MINIMALISM'/* /title */,
+            font: 'OpenSansExtraBoldItalic',
+            color: /* title_color */'#d1ae51'/* /title_color */,
+            height: 120,
+            width: 0
+        };
+
+        var text1 = {
+            text: /* text1 */'SIMPLE'/* /text1 */,
+            font: 'OpenSansBold',
+            color: /* text1_color */'#ffffff'/* /text1_color */,
+            height: 50,
+        };
+
+        var text2 = {
+            text: /* text2 */'INSPIRE'/* /text2 */,
+            font: 'OpenSansRegular',
+            color: /* text2_color */'#ffffff'/* /text2_color */,
+            height: 60,
+        };
+
+        var text3 = {
+            text: /* text3 */'MODERN AND CLEAN'/* /text3 */,
+            font: 'OpenSansRegular',
+            color: /* text3_color */'#ffffff'/* /text3_color */,
+            height: 50,
+        };
+
+        var text4 = {
+            text: /* text4 */'30 DIFFERENT ANIMATIONS'/* /text4 */,
+            font: 'OpenSansLightItalic',
+            color: /* text4_color */'#d1ae51'/* /text4_color */,
+            height: 36,
+        };
+
+        title.width = title.height * title.text.length * 0.64;
+        var padding = 8;
+        var titleObj = createText (title.text, title.font, title.height, -90, 'left', 'bottom', -1200, ctx.canvas.height/2 + title.height/2, title.color, ctx);
+        var text1Obj = createText (text1.text, text1.font, text1.height, -180, 'left', 'bottom', -1200, ctx.canvas.height/2 - title.height/2 - 16, text1.color, ctx);
+        var text2Obj = createText (text2.text, text2.font, text2.height, 180, 'left', 'top', -1200, ctx.canvas.height/2 + title.height/2 - 10, text2.color, ctx);
+        var text3Obj = createText (text3.text, text3.font, text3.height, 0, 'left', 'top', -1200, ctx.canvas.height/2 + title.height/2 - 24, text3.color, ctx);
+        var text4Obj = createText (text4.text, text4.font, text4.height, 0, 'left', 'top', -1200, ctx.canvas.height/2 + title.height/2 + text3.height- 24, text4.color, ctx);
+
+        timeline
+        .add({
+            targets: titleObj,
+            easing: 'linear',
+            x: ctx.canvas.width/2 - title.width/2,
+            angle: 0,
+            duration: mainOptions.duration/10,
+            update: renderObjects
+        })
+        .add({
+            targets: text1Obj,
+            easing: 'linear',
+            x: [
+                {value: ctx.canvas.width/2, duration: 1}
+            ],
+            angle: -90,
+            duration: mainOptions.duration/6,
+            update: renderObjects,
+            begin: function () {
+                clipOutOfRect(0, (ctx.canvas.height - title.height) / 2, ctx.canvas.width, title.height - 20, ctx);
+            }
+        })
+        .add({
+            targets: text2Obj,
+            easing: 'linear',
+            x: [
+                {value: ctx.canvas.width/2 - 100, duration: 1}
+            ],
+            angle: 90,
+            duration: mainOptions.duration/6,
+            offset: '-='+mainOptions.duration/10,
+            update: renderObjects
+        })
+        .add({
+            targets: [text3Obj, text4Obj],
+            easing: 'linear',
+            x: [
+                {value: ctx.canvas.width/2 - 1000, duration: 1},
+                {value: ctx.canvas.width/2 - 100, duration: 500},
+            ],
+            duration: mainOptions.duration/6,
+            update: renderObjects,
+            begin: function () {
+                ctx.restore();
+                clipOutOfRect(0, ctx.canvas.height/2 + title.height/2 - 24, ctx.canvas.width/2 - 100, 1000, ctx);
+            }
+        })
+        .add({
+            targets: [text3Obj, text4Obj],
+            easing: 'linear',
+            x: -1200,
+            duration: mainOptions.duration/6,
+            update: renderObjects,
+            delay: mainOptions.delay
+        })
+        .add({
+            targets: text1Obj,
+            easing: 'linear',
+            x: [
+                {value: ctx.canvas.width/2, duration: 500},
+                {value: -1200, duration: 1}
+            ],
+            angle: -180,
+            duration: mainOptions.duration/6,
+            update: renderObjects,
+            begin: function () {
+                ctx.restore();
+                clipOutOfRect(0, (ctx.canvas.height - title.height) / 2, ctx.canvas.width, title.height - 20, ctx);
+            }
+        })
+        .add({
+            targets: text2Obj,
+            easing: 'linear',
+            x: [
+                {value: ctx.canvas.width/2 - 100, duration: 500},
+                {value: -1200, duration: 1}
+            ],
+            angle: 180,
+            duration: mainOptions.duration/6,
+            offset: '-='+mainOptions.duration/10,
+            update: renderObjects
+        })
+        .add({
+            targets: titleObj,
+            easing: 'linear',
+            x: -1200,
+            angle: -90,
+            duration: mainOptions.duration/10,
+            update: renderObjects,
+            begin: function () {
+                ctx.restore();
+            }
+        });
+    }
+
+    var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        if( timeline.paused ){
+            timeline.play();
+        } else {
+            timeline.pause();
+        }
+    };
+
+    var animationPlay = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.play();
+    };
+
+    var animationPause = function(){
+        if( mainOptions.isPaused ){
+            return;
+        }
+        timeline.pause();
+    };
+
+    var animationRestart = function(){
+        timeline.restart();
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( mainOptions.timer );
+        timeline.restart();
+        timeline.pause();
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>
