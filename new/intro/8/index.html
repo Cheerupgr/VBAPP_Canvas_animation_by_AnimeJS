@@ -169,29 +169,9 @@
                 y: ctx.canvas.height / 2 + 80,
                 duration: mainOptions.duration / 3,
                 update: renderObjects,
-                begin: clip
-            })
-            .add({
-                targets: object,
-                duration: mainOptions.duration / 3,
-                easing: 'linear',
-                size: 80,
-                update: renderObjects,
-                begin: function () {
-                    ctx.restore();
-                }
-            })
-            .add({
-                targets: url,
-                duration: 2000,
-                easing: 'linear',
-                size: 26,
-                offset: '-=2000',
-                update: renderObjects,
-                begin: function () {
-                    ctx.restore();
-                },
+                begin: clip,
                 complete: function (anim) {
+                  ctx.restore();
                     mainOptions.timer = setTimeout(function(){
                         clearCanvas();
                     }, mainOptions.isRendering
