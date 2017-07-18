@@ -1,0 +1,44 @@
+{
+    "caption": "Introduction 10",
+    "duration": 3700,
+    "delay": 3000,
+    "options": [
+        [
+            {
+                "name": "text1",
+                "caption": "Text 1",
+                "type": "text",
+                "value": "Your Slogan",
+                "quotes": true
+            },
+            {
+                "name": "text2",
+                "caption": "Text 2",
+                "type": "text",
+                "value": "WEBSITE.COM",
+                "quotes": true
+            },
+            {
+                "name": "text_color",
+                "caption": "Text color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            },
+            {
+                "name": "background_color",
+                "caption": "Background color",
+                "type": "color",
+                "value": "#7ba940",
+                "quotes": true
+            },
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            }
+        ]
+    ]
+}
