@@ -1,0 +1,47 @@
+{
+    "caption": "Outro 7",
+    "duration": 2000,
+    "options": [
+      [
+        {
+          "name": "mark_color",
+          "caption": "Mark color",
+          "type": "color",
+          "value": "#ffffff",
+          "quotes": true
+        }
+      ],
+      [
+        {
+            "name": "text1",
+            "caption": "Text 1",
+            "type": "text",
+            "value": "follow us",
+            "quotes": true
+        },
+        {
+            "name": "text1_color",
+            "caption": "Text 1 color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],
+      [
+        {
+            "name": "text2",
+            "caption": "Text 2",
+            "type": "text",
+            "value": "/videobuilder",
+            "quotes": true
+        },
+        {
+            "name": "text2_color",
+            "caption": "Text 2 color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ]
+    ]
+}
