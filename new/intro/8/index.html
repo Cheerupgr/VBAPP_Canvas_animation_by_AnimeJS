@@ -86,6 +86,7 @@
         p.alpa = alpa;
         p.beta = beta;
         p.size = size;
+        var img = new Image;
         p.draw = function () {
             context.save();
             var x = context.canvas.width/2 + +dx;
@@ -105,14 +106,22 @@
             context.shadowOffsetY = 200;
             context.shadowBlur = 80;
 
-            context.font = p.size + 'pt proximanovalight';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillStyle = p.color;
-            context.fillText(p.text, x, y);
+            var width = parseInt(img.width);
+            var height = parseInt(img.height);
+            var heightToShow = 160;
+            var widthToShow = width * 160 / height;
+
+            context.drawImage(img, x - widthToShow / 2, y - heightToShow / 2, widthToShow, heightToShow);
+
+            // context.font = p.size + 'pt proximanovalight';
+            // context.textAlign = 'center';
+            // context.textBaseline = 'middle';
+            // context.fillStyle = p.color;
+            // context.fillText(p.text, x, y);
 
             context.restore();
         };
+        img.src = /* file */"img/vb-logo.png"/* /file */;
         return p;
     }
 

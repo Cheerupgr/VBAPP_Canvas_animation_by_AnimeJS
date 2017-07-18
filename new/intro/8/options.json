@@ -30,6 +30,22 @@
             "type": "color",
             "value": "#000000"
         }
+      ],
+      [
+          {
+              "name": "background_color",
+              "caption": "Background color",
+              "type": "color",
+              "value": "#000000",
+              "quotes": true
+          },
+          {
+              "name": "file",
+              "caption": "Image",
+              "type": "file",
+              "value": "logo.png",
+              "quotes": true
+          }
       ]
     ]
 }
