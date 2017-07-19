@@ -1,0 +1,177 @@
+<html>
+<head>
+    <title>Outro 9</title>
+    <link href="../../../fonts/digital-7/font.css" rel="stylesheet">
+    <script src="../../../lib/animejs/anime.min.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="vba-area">
+    <canvas class="effect-rgn"></canvas>
+</div>
+
+<script>
+    var canvasEl = document.querySelector('.effect-rgn');
+    var ctx = canvasEl.getContext('2d');
+
+    function setCanvasSize() {
+        canvasEl.width = canvasEl.parentNode.offsetWidth;
+        canvasEl.height = canvasEl.parentNode.offsetHeight;
+        canvasEl.style.width = canvasEl.parentNode.offsetWidth + 'px';
+        canvasEl.style.height = canvasEl.parentNode.offsetHeight + 'px';
+    }
+
+    setCanvasSize();
+
+    var mainOptions = {
+        delay: /* delay */3000/* /delay */,
+        duration: /* duration */99990/* /duration */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    function renderObjects(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+
+    function createTimeText (time, size, scale, x, y, color, context) {
+        var p = {};
+        p.time = time;
+        p.x = x;
+        p.y = y;
+        p.color = color;
+        p.size = size;
+        p.scale = scale;
+        p.draw = function () {
+            clearCanvas();
+            var seconds = Math.floor(p.time / 1000);
+            var milliseconds = p.time % 1000;
+            var seconds_t = '000000' + seconds;
+            var seconds_l = ('' + seconds).length >= 2 ? ('' + seconds).length : 2;
+            seconds_t = seconds_t.substring(seconds_t.length - seconds_l, seconds_t.length);
+            var milli_t = milliseconds + '000';
+            var milli_l = 2;
+            var milli_t = milli_t.substring(0, milli_l);
+            var t = seconds_t + ':' + milli_t;
+            
+            context.save();
+            context.translate(p.x, p.y);
+            context.scale(p.scale, 1);
+            context.translate(-1 * p.x, -1 * p.y);
+            context.font = p.size + 'px Digital7Mono';
+            context.textAlign = 'left';
+            context.textBaseline = 'middle';
+            context.fillStyle = p.color;
+            context.fillText(t, p.x, p.y);
+            context.restore();
+        };
+        return p;
+    }
+
+    var timeVal = mainOptions.duration;
+    var h = 100;
+    var w = ('' + timeVal).length * h * 0.5;
+    var timeText = createTimeText (timeVal, 100, 1, ctx.canvas.width / 2 - w / 2, ctx.canvas.height / 2, /* text_color */'#ff0000'/* /text_color */, ctx);
+    var thisTimer = null;
+
+    function resetOptions() {
+        timeVal = mainOptions.duration;
+        h = 100;
+        w = ('' + timeVal).length * h * 0.5;
+        timeText = createTimeText (timeVal, 100, 1, ctx.canvas.width / 2 - w / 2, ctx.canvas.height / 2, /* text_color */'#ff0000'/* /text_color */, ctx);
+        thisTimer = null;
+    }
+
+    function updateSecond() {
+        thisTimer = setTimeout(function(){
+            if (timeVal > 0 && !mainOptions.isPaused) {
+                timeVal -= 10;
+                timeText.time = +timeVal;
+                timeText.draw();
+                updateSecond();
+            } else if (timeVal <= 0 && !mainOptions.isPaused) {
+                clearTimeout( thisTimer );
+                mainOptions.timer = setTimeout(function(){
+                    clearCanvas();
+                }, mainOptions.delay); 
+            } else {
+                updateSecond();
+            }
+        }, 10);
+    }
+
+    function doAnimation(x, y) {
+        updateSecond();
+    }
+
+    var render = anime({
+    });
+
+    var clearCanvas = function(){
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+
+    var centerX = canvasEl.width / 2;
+    var centerY = canvasEl.height / 2;
+
+    doAnimation(centerX, centerY);
+
+    var animationPlayToggle = function(){
+        mainOptions.isPaused = !mainOptions.isPaused;
+    };
+
+    var animationPlay = function(){
+        mainOptions.isPaused = false;
+    };
+
+    var animationPause = function(){
+        mainOptions.isPaused = true;
+    };
+
+    var animationRestart = function(){
+        resetOptions();
+        doAnimation(centerX, centerY);
+    };
+
+    var animationStop = function(){
+        mainOptions.isPaused = false;
+        clearTimeout( thisTimer );
+        clearCanvas();
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="animationPlayToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPlay(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="animationPause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="animationStop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="animationRestart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+
+</body>
+</html>

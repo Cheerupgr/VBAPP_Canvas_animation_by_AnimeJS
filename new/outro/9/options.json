@@ -1,0 +1,24 @@
+{
+    "caption": "Outro 9",
+    "delay": 3000,
+    "duration": 99990,
+    "options": [
+      [
+        {
+            "name": "text_color",
+            "caption": "Text color",
+            "type": "color",
+            "value": "#ff0000"
+        }
+      ],
+      [
+          {
+              "name": "background_color",
+              "caption": "Background color",
+              "type": "color",
+              "value": "#000000",
+              "quotes": true
+          }
+      ]
+    ]
+}
