@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'Digital7';
+	src: url('./digital-7.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Digital7Italic';
+	src: url('./digital-7-italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Digital7MonoItalic';
+	src: url('./digital-7-mono-italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Digital7Mono';
+	src: url('./digital-7-mono.ttf') format('truetype');
+}
