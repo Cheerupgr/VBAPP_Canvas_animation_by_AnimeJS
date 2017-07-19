@@ -8,13 +8,15 @@
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
-            "value": "GABRIEL"
+            "value": "GABRIEL",
+            "quotes": true
         },
         {
             "name": "text1_color",
             "caption": "Text 1 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -22,13 +24,15 @@
             "name": "text2",
             "caption": "Text 2",
             "type": "text",
-            "value": "JONATHAN"
+            "value": "JONATHAN",
+            "quotes": true
         },
         {
             "name": "text2_color",
             "caption": "Text 2 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -36,19 +40,22 @@
             "name": "text3",
             "caption": "Text 3",
             "type": "text",
-            "value": "SUPERVISOR"
+            "value": "SUPERVISOR",
+            "quotes": true
         },
         {
             "name": "text3_color_1",
             "caption": "Text 3 color 1",
             "type": "color",
-            "value": "#bf5013"
+            "value": "#bf5013",
+            "quotes": true
         },
         {
             "name": "text3_color_2",
             "caption": "Text 3 color 2",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -56,7 +63,8 @@
             "name": "background_color",
             "caption": "Background color",
             "type": "color",
-            "value": "#000000"
+            "value": "#000000",
+            "quotes": true
         }
       ]
     ]
