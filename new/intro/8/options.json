@@ -1,51 +1,55 @@
 {
-    "caption": "Introduction 8",
-    "duration": 6000,
-    "delay": 2000,
-    "options": [
-      [
-        {
-            "name": "title",
-            "caption": "Title",
-            "type": "text",
-            "value": "videobuilder"
-        },
-        {
-            "name": "title_color",
-            "caption": "Title color",
-            "type": "color",
-            "value": "#558aca"
-        }
-      ],
-      [
-        {
-            "name": "url",
-            "caption": "Tagline/Url",
-            "type": "text",
-            "value": "https://videobuilderapp.com"
-        },
-        {
-            "name": "url_color",
-            "caption": "Tagline/Url color",
-            "type": "color",
-            "value": "#000000"
-        }
-      ],
-      [
-          {
-              "name": "background_color",
-              "caption": "Background color",
-              "type": "color",
-              "value": "#000000",
-              "quotes": true
-          },
-          {
-              "name": "file",
-              "caption": "Image",
-              "type": "file",
-              "value": "logo.png",
-              "quotes": true
-          }
-      ]
+  "caption": "Introduction 8",
+  "duration": 6000,
+  "delay": 2000,
+  "options": [
+    [
+      {
+        "name": "title",
+        "caption": "Title",
+        "type": "text",
+        "value": "videobuilder",
+        "quotes": true
+      },
+      {
+        "name": "title_color",
+        "caption": "Title color",
+        "type": "color",
+        "value": "#558aca",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "url",
+        "caption": "Tagline/Url",
+        "type": "text",
+        "value": "https://videobuilderapp.com",
+        "quotes": true
+      },
+      {
+        "name": "url_color",
+        "caption": "Tagline/Url color",
+        "type": "color",
+        "value": "#000000",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "background_color",
+        "caption": "Background color",
+        "type": "color",
+        "value": "#000000",
+        "quotes": true
+      },
+      {
+        "name": "file",
+        "caption": "Image",
+        "type": "file",
+        "value": "logo.png",
+        "quotes": true
+      }
     ]
+  ]
 }

@@ -1,86 +1,96 @@
 {
-    "caption": "Text animation 10",
-    "duration": 3000,
-    "delay": 2000,
-    "options": [
-      [
-        {
-            "name": "title",
-            "caption": "Title",
-            "type": "text",
-            "value": "MINIMALISM"
-        },
-        {
-            "name": "title_color",
-            "caption": "Title color",
-            "type": "color",
-            "value": "#d1ae51"
-        }
-      ],
-      [
-        {
-            "name": "text1",
-            "caption": "Text 1",
-            "type": "text",
-            "value": "SIMPLE"
-        },
-        {
-            "name": "text1_color",
-            "caption": "Text 1 color",
-            "type": "color",
-            "value": "#ffffff"
-        }
-      ],
-      [
-        {
-            "name": "text2",
-            "caption": "Text 2",
-            "type": "text",
-            "value": "INSPIRE"
-        },
-        {
-            "name": "text2_color",
-            "caption": "Text 2 color",
-            "type": "color",
-            "value": "#ffffff"
-        }
-      ],
-      [
-        {
-            "name": "text3",
-            "caption": "Text 3",
-            "type": "text",
-            "value": "MODERN AND CLEAN"
-        },
-        {
-            "name": "text3_color",
-            "caption": "Text 3 color",
-            "type": "color",
-            "value": "#ffffff"
-        }
-      ],
-      [
-        {
-            "name": "text4",
-            "caption": "Text 4",
-            "type": "text",
-            "value": "30 DIFFERENT ANIMATIONS"
-        },
-        {
-            "name": "text4_color",
-            "caption": "Text 4 color",
-            "type": "color",
-            "value": "#d1ae51"
-        }
-      ],
-      [
-        {
-            "name": "background_color",
-            "caption": "Background color",
-            "type": "color",
-            "value": "#000000",
-            "quotes": true
-        }
-      ]
+  "caption": "Text animation 10",
+  "duration": 3000,
+  "delay": 2000,
+  "options": [
+    [
+      {
+        "name": "title",
+        "caption": "Title",
+        "type": "text",
+        "value": "MINIMALISM",
+        "quotes": true
+      },
+      {
+        "name": "title_color",
+        "caption": "Title color",
+        "type": "color",
+        "value": "#d1ae51",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "text1",
+        "caption": "Text 1",
+        "type": "text",
+        "value": "SIMPLE",
+        "quotes": true
+      },
+      {
+        "name": "text1_color",
+        "caption": "Text 1 color",
+        "type": "color",
+        "value": "#ffffff",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "text2",
+        "caption": "Text 2",
+        "type": "text",
+        "value": "INSPIRE",
+        "quotes": true
+      },
+      {
+        "name": "text2_color",
+        "caption": "Text 2 color",
+        "type": "color",
+        "value": "#ffffff",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "text3",
+        "caption": "Text 3",
+        "type": "text",
+        "value": "MODERN AND CLEAN",
+        "quotes": true
+      },
+      {
+        "name": "text3_color",
+        "caption": "Text 3 color",
+        "type": "color",
+        "value": "#ffffff",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "text4",
+        "caption": "Text 4",
+        "type": "text",
+        "value": "30 DIFFERENT ANIMATIONS",
+        "quotes": true
+      },
+      {
+        "name": "text4_color",
+        "caption": "Text 4 color",
+        "type": "color",
+        "value": "#d1ae51",
+        "quotes": true
+      }
+    ],
+    [
+      {
+        "name": "background_color",
+        "caption": "Background color",
+        "type": "color",
+        "value": "#000000",
+        "quotes": true
+      }
     ]
+  ]
 }
