@@ -27,12 +27,12 @@
         loop: false,
         direction: 'alternate',
         autoplay: true
-    });	
+    });
 
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
 
-    var bgColor = /* background_color */'#000'/* /background_color */;
+    var lineColor = /* line_color */'#ffffff'/* /line_color */;
 
 //-------------------------function
 	function setCanvasSize() {
@@ -47,7 +47,7 @@
       p.x = 640;
       p.y1 = 0;
       p.y2 = -300;
-      p.color = bgColor;
+      p.color = lineColor;
       p.lineWidth = 2;
       p.draw = function() {
         ctx.beginPath();
@@ -62,16 +62,16 @@
   function createCircle() {
       var p = {};
       p.x = 640;
-      p.y = 370; 
+      p.y = 370;
       p.radius1 = 0;
       p.radius2 = 0;
       p.Alpha1 = 1;
       p.Alpha2 = 1;
-      p.color = bgColor;
+      p.color = lineColor;
       p.lineWidth1 = 5;
       p.lineWidth2 = 5;
       p.draw = function() {
-        
+
         ctx.save();
         ctx.globalAlpha = p.Alpha1;
         ctx.beginPath();
@@ -96,8 +96,8 @@
   function createImage() {
         var p = {};
           p.x = 640;
-          p.y = 370;   
-          p.scale = 0; 
+          p.y = 370;
+          p.scale = 0;
           p.angle = 0;
           var img = new Image;
           p.draw = function() {
@@ -193,7 +193,7 @@
                     : mainOptions.delay);
                 }
               });
-    	
+
     }
 
     setCanvasSize();
@@ -272,6 +272,6 @@
     }
 </script>
 <!-- /BUTTONS -->
-	
+
 </body>
 </html>

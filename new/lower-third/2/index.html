@@ -25,7 +25,7 @@
         loop: false,
         direction: 'alternate',
         autoplay: true
-    });	
+    });
 
     var canvasEl = document.querySelector('.Effect');
     var ctx = canvasEl.getContext('2d');
@@ -54,7 +54,7 @@
       p.draw = function() {
       	ctx.save();
       	ctx.rect(150, 535, widthTextUp + 40, 60);
-      	ctx.clip(); 
+      	ctx.clip();
       	ctx.font = "45px Arial"
     		ctx.fillStyle = p.color;
 	  		ctx.fillText(textUp, p.x, p.y);
@@ -96,8 +96,8 @@
   		var p = {};
       p.x1 = 120;
       p.y = 600;
-      p.x2 = 120; 
-      p.color = '#FFF';
+      p.x2 = 120;
+      p.color = /* line_color */'#FFF'/* line_color */;
       p.lineWidth = 2;
     	p.draw = function() {
     		ctx.beginPath();
@@ -114,7 +114,7 @@
       p.x1 = 150;
       p.y1 = 595;
       p.width = widthTextUp + 40;
-      p.height = 0; 
+      p.height = 0;
       p.color = /* background_color1 */'#FBB829'/* /background_color1 */;
       p.draw = function() {
     		ctx.fillStyle = p.color;
@@ -126,8 +126,8 @@
   	var p = {};
       p.x1 = 192 + widthTextUp;
       p.y1 = 605;
-      p.width = widthTextDown + 20; 
-      p.height = 0; 
+      p.width = widthTextDown + 20;
+      p.height = 0;
       p.color = /* background_color2 */'#43403F'/* /background_color2 */;
       p.draw = function() {
     		ctx.fillStyle = p.color;
@@ -166,7 +166,7 @@
     	timeline
     			.add({
 		    				targets: circle,
-		            y: [{value: 740}, 
+		            y: [{value: 740},
 		            		{value: 360, duration: 1000, easing: 'easeOutCubic'},
 		            		{value: 600, duration: 500, easing: 'easeInCubic'}],
 		            update: renderEffect
@@ -253,7 +253,7 @@
     			.add({
 		    				targets: circle,
 		            y: [600, 740],
-		            duration: 500, 
+		            duration: 500,
 		            easing: 'easeInCubic',
 		            update: renderEffect
     			})
@@ -343,6 +343,6 @@
     }
 </script>
 <!-- /BUTTONS -->
-	
+
 </body>
 </html>

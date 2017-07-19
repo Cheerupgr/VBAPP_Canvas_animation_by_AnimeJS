@@ -2,57 +2,61 @@
     "caption": "Lower Third Animation 7",
     "duration": 6400,
     "delay": 3000,
+    "deluxe": true,
     "options": [
-        [
-            {
-                "name": "text1",
-                "caption": "Text 1",
-                "type": "text",
-                "value": "BRENDEN",
-                "quotes": true
-            },
-            {
-                "name": "text_color1",
-                "caption": "Text color 1",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
-            {
-                "name": "text2",
-                "caption": "Text 2",
-                "type": "text",
-                "value": "SAMSON",
-                "quotes": true
-            },
-            {
-                "name": "text_color2",
-                "caption": "Text color 2",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
-            {
-                "name": "text3",
-                "caption": "Text 3",
-                "type": "text",
-                "value": "PRODUCER",
-                "quotes": true
-            },
-            {
-                "name": "text_color3",
-                "caption": "Text color 3",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
-            {
-                "name": "background_color",
-                "caption": "Background color",
-                "type": "color",
-                "value": "#d74007",
-                "quotes": true
-            }
-        ]
+      [
+        {
+            "name": "text1",
+            "caption": "Text 1",
+            "type": "text",
+            "value": "BRENDEN",
+            "quotes": true
+        },
+        {
+            "name": "text_color1",
+            "caption": "Text color 1",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "text2",
+            "caption": "Text 2",
+            "type": "text",
+            "value": "SAMSON",
+            "quotes": true
+        },
+        {
+            "name": "text_color2",
+            "caption": "Text color 2",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "text3",
+            "caption": "Text 3",
+            "type": "text",
+            "value": "PRODUCER",
+            "quotes": true
+        },
+        {
+            "name": "text_color3",
+            "caption": "Text color 3",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "background_color",
+            "caption": "Background color",
+            "type": "color",
+            "value": "#d74007",
+            "quotes": true
+        }
+      ]
     ]
 }

@@ -2,6 +2,7 @@
   "caption": "Introduction 5",
   "duration": 4000,
   "delay": 2000,
+  "deluxe": true,
   "options": [
     [
       {
@@ -37,5 +38,6 @@
         "quotes": true
       }
     ]
+  ]
   ]
 }

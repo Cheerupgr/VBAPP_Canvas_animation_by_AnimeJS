@@ -102,7 +102,8 @@
     }
 
     function clipRect (context, offset) {
-        context.rect(org.x - offset, org.y - mainRect.height - offset, mainRect.width + offset * 2, mainRect.height + offset * 2);
+        context.rect(org.x - offset, org.y - mainRect.height - offset,
+          +mainRect.width + offset * 2, +mainRect.height + +offset * 2);
         context.clip();
     }
 
@@ -144,7 +145,6 @@
             var margin = 8;
             context.textAlign = 'left';
             context.textBaseline = 'middle';
-            context.fillStyle = '#00ff00';
 
             context.font = font1;
             context.fillStyle = textColor;
@@ -211,17 +211,13 @@
             // context.lineTo(0, 0);
 
             if (+p.dx + +p.length - mainRect.height < 0) {
-                console.log(1);
                 context.lineTo(+org.x + +mainRect.width, org.y - mainRect.height + +p.dx + +p.length);
             } else if (+p.dx < mainRect.height) {
-                console.log(2);
                 context.lineTo(+org.x + +mainRect.width, org.y);
                 context.lineTo(+org.x + +mainRect.width - (+p.dx + +p.length - mainRect.height), org.y);
             } else if (+p.dx + +p.length < +mainRect.width + +mainRect.height) {
-                console.log(3);
                 context.lineTo(+org.x + +mainRect.width - (+p.dx + +p.length - mainRect.height), org.y);
             } else if (p.dx < +mainRect.width + +mainRect.height) {
-                console.log(4);
                 context.lineTo(org.x, org.y);
                 context.lineTo(org.x, org.y - p.length - (p.dx - (mainRect.width + mainRect.height)));
             } else {
@@ -236,8 +232,9 @@
     }
 
     function doAnimation(x, y) {
-        var layer1 = createLayer1 ('#ffffff', -1000, ctx);
-        var layer2 = createLayer2 ('#bf5013', '#bf5013', '#ffffff', 2000, ctx0);
+        var layer1 = createLayer1 (/* text1_color */'#ffffff'/* /text1_color */, -1000, ctx);
+        var layer2 = createLayer2 (/* text2_color */'#bf5013'/* /text2_color */,
+                                  /* text3_color_1 */'#bf5013'/* /text3_color_1 */, /* text3_color_2 */'#ffffff'/* /text3_color_2 */, 2000, ctx0);
 
         var border = createBorder (0, '#bf5013', 6, -100, ctx1);
         timeline
@@ -257,7 +254,7 @@
             .add({
                 targets: layer2,
                 easing: 'linear',
-                dx: 1000,
+                dx: 2000,
                 duration: 1,
                 update: renderObjects
             })
@@ -274,7 +271,7 @@
                 targets: layer1,
                 easing: 'linear',
                 dx: [
-                    {value: -mainRect.width, duration: 0.1},
+                    {value: -mainRect.width + 100, duration: 1},
                     {value: 0, duration: mainOptions.duration / 4},
                 ],
                 duration: 1000,
@@ -289,17 +286,17 @@
                 targets: layer2,
                 easing: 'linear',
                 dx: [
-                    {value: mainRect.width, duration: 0.1},
+                    {value: mainRect.width, duration: 1},
                     {value: 0, duration: mainOptions.duration / 3},
                 ],
                 duration: 1000,
-                offset: '-=800',
+                offset: '-=750',
                 update: renderObjects
             })
             .add({
                 targets: layer2,
                 easing: 'linear',
-                dx: mainRect.width + 10,
+                dx: mainRect.width + 100,
                 delay: mainOptions.delay,
                 duration: mainOptions.duration / 4,
                 update: renderObjects

@@ -253,16 +253,13 @@
 
         timeline
             .add({
-                duration: 100,
-                update:  function () {
-                    calculateSizes();
-                }
-            })
-            .add({
                 targets: [layer1, layer2, layer3],
                 easing: 'linear',
-                duration: 1,
-                update: renderObjects
+                duration: 0.1,
+                update: function (anim) {
+                  calculateSizes();
+                  renderObjects(anim);
+                }
             })
             .add({
                 targets: [clearRect1, clearRect2, clearRect11, clearRect3],

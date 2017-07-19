@@ -27,7 +27,7 @@
         loop: false,
         direction: 'alternate',
         autoplay: true
-    });	
+    });
 
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
@@ -44,7 +44,7 @@
     var textDown = /* text3 */"LINE PRODUCER"/* /text3 */;
     var widthText2 = Math.ceil(ctx.measureText(textDown).width);
 
-  
+
 
 //-------------------------function
 	function setCanvasSize() {
@@ -56,23 +56,23 @@
     }
   function createRect() {
     var p = {};
-      p.x = -50; 
+      p.x = -50;
       p.y = 470;
-      p.width = 10; 
-      p.height = 10; 
-      p.x2 = 910; 
+      p.width = 10;
+      p.height = 10;
+      p.x2 = 910;
       p.y2 = 490;
-      p.width2 = 1000; 
-      p.height2 = 60; 
+      p.width2 = 1000;
+      p.height2 = 60;
       p.color = /* background_color */'#ff0000'/* /background_color */;
       p.radius = 0;
       p.draw = function() {
-     
+
         ctx.beginPath();
         ctx.fillStyle = p.color;
         ctx.fillRect(p.x, p.y, p.width, p.height);
-  
-        
+
+
         ctx.save();
         ctx.beginPath();
         ctx.globalCompositeOperation = 'destination-out';
@@ -87,19 +87,19 @@
       p.x2 = 320 + widthTextUp1 + widthTextUp2;
       p.y = 540;
       p.widthMask = 300 + widthTextUp1 + widthTextUp2;
-      p.color = /* text_color1 */'#ffffff'/* /text_colo1 */;
+      p.color = /* upper_text_color */'#ffffff'/* /upper_text_color */;
       p.draw = function() {
 
         ctx.save();
         ctx.beginPath();
         ctx.rect(0, 490, p.widthMask, 60);
-        ctx.clip(); 
+        ctx.clip();
 
-        ctx.beginPath(); 
+        ctx.beginPath();
         ctx.font = "bold 60px Arial";
         ctx.fillStyle = p.color;
         ctx.fillText(textUp1, p.x1, p.y);
-        ctx.beginPath(); 
+        ctx.beginPath();
         ctx.font = "60px Arial";
         ctx.fillStyle = p.color;
         ctx.fillText(textUp2, p.x2, p.y);
@@ -112,12 +112,12 @@
       var p = {};
       p.x = 160;
       p.y = 620;
-      p.color = /* text_color2 */'#ffffff'/* /text_colo2 */;
+      p.color = /* lower_text_color */'#ffffff'/* /lower_text_color */;
       p.draw = function() {
         ctx.save();
         ctx.beginPath();
         ctx.rect(0, 550, 1280, 40);
-        ctx.clip(); 
+        ctx.clip();
         ctx.font = "30px Arial";
         ctx.fillStyle = p.color;
         ctx.fillText(textDown, p.x, p.y);
@@ -334,6 +334,6 @@
     }
 </script>
 <!-- /BUTTONS -->
-	
+
 </body>
 </html>

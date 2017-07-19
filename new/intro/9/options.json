@@ -50,7 +50,7 @@
         "quotes": true
       },
       {
-        "name": "particle_rect_color",
+        "name": "particle_color",
         "caption": "Particle color",
         "type": "color",
         "value": "#92b633",
@@ -73,5 +73,6 @@
         "quotes": true
       }
     ]
+  ]
   ]
 }

@@ -2,6 +2,7 @@
   "caption": "Text animation 10",
   "duration": 3000,
   "delay": 2000,
+  "deluxe": true,
   "options": [
     [
       {
@@ -92,5 +93,6 @@
         "quotes": true
       }
     ]
+  ]
   ]
 }

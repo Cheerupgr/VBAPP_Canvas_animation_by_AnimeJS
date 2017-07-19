@@ -3,49 +3,51 @@
     "duration": 5400,
     "delay": 3000,
     "options": [
-        [
-            {
-                "name": "text1",
-                "caption": "Text 1",
-                "type": "text",
-                "value": "GRACE",
-                "quotes": true
-            },
-            {
-                "name": "text_color1",
-                "caption": "Text color 1",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
-            {
-                "name": "text2",
-                "caption": "Text 2",
-                "type": "text",
-                "value": "WALKER",
-                "quotes": true
-            },
-            {
-                "name": "text3",
-                "caption": "Text 3",
-                "type": "text",
-                "value": "LINE PRODUCER",
-                "quotes": true
-            },
-            {
-                "name": "text_color2",
-                "caption": "Text color 2",
-                "type": "color",
-                "value": "#ffffff",
-                "quotes": true
-            },
-            {
-                "name": "background_color",
-                "caption": "Background color",
-                "type": "color",
-                "value": "#ff0000",
-                "quotes": true
-            }
-        ]
+      [
+        {
+            "name": "text1",
+            "caption": "Text 1",
+            "type": "text",
+            "value": "GRACE",
+            "quotes": true
+        },
+        {
+            "name": "text2",
+            "caption": "Text 2",
+            "type": "text",
+            "value": "WALKER",
+            "quotes": true
+        },
+        {
+            "name": "upper_text_color",
+            "caption": "Text color 2",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "text3",
+            "caption": "Text 3",
+            "type": "text",
+            "value": "LINE PRODUCER",
+            "quotes": true
+        },
+        {
+            "name": "lower_text_color",
+            "caption": "Text color 2",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "background_color",
+            "caption": "Background color",
+            "type": "color",
+            "value": "#ff0000",
+            "quotes": true
+        }
+      ]
     ]
 }

@@ -2,23 +2,8 @@
   "caption": "Introduction 8",
   "duration": 6000,
   "delay": 2000,
+  "deluxe": true,
   "options": [
-    [
-      {
-        "name": "title",
-        "caption": "Title",
-        "type": "text",
-        "value": "videobuilder",
-        "quotes": true
-      },
-      {
-        "name": "title_color",
-        "caption": "Title color",
-        "type": "color",
-        "value": "#558aca",
-        "quotes": true
-      }
-    ],
     [
       {
         "name": "url",
@@ -51,5 +36,6 @@
         "quotes": true
       }
     ]
+  ]
   ]
 }
