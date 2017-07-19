@@ -93,6 +93,13 @@
             if (timeVal > 0 && !mainOptions.isPaused) {
                 timeVal -= 10;
                 timeText.time = +timeVal;
+                if (timeVal <= mainOptions.duration * /* shake_percent */70/* /shake_percent */ / 100) {
+                    timeText.color = /* text_color_2 */'#00ff00'/* /text_color_2 */;
+                    var dx = anime.random(-1, 1);
+                    var dy = anime.random(-1, 1);
+                    timeText.x = ctx.canvas.width / 2 - w / 2 - dx;
+                    timeText.y = ctx.canvas.height / 2 - dy;
+                }
                 timeText.draw();
                 updateSecond();
             } else if (timeVal <= 0 && !mainOptions.isPaused) {

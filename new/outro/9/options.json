@@ -5,10 +5,22 @@
     "options": [
       [
         {
-            "name": "text_color",
-            "caption": "Text color",
+            "name": "text_color_1",
+            "caption": "Text color 1",
             "type": "color",
             "value": "#ff0000"
+        },
+        {
+            "name": "text_color_2",
+            "caption": "Text color 2",
+            "type": "color",
+            "value": "#00ff00"
+        },
+        {
+            "name": "shake_percent",
+            "caption": "Shake at percent",
+            "type": "value",
+            "value": "70"
         }
       ],
       [
