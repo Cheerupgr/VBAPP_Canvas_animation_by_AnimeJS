@@ -3,21 +3,29 @@
     "duration": 5500,
     "delay": 3000,
     "options": [
-        [
-            {
-                "name": "background_color",
-                "caption": "Background color",
-                "type": "color",
-                "value": "#000000",
-                "quotes": true
-            },
-            {
-                "name": "file",
-                "caption": "Image",
-                "type": "file",
-                "value": "logo.png",
-                "quotes": true
-            }
-        ]
+      [
+        {
+            "name": "line_color",
+            "caption": "Line color",
+            "type": "color",
+            "value": "#ffffff",
+            "quotes": true
+        }
+      ],[
+        {
+            "name": "background_color",
+            "caption": "Background color",
+            "type": "color",
+            "value": "#000000",
+            "quotes": true
+        },
+        {
+            "name": "file",
+            "caption": "Image",
+            "type": "file",
+            "value": "logo.png",
+            "quotes": true
+        }
+      ]
     ]
 }

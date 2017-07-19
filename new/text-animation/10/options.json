@@ -2,19 +2,22 @@
     "caption": "Text animation 10",
     "duration": 3000,
     "delay": 2000,
+    "deluxe": true,
     "options": [
       [
         {
             "name": "title",
             "caption": "Title",
             "type": "text",
-            "value": "MINIMALISM"
+            "value": "MINIMALISM",
+            "quotes": true
         },
         {
             "name": "title_color",
             "caption": "Title color",
             "type": "color",
-            "value": "#d1ae51"
+            "value": "#d1ae51",
+            "quotes": true
         }
       ],
       [
@@ -22,13 +25,15 @@
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
-            "value": "SIMPLE"
+            "value": "SIMPLE",
+            "quotes": true
         },
         {
             "name": "text1_color",
             "caption": "Text 1 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -36,13 +41,15 @@
             "name": "text2",
             "caption": "Text 2",
             "type": "text",
-            "value": "INSPIRE"
+            "value": "INSPIRE",
+            "quotes": true
         },
         {
             "name": "text2_color",
             "caption": "Text 2 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -50,13 +57,15 @@
             "name": "text3",
             "caption": "Text 3",
             "type": "text",
-            "value": "MODERN AND CLEAN"
+            "value": "MODERN AND CLEAN",
+            "quotes": true
         },
         {
             "name": "text3_color",
             "caption": "Text 3 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -64,13 +73,15 @@
             "name": "text4",
             "caption": "Text 4",
             "type": "text",
-            "value": "30 DIFFERENT ANIMATIONS"
+            "value": "30 DIFFERENT ANIMATIONS",
+            "quotes": true
         },
         {
             "name": "text4_color",
             "caption": "Text 4 color",
             "type": "color",
-            "value": "#d1ae51"
+            "value": "#d1ae51",
+            "quotes": true
         }
       ],
       [

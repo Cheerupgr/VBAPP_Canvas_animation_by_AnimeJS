@@ -2,33 +2,22 @@
     "caption": "Introduction 8",
     "duration": 6000,
     "delay": 2000,
+    "deluxe": true,
     "options": [
-      [
-        {
-            "name": "title",
-            "caption": "Title",
-            "type": "text",
-            "value": "videobuilder"
-        },
-        {
-            "name": "title_color",
-            "caption": "Title color",
-            "type": "color",
-            "value": "#558aca"
-        }
-      ],
       [
         {
             "name": "url",
             "caption": "Tagline/Url",
             "type": "text",
-            "value": "https://videobuilderapp.com"
+            "value": "https://videobuilderapp.com",
+            "quotes": true
         },
         {
             "name": "url_color",
             "caption": "Tagline/Url color",
             "type": "color",
-            "value": "#000000"
+            "value": "#000000",
+            "quotes": true
         }
       ],
       [

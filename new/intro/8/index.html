@@ -76,10 +76,8 @@
         mainRect.height = +text2.height + +text3.height + +margin * 2;
     }
 
-    function createObject(text, size, color, dx, dy, scale, alpa, beta, context) {
+    function createObject(size, dx, dy, scale, alpa, beta, context) {
         var p = {};
-        p.text = text;
-        p.color = color;
         p.dx = dx;
         p.dy = dy;
         p.scale = scale;
@@ -113,12 +111,6 @@
 
             context.drawImage(img, x - widthToShow / 2, y - heightToShow / 2, widthToShow, heightToShow);
 
-            // context.font = p.size + 'pt proximanovalight';
-            // context.textAlign = 'center';
-            // context.textBaseline = 'middle';
-            // context.fillStyle = p.color;
-            // context.fillText(p.text, x, y);
-
             context.restore();
         };
         img.src = /* file */"img/vb-logo.png"/* /file */;
@@ -136,7 +128,7 @@
             context.font = p.size + 'px OpenSansRegular';
             context.textAlign = 'left';
             context.textBaseline = 'top';
-            p.fillStyle = p.color;
+            context.fillStyle = p.color;
             context.fillText(p.text, p.x, p.y);
         };
         return p;
@@ -150,7 +142,7 @@
     }
 
     function doAnimation(x, y) {
-        var object = createObject(/* title */'videobuilder'/* /title */, 100, /* title_color */'#558aca'/* /title_color */, 0, 0, 8, 180, 30, ctx);
+        var object = createObject(100, 0, 0, 8, 180, 30, ctx);
         var url = createUrl(/* url */'https://videobuilderapp.com'/* /url */, 32, ctx.canvas.width / 2, -100, /* url_color */'#000000'/* /url_color */, ctx);
 
         timeline

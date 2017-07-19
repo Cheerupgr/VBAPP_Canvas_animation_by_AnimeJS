@@ -7,13 +7,15 @@
             "name": "title",
             "caption": "Title",
             "type": "text",
-            "value": "videobuilder"
+            "value": "videobuilder",
+            "quotes": true
         },
         {
             "name": "title_color",
             "caption": "Title color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -21,13 +23,15 @@
             "name": "url",
             "caption": "Tagline/Url",
             "type": "text",
-            "value": "https://videobuilderapp.com"
+            "value": "https://videobuilderapp.com",
+            "quotes": true
         },
         {
             "name": "url_color",
             "caption": "Tagline/Url color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -35,19 +39,22 @@
             "name": "rect_color",
             "caption": "Logo background color",
             "type": "color",
-            "value": "#92b633"
+            "value": "#92b633",
+            "quotes": true
         },
         {
             "name": "border_color",
             "caption": "Logo border color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         },
         {
-            "name": "particle_rect_color",
+            "name": "particle_color",
             "caption": "Particle color",
             "type": "color",
-            "value": "#92b633"
+            "value": "#92b633",
+            "quotes": true
         }
       ],
       [

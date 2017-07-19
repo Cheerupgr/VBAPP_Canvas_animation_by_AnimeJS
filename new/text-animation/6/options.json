@@ -2,6 +2,7 @@
     "caption": "Text Animation 6",
     "duration": 3000,
     "delay": 3000,
+    "deluxe": true,
     "options": [
       [
         {

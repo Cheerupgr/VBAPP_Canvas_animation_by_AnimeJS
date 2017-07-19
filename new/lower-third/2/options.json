@@ -2,6 +2,7 @@
     "caption": "Lower Third Animation 2",
     "duration": 9700,
     "delay": 3000,
+    "deluxe": true,
     "options": [
         [
             {
@@ -48,6 +49,15 @@
                 "value": "#43403f",
                 "quotes": true
             }
+        ],
+        [
+          {
+              "name": "line_color",
+              "caption": "Line color",
+              "type": "color",
+              "value": "#ffffff",
+              "quotes": true
+          }
         ]
     ]
 }

@@ -2,13 +2,15 @@
     "caption": "Introduction 5",
     "duration": 4000,
     "delay": 2000,
+    "deluxe": true,
     "options": [
       [
         {
             "name": "searchbar_color",
             "caption": "Searchbar color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -16,7 +18,8 @@
             "name": "url_text",
             "caption": "Url text",
             "type": "text",
-            "value": "videobuilder.com"
+            "value": "videobuilder.com",
+            "quotes": true
         }
       ],
       [
@@ -24,13 +27,15 @@
             "name": "name_text",
             "caption": "Name text",
             "type": "text",
-            "value": "videobuilder"
+            "value": "videobuilder",
+            "quotes": true
         },
         {
             "name": "name_color",
             "caption": "Name color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ]
     ]

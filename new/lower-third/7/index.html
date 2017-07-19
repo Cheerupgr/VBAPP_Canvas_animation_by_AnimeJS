@@ -27,7 +27,7 @@
         loop: false,
         direction: 'alternate',
         autoplay: true
-    });	
+    });
 
     var canvasEl = document.querySelector('canvas');
     var ctx = canvasEl.getContext('2d');
@@ -58,12 +58,12 @@
   		var p = {};
       p.x = 150 + widthText1;
       p.y = 520;
-      p.color = /* text_color1 */'#FFF'/* /text_colo1 */;
+      p.color = /* text_color1 */'#FFF'/* /text_color1 */;
       p.draw = function() {
       	ctx.save();
       	ctx.beginPath();
       	ctx.rect(0, 475, 140 + widthText1, 60);
-      	ctx.clip(); 
+      	ctx.clip();
       	ctx.font = "45px 'Century Gothic'";
     		ctx.fillStyle = p.color;
 	  		ctx.fillText(textTitle1, p.x, p.y);
@@ -104,7 +104,7 @@
         ctx.arc(p.xMask1, p.yMask, p.radius, 0.5 * Math.PI, 1.5 * Math.PI, false);
  				ctx.arc(p.xMask2, p.yMask, p.radius, 1.5 * Math.PI, 2.5 * Math.PI, false);
  				ctx.closePath();
-      	ctx.clip(); 
+      	ctx.clip();
       	ctx.save();
       	ctx.translate(p.x + widthText2 / 2, p.y - 22.5);
         ctx.scale(p.scale, p.scale);
@@ -130,7 +130,7 @@
       	ctx.save();
       	ctx.beginPath();
       	ctx.rect(0, 535, 1280, 40);
-      	ctx.clip(); 
+      	ctx.clip();
       	ctx.font = "25px 'Century Gothic'";
     		ctx.fillStyle = p.color;
 	  		ctx.fillText(textTitle3, p.x, p.y);
@@ -222,7 +222,7 @@
 	                y:[530, 560],
 	                y1:[520, 550],
 	                offset: 2200
-	  
+
 	          })
 	          //------------------------
 	          .add({
@@ -241,7 +241,7 @@
 	                y:[560, 530],
 	                y1:[550, 520],
 	                offset: 3200 + mainOptions.delay
-	  
+
 	          })
 	          .add({
 	                targets: container,
@@ -281,7 +281,7 @@
                     clearCanvas();
                 	}
 	          });
-      
+
     }
 
     setCanvasSize();
@@ -360,6 +360,6 @@
     }
 </script>
 <!-- /BUTTONS -->
-	
+
 </body>
 </html>

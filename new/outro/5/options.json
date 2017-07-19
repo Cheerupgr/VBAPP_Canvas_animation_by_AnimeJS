@@ -1,10 +1,20 @@
 {
     "caption": "Outro 5",
     "duration": 2000,
+    "deluxe": true,
     "options": [
       [
         {
           "name": "mark_color",
+          "caption": "Mark color",
+          "type": "color",
+          "value": "#ffffff",
+          "quotes": true
+        }
+      ],
+      [
+        {
+          "name": "line_color",
           "caption": "Mark color",
           "type": "color",
           "value": "#ffffff",

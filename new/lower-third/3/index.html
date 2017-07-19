@@ -51,6 +51,10 @@
 		canvasEl.style.height = rectObject.height + 'px';
 	}
 
+	var max_length = mainOptions.options[0][0].value.length > mainOptions.options[0][1].value.length
+									? mainOptions.options[0][0].value.length
+									: mainOptions.options[0][1].value.length;
+
 	var orgX = 250, orgY = 500, orgWidth = 220;
 	var path = [ // text 1 background
 		// start line

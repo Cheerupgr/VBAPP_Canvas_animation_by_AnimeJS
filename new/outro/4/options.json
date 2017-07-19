@@ -13,6 +13,15 @@
       ],
       [
         {
+          "name": "line_color",
+          "caption": "Mark color",
+          "type": "color",
+          "value": "#ffffff",
+          "quotes": true
+        }
+      ],
+      [
+        {
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
