@@ -1,25 +1,29 @@
 {
     "caption": "Lower Third Animation 4",
     "delay": 2000,
+    "duration": 3000,
     "options": [
       [
         {
             "name": "text1",
             "caption": "Text 1",
             "type": "text",
-            "value": "FREDRIC"
+            "value": "FREDRIC",
+            "quotes": true
         },
         {
             "name": "text1_color_1",
             "caption": "Text 1 color 1",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         },
         {
             "name": "text1_color_2",
             "caption": "Text 1 color 2",
             "type": "color",
-            "value": "#000000"
+            "value": "#000000",
+            "quotes": true
         }
       ],
       [
@@ -27,19 +31,22 @@
             "name": "text2",
             "caption": "Text 2",
             "type": "text",
-            "value": "BERTRAM"
+            "value": "BERTRAM",
+            "quotes": true
         },
         {
             "name": "text2_color_1",
             "caption": "Text 2 color 1",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         },
         {
             "name": "text2_color_2",
             "caption": "Text 2 color 2",
             "type": "color",
-            "value": "#000000"
+            "value": "#000000",
+            "quotes": true
         }
       ],
       [
@@ -47,13 +54,15 @@
             "name": "text3",
             "caption": "Text 3",
             "type": "text",
-            "value": "VISUAL EFFECTS SUPERVISOR"
+            "value": "VISUAL EFFECTS SUPERVISOR",
+            "quotes": true
         },
         {
             "name": "text3_color",
             "caption": "Text 3 color",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ],
       [
@@ -61,13 +70,15 @@
             "name": "background_color_1",
             "caption": "Background color 1",
             "type": "color",
-            "value": "#bf5013"
+            "value": "#bf5013",
+            "quotes": true
         },
         {
             "name": "background_color_2",
             "caption": "Background color 2",
             "type": "color",
-            "value": "#ffffff"
+            "value": "#ffffff",
+            "quotes": true
         }
       ]
     ]
