@@ -1,0 +1,24 @@
+{
+    "caption": "Introduction 12",
+    "duration": 3100,
+    "delay": 3000,
+    "deluxe": true,
+    "options": [
+        [
+            {
+                "name": "file",
+                "caption": "Image",
+                "type": "file",
+                "value": "logo.png",
+                "quotes": true
+            },
+            {
+                "name": "background_color",
+                "caption": "Background color",
+                "type": "color",
+                "value": "#ffffff",
+                "quotes": true
+            }
+        ]
+    ]
+}

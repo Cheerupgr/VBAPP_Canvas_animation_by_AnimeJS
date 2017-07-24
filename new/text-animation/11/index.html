@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hand drawing text</title>
+
+	<script src="js/anime.min.js"></script>
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="vba-area">
+
+    <canvas></canvas>
+
+</div>
+
+<script>
+		var mainOptions = {
+		delay: /* delay */3000/* /delay */,
+        isPaused: false,
+        isRendering: false,
+        timer: null
+    };
+
+    var timeline = anime.timeline({
+        loop: false,
+        direction: 'alternate',
+        autoplay: true
+    });	
+
+    var canvasEl = document.querySelector('canvas');
+    var ctx = canvasEl.getContext('2d');
+
+    ctx.font = "70px 'HandWritten'";
+    var textLb = /* text */"Amazing 3D Avatars!"/* /text */;
+    var widthText = 1.5 *  Math.ceil(ctx.measureText(textLb).width);
+
+
+//-------------------------function
+	function setCanvasSize() {
+        var rectObject = canvasEl.parentNode.getBoundingClientRect();
+        canvasEl.width = rectObject.width;
+        canvasEl.height = rectObject.height;
+        canvasEl.style.width = rectObject.width + 'px';
+        canvasEl.style.height = rectObject.height + 'px';
+    }
+function createFill() {
+         var p = {};
+          p.color = /* background_color */"#808080" /* /background_color */;    
+          p.draw = function() { 
+            ctx.beginPath();
+            ctx.fillStyle = p.color;
+            ctx.fillRect(0, 0, 1280, 740);
+
+          };        
+        return p;
+    }
+  function createImageHand() {
+      var p = {};
+          p.x = 740 - widthText / 2;
+          p.y = 1050;
+          var img = new Image;
+          p.draw = function() { 
+          	ctx.save();
+          	ctx.shadowBlur = 20;
+        	ctx.shadowOffsetX = -5;
+        	ctx.shadowOffsetY = 20;
+        	ctx.shadowColor = '#999';
+            ctx.drawImage(img, p.x - (p.width / 2), p.y - (p.height / 2), p.width, p.height);
+            var widthImg = parseInt(img.width);
+            var heightImg = parseInt(img.height);
+            if(widthImg > heightImg)
+            {p.height = (720 / widthImg) * heightImg; p.width = 720;}
+            else {p.width = (720 / heightImg) * widthImg; p.height = 720;}
+            ctx.restore();
+          };
+          img.src = "hand-marker-drawing.png";
+        return p;
+  }
+
+  function createText() {
+      var p = {};
+          p.x = 640;
+          p.y = 370;
+          p.widthMask = 0;
+          p.color = /* text_color */'#000000';/* /text_color */
+          p.draw = function() {      
+          	
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(640 - widthText / 2, 300, p.widthMask, 100);
+            ctx.clip(); 
+            ctx.font = "70px 'HandWritten'";
+            ctx.textAlign = "center";
+            ctx.fillStyle = p.color;
+            ctx.fillText(textLb, p.x, p.y);
+
+           
+            ctx.restore()
+          };
+          
+        return p;
+  }
+  
+  
+ 
+
+  function renderEffect(anim) {
+        for (var i = 0; i < anim.animatables.length; i++) {
+            anim.animatables[i].target.draw();
+        }
+    }
+  var render = anime({
+        duration: Infinity,
+        update: function() {
+            if( !timeline.paused ){
+                clearCanvas();
+            }
+        }
+    });
+
+  var clearCanvas = function(){
+       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    };
+//----------------------------------------
+    function animateHand() {
+    	var hand = createImageHand();
+    	var text = createText();
+        var fill = createFill();
+     
+           timeline
+             .add({
+                targets: fill, 
+                update: renderEffect
+              })
+       		 .add({
+                targets: text,
+                easing: 'linear',
+                duration: 2000,
+                widthMask: [0, widthText],
+                update: renderEffect,
+  				offset: 600
+              })
+             .add({
+                targets: hand,
+                easing: 'easeOutCubic',
+                duration: 500,
+                y: [1050, 550],
+                update: renderEffect,
+                offset: 0,
+                })
+       		 .add({
+                targets: hand,
+                 x: [{value: 740 -  widthText / 2}, 
+                    {value: 740 - (widthText / 2) + (1 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (2 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (3 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (4 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (5 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (6 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (7 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (8 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (9 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (10 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (11 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (12 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (13 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (14 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (15 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (16 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (17 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (18 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (19 * widthText / 20), duration: 100, easing: 'linear'},
+                    {value: 740 - (widthText / 2) + (widthText), duration: 100, easing: 'linear'},],
+                y: [{value: 550}, 
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},
+                    {value: 650, duration: 100, easing: 'linear'},
+                    {value: 550, duration: 100, easing: 'linear'},],
+                update: renderEffect,
+                offset: 500
+              })
+       		 .add({
+                targets: hand,
+                easing: 'easeInCubic',
+                duration: 500,
+                y: [550, 1050],
+                x: [740 - (widthText / 2) + (widthText), 1280],
+                update: renderEffect,
+                offset: 2600,
+                 complete: function(anim) {
+                mainOptions.timer = setTimeout(function(){
+                    clearCanvas();
+                }, mainOptions.isRendering
+                    ? mainOptions.delay * 3//delay x3 - for better rendering
+                    : mainOptions.delay);
+            		}
+              })
+             
+    }
+
+    setCanvasSize();
+    animateHand();
+//-------------------------------------------
+ //Playback control
+    var playbackControl = {
+
+        getIsPaused: function(){
+            return timeline.paused;
+        },
+
+        playToggle: function(){
+            if( timeline.paused ){
+                timeline.play();
+            } else {
+                timeline.pause();
+            }
+        },
+
+        play: function(){
+            timeline.play();
+        },
+
+        pause: function(){
+            timeline.pause();
+        },
+
+        restart: function(){
+            timeline.restart();
+        },
+
+        stop: function(){
+            clearTimeout( mainOptions.timer );
+            timeline.restart();
+            timeline.pause();
+        },
+
+        seek: function( miliseconds ){
+            clearTimeout( mainOptions.timer );
+            if( timeline.reversed ){
+                timeline.reverse();
+            }
+            timeline.seek( miliseconds );
+            timeline.play();
+        }
+    };
+
+</script>
+
+<!-- BUTTONS -->
+<div id="vba-buttons" style="display: none; position: fixed; right: 20px; top: 20px;">
+    <button type="button" class="vba-btn" onclick="playbackControl.playToggle(); return false;">
+        Play / Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.play(); return false;">
+        Play
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.pause(); return false;">
+        Pause
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.stop(); return false;">
+        Stop
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.seek(2500); return false;">
+        Jump to 50% time
+    </button>
+    <button type="button" class="vba-btn" onclick="playbackControl.restart(); return false;">
+        Replay
+    </button>
+</div>
+<script>
+    //To display buttons add #buttons hash to page address and reload
+    if( window.location.hash.indexOf('buttons') > -1 ){
+        document.getElementById('vba-buttons').style.display = 'block';
+    }
+</script>
+<!-- /BUTTONS -->
+	
+</body>
+</html>
