@@ -18,7 +18,7 @@
         "name": "url_text",
         "caption": "Url text",
         "type": "text",
-        "value": "videobuilder.com",
+        "value": "videobuilderapp.com",
         "quotes": true
       }
     ],
@@ -27,7 +27,7 @@
         "name": "name_text",
         "caption": "Name text",
         "type": "text",
-        "value": "videobuilder",
+        "value": "VideoBuilder",
         "quotes": true
       },
       {

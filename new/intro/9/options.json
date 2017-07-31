@@ -7,7 +7,7 @@
         "name": "title",
         "caption": "Title",
         "type": "text",
-        "value": "videobuilder",
+        "value": "VideoBuilder",
         "quotes": true
       },
       {
